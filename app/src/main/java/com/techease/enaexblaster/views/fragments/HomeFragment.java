@@ -22,6 +22,12 @@ public class HomeFragment extends Fragment {
     LinearLayout layoutCalculator;
     @BindView(R.id.contact_layout)
     LinearLayout layoutContact;
+    @BindView(R.id.guidline_layout)
+    LinearLayout layoutGuideLine;
+    @BindView(R.id.product_layout)
+    LinearLayout layoutProductInfo;
+    @BindView(R.id.setting_layout)
+    LinearLayout layoutSetting;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,6 +46,27 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 GeneralUtils.connectFragmentWithBack(getActivity(),new ContactUsFragment());
+            }
+        });
+
+        layoutGuideLine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new GuideLineFragment());
+            }
+        });
+
+        layoutProductInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new ProductInfoFragment());
+            }
+        });
+
+        layoutSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new SettingFragment());
             }
         });
 

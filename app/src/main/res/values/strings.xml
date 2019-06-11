@@ -15,6 +15,14 @@
     <string name="explosive">Explosive Weight</string>
     <string name="powder">Powder Factor</string>
     <string name="scaled">Scaled Depth fo Burial</string>
+    <string name="mail">Send us an email!</string>
+    <string name="visit">Visit out website!</string>
+    <string name="bench">Bench Definition</string>
+    <string name="blast">Blast Design</string>
+    <string name="loading">Loading Charts</string>
+    <string name="rock">Rock Properties</string>
+    <string name="sdob">SDOB Overview</string>
+    <string name="language">Language:</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

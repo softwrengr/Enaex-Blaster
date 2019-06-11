@@ -15,8 +15,7 @@ import com.techease.enaexblaster.utilities.GeneralUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
-public class CalculatorsHomeFragment extends Fragment {
+public class GuideLineFragment extends Fragment {
     View view;
     @BindView(R.id.iv_back)
     ImageView ivBack;
@@ -24,9 +23,9 @@ public class CalculatorsHomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view  = inflater.inflate(R.layout.fragment_calculators_home, container, false);
+        view = inflater.inflate(R.layout.fragment_guide_line, container, false);
         ButterKnife.bind(this,view);
-         initViews();
+        initViews();
         return view;
     }
 

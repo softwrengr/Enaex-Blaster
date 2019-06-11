@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".views.fragments.ContactUsFragment">
+    tools:context=".views.fragments.GuideLineFragment">
+
 
     <ImageView
         android:id="@+id/iv_back"
@@ -27,9 +28,9 @@
 
     <ImageView
         android:id="@+id/iv_contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/contact"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/web"
         android:layout_below="@id/name"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"/>
@@ -39,7 +40,7 @@
         android:layout_below="@+id/iv_contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/contact"
+        android:text="@string/guide"
         android:textSize="20sp"
         android:gravity="center"
         android:layout_centerHorizontal="true" />
@@ -54,32 +55,31 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             app:cardCornerRadius="20dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="2dp">
-                <ImageView
-                    android:id="@+id/iv_call"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/contact"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_centerVertical="true"/>
+                android:layout_height="match_parent">
 
                 <TextView
                     android:layout_toRightOf="@+id/iv_call"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/contact"
+                    android:text="@string/bench"
                     android:textSize="20sp"
                     android:layout_marginLeft="20dp"
                     android:gravity="center"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/down_arrow"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"/>
 
 
@@ -89,7 +89,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginTop="20dp"
@@ -97,25 +97,25 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="2dp">
-                <ImageView
-                    android:id="@+id/iv_mail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/email"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_centerVertical="true"/>
+                android:layout_height="match_parent">
+
 
                 <TextView
                     android:layout_toRightOf="@+id/iv_mail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/mail"
+                    android:text="@string/blast"
                     android:textSize="20sp"
                     android:layout_marginLeft="20dp"
                     android:gravity="center"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/down_arrow"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"/>
 
 
@@ -125,7 +125,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginTop="20dp"
@@ -133,25 +133,92 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="2dp">
-                <ImageView
-                    android:id="@+id/iv_web"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/appsettings"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_centerVertical="true"/>
+                android:layout_height="match_parent">
 
                 <TextView
                     android:layout_toRightOf="@+id/iv_web"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/visit"
+                    android:text="@string/loading"
                     android:textSize="20sp"
                     android:layout_marginLeft="20dp"
                     android:gravity="center"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/down_arrow"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"/>
+
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_toRightOf="@+id/iv_web"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rock"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/down_arrow"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"/>
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_toRightOf="@+id/iv_web"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sdob"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/down_arrow"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"/>
 
 
@@ -160,6 +227,5 @@
         </android.support.v7.widget.CardView>
 
     </LinearLayout>
-
 
 </RelativeLayout>

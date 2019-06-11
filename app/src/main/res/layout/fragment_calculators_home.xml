@@ -3,9 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F3F3F3"
     tools:context=".views.fragments.CalculatorsHomeFragment">
 
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow_left"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="20dp"/>
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
@@ -29,39 +38,49 @@
         android:layout_marginTop="20dp"
         android:gravity="center">
 
-        <FrameLayout
-            android:id="@+id/calculator_layout"
-            android:layout_width="130dp"
-            android:layout_height="100dp"
-            android:background="@drawable/round_button"
-            >
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/image" />
+            <FrameLayout
+                android:id="@+id/calculator_layout"
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:background="@color/silver"
-                android:textColor="@color/white"
-                android:text="@string/hole"
-                />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/image" />
 
-        </FrameLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:background="@color/silver"
+                    android:textColor="@color/white"
+                    android:text="@string/hole"
+                    />
+
+            </FrameLayout>
+
+        </android.support.v7.widget.CardView>
 
 
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            app:cardCornerRadius="10dp">
         <FrameLayout
             android:id="@+id/guidline_layout"
             android:layout_below="@id/leader"
             android:layout_width="130dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="30dp"
             android:orientation="vertical"
             android:background="@drawable/round_button">
 
@@ -84,6 +103,8 @@
 
 
         </FrameLayout>
+
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
     <LinearLayout
@@ -97,6 +118,10 @@
         android:layout_marginTop="20dp"
         android:gravity="center">
 
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp">
         <FrameLayout
             android:id="@+id/product_layout"
             android:layout_width="130dp"
@@ -122,17 +147,19 @@
                 android:textColor="@color/white"
                 android:text="@string/volume"
                 />
-
-
         </FrameLayout>
+        </android.support.v7.widget.CardView>
 
-
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            app:cardCornerRadius="10dp">
         <FrameLayout
             android:id="@+id/setting_layout"
             android:layout_below="@id/leader"
             android:layout_width="130dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="30dp"
             android:orientation="vertical"
             android:gravity="center"
             android:background="@drawable/round_button">
@@ -156,6 +183,8 @@
 
 
         </FrameLayout>
+
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
     <LinearLayout
@@ -168,6 +197,11 @@
         android:layout_marginTop="20dp"
         android:gravity="center">
 
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp">
         <FrameLayout
             android:id="@+id/contact_layout"
             android:layout_width="130dp"
@@ -196,13 +230,18 @@
 
         </FrameLayout>
 
+        </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            app:cardCornerRadius="10dp">
         <FrameLayout
             android:id="@+id/about_layout"
             android:layout_below="@id/leader"
             android:layout_width="130dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="30dp"
             android:orientation="vertical"
             android:gravity="center"
             android:background="@drawable/round_button">
@@ -226,6 +265,8 @@
 
 
         </FrameLayout>
+
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
 </RelativeLayout>
