@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F3F3"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.fragments.HomeFragment">
+
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/leader"
+        android:layout_below="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/leader"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/one"
+        android:layout_below="@id/leader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+        <LinearLayout
+            android:id="@+id/calculator_layout"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:background="@drawable/round_button"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/new_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calculator"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/guidline_layout"
+            android:layout_below="@id/leader"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/round_button">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/new_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calculator"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/two"
+        android:layout_below="@id/one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/product_layout"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:background="@drawable/round_button"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/new_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/setting_layout"
+            android:layout_below="@id/leader"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/round_button">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/new_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setting"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+        <LinearLayout
+            android:id="@+id/contact_layout"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:background="@drawable/round_button"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/new_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contact"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/about_layout"
+            android:layout_below="@id/leader"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/round_button">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/new_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

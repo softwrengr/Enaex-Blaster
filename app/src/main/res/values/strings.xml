@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Enaex Blaster</string>
+
+    <string name="name">Enaex</string>
+    <string name="leader">Leader in comprehensive\n  blasting services</string>
+    <string name="calculator">Calculators</string>
+    <string name="guide">Guidelines</string>
+    <string name="product">Product Info</string>
+    <string name="setting">App Settings</string>
+    <string name="contact">Contact Us</string>
+    <string name="about">About Us</string>
+    <string name="hole">By Hole</string>
+    <string name="shot">By Shot</string>
+    <string name="volume">Volume</string>
+    <string name="explosive">Explosive Weight</string>
+    <string name="powder">Powder Factor</string>
+    <string name="scaled">Scaled Depth fo Burial</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
