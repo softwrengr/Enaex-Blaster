@@ -1,7 +1,9 @@
-package com.techease.enaexblaster;
+package com.techease.enaexblaster.views.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.techease.enaexblaster.R;
 
 public class MainActivity extends AppCompatActivity {
 
