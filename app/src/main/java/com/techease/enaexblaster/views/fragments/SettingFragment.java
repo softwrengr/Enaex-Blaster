@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class SettingFragment extends Fragment {
+public class SettingFragment extends Fragment implements View.OnClickListener {
     View view;
     @BindView(R.id.iv_back)
     ImageView ivBack;
@@ -36,7 +36,8 @@ public class SettingFragment extends Fragment {
     TextView tvRegions;
     @BindView(R.id.tv_units)
     TextView tvUnits;
-    String strData;
+    String strLanguage,strRegion,strUnit,strData;
+    Dialog dialog;
 
     TextView tvOne, tvTwo, tvThree, tvFour, tvCancel;
 
@@ -81,7 +82,7 @@ public class SettingFragment extends Fragment {
     }
 
     private void showDialog(String strOne, String strTwo, String strThree, String strFour, final String check) {
-        final Dialog dialog = new Dialog(getActivity());
+        dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.dialog_layout);
         tvOne = dialog.findViewById(R.id.tv_one);
         tvTwo = dialog.findViewById(R.id.tv_two);
@@ -94,45 +95,10 @@ public class SettingFragment extends Fragment {
         tvThree.setText(strThree);
         tvFour.setText(strFour);
 
-        checkLayout(check,"");
-
-        tvOne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                strData = tvOne.getText().toString();
-                checkLayout(check,strData);
-                dialog.dismiss();
-            }
-        });
-
-        tvTwo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                strData = tvTwo.getText().toString();
-                checkLayout(check,strData);
-                dialog.dismiss();
-            }
-        });
-
-        tvThree.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                strData = tvThree.getText().toString();
-                checkLayout(check,strData);
-                dialog.dismiss();
-            }
-        });
-
-        tvFour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                strData = tvFour.getText().toString();
-                checkLayout(check,strData);
-                dialog.dismiss();
-            }
-        });
-
-
+        tvOne.setOnClickListener(this);
+        tvTwo.setOnClickListener(this);
+        tvThree.setOnClickListener(this);
+        tvFour.setOnClickListener(this);
 
         tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,22 +109,26 @@ public class SettingFragment extends Fragment {
         dialog.show();
     }
 
-    private void checkLayout(String check,String data){
-        switch (check) {
-            case "language":
-                tvLanguages.setText(data);
-                tvFour.setVisibility(View.GONE);
-                break;
-            case "unit":
-                tvUnits.setText(strData);
-                tvThree.setVisibility(View.GONE);
-                tvFour.setVisibility(View.GONE);
-                break;
-            case "region":
-                tvRegions.setText(data);
-                break;
 
-        }
+    @Override
+    public void onClick(View v) {
+      switch (v.getId()){
+          case R.id.tv_one:
+              strData = tvOne.getText().toString();
+              dialog.dismiss();
+              break;
+          case R.id.tv_two:
+              strData = tvOne.getText().toString();
+              dialog.dismiss();
+              break;
+          case R.id.tv_three:
+              strData = tvOne.getText().toString();
+              dialog.dismiss();
+              break;
+          case R.id.tv_four:
+              strData = tvOne.getText().toString();
+              dialog.dismiss();
+              break;
+      }
     }
-
 }

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.techease.enaexblaster.R;
@@ -20,6 +21,8 @@ public class CalculatorsHomeFragment extends Fragment {
     View view;
     @BindView(R.id.iv_back)
     ImageView ivBack;
+    @BindView(R.id.calculator_layout)
+    FrameLayout layoutByHole;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,6 +38,13 @@ public class CalculatorsHomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 GeneralUtils.connectFragment(getActivity(),new HomeFragment());
+            }
+        });
+
+        layoutByHole.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new CalculatorByHoleFragment());
             }
         });
     }

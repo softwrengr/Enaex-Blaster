@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,218 +7,371 @@
     tools:context=".views.fragments.ProductInfoFragment">
 
 
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/name"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
-
-    <ImageView
-        android:id="@+id/iv_contact"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/web"
-        android:layout_below="@id/name"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/leader"
-        android:layout_below="@+id/iv_contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/product"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:layout_centerHorizontal="true" />
-
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/leader"
-        android:layout_marginTop="30dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_left"
+            android:layout_marginTop="22dp"
+            android:layout_marginLeft="20dp"/>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/name"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:src="@drawable/background"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"/>
+
+        <ImageView
+            android:id="@+id/iv_contact"
+            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            app:cardCornerRadius="20dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_toRightOf="@+id/iv_call"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/bench"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="center"
-                    android:layout_centerVertical="true"/>
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/down_arrow"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
-
-
-            </RelativeLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
+            android:src="@drawable/web"
+            android:layout_below="@id/name"
             android:layout_marginTop="20dp"
-            app:cardCornerRadius="20dp">
+            android:layout_centerHorizontal="true"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <TextView
-                    android:layout_toRightOf="@+id/iv_mail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/blast"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="center"
-                    android:layout_centerVertical="true"/>
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/down_arrow"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
+        <TextView
+            android:id="@+id/leader"
+            android:layout_below="@+id/iv_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/product"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true" />
 
 
-            </RelativeLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="20dp">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/leader"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
 
-            <RelativeLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                app:cardCornerRadius="20dp">
 
-                <TextView
-                    android:layout_toRightOf="@+id/iv_web"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/loading"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="center"
-                    android:layout_centerVertical="true"/>
+                <RelativeLayout
+                    android:id="@+id/layout_tds_booster"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
 
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/down_arrow"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
+                    <TextView
+                        android:layout_toRightOf="@+id/iv_call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Boosters"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"/>
+
+                    <ImageView
+                        android:id="@+id/iv"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/down_arrow"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="12dp"/>
 
 
-            </RelativeLayout>
 
-        </android.support.v7.widget.CardView>
+                    <TextView
+                        android:id="@+id/tv_tds_booster"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv"
+                        android:text="APD-P Series Boosters - TDS"
+                        android:background="@drawable/textview_back"
+                        android:padding="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:visibility="gone"
+                        android:textColor="@color/colorAccent"
+                        android:layout_marginTop="20dp"/>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="20dp">
+                    <TextView
+                        android:id="@+id/tv_sds_booster"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_tds_booster"
+                        android:text="APD-P Series Boosters - TDS"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/textview_back"
+                        android:padding="5dp"
+                        android:visibility="gone"
+                        android:textColor="@color/colorAccent"
+                        android:layout_marginTop="20dp"/>
 
-            <RelativeLayout
+                    <TextView
+                        android:id="@+id/tv_sds_britex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_sds_booster"
+                        android:text="APD-P Series Boosters - TDS"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/textview_back"
+                        android:padding="5dp"
+                        android:visibility="gone"
+                        android:textColor="@color/colorAccent"
+                        android:layout_marginTop="20dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_tds_britex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_sds_britex"
+                        android:text="APD-P Series Boosters - TDS"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/textview_back"
+                        android:padding="5dp"
+                        android:visibility="gone"
+                        android:textColor="@color/colorAccent"
+                        android:layout_marginTop="20dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_ss_britex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_tds_britex"
+                        android:text="APD-P Series Boosters - TDS"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/textview_back"
+                        android:padding="5dp"
+                        android:visibility="gone"
+                        android:textColor="@color/colorAccent"
+                        android:layout_marginTop="20dp"/>
+
+
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="20dp">
 
-                <TextView
-                    android:layout_toRightOf="@+id/iv_web"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rock"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="center"
-                    android:layout_centerVertical="true"/>
+                <RelativeLayout
+                    android:id="@+id/layout_sds_booster"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
 
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/down_arrow"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
 
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
+                    <TextView
+                        android:layout_toRightOf="@+id/iv_mail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bulk Products"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"/>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="20dp">
+                    <ImageView
+                        android:id="@+id/sds"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/down_arrow"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="12dp"/>
 
-            <RelativeLayout
+                    <TextView
+                        android:id="@+id/tv_ds_booster"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/sds"
+                        android:text="APD-P Series Boosters - TDS"
+                        android:layout_marginLeft="20dp"
+                        android:visibility="gone"
+                        android:textColor="@color/colorAccent"
+                        android:layout_marginTop="20dp"/>
+
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="20dp">
 
-                <TextView
-                    android:layout_toRightOf="@+id/iv_web"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sdob"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="center"
-                    android:layout_centerVertical="true"/>
+                <RelativeLayout
+                    android:id="@+id/layout_detonation_cord"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
 
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/down_arrow"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"/>
+                    <TextView
+                        android:layout_toRightOf="@+id/iv_web"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Detonation Cord"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"/>
+
+                    <ImageView
+                        android:id="@+id/cord"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/down_arrow"
+                        android:layout_alignParentEnd="true"
+                       android:layout_marginTop="12dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_tds_britacord"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cord"
+                        android:text="Britacord - TDS"
+                        android:layout_marginLeft="20dp"
+                        android:visibility="gone"
+                        android:textColor="@color/colorAccent"
+                        android:layout_marginTop="20dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_sds_britacord"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_tds_britacord"
+                        android:text="Britacord - SDS"
+                        android:layout_marginLeft="20dp"
+                        android:visibility="gone"
+                        android:textColor="@color/colorAccent"
+                        android:layout_marginTop="20dp"/>
 
 
-            </RelativeLayout>
+                </RelativeLayout>
 
-        </android.support.v7.widget.CardView>
+            </android.support.v7.widget.CardView>
 
-    </LinearLayout>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="20dp">
 
-</RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_toRightOf="@+id/iv_web"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Electronic Detonators"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"/>
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/down_arrow"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_toRightOf="@+id/iv_web"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Non Electronic Detonators"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"/>
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/down_arrow"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_toRightOf="@+id/iv_web"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thermo Tube"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:layout_centerVertical="true"/>
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/down_arrow"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>
