@@ -23,6 +23,8 @@ public class CalculatorsHomeFragment extends Fragment {
     ImageView ivBack;
     @BindView(R.id.calculator_layout)
     FrameLayout layoutByHole;
+    @BindView(R.id.shot_calculator_layout)
+    FrameLayout layoutByShot;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,6 +47,13 @@ public class CalculatorsHomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 GeneralUtils.connectFragmentWithBack(getActivity(),new CalculatorByHoleFragment());
+            }
+        });
+
+        layoutByShot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new CalculatorByShotFragment());
             }
         });
     }

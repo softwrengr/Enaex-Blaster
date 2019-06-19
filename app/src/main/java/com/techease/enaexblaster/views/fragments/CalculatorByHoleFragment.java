@@ -470,8 +470,11 @@ public class CalculatorByHoleFragment extends Fragment {
 
         PF = LBSPerHole/volume;
 
-        imperialSDOB = ((stemming+((5*diameter)/12))) / ((density*62.4) * Math.PI * Math.pow((diameter/24),2)
-                * Math.pow((10*diameter)/12,0.3333));
+        double value1 = ((stemming+((5*diameter)/12)));
+        double value2 = ((density*62.4) * Math.PI * Math.pow((diameter/24),2));
+        double value3 = ((10*diameter)/12);
+
+        imperialSDOB =  value1 / Math.pow((value2*value3),0.3333);
 
         SD = distance / Math.pow(LBSPerHole,0.5);
 

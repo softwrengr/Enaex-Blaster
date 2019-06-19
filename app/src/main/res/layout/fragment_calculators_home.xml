@@ -77,7 +77,7 @@
             android:layout_marginLeft="30dp"
             app:cardCornerRadius="10dp">
         <FrameLayout
-            android:id="@+id/guidline_layout"
+            android:id="@+id/shot_calculator_layout"
             android:layout_below="@id/leader"
             android:layout_width="130dp"
             android:layout_height="100dp"
