@@ -470,7 +470,7 @@ public class CalculatorByHoleFragment extends Fragment {
 
         PF = LBSPerHole/volume;
 
-        metricSDOB = ((stemming+((5*diameter)/12))) / ((density*62.4) * Math.PI * Math.pow((diameter/24),2)
+        imperialSDOB = ((stemming+((5*diameter)/12))) / ((density*62.4) * Math.PI * Math.pow((diameter/24),2)
                 * Math.pow((10*diameter)/12,0.3333));
 
         SD = distance / Math.pow(LBSPerHole,0.5);
@@ -482,7 +482,7 @@ public class CalculatorByHoleFragment extends Fragment {
         tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
         tvLBSHole.setText(String.format("%.0f", Double.valueOf(LBSPerHole)));
         tvPF.setText(String.format("%.2f", Double.valueOf(PF)));
-        tvSDOB.setText(String.format("%.2f", Double.valueOf(metricSDOB)));
+        tvSDOB.setText(String.format("%.2f", Double.valueOf(imperialSDOB)));
         tvMic.setText(String.format("%.0f", Double.valueOf(LBSPerHole)));
         tvSD.setText(String.format("%.1f", Double.valueOf(SD)));
         tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)));
@@ -500,8 +500,12 @@ public class CalculatorByHoleFragment extends Fragment {
 
         PF = kgsPerHole/volume;
 
-        imperialSDOB = ((stemming+((5*(diameter/1000))))) / ((density/1000) * Math.PI * Math.pow((diameter/2),2))*
-                Math.pow((10*(diameter/1000)),0.3333);
+        double value1 = (stemming+((5*(diameter/1000))));
+        double value2 = ((density/1000) * Math.PI * Math.pow((diameter/2),2));
+        double value3 = (10*(diameter/1000));
+
+
+        metricSDOB =  value1 / Math.pow(value2 * value3,0.3333);
 
         SD = distance / Math.pow(kgsPerHole,0.5);
 
@@ -512,7 +516,7 @@ public class CalculatorByHoleFragment extends Fragment {
         tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
         tvLBSHole.setText(String.format("%.0f", Double.valueOf(kgsPerHole)));
         tvPF.setText(String.format("%.2f", Double.valueOf(PF)));
-        tvSDOB.setText(String.format("%.2f", Double.valueOf(imperialSDOB)));
+        tvSDOB.setText(String.format("%.2f", Double.valueOf(metricSDOB)));
         tvMic.setText(String.format("%.0f", Double.valueOf(kgsPerHole)));
         tvSD.setText(String.format("%.1f", Double.valueOf(SD)));
         tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)));
