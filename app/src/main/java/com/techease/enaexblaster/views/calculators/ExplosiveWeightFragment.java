@@ -205,6 +205,8 @@ public class ExplosiveWeightFragment extends Fragment {
 
         double totalExplosive = lbsPerHole * totalHoles;
 
+        //test
+
 
         tvResult.setText(String.format("%.1f", totalExplosive));
     }
