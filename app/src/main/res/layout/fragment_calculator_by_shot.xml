@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.fragments.CalculatorByShotFragment">
+    tools:context=".views.calculators.CalculatorByShotFragment">
 
 
     <LinearLayout
@@ -57,7 +57,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/calculator_layout"
+                    android:id="@+id/calculator_shot_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/iv"
@@ -68,7 +68,7 @@
 
 
                     <Button
-                        android:id="@+id/btn_metric"
+                        android:id="@+id/btn_shot_metric"
                         android:layout_width="0dp"
                         android:layout_height="35dp"
                         android:layout_below="@id/iv"
@@ -79,7 +79,7 @@
                         android:textColor="@color/colorAccent" />
 
                     <Button
-                        android:id="@+id/btn_imperail"
+                        android:id="@+id/btn_shot_imperail"
                         android:layout_width="0dp"
                         android:layout_height="35dp"
                         android:layout_below="@id/iv"

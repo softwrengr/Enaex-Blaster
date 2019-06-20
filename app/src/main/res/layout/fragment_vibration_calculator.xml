@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.calculators.VibrationCalculatorFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/name"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:src="@drawable/background"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp">
+
+            <RelativeLayout
+                android:id="@+id/layout_sclaed_option"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_toRightOf="@+id/iv_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Options"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/medium"
+                    android:layout_marginTop="10dp"/>
+
+                <ImageView
+                    android:id="@+id/iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/down_arrow"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="12dp"/>
+
+
+                <LinearLayout
+                    android:id="@+id/scaled_layout"
+                    android:layout_below="@id/iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:gravity="center">
+
+
+                    <Button
+                        android:id="@+id/btn_scale_metric"
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_below="@id/iv"
+                        android:text="Metric"
+                        android:layout_marginLeft="20dp"
+                        android:background="@color/silver"
+                        android:textColor="@color/colorAccent"
+                        android:layout_weight="1"
+                        />
+
+                    <Button
+                        android:id="@+id/btn_scale_imperial"
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_below="@id/iv"
+                        android:text="Imperial"
+                        android:layout_weight="1"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/grey"
+                        android:textColor="@color/colorAccent" />
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/layout_background"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:text="Distance"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_distance"
+                    android:layout_width="220dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:hint="0.0" />
+
+                <TextView
+                    android:id="@+id/tv_distance_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="m"
+                    android:textColor="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/et_distance"/>
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:text="MIC"
+                android:textSize="18sp" />
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_mic"
+                    android:layout_width="220dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:hint="0.0" />
+
+                <TextView
+                    android:id="@+id/tv_mic_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kg"
+                    android:textColor="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/et_mic"/>
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:text="Scaling Factor (k)"
+                android:textSize="18sp" />
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_scalling_factor"
+                    android:layout_width="220dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:hint="0.0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kg"
+                    android:textColor="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/et_scalling_factor"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:text="Attenuation_Factor"
+                android:textSize="18sp" />
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_attenuation_factor"
+                    android:layout_width="220dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:hint="0.0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kg"
+                    android:textColor="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/et_attenuation_factor"/>
+
+            </RelativeLayout>
+
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/layout_background"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Result"
+                android:fontFamily="@font/bold"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="22sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Est. PPV"
+                    android:fontFamily="@font/bold"
+                    android:textColor="@color/black"
+                    android:layout_weight="2"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_result"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="0.00"
+                    android:layout_weight="1"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

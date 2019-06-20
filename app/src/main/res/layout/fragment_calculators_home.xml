@@ -57,7 +57,7 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
                     android:layout_gravity="bottom"
                     android:gravity="center"
                     android:textStyle="bold"
@@ -92,7 +92,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:textStyle="bold"
@@ -123,7 +123,7 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp">
         <FrameLayout
-            android:id="@+id/product_layout"
+            android:id="@+id/volume_calculator"
             android:layout_width="130dp"
             android:layout_height="100dp"
             android:orientation="vertical"
@@ -139,7 +139,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:textStyle="bold"
@@ -156,7 +156,7 @@
             android:layout_marginLeft="30dp"
             app:cardCornerRadius="10dp">
         <FrameLayout
-            android:id="@+id/setting_layout"
+            android:id="@+id/explosive_layout"
             android:layout_below="@id/leader"
             android:layout_width="130dp"
             android:layout_height="100dp"
@@ -172,7 +172,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:textStyle="bold"
@@ -188,6 +188,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/three"
         android:layout_below="@id/two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -218,7 +219,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:background="@color/silver"
@@ -238,7 +239,7 @@
             android:layout_marginLeft="30dp"
             app:cardCornerRadius="10dp">
         <FrameLayout
-            android:id="@+id/about_layout"
+            android:id="@+id/sdob_layout"
             android:layout_below="@id/leader"
             android:layout_width="130dp"
             android:layout_height="100dp"
@@ -254,7 +255,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:background="@color/silver"
@@ -265,6 +266,87 @@
 
 
         </FrameLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp">
+            <FrameLayout
+                android:id="@+id/vibration_layout"
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:background="@drawable/round_button"
+                >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/image" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:background="@color/silver"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:text="Vibration"
+                    />
+
+
+            </FrameLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            app:cardCornerRadius="10dp">
+            <FrameLayout
+                android:id="@+id/scaled_layout"
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/round_button">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/image" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:background="@color/silver"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:text="Scaled Distance"
+                    />
+
+
+            </FrameLayout>
 
         </android.support.v7.widget.CardView>
     </LinearLayout>
