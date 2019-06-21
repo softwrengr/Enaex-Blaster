@@ -175,6 +175,18 @@ public class ScaledDistanceFragment extends Fragment {
 
     }
 
+    private void metricCalculation() {
+        double SD;
+        if (distance == 0) {
+            SD = 0;
+        } else {
+            SD = (distance / Math.pow(mic, 0.5));
+        }
+
+        tvResult.setText(String.format("%.2f", SD));
+
+    }
+
     private void imperialCalculation() {
         double SD;
         if (distance == 0) {
@@ -185,18 +197,6 @@ public class ScaledDistanceFragment extends Fragment {
 
         tvResult.setText(String.format("%.2f", SD));
 
-
-    }
-
-    private void metricCalculation() {
-        double SD;
-        if (distance == 0) {
-            SD = 0;
-        } else {
-            SD = (distance / Math.pow(mic, 0.5));
-        }
-
-        tvResult.setText(String.format("%.2f", SD));
 
     }
 }
