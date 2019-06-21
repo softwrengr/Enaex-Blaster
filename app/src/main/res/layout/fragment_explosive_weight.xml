@@ -11,13 +11,37 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/name"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:src="@drawable/background"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_left"
+                android:layout_marginTop="22dp"
+                android:layout_marginLeft="20dp"/>
+
+            <ImageView
+                android:id="@+id/name"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:src="@drawable/background"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_toRightOf="@+id/iv_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Explosive Weight"
+            android:textSize="20sp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"/>
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/bold" />
 
         <!--<android.support.v7.widget.CardView-->
             <!--android:layout_width="match_parent"-->

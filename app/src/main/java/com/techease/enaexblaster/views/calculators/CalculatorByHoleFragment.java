@@ -10,12 +10,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.techease.enaexblaster.R;
+import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,6 +55,8 @@ public class CalculatorByHoleFragment extends Fragment {
     TextView tvVolume;
     @BindView(R.id.tv_lbs_hole)
     TextView tvLBSHole;
+    @BindView(R.id.tv_lbs)
+    TextView tvLBS;
     @BindView(R.id.tv_pf)
     TextView tvPF;
     @BindView(R.id.tv_sdob)
@@ -67,11 +75,20 @@ public class CalculatorByHoleFragment extends Fragment {
     Button btnMetric;
     @BindView(R.id.btn_imperail)
     Button btnImperial;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
+    @BindView(R.id.switch_hole)
+    Switch switchHole;
+    @BindView(R.id.distance)
+    TextView tvDistance;
+    @BindView(R.id.scaling)
+    TextView tvScaling;
+    @BindView(R.id.attenuation)
+    TextView tvAttenuation;
 
-    private double density=0,diameter=0,burden=0,spacing=0,benchHeight=0,subDrill=0,stemming=0,
-            distance=0,scallingFactor=0,attenuation=0;
+    private double density = 0, diameter = 0, burden = 0, spacing = 0, benchHeight = 0, subDrill = 0, stemming = 0,
+            distance = 0, scallingFactor = 0, attenuation = 0;
 
-    private double holeLenght,volume,LBSPerHole,PF,metricSDOB,imperialSDOB,MIC,SD,PPV,kgsPerHole;
     private boolean check = true;
     private boolean checkCalculator = true;
 
@@ -80,17 +97,16 @@ public class CalculatorByHoleFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_calculator_by_hole, container, false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         initViews();
 
         layoutOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(check){
+                if (check) {
                     layoutMetricImperial.setVisibility(View.VISIBLE);
                     check = false;
-                }
-                else {
+                } else {
                     layoutMetricImperial.setVisibility(View.GONE);
                     check = true;
                 }
@@ -102,7 +118,7 @@ public class CalculatorByHoleFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = true;
-                tvLBSHole.setText("Kgs per Hole");
+                tvLBS.setText("Kgs per Hole");
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
             }
@@ -114,16 +130,43 @@ public class CalculatorByHoleFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = false;
-                tvLBSHole.setText("Lbs per Hole");
+                tvLBS.setText("Lbs per Hole");
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+            }
+        });
+
+        switchHole.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    etDistance.setVisibility(View.VISIBLE);
+                    etScallingFactor.setVisibility(View.VISIBLE);
+                    etAttenuationFactor.setVisibility(View.VISIBLE);
+                    tvDistance.setVisibility(View.VISIBLE);
+                    tvScaling.setVisibility(View.VISIBLE);
+                    tvAttenuation.setVisibility(View.VISIBLE);
+                } else {
+                    etDistance.setVisibility(View.GONE);
+                    etScallingFactor.setVisibility(View.GONE);
+                    etAttenuationFactor.setVisibility(View.GONE);
+                    tvDistance.setVisibility(View.GONE);
+                    tvScaling.setVisibility(View.GONE);
+                    tvAttenuation.setVisibility(View.GONE);
+                }
             }
         });
 
         return view;
     }
 
-    private void initViews(){
+    private void initViews() {
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragment(getActivity(), new CalculatorsHomeFragment());
+            }
+        });
 
         etDiameter.addTextChangedListener(new TextWatcher() {
             @Override
@@ -138,16 +181,14 @@ public class CalculatorByHoleFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().equals("") || s == null){
-                   diameter = 0;
-                }
-                else {
+                if (s.toString().equals("") || s == null) {
+                    diameter = 0;
+                } else {
                     try {
                         diameter = Double.parseDouble(s.toString().replace(',', '.'));
-                        if(checkCalculator){
+                        if (checkCalculator) {
                             metricCalculation();
-                        }
-                        else {
+                        } else {
                             calculation();
                         }
                     } catch (NumberFormatException e) {
@@ -173,16 +214,14 @@ public class CalculatorByHoleFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(s.toString().equals("")){
+                if (s.toString().equals("")) {
                     density = 0;
-                }
-                else {
+                } else {
                     try {
                         density = Double.parseDouble(s.toString().replace(',', '.'));
-                        if(checkCalculator){
+                        if (checkCalculator) {
                             metricCalculation();
-                        }
-                        else {
+                        } else {
                             calculation();
                         }
                     } catch (NumberFormatException e) {
@@ -205,16 +244,14 @@ public class CalculatorByHoleFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().equals("")){
+                if (s.toString().equals("")) {
                     burden = 0;
-                }
-                else {
+                } else {
                     try {
                         burden = Double.parseDouble(s.toString().replace(',', '.'));
-                        if(checkCalculator){
+                        if (checkCalculator) {
                             metricCalculation();
-                        }
-                        else {
+                        } else {
                             calculation();
                         }
                     } catch (NumberFormatException e) {
@@ -237,16 +274,14 @@ public class CalculatorByHoleFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().equals("")){
+                if (s.toString().equals("")) {
                     spacing = 0;
-                }
-                else {
+                } else {
                     try {
                         spacing = Double.parseDouble(s.toString().replace(',', '.'));
-                        if(checkCalculator){
+                        if (checkCalculator) {
                             metricCalculation();
-                        }
-                        else {
+                        } else {
                             calculation();
                         }
                     } catch (NumberFormatException e) {
@@ -269,16 +304,14 @@ public class CalculatorByHoleFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().equals("")){
+                if (s.toString().equals("")) {
                     benchHeight = 0;
-                }
-                else {
+                } else {
                     try {
                         benchHeight = Double.parseDouble(s.toString().replace(',', '.'));
-                        if(checkCalculator){
+                        if (checkCalculator) {
                             metricCalculation();
-                        }
-                        else {
+                        } else {
                             calculation();
                         }
                     } catch (NumberFormatException e) {
@@ -302,16 +335,14 @@ public class CalculatorByHoleFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
-                if(s.toString().equals("")){
+                if (s.toString().equals("")) {
                     subDrill = 0;
-                }
-                else {
+                } else {
                     try {
                         subDrill = Double.parseDouble(s.toString().replace(',', '.'));
-                        if(checkCalculator){
+                        if (checkCalculator) {
                             metricCalculation();
-                        }
-                        else {
+                        } else {
                             calculation();
                         }
                     } catch (NumberFormatException e) {
@@ -334,16 +365,14 @@ public class CalculatorByHoleFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().equals("")){
+                if (s.toString().equals("")) {
                     stemming = 0;
-                }
-                else {
+                } else {
                     try {
                         stemming = Double.parseDouble(s.toString().replace(',', '.'));
-                        if(checkCalculator){
+                        if (checkCalculator) {
                             metricCalculation();
-                        }
-                        else {
+                        } else {
                             calculation();
                         }
                     } catch (NumberFormatException e) {
@@ -366,16 +395,14 @@ public class CalculatorByHoleFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().equals("")){
+                if (s.toString().equals("")) {
                     distance = 0;
-                }
-                else {
+                } else {
                     try {
                         distance = Double.parseDouble(s.toString().replace(',', '.'));
-                        if(checkCalculator){
+                        if (checkCalculator) {
                             metricCalculation();
-                        }
-                        else {
+                        } else {
                             calculation();
                         }
                     } catch (NumberFormatException e) {
@@ -398,16 +425,14 @@ public class CalculatorByHoleFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().equals("")){
+                if (s.toString().equals("")) {
                     scallingFactor = 0;
-                }
-                else {
+                } else {
                     try {
                         scallingFactor = Double.parseDouble(s.toString().replace(',', '.'));
-                        if(checkCalculator){
+                        if (checkCalculator) {
                             metricCalculation();
-                        }
-                        else {
+                        } else {
                             calculation();
                         }
                     } catch (NumberFormatException e) {
@@ -430,16 +455,14 @@ public class CalculatorByHoleFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().equals("")){
+                if (s.toString().equals("")) {
                     attenuation = 0;
-                }
-                else {
+                } else {
                     try {
                         attenuation = Double.parseDouble(s.toString().replace(',', '.'));
-                        if(checkCalculator){
+                        if (checkCalculator) {
                             metricCalculation();
-                        }
-                        else {
+                        } else {
                             calculation();
                         }
                     } catch (NumberFormatException e) {
@@ -450,32 +473,30 @@ public class CalculatorByHoleFragment extends Fragment {
         });
 
 
-
     }
 
     private void calculation() {
 
-        holeLenght = benchHeight + subDrill;
+        double holeLenght = benchHeight + subDrill;
 
-        volume = (burden*spacing*benchHeight)/27;
+        double volume = (burden * spacing * benchHeight) / 27;
+
+        double LBSPerHole = ((density*62.4)*(Math.PI*(Math.pow((diameter/24), 2))*(benchHeight+subDrill-stemming)));
+
+        double PF = LBSPerHole / volume;
+
+        double value1 = ((stemming + ((5 * diameter) / 12)));
+        double value2 = ((density * 62.4) * Math.PI * Math.pow((diameter / 24), 2));
+        double value3 = ((10 * diameter) / 12);
+
+        double imperialSDOB = value1 / Math.pow((value2 * value3), 0.3333);
+
+        double SD = distance / Math.pow(LBSPerHole, 0.5);
+
+        double PPV = scallingFactor * Math.pow(SD, attenuation);
 
 
-        LBSPerHole = ((density*62.4) * Math.PI * (Math.pow(diameter/24,2)) * benchHeight+subDrill-stemming);
-
-        PF = LBSPerHole/volume;
-
-        double value1 = ((stemming+((5*diameter)/12)));
-        double value2 = ((density*62.4) * Math.PI * Math.pow((diameter/24),2));
-        double value3 = ((10*diameter)/12);
-
-        imperialSDOB =  value1 / Math.pow((value2*value3),0.3333);
-
-        SD = distance / Math.pow(LBSPerHole,0.5);
-
-        PPV = scallingFactor * Math.pow(SD,attenuation);
-
-
-        tvHoleLenght.setText(String.format("%.0f", Double.valueOf(holeLenght)));
+        tvHoleLenght.setText(String.format("%.1f", Double.valueOf(holeLenght)));
         tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
         tvLBSHole.setText(String.format("%.0f", Double.valueOf(LBSPerHole)));
         tvPF.setText(String.format("%.2f", Double.valueOf(PF)));
@@ -488,28 +509,28 @@ public class CalculatorByHoleFragment extends Fragment {
 
     private void metricCalculation() {
 
-        holeLenght = benchHeight + subDrill;
+        double holeLenght = benchHeight + subDrill;
 
-        volume = (burden*spacing*benchHeight);
-
-
-        kgsPerHole = ((density/1000) * Math.PI * (Math.pow(diameter/2,2)) * benchHeight+subDrill-stemming);
-
-        PF = kgsPerHole/volume;
-
-        double value1 = (stemming+((5*(diameter/1000))));
-        double value2 = ((density/1000) * Math.PI * Math.pow((diameter/2),2));
-        double value3 = (10*(diameter/1000));
+        double volume = (burden * spacing * benchHeight);
 
 
-        metricSDOB =  value1 / Math.pow(value2 * value3,0.3333);
+        double kgsPerHole = (density / 1000) * (Math.PI * (Math.pow((diameter / 2), 2))) * (benchHeight + subDrill - stemming);
 
-        SD = distance / Math.pow(kgsPerHole,0.5);
+        double PF = kgsPerHole / volume;
 
-        PPV = scallingFactor * Math.pow(SD,attenuation);
+        double value1 = (stemming + ((5 * (diameter / 1000))));
+        double value2 = ((density / 1000) * Math.PI * Math.pow((diameter / 2), 2));
+        double value3 = (10 * (diameter / 1000));
 
 
-        tvHoleLenght.setText(String.format("%.0f", Double.valueOf(holeLenght)));
+        double metricSDOB = value1 / Math.pow(value2 * value3, 0.3333);
+
+        double SD = distance / Math.pow(kgsPerHole, 0.5);
+
+        double PPV = scallingFactor * Math.pow(SD, attenuation);
+
+
+        tvHoleLenght.setText(String.format("%.1f", Double.valueOf(holeLenght)));
         tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
         tvLBSHole.setText(String.format("%.0f", Double.valueOf(kgsPerHole)));
         tvPF.setText(String.format("%.2f", Double.valueOf(PF)));

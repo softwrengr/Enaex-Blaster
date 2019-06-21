@@ -11,11 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.techease.enaexblaster.R;
+import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,6 +49,8 @@ public class VolumeCalculatorFragment extends Fragment {
     Button btnImperial;
     @BindView(R.id.tv_volume_result)
     TextView tvVolume;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
 
     private double burden = 0, spacing = 0, benchHeight = 0;
     private boolean check = true;
@@ -62,6 +67,13 @@ public class VolumeCalculatorFragment extends Fragment {
     }
 
     private void initViews() {
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragment(getActivity(),new CalculatorsHomeFragment());
+            }
+        });
+
 
         layoutOption.setOnClickListener(new View.OnClickListener() {
             @Override

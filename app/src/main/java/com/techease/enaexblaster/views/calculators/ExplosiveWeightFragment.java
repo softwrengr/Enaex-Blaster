@@ -10,10 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.techease.enaexblaster.R;
+import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +36,8 @@ public class ExplosiveWeightFragment extends Fragment {
     EditText etTotlaHoles;
     @BindView(R.id.tv_result)
     TextView tvResult;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
 
     double diameter = 0, density = 0, holeLenght = 0, stemLenght = 0,totalHoles=0;
 
@@ -47,6 +52,13 @@ public class ExplosiveWeightFragment extends Fragment {
     }
 
     private void intiViews() {
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragment(getActivity(),new CalculatorsHomeFragment());
+            }
+        });
+
         etDiameter.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

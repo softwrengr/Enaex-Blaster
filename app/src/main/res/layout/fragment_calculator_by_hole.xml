@@ -12,13 +12,37 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/name"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:src="@drawable/background"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_left"
+                android:layout_marginTop="22dp"
+                android:layout_marginLeft="20dp"/>
+
+            <ImageView
+                android:id="@+id/name"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:src="@drawable/background"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_toRightOf="@+id/iv_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="By Hole"
+            android:textSize="20sp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"/>
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/bold" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -56,40 +80,72 @@
                     android:layout_marginTop="12dp"/>
 
 
-                <LinearLayout
-                    android:id="@+id/calculator_layout"
-                    android:layout_below="@id/iv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
-                    android:visibility="gone"
-                    android:gravity="center">
+               <LinearLayout
+                   android:id="@+id/calculator_layout"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@id/iv"
+                   android:layout_marginTop="10dp"
+                   android:visibility="gone"
+                   android:orientation="vertical">
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:gravity="center">
 
 
-                    <Button
-                        android:id="@+id/btn_metric"
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_below="@id/iv"
-                        android:text="Metric"
-                        android:layout_marginLeft="20dp"
-                        android:background="@color/silver"
-                        android:textColor="@color/colorAccent"
-                        android:layout_weight="1"
-                        />
+                       <Button
+                           android:id="@+id/btn_metric"
+                           android:layout_width="0dp"
+                           android:layout_height="35dp"
+                           android:layout_below="@id/iv"
+                           android:text="Metric"
+                           android:layout_marginLeft="20dp"
+                           android:background="@color/silver"
+                           android:textColor="@color/colorAccent"
+                           android:layout_weight="1"
+                           />
 
-                    <Button
-                        android:id="@+id/btn_imperail"
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_below="@id/iv"
-                        android:text="Imperial"
-                        android:layout_weight="1"
-                        android:layout_marginRight="20dp"
-                        android:background="@color/grey"
-                        android:textColor="@color/colorAccent" />
-                </LinearLayout>
+                       <Button
+                           android:id="@+id/btn_imperail"
+                           android:layout_width="0dp"
+                           android:layout_height="35dp"
+                           android:layout_below="@id/iv"
+                           android:text="Imperial"
+                           android:layout_weight="1"
+                           android:layout_marginRight="20dp"
+                           android:background="@color/grey"
+                           android:textColor="@color/colorAccent" />
+                   </LinearLayout>
+
+                   <RelativeLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="20dp">
+
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="Vibration"
+                           android:textSize="18sp"
+                           android:layout_marginLeft="25dp"
+                           android:gravity="center"
+                           android:textStyle="bold"
+                           android:fontFamily="@font/medium" />
+
+                       <Switch
+                           android:id="@+id/switch_hole"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_alignParentEnd="true"
+                           android:checked="true"
+                           android:layout_marginRight="20dp"/>
+
+                   </RelativeLayout>
+               </LinearLayout>
+
+
 
 
             </RelativeLayout>
@@ -226,6 +282,7 @@
                 android:hint="0.0" />
 
             <TextView
+                android:id="@+id/distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -243,10 +300,11 @@
                 android:hint="0.0" />
 
             <TextView
+                android:id="@+id/scaling"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Scalling Factor(k or H)"
+                android:text="Scaling Factor(k or H)"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -260,6 +318,7 @@
                 android:hint="0.0" />
 
             <TextView
+                android:id="@+id/attenuation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -304,7 +363,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Hole Lenght : "
+                    android:text="Lenght : "
                     android:fontFamily="@font/bold"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
@@ -351,6 +410,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tv_lbs"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"

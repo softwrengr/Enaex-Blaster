@@ -11,12 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.techease.enaexblaster.R;
+import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -85,11 +88,12 @@ public class CalculatorByShotFragment extends Fragment {
     Button btnMetric;
     @BindView(R.id.btn_shot_imperail)
     Button btnImperial;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
 
     private double density = 0, diameter = 0, burden = 0, spacing = 0, benchHeight = 0, subDrill = 0, stemming = 0, noOfRows = 0, holePerRows = 0,
             holePerMs = 0, distance = 0, scallingFactor = 0, attenuation = 0;
 
-    private double holeLenght, volume, LBSPerHole, PF, metricSDOB, imperialSDOB, MIC, SD, PPV, kgsPerHole;
     private boolean check = true;
     private boolean checkCalculator = true;
 
@@ -104,6 +108,13 @@ public class CalculatorByShotFragment extends Fragment {
     }
 
     private void intiViews() {
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragment(getActivity(),new CalculatorsHomeFragment());
+            }
+        });
+
         layoutOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -637,7 +648,6 @@ public class CalculatorByShotFragment extends Fragment {
 
         double shotVolume = volumePerHole*totalHoles;
 
-
         double lbsPerHole = (density * 62.4) * (Math.PI * Math.pow((diameter / 24), 2)) * (benchHeight + subDrill - stemming);
 
 
@@ -647,9 +657,11 @@ public class CalculatorByShotFragment extends Fragment {
 
         double mic = lbsPerHole * holePerMs;
 
-        double value1 = ((stemming + ((5 * (diameter / 1000)))));
-        double value2 = (density / 1000) * (Math.PI * Math.pow((diameter / 2), 2)) * ((10 * (diameter / 1000)));
+        double value1 = ((stemming+((5*diameter)/12)));
+        double value2 = ((density*62.4)*(Math.PI * Math.pow((diameter / 24), 2))*((10*diameter)/12));
         double sdob = value1 / Math.pow(value2, 0.3333);
+
+
         double SD, PPV;
 
         if (distance == 0) {
@@ -664,10 +676,10 @@ public class CalculatorByShotFragment extends Fragment {
         tvTotalHoles.setText(String.format("%.0f", totalHoles));
         tvShotLenght.setText(String.format("%.2f", holeLenght));
         tvShotDrillLenght.setText(String.format("%.0f", drillLenght));
-        tvVolume.setText(String.format("%.2f", shotVolume));
-        tvVolumePerHole.setText(String.format("%.2f", volumePerHole));
+        tvVolumePerHole.setText(String.format("%.0f", volumePerHole));
+        tvVolume.setText(String.format("%.0f", shotVolume));
         tvLBSHole.setText(String.format("%.2f", lbsPerHole));
-        tvTotalExplosive.setText(String.format("%.2f", totalExplosive));
+        tvTotalExplosive.setText(String.format("%.0f", totalExplosive));
         tvSDOB.setText(String.format("%.2f", sdob));
         tvPF.setText(String.format("%.2f", PF));
         tvMic.setText(String.format("%.2f", mic));
