@@ -13,6 +13,8 @@ import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.calculators.CalculatorByHoleFragment;
 import com.techease.enaexblaster.views.calculators.CalculatorByShotFragment;
 import com.techease.enaexblaster.views.calculators.ExplosiveWeightFragment;
+import com.techease.enaexblaster.views.calculators.PFCalculatorFragment;
+import com.techease.enaexblaster.views.calculators.SDOBCalculatorFragment;
 import com.techease.enaexblaster.views.calculators.ScaledDistanceFragment;
 import com.techease.enaexblaster.views.calculators.VibrationCalculatorFragment;
 import com.techease.enaexblaster.views.calculators.VolumeCalculatorFragment;
@@ -39,6 +41,8 @@ public class CalculatorsHomeFragment extends Fragment {
     FrameLayout explosiveLayout;
     @BindView(R.id.scaled_layout)
     FrameLayout scaledLayout;
+    @BindView(R.id.pf_layout)
+    FrameLayout pfLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -82,6 +86,21 @@ public class CalculatorsHomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 GeneralUtils.connectFragmentWithBack(getActivity(),new ScaledDistanceFragment());
+            }
+        });
+
+
+        pfLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new PFCalculatorFragment());
+            }
+        });
+
+        sdobLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new SDOBCalculatorFragment());
             }
         });
 

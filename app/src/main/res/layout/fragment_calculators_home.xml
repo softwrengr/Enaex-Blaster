@@ -15,14 +15,13 @@
         android:src="@drawable/arrow_left"
         android:layout_marginTop="22dp"
         android:layout_marginLeft="20dp"/>
-    <TextView
+
+    <ImageView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/name"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
         android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
+        android:src="@drawable/background"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"/>
 
@@ -204,7 +203,7 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp">
         <FrameLayout
-            android:id="@+id/contact_layout"
+            android:id="@+id/pf_layout"
             android:layout_width="130dp"
             android:layout_height="100dp"
             android:orientation="vertical"

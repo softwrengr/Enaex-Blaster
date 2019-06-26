@@ -10,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.techease.enaexblaster.R;
@@ -30,14 +32,13 @@ public class VolumeCalculatorFragment extends Fragment {
     EditText etBurden;
     @BindView(R.id.et_volume_spacing)
     EditText etSpacing;
-    @BindView(R.id.et_volume_bench_height)
-    EditText etBenchHeight;
-    @BindView(R.id.tv_burden_unit)
-    TextView tvBurdenUnit;
-    @BindView(R.id.tv_height_unit)
-    TextView tvHeightUnit;
-    @BindView(R.id.tv_spacing_unit)
-    TextView tvSpacingUnit;
+    @BindView(R.id.et_average_depth)
+    EditText etAverageDepth;
+    @BindView(R.id.et_rock_density)
+    EditText etRockDensity;
+    @BindView(R.id.et_no_holes)
+    EditText etNoHoles;
+
 
     @BindView(R.id.layout_volume_option)
     RelativeLayout layoutOption;
@@ -51,10 +52,25 @@ public class VolumeCalculatorFragment extends Fragment {
     TextView tvVolume;
     @BindView(R.id.iv_back)
     ImageView ivBack;
+    @BindView(R.id.layout_rock_density)
+    RelativeLayout layoutRockDensity;
+    @BindView(R.id.btn_weight)
+    Button btnWeight;
+    @BindView(R.id.btn_volume)
+    Button btnVolume;
 
-    private double burden = 0, spacing = 0, benchHeight = 0;
+    @BindView(R.id.tv_burden_unit)
+    TextView tvBurdenUnit;
+    @BindView(R.id.tv_spacing_unit)
+    TextView tvSpacingUnit;
+    @BindView(R.id.tv_depth_unit)
+    TextView tvDepthUnit;
+    @BindView(R.id.tv_density_unit)
+    TextView tvDensityUnit;
+
+    private double burden = 0, spacing = 0, averageDepth = 0,rockDensity=0,noOfHOles=0;
     private boolean check = true;
-    private boolean checkCalculator = true;
+    private boolean checkCalculator = true,checkWeight = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,6 +90,31 @@ public class VolumeCalculatorFragment extends Fragment {
             }
         });
 
+        btnVolume.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+                checkWeight = false;
+                layoutRockDensity.setVisibility(View.GONE);
+                btnVolume.setBackgroundColor(getActivity().getColor(R.color.silver));
+                btnWeight.setBackgroundColor(getActivity().getColor(R.color.grey));
+                metricCalculation();
+                imperialCalculation();
+            }
+        });
+
+        btnWeight.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+                checkWeight = true;
+                layoutRockDensity.setVisibility(View.VISIBLE);
+                btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
+                btnWeight.setBackgroundColor(getActivity().getColor(R.color.silver));
+                metricCalculation();
+                imperialCalculation();
+            }
+        });
 
         layoutOption.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,12 +135,12 @@ public class VolumeCalculatorFragment extends Fragment {
             public void onClick(View v) {
                 tvBurdenUnit.setText("m");
                 tvSpacingUnit.setText("m");
-                tvHeightUnit.setText("m");
-
-
+                tvDepthUnit.setText("m");
+                tvDensityUnit.setText("g/cc");
                 checkCalculator = true;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+                metricCalculation();
             }
         });
 
@@ -110,10 +151,12 @@ public class VolumeCalculatorFragment extends Fragment {
             public void onClick(View v) {
                 tvBurdenUnit.setText("ft");
                 tvSpacingUnit.setText("ft");
-                tvHeightUnit.setText("ft");
+                tvDepthUnit.setText("ft");
+                tvDensityUnit.setText("g/cc");
                 checkCalculator = false;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+                imperialCalculation();
             }
         });
 
@@ -178,7 +221,7 @@ public class VolumeCalculatorFragment extends Fragment {
             }
         });
 
-        etBenchHeight.addTextChangedListener(new TextWatcher() {
+        etAverageDepth.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -192,10 +235,10 @@ public class VolumeCalculatorFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().equals("")) {
-                    benchHeight = 0;
+                    averageDepth = 0;
                 } else {
                     try {
-                        benchHeight = Double.parseDouble(s.toString().replace(',', '.'));
+                        averageDepth = Double.parseDouble(s.toString().replace(',', '.'));
                         if (checkCalculator) {
                             metricCalculation();
                         } else {
@@ -208,21 +251,92 @@ public class VolumeCalculatorFragment extends Fragment {
             }
         });
 
+        etRockDensity.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().equals("")) {
+                    rockDensity = 0;
+                } else {
+                    try {
+                        rockDensity = Double.parseDouble(s.toString().replace(',', '.'));
+                        if (checkCalculator) {
+                            metricCalculation();
+                        } else {
+                            imperialCalculation();
+                        }
+                    } catch (NumberFormatException e) {
+                        //Error
+                    }
+                }
+            }
+        });
+
+        etNoHoles.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().equals("")) {
+                    noOfHOles = 0;
+                } else {
+                    try {
+                        noOfHOles = Double.parseDouble(s.toString().replace(',', '.'));
+                        if (checkCalculator) {
+                            metricCalculation();
+                        } else {
+                            imperialCalculation();
+                        }
+                    } catch (NumberFormatException e) {
+                        //Error
+                    }
+                }
+            }
+        });
+
+
     }
 
     private void imperialCalculation() {
-        double volume = (burden * spacing * benchHeight) / 27;
 
-        tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
+        if(checkWeight){ //if weight is selected
+            double volume = ((burden * spacing * averageDepth) /27) * rockDensity * 0.841 * noOfHOles;
+            tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
+        }
+        else {  //if volume if selected
+            double volume = ((burden * spacing * averageDepth) /27) * noOfHOles;
+            tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
+        }
 
 
     }
 
     private void metricCalculation() {
-        double volume = (burden * spacing * benchHeight);
-
-        tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
-
+        if(checkWeight){
+            double volume = (burden * spacing * averageDepth) * rockDensity * noOfHOles;
+            tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
+        }
+        else {
+            double volume = (burden * spacing * averageDepth) * noOfHOles;
+            tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
+        }
     }
 
 }

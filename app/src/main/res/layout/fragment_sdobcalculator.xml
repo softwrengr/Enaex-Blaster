@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".views.calculators.SDOBCalculatorFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow_left"
+                android:layout_marginTop="22dp"
+                android:layout_marginLeft="20dp"/>
+
+            <ImageView
+                android:id="@+id/name"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:src="@drawable/background"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_toRightOf="@+id/iv_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scal Depth of Burial"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/bold" />
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            app:cardCornerRadius="20dp">
+
+            <RelativeLayout
+                android:id="@+id/layout_option"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/iv_call"
+                    android:fontFamily="@font/medium"
+                    android:gravity="center"
+                    android:text="Options"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/down_arrow" />
+
+                <LinearLayout
+                    android:id="@+id/layout_below_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        >
+
+                        <Button
+                            android:id="@+id/btn_metric"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@id/iv"
+                            android:layout_marginLeft="20dp"
+                            android:layout_weight="1"
+                            android:background="@color/silver"
+                            android:text="Metric"
+                            android:textColor="@color/colorAccent" />
+
+                        <Button
+                            android:id="@+id/btn_imperail"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@id/iv"
+                            android:layout_marginRight="20dp"
+                            android:layout_weight="1"
+                            android:background="@color/grey"
+                            android:text="Imperial"
+                            android:textColor="@color/colorAccent" />
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:text="Hole Diameter"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_diameter"
+                    android:layout_width="220dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:hint="0.0" />
+
+                <TextView
+                    android:id="@+id/tv_diameter_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="mm"
+                    android:textColor="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/et_diameter"/>
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:text="Explosive Density"
+                android:textSize="18sp" />
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_density"
+                    android:layout_width="220dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:hint="0.0" />
+
+                <TextView
+                    android:id="@+id/tv_explosive_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="g/cc"
+                    android:textColor="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/et_density"/>
+
+            </RelativeLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:text="Hole Lenght"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_hole_lenght"
+                    android:layout_width="220dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:hint="0.0" />
+
+
+                <TextView
+                    android:id="@+id/tv_lenght_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="m"
+                    android:textColor="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/et_hole_lenght"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:text="Stem Lenght"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_stem_lenght"
+                    android:layout_width="220dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="numberSigned|numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:hint="0.0" />
+
+
+                <TextView
+                    android:id="@+id/tv_stem_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="m"
+                    android:textColor="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/et_stem_lenght"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/layout_background"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Result"
+                android:fontFamily="@font/bold"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="22sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Scal Depth of Burial"
+                    android:fontFamily="@font/bold"
+                    android:textColor="@color/white"
+                    android:layout_weight="1.8"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_result"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="0.00"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

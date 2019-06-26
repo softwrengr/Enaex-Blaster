@@ -28,6 +28,8 @@ public class HomeFragment extends Fragment {
     LinearLayout layoutProductInfo;
     @BindView(R.id.setting_layout)
     LinearLayout layoutSetting;
+    @BindView(R.id.about_layout)
+    LinearLayout layoutAbout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -67,6 +69,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 GeneralUtils.connectFragmentWithBack(getActivity(),new SettingFragment());
+            }
+        });
+
+        layoutAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new AboutUsFragment());
             }
         });
 

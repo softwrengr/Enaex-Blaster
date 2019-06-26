@@ -94,13 +94,13 @@ public class VibrationCalculatorFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                tvDistanceUnit.setText("m");
-                tvMicUnit.setText("kg");
-
-
                 checkCalculator = true;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+                metricCalculation();
+
+                tvDistanceUnit.setText("m");
+                tvMicUnit.setText("kg");
             }
         });
 
@@ -109,11 +109,13 @@ public class VibrationCalculatorFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                tvDistanceUnit.setText("ft");
-                tvMicUnit.setText("lb");
                 checkCalculator = false;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+                imperialCalculation();
+
+                tvDistanceUnit.setText("ft");
+                tvMicUnit.setText("lb");
             }
         });
 
@@ -249,12 +251,12 @@ public class VibrationCalculatorFragment extends Fragment {
         if (distance == 0) {
             SD = 0;
         } else {
-            SD = (distance / Math.pow(mic, 0.5));
+            SD = (distance / Math.sqrt(mic));
         }
 
         PPV = scallingFactor * (Math.pow(SD, attenuationFactor));
 
-        tvResult.setText(String.format("%.2f", PPV));
+        tvResult.setText(String.format("%.2f", PPV) + "  in/s");
 
 
 
@@ -266,12 +268,12 @@ public class VibrationCalculatorFragment extends Fragment {
         if (distance == 0) {
             SD = 0;
         } else {
-            SD = (distance / Math.pow(mic, 0.5));
+            SD = (distance / Math.sqrt(mic));
         }
 
         PPV = scallingFactor * (Math.pow(SD, attenuationFactor));
 
-        tvResult.setText(String.format("%.2f", PPV));
+        tvResult.setText(String.format("%.2f", PPV) + "  mm/s");
 
     }
 }

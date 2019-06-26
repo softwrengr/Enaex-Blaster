@@ -78,42 +78,80 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="12dp"/>
 
-
                 <LinearLayout
                     android:id="@+id/volume_layout"
-                    android:layout_below="@id/iv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_below="@id/iv"
                     android:visibility="gone"
-                    android:gravity="center">
+                    >
 
 
-                    <Button
-                        android:id="@+id/btn_volume_metric"
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_below="@id/iv"
-                        android:text="Metric"
-                        android:layout_marginLeft="20dp"
-                        android:background="@color/silver"
-                        android:textColor="@color/colorAccent"
-                        android:layout_weight="1"
-                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center">
 
-                    <Button
-                        android:id="@+id/btn_volume_imperial"
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_below="@id/iv"
-                        android:text="Imperial"
-                        android:layout_weight="1"
-                        android:layout_marginRight="20dp"
-                        android:background="@color/grey"
-                        android:textColor="@color/colorAccent" />
+
+                        <Button
+                            android:id="@+id/btn_volume_metric"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@id/iv"
+                            android:text="Metric"
+                            android:layout_marginLeft="20dp"
+                            android:background="@color/silver"
+                            android:textColor="@color/colorAccent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/btn_volume_imperial"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@id/iv"
+                            android:text="Imperial"
+                            android:layout_weight="1"
+                            android:layout_marginRight="20dp"
+                            android:background="@color/grey"
+                            android:textColor="@color/colorAccent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center">
+
+
+                        <Button
+                            android:id="@+id/btn_weight"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@id/iv"
+                            android:text="By Weight"
+                            android:layout_marginLeft="20dp"
+                            android:background="@color/grey"
+                            android:textColor="@color/colorAccent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/btn_volume"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@id/iv"
+                            android:text="By Volume"
+                            android:layout_weight="1"
+                            android:layout_marginRight="20dp"
+                            android:background="@color/silver"
+                            android:textColor="@color/colorAccent" />
+                    </LinearLayout>
                 </LinearLayout>
-
 
             </RelativeLayout>
 
@@ -125,7 +163,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="@drawable/layout_background"
         android:orientation="vertical"
         >
 
@@ -202,7 +239,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:textColor="@color/colorAccent"
-            android:text="Bench Height"
+            android:text="Average Depth"
             android:textSize="18sp" />
 
         <RelativeLayout
@@ -210,7 +247,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/et_volume_bench_height"
+                android:id="@+id/et_average_depth"
                 android:layout_width="220dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="20dp"
@@ -220,13 +257,76 @@
 
 
             <TextView
-                android:id="@+id/tv_height_unit"
+                android:id="@+id/tv_depth_unit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="m"
                 android:textColor="@color/colorAccent"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/et_volume_bench_height"/>
+                android:layout_toRightOf="@id/et_average_depth"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/colorAccent"
+            android:text="Number of Holes"
+            android:textSize="18sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_no_holes"
+                android:layout_width="220dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:inputType="numberSigned|numberDecimal"
+                android:imeOptions="actionNext"
+                android:hint="0.0" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_rock_density"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/rock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorAccent"
+                android:text="Rock Density"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/et_rock_density"
+                android:layout_width="220dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/rock"
+                android:inputType="numberSigned|numberDecimal"
+                android:imeOptions="actionNext"
+                android:hint="0.0" />
+
+
+            <TextView
+                android:id="@+id/tv_density_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="g/cc"
+                android:layout_below="@+id/rock"
+                android:textColor="@color/colorAccent"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/et_rock_density"/>
 
         </RelativeLayout>
 
@@ -264,8 +364,8 @@
                 android:layout_marginLeft="20dp"
                 android:text="Volume"
                 android:fontFamily="@font/bold"
-                android:textColor="@color/black"
-                android:layout_weight="2"
+                android:textColor="@color/white"
+                android:layout_weight="1"
                 android:textSize="18sp" />
 
             <TextView
@@ -273,9 +373,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:textColor="@color/white"
                 android:text="0.00"
-                android:layout_weight="1"
+                android:layout_weight=".5"
                 android:textSize="18sp" />
+
 
         </LinearLayout>
 

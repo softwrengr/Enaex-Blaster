@@ -89,12 +89,14 @@ public class ScaledDistanceFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 tvDistanceUnit.setText("m");
-                tvMicUnit.setText("m");
+                tvMicUnit.setText("kg");
 
 
                 checkCalculator = true;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+
+                metricCalculation();
             }
         });
 
@@ -103,11 +105,13 @@ public class ScaledDistanceFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                tvDistanceUnit.setText("m");
-                tvMicUnit.setText("m");
+                tvDistanceUnit.setText("ft");
+                tvMicUnit.setText("lb");
                 checkCalculator = false;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+
+                imperialCalculation();
             }
         });
 
@@ -180,7 +184,7 @@ public class ScaledDistanceFragment extends Fragment {
         if (distance == 0) {
             SD = 0;
         } else {
-            SD = (distance / Math.pow(mic, 0.5));
+            SD = (distance / Math.sqrt(mic));
         }
 
         tvResult.setText(String.format("%.2f", SD));
@@ -192,7 +196,7 @@ public class ScaledDistanceFragment extends Fragment {
         if (distance == 0) {
             SD = 0;
         } else {
-            SD = (distance / Math.pow(mic, 0.5));
+            SD = (distance / Math.sqrt(mic));
         }
 
         tvResult.setText(String.format("%.2f", SD));

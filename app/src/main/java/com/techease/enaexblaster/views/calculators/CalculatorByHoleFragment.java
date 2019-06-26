@@ -37,10 +37,10 @@ public class CalculatorByHoleFragment extends Fragment {
     EditText etBurden;
     @BindView(R.id.et_spacing)
     EditText etSpacing;
-    @BindView(R.id.et_bench_height)
-    EditText etBenchHeight;
-    @BindView(R.id.et_subdrill)
-    EditText etSubDrill;
+    @BindView(R.id.et_hole_height)
+    EditText etHoleLenght;
+    @BindView(R.id.et_rock_density)
+    EditText etRockDensity;
     @BindView(R.id.et_stemming)
     EditText etStemming;
     @BindView(R.id.et_distance)
@@ -49,8 +49,6 @@ public class CalculatorByHoleFragment extends Fragment {
     EditText etScallingFactor;
     @BindView(R.id.et_attenuation)
     EditText etAttenuationFactor;
-    @BindView(R.id.tv_hole_lenght)
-    TextView tvHoleLenght;
     @BindView(R.id.tv_volume_result)
     TextView tvVolume;
     @BindView(R.id.tv_lbs_hole)
@@ -61,12 +59,11 @@ public class CalculatorByHoleFragment extends Fragment {
     TextView tvPF;
     @BindView(R.id.tv_sdob)
     TextView tvSDOB;
-    @BindView(R.id.tv_mic)
-    TextView tvMic;
     @BindView(R.id.tv_sd)
     TextView tvSD;
     @BindView(R.id.tv_ppv)
     TextView tvPPV;
+
     @BindView(R.id.layout_option)
     RelativeLayout layoutOption;
     @BindView(R.id.calculator_layout)
@@ -77,20 +74,32 @@ public class CalculatorByHoleFragment extends Fragment {
     Button btnImperial;
     @BindView(R.id.iv_back)
     ImageView ivBack;
-    @BindView(R.id.switch_hole)
+    @BindView(R.id.switch_vibration)
     Switch switchHole;
-    @BindView(R.id.distance)
-    TextView tvDistance;
-    @BindView(R.id.scaling)
-    TextView tvScaling;
-    @BindView(R.id.attenuation)
-    TextView tvAttenuation;
+    @BindView(R.id.btn_volume)
+    Button btnVolume;
+    @BindView(R.id.btn_weight)
+    Button btnWeight;
+    @BindView(R.id.tv_volume)
+    TextView tvVolumeWeight;
 
-    private double density = 0, diameter = 0, burden = 0, spacing = 0, benchHeight = 0, subDrill = 0, stemming = 0,
+    @BindView(R.id.layout_distance)
+    RelativeLayout layoutDistance;
+    @BindView(R.id.layout_scal)
+    RelativeLayout layoutScaling;
+    @BindView(R.id.layout_atten)
+    RelativeLayout layoutAttenuation;
+    @BindView(R.id.layout_ppv)
+    LinearLayout layoutPPV;
+    @BindView(R.id.layout_sd)
+    LinearLayout layoutSD;
+
+    private double density = 0, diameter = 0, burden = 0, spacing = 0, holeLenght = 0, rockDensity = 0, stemming = 0,
             distance = 0, scallingFactor = 0, attenuation = 0;
 
     private boolean check = true;
     private boolean checkCalculator = true;
+    private boolean checkVolume = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -121,6 +130,7 @@ public class CalculatorByHoleFragment extends Fragment {
                 tvLBS.setText("Kgs per Hole");
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+                metricCalculation();
             }
         });
 
@@ -133,6 +143,35 @@ public class CalculatorByHoleFragment extends Fragment {
                 tvLBS.setText("Lbs per Hole");
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+                calculation();
+            }
+        });
+
+        btnVolume.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+                tvVolumeWeight.setText("Volume");
+                checkVolume = true;
+                btnWeight.setBackgroundColor(getActivity().getColor(R.color.grey));
+                btnVolume.setBackgroundColor(getActivity().getColor(R.color.silver));
+
+                calculation();
+                metricCalculation();
+            }
+        });
+
+        btnWeight.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+                tvVolumeWeight.setText("Weight");
+                checkVolume = false;
+                btnWeight.setBackgroundColor(getActivity().getColor(R.color.silver));
+                btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
+
+                calculation();
+                metricCalculation();
             }
         });
 
@@ -140,22 +179,21 @@ public class CalculatorByHoleFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    etDistance.setVisibility(View.VISIBLE);
-                    etScallingFactor.setVisibility(View.VISIBLE);
-                    etAttenuationFactor.setVisibility(View.VISIBLE);
-                    tvDistance.setVisibility(View.VISIBLE);
-                    tvScaling.setVisibility(View.VISIBLE);
-                    tvAttenuation.setVisibility(View.VISIBLE);
+                    layoutDistance.setVisibility(View.VISIBLE);
+                    layoutScaling.setVisibility(View.VISIBLE);
+                    layoutAttenuation.setVisibility(View.VISIBLE);
+                    layoutPPV.setVisibility(View.VISIBLE);
+                    layoutSD.setVisibility(View.VISIBLE);
                 } else {
-                    etDistance.setVisibility(View.GONE);
-                    etScallingFactor.setVisibility(View.GONE);
-                    etAttenuationFactor.setVisibility(View.GONE);
-                    tvDistance.setVisibility(View.GONE);
-                    tvScaling.setVisibility(View.GONE);
-                    tvAttenuation.setVisibility(View.GONE);
+                    layoutDistance.setVisibility(View.GONE);
+                    layoutScaling.setVisibility(View.GONE);
+                    layoutAttenuation.setVisibility(View.GONE);
+                    layoutPPV.setVisibility(View.GONE);
+                    layoutSD.setVisibility(View.GONE);
                 }
             }
         });
+
 
         return view;
     }
@@ -291,7 +329,7 @@ public class CalculatorByHoleFragment extends Fragment {
             }
         });
 
-        etBenchHeight.addTextChangedListener(new TextWatcher() {
+        etHoleLenght.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -305,10 +343,10 @@ public class CalculatorByHoleFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().equals("")) {
-                    benchHeight = 0;
+                    holeLenght = 0;
                 } else {
                     try {
-                        benchHeight = Double.parseDouble(s.toString().replace(',', '.'));
+                        holeLenght = Double.parseDouble(s.toString().replace(',', '.'));
                         if (checkCalculator) {
                             metricCalculation();
                         } else {
@@ -321,7 +359,7 @@ public class CalculatorByHoleFragment extends Fragment {
             }
         });
 
-        etSubDrill.addTextChangedListener(new TextWatcher() {
+        etRockDensity.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -336,10 +374,10 @@ public class CalculatorByHoleFragment extends Fragment {
             public void afterTextChanged(Editable s) {
 
                 if (s.toString().equals("")) {
-                    subDrill = 0;
+                    rockDensity = 0;
                 } else {
                     try {
-                        subDrill = Double.parseDouble(s.toString().replace(',', '.'));
+                        rockDensity = Double.parseDouble(s.toString().replace(',', '.'));
                         if (checkCalculator) {
                             metricCalculation();
                         } else {
@@ -476,69 +514,74 @@ public class CalculatorByHoleFragment extends Fragment {
     }
 
     private void calculation() {
+        double volume,weight,explosivePerHole,PFVolume,PFWeight,sdob,SD,PPV,d,Wc,chargeUnit;
 
-        double holeLenght = benchHeight + subDrill;
+        volume = (burden * spacing * holeLenght) / 27;
+        weight = ((burden * spacing * holeLenght) / 27) * rockDensity * 0.841;
+        explosivePerHole = (density * 62.4) * (Math.PI * (Math.pow((diameter / 24), 2))) * (holeLenght - stemming);
 
-        double volume = (burden * spacing * benchHeight) / 27;
+        PFVolume = explosivePerHole / volume;
+        PFWeight = explosivePerHole / weight;
 
-        double LBSPerHole = ((density*62.4)*(Math.PI*(Math.pow((diameter/24), 2))*(benchHeight+subDrill-stemming)));
+        d = stemming + (5 * (diameter/12));
+        chargeUnit = (density * 62.4) * (Math.PI * Math.pow((diameter / 24), 2));
+        Wc =  chargeUnit * (10 *  (diameter/12));
+        sdob = d / Math.pow(Wc,0.3333);
+        SD = distance / Math.sqrt(explosivePerHole);
+        PPV =  scallingFactor * (Math.pow(SD, attenuation));
 
-        double PF = LBSPerHole / volume;
-
-        double value1 = ((stemming + ((5 * diameter) / 12)));
-        double value2 = ((density * 62.4) * Math.PI * Math.pow((diameter / 24), 2));
-        double value3 = ((10 * diameter) / 12);
-
-        double imperialSDOB = value1 / Math.pow((value2 * value3), 0.3333);
-
-        double SD = distance / Math.pow(LBSPerHole, 0.5);
-
-        double PPV = scallingFactor * Math.pow(SD, attenuation);
-
-
-        tvHoleLenght.setText(String.format("%.1f", Double.valueOf(holeLenght)));
-        tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
-        tvLBSHole.setText(String.format("%.0f", Double.valueOf(LBSPerHole)));
-        tvPF.setText(String.format("%.2f", Double.valueOf(PF)));
-        tvSDOB.setText(String.format("%.2f", Double.valueOf(imperialSDOB)));
-        tvMic.setText(String.format("%.0f", Double.valueOf(LBSPerHole)));
-        tvSD.setText(String.format("%.1f", Double.valueOf(SD)));
-        tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)));
+        if(checkVolume){
+            tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
+            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole)));
+            tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume)));
+            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)));
+            tvSD.setText(String.format("%.1f", Double.valueOf(SD)));
+            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)));
+        }
+        else {
+            tvVolume.setText(String.format("%.2f", Double.valueOf(weight)));
+            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole)));
+            tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight)));
+            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)));
+            tvSD.setText(String.format("%.1f", Double.valueOf(SD)));
+            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)));
+        }
 
     }
 
     private void metricCalculation() {
+        double volume,weight,explosivePerHole,PFVolume,PFWeight,sdob,SD,PPV,d,Wc,chargeUnit;
 
-        double holeLenght = benchHeight + subDrill;
+        volume = (burden * spacing * holeLenght);
+        weight = (burden * spacing * holeLenght) * rockDensity;
+        explosivePerHole = (density / 1000) * (Math.PI * (Math.pow((diameter / 2), 2))) * (holeLenght - stemming);
 
-        double volume = (burden * spacing * benchHeight);
+        PFVolume = explosivePerHole / volume;
+        PFWeight = explosivePerHole / weight;
 
+        d = stemming + (5 * (diameter/1000));
+        chargeUnit = (density /1000) * (Math.PI * Math.pow((diameter / 2), 2));
+        Wc =  chargeUnit * (10 *  (diameter/1000));
+        sdob = d / Math.pow(Wc,0.3333);
+        SD = distance / Math.sqrt(explosivePerHole);
+        PPV =  scallingFactor * (Math.pow(SD, attenuation));
 
-        double kgsPerHole = (density / 1000) * (Math.PI * (Math.pow((diameter / 2), 2))) * (benchHeight + subDrill - stemming);
-
-        double PF = kgsPerHole / volume;
-
-        double value1 = (stemming + ((5 * (diameter / 1000))));
-        double value2 = ((density / 1000) * Math.PI * Math.pow((diameter / 2), 2));
-        double value3 = (10 * (diameter / 1000));
-
-
-        double metricSDOB = value1 / Math.pow(value2 * value3, 0.3333);
-
-        double SD = distance / Math.pow(kgsPerHole, 0.5);
-
-        double PPV = scallingFactor * Math.pow(SD, attenuation);
-
-
-        tvHoleLenght.setText(String.format("%.1f", Double.valueOf(holeLenght)));
-        tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
-        tvLBSHole.setText(String.format("%.0f", Double.valueOf(kgsPerHole)));
-        tvPF.setText(String.format("%.2f", Double.valueOf(PF)));
-        tvSDOB.setText(String.format("%.2f", Double.valueOf(metricSDOB)));
-        tvMic.setText(String.format("%.0f", Double.valueOf(kgsPerHole)));
-        tvSD.setText(String.format("%.1f", Double.valueOf(SD)));
-        tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)));
-
+        if(checkVolume){
+            tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
+            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole)));
+            tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume)));
+            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)));
+            tvSD.setText(String.format("%.1f", Double.valueOf(SD)));
+            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)));
+        }
+        else {
+            tvVolume.setText(String.format("%.2f", Double.valueOf(weight)));
+            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole)));
+            tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight)));
+            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)));
+            tvSD.setText(String.format("%.1f", Double.valueOf(SD)));
+            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)));
+        }
     }
 
 }

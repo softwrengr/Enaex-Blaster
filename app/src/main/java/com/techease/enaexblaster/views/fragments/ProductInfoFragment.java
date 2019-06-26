@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +38,7 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
     TextView tvSSBritex;
 
     @BindView(R.id.layout_bulk_products)
-    RelativeLayout layoutSDSBooster;
+    RelativeLayout layoutBulkProducts;
 
     @BindView(R.id.layout_detonation_cord)
     RelativeLayout layoutDetonationCord;
@@ -139,7 +140,7 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
             }
         });
 
-        layoutSDSBooster.setOnClickListener(new View.OnClickListener() {
+        layoutBulkProducts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (check) {
