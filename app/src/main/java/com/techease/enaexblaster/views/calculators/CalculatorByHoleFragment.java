@@ -93,6 +93,8 @@ public class CalculatorByHoleFragment extends Fragment {
     LinearLayout layoutPPV;
     @BindView(R.id.layout_sd)
     LinearLayout layoutSD;
+    @BindView(R.id.iv_arrow)
+    ImageView ivArrow;
 
     private double density = 0, diameter = 0, burden = 0, spacing = 0, holeLenght = 0, rockDensity = 0, stemming = 0,
             distance = 0, scallingFactor = 0, attenuation = 0;
@@ -113,9 +115,11 @@ public class CalculatorByHoleFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (check) {
+                    ivArrow.setImageDrawable(getResources().getDrawable(R.drawable.up));
                     layoutMetricImperial.setVisibility(View.VISIBLE);
                     check = false;
                 } else {
+                    ivArrow.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                     layoutMetricImperial.setVisibility(View.GONE);
                     check = true;
                 }

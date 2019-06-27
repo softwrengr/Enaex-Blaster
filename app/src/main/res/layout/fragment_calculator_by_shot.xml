@@ -71,7 +71,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:id="@+id/iv"
+                    android:id="@+id/iv_arrow"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_alignParentEnd="true"
@@ -83,7 +83,7 @@
                    android:id="@+id/calculator_shot_layout"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:layout_below="@+id/iv"
+                   android:layout_below="@+id/iv_arrow"
                    android:visibility="gone"
                    android:orientation="vertical">
 

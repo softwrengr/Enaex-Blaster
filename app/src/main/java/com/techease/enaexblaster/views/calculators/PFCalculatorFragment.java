@@ -31,6 +31,8 @@ import butterknife.ButterKnife;
 
 public class PFCalculatorFragment extends Fragment {
     View view;
+    @BindView(R.id.iv_arrow)
+    ImageView ivArrow;
     @BindView(R.id.layout_option)
     RelativeLayout layoutOption;
     @BindView(R.id.layout_below_option)
@@ -93,9 +95,11 @@ public class PFCalculatorFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (check) {
+                    ivArrow.setImageDrawable(getResources().getDrawable(R.drawable.up));
                     layoutMetricImperial.setVisibility(View.VISIBLE);
                     check = false;
                 } else {
+                    ivArrow.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                     layoutMetricImperial.setVisibility(View.GONE);
                     check = true;
                 }

@@ -30,6 +30,8 @@ import butterknife.ButterKnife;
 public class CalculatorByShotFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
     View view;
 
+    @BindView(R.id.iv_arrow)
+    ImageView ivArrow;
     @BindView(R.id.et_shot_rows)
     EditText etNoOfRows;
     @BindView(R.id.et_shot_holes)
@@ -166,9 +168,11 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 if (check) {
+                    ivArrow.setImageDrawable(getResources().getDrawable(R.drawable.up));
                     layoutMetricImperial.setVisibility(View.VISIBLE);
                     check = false;
                 } else {
+                    ivArrow.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                     layoutMetricImperial.setVisibility(View.GONE);
                     check = true;
                 }
