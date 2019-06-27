@@ -87,6 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/iv"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="vertical"
                     >
 

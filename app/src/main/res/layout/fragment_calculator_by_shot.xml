@@ -79,40 +79,175 @@
                     android:layout_marginRight="10dp"
                     android:src="@drawable/down_arrow" />
 
-
-                <LinearLayout
-                    android:id="@+id/calculator_shot_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/iv"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
+               <LinearLayout
+                   android:id="@+id/calculator_shot_layout"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/iv"
+                   android:visibility="gone"
+                   android:orientation="vertical">
 
 
-                    <Button
-                        android:id="@+id/btn_shot_metric"
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_below="@id/iv"
-                        android:layout_marginLeft="20dp"
-                        android:layout_weight="1"
-                        android:background="@color/silver"
-                        android:text="Metric"
-                        android:textColor="@color/colorAccent" />
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="10dp"
+                       android:gravity="center"
+                       android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/btn_shot_imperail"
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_below="@id/iv"
-                        android:layout_marginRight="20dp"
-                        android:layout_weight="1"
-                        android:background="@color/grey"
-                        android:text="Imperial"
-                        android:textColor="@color/colorAccent" />
-                </LinearLayout>
+
+                       <Button
+                           android:id="@+id/btn_shot_metric"
+                           android:layout_width="0dp"
+                           android:layout_height="35dp"
+                           android:layout_below="@id/iv"
+                           android:layout_marginLeft="20dp"
+                           android:layout_weight="1"
+                           android:background="@color/silver"
+                           android:text="Metric"
+                           android:textSize="12sp"
+                           android:textColor="@color/colorAccent" />
+
+                       <Button
+                           android:id="@+id/btn_shot_imperail"
+                           android:layout_width="0dp"
+                           android:layout_height="35dp"
+                           android:layout_below="@id/iv"
+                           android:layout_marginRight="20dp"
+                           android:layout_weight="1"
+                           android:background="@color/grey"
+                           android:text="Imperial"
+                           android:textSize="12sp"
+                           android:textColor="@color/colorAccent" />
+                   </LinearLayout>
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="10dp"
+                       android:gravity="center"
+                       android:orientation="horizontal"
+                       >
+
+
+                       <Button
+                           android:id="@+id/btn_weight"
+                           android:layout_width="0dp"
+                           android:layout_height="35dp"
+                           android:layout_below="@id/iv"
+                           android:layout_marginLeft="20dp"
+                           android:layout_weight="1"
+                           android:background="@color/grey"
+                           android:text="By Weight"
+                           android:textSize="12sp"
+                           android:textColor="@color/colorAccent" />
+
+                       <Button
+                           android:id="@+id/btn_volume"
+                           android:layout_width="0dp"
+                           android:layout_height="35dp"
+                           android:layout_below="@id/iv"
+                           android:layout_marginRight="20dp"
+                           android:layout_weight="1"
+                           android:background="@color/silver"
+                           android:text="By Volume"
+                           android:textSize="12sp"
+                           android:textColor="@color/colorAccent" />
+                   </LinearLayout>
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="10dp"
+                       android:gravity="center"
+                       android:orientation="horizontal"
+                       >
+
+
+                       <Button
+                           android:id="@+id/btn_subDrill"
+                           android:layout_width="0dp"
+                           android:layout_height="35dp"
+                           android:layout_below="@id/iv"
+                           android:layout_marginLeft="20dp"
+                           android:layout_weight="1"
+                           android:background="@color/silver"
+                           android:text="SubDrill"
+                           android:textSize="12sp"
+                           android:textColor="@color/colorAccent" />
+
+                       <Button
+                           android:id="@+id/btn_standOFf"
+                           android:layout_width="0dp"
+                           android:layout_height="35dp"
+                           android:layout_below="@id/iv"
+                           android:layout_marginRight="20dp"
+                           android:layout_weight="1"
+                           android:background="@color/grey"
+                           android:text="Standoff"
+                           android:textSize="12sp"
+                           android:textColor="@color/colorAccent" />
+                   </LinearLayout>
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="10dp"
+                       android:gravity="center"
+                       android:orientation="horizontal"
+                       >
+
+
+                       <Button
+                           android:id="@+id/btn_no_of_holes"
+                           android:layout_width="0dp"
+                           android:layout_height="35dp"
+                           android:layout_below="@id/iv"
+                           android:layout_marginLeft="20dp"
+                           android:layout_weight="1"
+                           android:background="@color/silver"
+                           android:text="No. of Holes"
+                           android:textSize="12sp"
+                           android:textColor="@color/colorAccent" />
+
+                       <Button
+                           android:id="@+id/btn_hole_row_count"
+                           android:layout_width="0dp"
+                           android:layout_height="35dp"
+                           android:layout_below="@id/iv"
+                           android:layout_marginRight="20dp"
+                           android:layout_weight="1"
+                           android:textSize="12sp"
+                           android:background="@color/grey"
+                           android:text="Holes and Row Count"
+                           android:textColor="@color/colorAccent" />
+                   </LinearLayout>
+
+                   <RelativeLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="20dp">
+
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_marginLeft="25dp"
+                           android:fontFamily="@font/medium"
+                           android:gravity="center"
+                           android:text="Vibration"
+                           android:textSize="18sp"
+                           android:textStyle="bold" />
+
+                       <Switch
+                           android:id="@+id/switch_vibration"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_alignParentEnd="true"
+                           android:layout_marginRight="20dp"
+                           android:checked="true" />
+
+                   </RelativeLayout>
+               </LinearLayout>
 
 
             </RelativeLayout>
@@ -127,18 +262,20 @@
             android:layout_margin="20dp"
             android:orientation="vertical">
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Number of Holes"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp" />
-
             <RelativeLayout
+                android:id="@+id/layoutDirectHole"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/noholes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Number of Holes"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
 
 
                 <EditText
@@ -146,6 +283,7 @@
                     android:layout_width="220dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/noholes"
                     android:hint="0.0"
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
@@ -160,23 +298,28 @@
 
             </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Number of rows"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp" />
 
             <RelativeLayout
+                android:id="@+id/layoutRow"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/norow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Number of rows"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/et_shot_rows"
                     android:layout_width="220dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_below="@id/norow"
                     android:hint="0.0"
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
@@ -191,23 +334,28 @@
 
             </RelativeLayout>
 
-            <TextView
+            <RelativeLayout
+                android:id="@+id/layoutHole"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Holes per Row"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp" />
+                android:visibility="gone">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/holes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Holes per Row"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+
 
                 <EditText
                     android:id="@+id/et_holePerRow"
                     android:layout_width="220dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/holes"
                     android:hint="0.0"
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
@@ -383,17 +531,18 @@
             </RelativeLayout>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Subdrill"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp" />
-
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/subdrill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Subdrill"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
 
 
                 <EditText
@@ -401,6 +550,7 @@
                     android:layout_width="220dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/subdrill"
                     android:hint="0.0"
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
@@ -420,7 +570,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Stemming"
+                android:text="Stem Lenght"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -442,6 +592,44 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_shot_stemming"
+                    android:text="ft"
+                    android:textColor="@color/silver" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/layoutRock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/rock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Rock Density"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+
+
+                <EditText
+                    android:id="@+id/et_rock_density"
+                    android:layout_width="220dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/rock"
+                    android:hint="0.0"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberSigned|numberDecimal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/et_rock_density"
                     android:text="ft"
                     android:textColor="@color/silver" />
 
@@ -480,23 +668,26 @@
             </RelativeLayout>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Distance"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp" />
-
             <RelativeLayout
+                android:id="@+id/layout_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_dis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Distance"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/et_shot_distance"
                     android:layout_width="220dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/tv_dis"
                     android:hint="0.0"
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
@@ -512,23 +703,28 @@
             </RelativeLayout>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Scaling Factor(k or H)"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp" />
 
             <RelativeLayout
+                android:id="@+id/layout_scaling_factor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/factor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Scaling Factor(k or H)"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+
 
                 <EditText
                     android:id="@+id/et_shot_scalling"
                     android:layout_width="220dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/factor"
                     android:hint="0.0"
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
@@ -544,25 +740,29 @@
             </RelativeLayout>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Attenuation Factor (b or a)"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp" />
-
             <RelativeLayout
+                android:id="@+id/layout_attenuation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
+
+                <TextView
+                    android:id="@+id/tv_att"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Attenuation Factor (b or a)"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/et_shot_attenuation"
                     android:layout_width="220dp"
                     android:layout_height="45dp"
+                    android:layout_below="@+id/tv_att"
                     android:layout_marginLeft="20dp"
-                    android:hint="0.0"
+
+                    android:text="-1.6"
                     android:imeOptions="actionDone"
                     android:inputType="numberSigned|numberDecimal" />
 
@@ -634,7 +834,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="2"
                     android:fontFamily="@font/bold"
-                    android:text="Hole : "
+                    android:text="Hole Lenghtv : "
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -662,7 +862,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="2"
                     android:fontFamily="@font/bold"
-                    android:text="Total Drill : "
+                    android:text="Total Drill Lenght : "
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -719,7 +919,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="2"
                     android:fontFamily="@font/bold"
-                    android:text="Shot Volume :"
+                    android:text="Total Volume :"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -748,12 +948,12 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="2"
                     android:fontFamily="@font/bold"
-                    android:text="Lbs Per Hole :"
+                    android:text="Explosive Per Hole :"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/tv_shot_lbs_hole"
+                    android:id="@+id/tv_explosive_per_hole"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -804,7 +1004,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="2"
                     android:fontFamily="@font/bold"
-                    android:text="PF :"
+                    android:text="Powder Factor  :"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -848,89 +1048,95 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+          <LinearLayout
+              android:id="@+id/layout_for_vibration"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="2"
-                    android:fontFamily="@font/bold"
-                    android:text="MIC :"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                  <TextView
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="20dp"
+                      android:layout_weight="2"
+                      android:fontFamily="@font/bold"
+                      android:text="MIC :"
+                      android:textColor="@color/white"
+                      android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/tv_shot_mic"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    android:text="0.00"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                  <TextView
+                      android:id="@+id/tv_shot_mic"
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="20dp"
+                      android:layout_weight="1"
+                      android:text="0.00"
+                      android:textColor="@color/white"
+                      android:textSize="18sp" />
 
-            </LinearLayout>
+              </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="2"
-                    android:fontFamily="@font/bold"
-                    android:text="SD :"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                  <TextView
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="20dp"
+                      android:layout_weight="2"
+                      android:fontFamily="@font/bold"
+                      android:text="Scaled Distance :"
+                      android:textColor="@color/white"
+                      android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/tv_shot_sd"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    android:text="0.00"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                  <TextView
+                      android:id="@+id/tv_shot_sd"
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="20dp"
+                      android:layout_weight="1"
+                      android:text="0.00"
+                      android:textColor="@color/white"
+                      android:textSize="18sp" />
 
-            </LinearLayout>
+              </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="2"
-                    android:fontFamily="@font/bold"
-                    android:text="Est PPV :"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                  <TextView
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="20dp"
+                      android:layout_weight="2"
+                      android:fontFamily="@font/bold"
+                      android:text="Est PPV :"
+                      android:textColor="@color/white"
+                      android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/tv_shot_ppv"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    android:text="0.00"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                  <TextView
+                      android:id="@+id/tv_shot_ppv"
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="20dp"
+                      android:layout_weight="1"
+                      android:text="0.00"
+                      android:textColor="@color/white"
+                      android:textSize="18sp" />
 
-            </LinearLayout>
+              </LinearLayout>
+          </LinearLayout>
 
         </LinearLayout>
 
