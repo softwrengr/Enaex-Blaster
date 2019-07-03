@@ -211,7 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/colorAccent"
-                android:text="Hole Lenght"
+                android:text="Hole Length "
                 android:textSize="18sp" />
 
             <RelativeLayout
@@ -244,7 +244,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/colorAccent"
-                android:text="Stem Lenght"
+                android:text="Stem Length "
                 android:textSize="18sp" />
 
             <RelativeLayout

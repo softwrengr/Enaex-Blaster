@@ -131,12 +131,31 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     RelativeLayout layoutScalingFactor;
     @BindView(R.id.layout_for_vibration)
     LinearLayout layoutVibrationOnOff;
+    @BindView(R.id.hole8ms_layout)
+    RelativeLayout layoutHole8ms;
+
+    @BindView(R.id.shot_diameter_unit)
+    TextView tvDiameterUnit;
+    @BindView(R.id.shot_explosive_density_unit)
+    TextView tvExplosiveDensityUnit;
+    @BindView(R.id.shot_burden_unit)
+    TextView tvBurdenrUnit;
+    @BindView(R.id.shot_spacing_unit)
+    TextView tvSpacingUnit;
+    @BindView(R.id.shot_stem_unit)
+    TextView tvStemLengthrUnit;
+    @BindView(R.id.shot_rock_unit)
+    TextView tvRockDensityUnit;
+    @BindView(R.id.shot_distance_unit)
+    TextView tvDistanceUnit;
+    @BindView(R.id.shot_ms_unit)
+    TextView tvShotMsUnit;
 
     @BindView(R.id.iv_back)
     ImageView ivBack;
 
-    private double explosiveDensity = 0, diameter = 0, burden = 0, spacing = 0, benchHeight = 0, subDrill = 0, stemming = 0, noOfRows = 0, holePerRows = 0,
-            holePerMs = 0, distance = 0, scallingFactor = 0, attenuation = 0, numberOfHole = 0, rockDensity = 0;
+    private double explosiveDensity = 0, diameter = 270, burden = 0, spacing = 0, benchHeight = 0, subDrill = 0, stemming = 0, noOfRows = 0, holePerRows = 0,
+            holePerMs = 0, distance = 0, scallingFactor = 160, attenuation = -1.6, numberOfHole = 0, rockDensity = 0;
 
     private boolean check = true;
     private boolean checkCalculator = true;
@@ -184,9 +203,19 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkCalculator = true;
+                etDiameter.setText("270");
+                diameter = 270;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
                 metricCalculator();
+
+                tvDiameterUnit.setText("mm");
+                tvExplosiveDensityUnit.setText("g/cc");
+                tvBurdenrUnit.setText("m");
+                tvSpacingUnit.setText("m");
+                tvStemLengthrUnit.setText("m");
+                tvRockDensityUnit.setText("g/cc");
+                tvDistanceUnit.setText("m");
             }
         });
 
@@ -196,9 +225,19 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkCalculator = false;
+                etDiameter.setText("10.625");
+                diameter = 10.625;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
                 imperialCalculator();
+
+                tvDiameterUnit.setText("in");
+                tvExplosiveDensityUnit.setText("g/cc");
+                tvBurdenrUnit.setText("ft");
+                tvSpacingUnit.setText("ft");
+                tvStemLengthrUnit.setText("ft");
+                tvRockDensityUnit.setText("g/cc");
+                tvDistanceUnit.setText("ft");
             }
         });
 
@@ -234,9 +273,12 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
+                checkSubDrillStandOFF = false;
                 tvSubDrill.setText("StandOff");
                 btnStandOff.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnSubDrill.setBackgroundColor(getActivity().getColor(R.color.grey));
+                imperialCalculator();
+                metricCalculator();
             }
         });
 
@@ -244,9 +286,12 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
+                checkSubDrillStandOFF = true;
                 tvSubDrill.setText("SubDrill");
                 btnStandOff.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnSubDrill.setBackgroundColor(getActivity().getColor(R.color.silver));
+                imperialCalculator();
+                metricCalculator();
             }
         });
 
@@ -784,7 +829,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     }
 
     private void metricCalculator() {
-        double NoOfHole, holeLength, totalDrill, volumePerHole = 0, weightPerHole, totalWeight, totalVolume = 0,
+        double NoOfHole, holeLength, totalDrill, volumePerHole = 0, weightPerHole, totalWeight=0, totalVolume = 0,
                 explosivePerHole, totalExplosive, powderFactor, d, chargeUnit, Wc, sdob, SD, MIC, PPV;
 
         if (checkHoleRowCount) {
@@ -793,21 +838,35 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             NoOfHole = holePerRows * noOfRows;
         }
 
-        holeLength = benchHeight + subDrill;
+
+        if(checkSubDrillStandOFF){  //subdrill selected
+            holeLength = benchHeight + subDrill;
+
+        }
+        else {   //standoff selected
+            holeLength = benchHeight - subDrill;
+        }
+
         totalDrill = holeLength * NoOfHole;
 
-        explosivePerHole = (explosiveDensity / 1000) * (Math.PI * (Math.pow((diameter / 2), 2))) * (holeLength - stemming);
-        totalExplosive = explosivePerHole * NoOfHole;
 
         if (checkVolume) {
             volumePerHole = burden * spacing * benchHeight;
             totalVolume = volumePerHole * NoOfHole;
 
-            powderFactor = totalExplosive / totalVolume;
         } else {
             weightPerHole = (burden * spacing * benchHeight) * rockDensity;
             totalWeight = weightPerHole * NoOfHole;
+        }
 
+        explosivePerHole = (explosiveDensity / 1000) * (Math.PI * (Math.pow((diameter / 2), 2))) * (holeLength - stemming);
+        totalExplosive = explosivePerHole * NoOfHole;
+
+
+        if(checkVolume){
+            powderFactor = totalExplosive / totalVolume;
+        }
+        else {
             powderFactor = totalExplosive / totalWeight;
         }
 
@@ -816,25 +875,26 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         Wc = chargeUnit * (10 * (diameter / 1000));
 
         sdob = d / Math.pow(Wc, 0.3333);
-        SD = distance / Math.sqrt(explosivePerHole);
 
         MIC = holePerMs * explosivePerHole;
+
+        SD = distance / Math.sqrt(MIC);
 
         PPV = scallingFactor * (Math.pow(SD, attenuation));
 
 
         tvTotalHoles.setText(String.format("%.0f", NoOfHole));
-        tvShotLenght.setText(String.format("%.2f", holeLength));
-        tvShotDrillLenght.setText(String.format("%.0f", totalDrill));
-        tvVolumePerHole.setText(String.format("%.0f", volumePerHole));
-        tvVolume.setText(String.format("%.0f", totalVolume));
-        tvExplosivePerHole.setText(String.format("%.0f", explosivePerHole));
-        tvTotalExplosive.setText(String.format("%.0f", totalExplosive));
-        tvSDOB.setText(String.format("%.2f", sdob));
-        tvPF.setText(String.format("%.2f", powderFactor));
-        tvSD.setText(String.format("%.2f", SD));
-        tvMic.setText(String.format("%.2f", MIC));
-        tvPPV.setText(String.format("%.2f", PPV));
+        tvShotLenght.setText(String.format("%.1f", holeLength) + " m");
+        tvShotDrillLenght.setText(String.format("%.0f", totalDrill)+ " m");
+        tvVolumePerHole.setText(String.format("%.0f", volumePerHole)+ " m3");
+        tvVolume.setText(String.format("%.0f", totalVolume)+ " m3");
+        tvExplosivePerHole.setText(String.format("%.0f", explosivePerHole)+ " kg");
+        tvTotalExplosive.setText(String.format("%.0f", totalExplosive)+ " kg");
+        tvSDOB.setText(String.format("%.2f", sdob)+ " m∛kg");
+        tvPF.setText(String.format("%.2f", powderFactor)+ "");
+        tvSD.setText(String.format("%.1f", SD)+ " m/√kg");
+        tvMic.setText(String.format("%.0f", MIC)+ " kg");
+        tvPPV.setText(String.format("%.1f", PPV)+ " mm/s");
 
 
     }
@@ -849,7 +909,14 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             NoOfHole = holePerRows * noOfRows;
         }
 
-        holeLength = benchHeight + subDrill;
+        if(checkSubDrillStandOFF){  //subdrill selected
+            holeLength = benchHeight + subDrill;
+        }
+        else {   //standoff selected
+            holeLength = benchHeight - subDrill;
+        }
+
+
         totalDrill = holeLength * NoOfHole;
 
         explosivePerHole = (explosiveDensity * 62.4) * (Math.PI * (Math.pow((diameter / 24), 2))) * (holeLength - stemming);
@@ -870,34 +937,35 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         Wc = chargeUnit * (10 * (diameter / 12));
 
         sdob = d / Math.pow(Wc, 0.3333);
-        SD = distance / Math.sqrt(explosivePerHole);
-
         MIC = holePerMs * explosivePerHole;
+        SD = distance / Math.sqrt(MIC);
         PPV = scallingFactor * (Math.pow(SD, attenuation));
 
 
         tvTotalHoles.setText(String.format("%.0f", NoOfHole));
-        tvShotLenght.setText(String.format("%.2f", holeLength));
-        tvShotDrillLenght.setText(String.format("%.0f", totalDrill));
-        tvVolumePerHole.setText(String.format("%.0f", volumePerHole));
-        tvVolume.setText(String.format("%.0f", totalVolume));
-        tvExplosivePerHole.setText(String.format("%.0f", explosivePerHole));
-        tvTotalExplosive.setText(String.format("%.0f", totalExplosive));
-        tvSDOB.setText(String.format("%.2f", sdob));
-        tvPF.setText(String.format("%.2f", powderFactor));
-        tvSD.setText(String.format("%.2f", SD));
-        tvMic.setText(String.format("%.2f", MIC));
-        tvPPV.setText(String.format("%.2f", PPV));
+        tvShotLenght.setText(String.format("%.2f", holeLength)+ " ft");
+        tvShotDrillLenght.setText(String.format("%.0f", totalDrill)+ " ft");
+        tvVolumePerHole.setText(String.format("%.0f", volumePerHole) + " yd3");
+        tvVolume.setText(String.format("%.0f", totalVolume)+ " yd3");
+        tvExplosivePerHole.setText(String.format("%.0f", explosivePerHole) + " lb");
+        tvTotalExplosive.setText(String.format("%.0f", totalExplosive) + " lb");
+        tvSDOB.setText(String.format("%.2f", sdob)+" ft∛lb");
+        tvPF.setText(String.format("%.2f", powderFactor)+ " lb/yd3");
+        tvSD.setText(String.format("%.1f", SD)+" ft/√lb");
+        tvMic.setText(String.format("%.2f", MIC) + "kg");
+        tvPPV.setText(String.format("%.2f", PPV)+ " in/s");
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if (isChecked) {
+            layoutHole8ms.setVisibility(View.VISIBLE);
             layoutDistance.setVisibility(View.VISIBLE);
             layoutScalingFactor.setVisibility(View.VISIBLE);
             layoutAttenuation.setVisibility(View.VISIBLE);
             layoutVibrationOnOff.setVisibility(View.VISIBLE);
         } else {
+            layoutHole8ms.setVisibility(View.GONE);
             layoutDistance.setVisibility(View.GONE);
             layoutScalingFactor.setVisibility(View.GONE);
             layoutAttenuation.setVisibility(View.GONE);

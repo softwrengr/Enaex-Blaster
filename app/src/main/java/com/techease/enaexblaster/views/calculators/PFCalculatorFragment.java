@@ -71,6 +71,24 @@ public class PFCalculatorFragment extends Fragment {
     RelativeLayout layoutDensity;
     @BindView(R.id.layout_airdeck)
     RelativeLayout layoutAirDeck;
+
+
+    @BindView(R.id.pf_diameter_unit)
+    TextView tvDiameterUnit;
+    @BindView(R.id.pf_explosive_unit)
+    TextView tvExplosiveDensityUnit;
+    @BindView(R.id.pf_burden_unit)
+    TextView tvBurdenrUnit;
+    @BindView(R.id.pf_spacing_unit)
+    TextView tvSpacingUnit;
+    @BindView(R.id.pf_stem_unit)
+    TextView tvStemLengthrUnit;
+    @BindView(R.id.pf_rock_unit)
+    TextView tvRockDensityUnit;
+    @BindView(R.id.pf_holelength_unit)
+    TextView tvHoleLengthUnit;
+    @BindView(R.id.pf_airdeck_unit)
+    TextView tvAirDeckUnit;
     
     @BindView(R.id.tv_result)
     TextView tvResult;
@@ -114,6 +132,15 @@ public class PFCalculatorFragment extends Fragment {
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
                 metricCalculator();
+
+                tvDiameterUnit.setText("mm");
+                tvExplosiveDensityUnit.setText("g/cc");
+                tvBurdenrUnit.setText("m");
+                tvSpacingUnit.setText("m");
+                tvHoleLengthUnit.setText("m");
+                tvStemLengthrUnit.setText("m");
+                tvRockDensityUnit.setText("g/cc");
+                tvAirDeckUnit.setText("m");
             }
         });
 
@@ -126,6 +153,15 @@ public class PFCalculatorFragment extends Fragment {
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
                 imperialCalculator();
+
+                tvDiameterUnit.setText("in");
+                tvExplosiveDensityUnit.setText("g/cc");
+                tvBurdenrUnit.setText("ft");
+                tvSpacingUnit.setText("ft");
+                tvHoleLengthUnit.setText("ft");
+                tvStemLengthrUnit.setText("ft");
+                tvRockDensityUnit.setText("g/cc");
+                tvAirDeckUnit.setText("ft");
             }
         });
 
@@ -446,24 +482,24 @@ public class PFCalculatorFragment extends Fragment {
 
         if(checkVolumeWeight){   //if volume is selected
             powderFactor = value1 * value2 / value3 ;
-            tvResult.setText(String.format("%.2f",powderFactor));
+            tvResult.setText(String.format("%.2f",powderFactor) + " kg/m3");
         }
 
         if(!checkVolumeWeight){    //if weight is selected
             powderFactor = (value1 * value2) / (value3 * rockDensity);
-            tvResult.setText(String.format("%.2f",powderFactor));
+            tvResult.setText(String.format("%.2f",powderFactor) + " kg/tonne");
         }
 
         if(checkVolumeWeight && checkAirDeck){   //if volume is selected and airdeck is selected
             value2 = holeLenght - stemmingLenght - airDeck;
             powderFactor = (value1 * value2) / value3;
-            tvResult.setText(String.format("%.2f",powderFactor));
+            tvResult.setText(String.format("%.2f",powderFactor)+ " kg/m3");
         }
 
         if(!checkVolumeWeight && checkAirDeck){   //if weight is selected and airdeck is  selected
             value2 = holeLenght - stemmingLenght - airDeck;
             powderFactor = (value1 * value2) / (value3 * rockDensity);
-            tvResult.setText(String.format("%.2f",powderFactor));
+            tvResult.setText(String.format("%.2f",powderFactor) + " kg/tonne");
         }
     }
 
@@ -476,24 +512,24 @@ public class PFCalculatorFragment extends Fragment {
 
         if(checkVolumeWeight){   //if volume is selected
             powderFactor = (value1 * value2) / value3 ;
-            tvResult.setText(String.format("%.2f",powderFactor));
+            tvResult.setText(String.format("%.2f",powderFactor) + " lb/yd3");
         }
 
         if(!checkVolumeWeight){    //if weight is selected
             powderFactor = (value1 * value2) / (value3 * rockDensity * 0.841);
-            tvResult.setText(String.format("%.2f",powderFactor));
+            tvResult.setText(String.format("%.2f",powderFactor)  + " lb/ton");
         }
 
-        if(checkVolumeWeight && checkAirDeck){   //if weight is selected and airdeck is selected
+        if(checkVolumeWeight && checkAirDeck){   //if volume is selected and airdeck is selected
             value2 = holeLenght - stemmingLenght - airDeck;
             powderFactor = (value1 * value2) / value3;
-            tvResult.setText(String.format("%.2f",powderFactor));
+            tvResult.setText(String.format("%.2f",powderFactor) + "  lb/yd3");
         }
 
         if(!checkVolumeWeight && checkAirDeck){   //if weight is selected and airdeck is selected
             value2 = holeLenght - stemmingLenght - airDeck;
             powderFactor = (value1 * value2) / (value3 * rockDensity * 0.841);
-            tvResult.setText(String.format("%.2f",powderFactor));
+            tvResult.setText(String.format("%.2f",powderFactor)+ " lb/ton");
         }
     }
 }

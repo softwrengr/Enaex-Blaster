@@ -226,7 +226,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/colorAccent"
-                android:text="Attenuation_Factor"
+                android:text="Attenuation Factor"
                 android:textSize="18sp" />
 
 

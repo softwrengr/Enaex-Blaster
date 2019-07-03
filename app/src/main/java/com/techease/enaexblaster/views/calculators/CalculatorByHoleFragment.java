@@ -93,11 +93,33 @@ public class CalculatorByHoleFragment extends Fragment {
     LinearLayout layoutPPV;
     @BindView(R.id.layout_sd)
     LinearLayout layoutSD;
+    @BindView(R.id.rock_layout)
+    RelativeLayout layoutRock;
     @BindView(R.id.iv_arrow)
     ImageView ivArrow;
 
-    private double density = 0, diameter = 0, burden = 0, spacing = 0, holeLenght = 0, rockDensity = 0, stemming = 0,
-            distance = 0, scallingFactor = 0, attenuation = 0;
+    @BindView(R.id.hole_diameter_unit)
+    TextView tvDiameterUnit;
+    @BindView(R.id.hole_exp_density_unit)
+    TextView tvExplosiveDensityUnit;
+    @BindView(R.id.hole_burden_unit)
+    TextView tvBurdenrUnit;
+    @BindView(R.id.hole_spacing_unit)
+    TextView tvSpacingUnit;
+    @BindView(R.id.hole_length_unit)
+    TextView tvHoleLengthUnit;
+    @BindView(R.id.hole_stem_unit)
+    TextView tvStemLengthrUnit;
+    @BindView(R.id.hole_rock_unit)
+    TextView tvRockDensityUnit;
+    @BindView(R.id.hole_distance_unit)
+    TextView tvDistanceUnit;
+
+
+
+
+    private double density = 0, diameter = 270, burden = 0, spacing = 0, holeLenght = 0, rockDensity = 0, stemming = 0,
+            distance = 0, scallingFactor = 160, attenuation = -1.6;
 
     private boolean check = true;
     private boolean checkCalculator = true;
@@ -132,9 +154,20 @@ public class CalculatorByHoleFragment extends Fragment {
             public void onClick(View v) {
                 checkCalculator = true;
                 tvLBS.setText("Kgs per Hole");
+                etDiameter.setText("270");
+                diameter = 270;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
                 metricCalculation();
+
+                tvDiameterUnit.setText("mm");
+                tvExplosiveDensityUnit.setText("g/cc");
+                tvBurdenrUnit.setText("m");
+                tvSpacingUnit.setText("m");
+                tvHoleLengthUnit.setText("m");
+                tvStemLengthrUnit.setText("m");
+                tvRockDensityUnit.setText("g/cc");
+                tvDistanceUnit.setText("m");
             }
         });
 
@@ -145,9 +178,20 @@ public class CalculatorByHoleFragment extends Fragment {
             public void onClick(View v) {
                 checkCalculator = false;
                 tvLBS.setText("Lbs per Hole");
+                etDiameter.setText("10.625");
+                diameter = 10.625;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
                 calculation();
+
+                tvDiameterUnit.setText("in");
+                tvExplosiveDensityUnit.setText("g/cc");
+                tvBurdenrUnit.setText("ft");
+                tvSpacingUnit.setText("ft");
+                tvHoleLengthUnit.setText("ft");
+                tvStemLengthrUnit.setText("ft");
+                tvRockDensityUnit.setText("g/cc");
+                tvDistanceUnit.setText("ft");
             }
         });
 
@@ -155,8 +199,9 @@ public class CalculatorByHoleFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                tvVolumeWeight.setText("Volume");
                 checkVolume = true;
+                tvVolumeWeight.setText("Volume");
+                layoutRock.setVisibility(View.GONE);
                 btnWeight.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnVolume.setBackgroundColor(getActivity().getColor(R.color.silver));
 
@@ -169,8 +214,9 @@ public class CalculatorByHoleFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                tvVolumeWeight.setText("Weight");
                 checkVolume = false;
+                tvVolumeWeight.setText("Weight");
+                layoutRock.setVisibility(View.VISIBLE);
                 btnWeight.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
 
@@ -535,20 +581,20 @@ public class CalculatorByHoleFragment extends Fragment {
         PPV =  scallingFactor * (Math.pow(SD, attenuation));
 
         if(checkVolume){
-            tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
-            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole)));
-            tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume)));
-            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)));
-            tvSD.setText(String.format("%.1f", Double.valueOf(SD)));
-            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)));
+            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " yd3");
+            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole))+ " lb");
+            tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume))+ " lb/yd3");
+            tvSDOB.setText(String.format("%.1f", Double.valueOf(sdob))+ " ft∛lb");
+            tvSD.setText(String.format("%.1f", Double.valueOf(SD))+ " ft√lb");
+            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV))+ " in/s");
         }
         else {
-            tvVolume.setText(String.format("%.2f", Double.valueOf(weight)));
-            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole)));
-            tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight)));
-            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)));
-            tvSD.setText(String.format("%.1f", Double.valueOf(SD)));
-            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)));
+            tvVolume.setText(String.format("%.0f", Double.valueOf(weight))+ " ton");
+            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole))+ " lb");
+            tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight))+ " lb/ton");
+            tvSDOB.setText(String.format("%.1f", Double.valueOf(sdob))+ " ft∛lb");
+            tvSD.setText(String.format("%.1f", Double.valueOf(SD))+ " ft√lb");
+            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV))+ " in/s");
         }
 
     }
@@ -571,20 +617,20 @@ public class CalculatorByHoleFragment extends Fragment {
         PPV =  scallingFactor * (Math.pow(SD, attenuation));
 
         if(checkVolume){
-            tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
-            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole)));
-            tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume)));
-            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)));
-            tvSD.setText(String.format("%.1f", Double.valueOf(SD)));
-            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)));
+            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " m3");
+            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole))+ " kg");
+            tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume)) + " kg/m3");
+            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)) + " m∛kg");
+            tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " m/√kg");
+            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)) + " mm/s");
         }
         else {
-            tvVolume.setText(String.format("%.2f", Double.valueOf(weight)));
-            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole)));
-            tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight)));
-            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)));
-            tvSD.setText(String.format("%.1f", Double.valueOf(SD)));
-            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)));
+            tvVolume.setText(String.format("%.0f", Double.valueOf(weight))+ " tonne");
+            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole))+ " kg");
+            tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight))+ " kg/tonne");
+            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob))+ " m∛kg");
+            tvSD.setText(String.format("%.1f", Double.valueOf(SD))+ " m/√kg");
+            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV))+ " mm/s");
         }
     }
 

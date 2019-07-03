@@ -210,17 +210,17 @@
                     android:layout_width="220dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
-                    android:hint="0.0"
+                    android:text="270"
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
-                    android:id="@+id/tv_burden_unit"
+                    android:id="@+id/hole_diameter_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_diameter"
-                    android:text="in"
+                    android:text="mm"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -249,6 +249,7 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/hole_exp_density_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -282,11 +283,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/hole_burden_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_burden"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -315,11 +317,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/hole_spacing_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_spacing"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -329,7 +332,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Hole Lenght"
+                android:text="Hole Length"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -348,11 +351,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/hole_length_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_hole_height"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -362,7 +366,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Stem Lenght"
+                android:text="Stem Length"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -381,27 +385,31 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/hole_stem_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_stemming"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
 
 
-            <TextView
+            <RelativeLayout
+                android:id="@+id/rock_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Rock Density"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp" />
+                android:visibility="gone">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/rock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Rock Density"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
 
 
                 <EditText
@@ -409,16 +417,18 @@
                     android:layout_width="220dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/rock"
                     android:hint="0.0"
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/hole_rock_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_rock_density"
-                    android:text="ft"
+                    android:text="g/cc"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -450,11 +460,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/hole_distance_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_distance"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -479,18 +490,11 @@
                     android:layout_width="220dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
-                    android:hint="0.0"
+                    android:text="160"
                     android:layout_below="@+id/scaling"
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/et_scalling"
-                    android:text="ft"
-                    android:textColor="@color/silver" />
 
             </RelativeLayout>
 
@@ -515,17 +519,10 @@
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
                     android:layout_below="@id/attenuation"
-                    android:hint="0.0"
+                    android:text="-1.6"
                     android:imeOptions="actionDone"
                     android:inputType="numberSigned|numberDecimal" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/et_attenuation"
-                    android:text="ft"
-                    android:textColor="@color/silver" />
 
             </RelativeLayout>
 
@@ -571,9 +568,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="0.00"
+                    android:text="0 m3"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -598,9 +595,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="0.00"
+                    android:text="0 kg"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -624,9 +621,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="0.00"
+                    android:text="0.00 kg/m3"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -650,9 +647,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="0.00"
+                    android:text="0.0 m∛kg"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -678,9 +675,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="0.00"
+                    android:text="0.0 m/√kg"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -705,9 +702,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="0.00"
+                    android:text="0.00 mm/s"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 

@@ -244,7 +244,7 @@
                            android:layout_height="wrap_content"
                            android:layout_alignParentEnd="true"
                            android:layout_marginRight="20dp"
-                           android:checked="true" />
+                           android:checked="false" />
 
                    </RelativeLayout>
                </LinearLayout>
@@ -288,13 +288,7 @@
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/et_shot_holes"
-                    android:text="ft"
-                    android:textColor="@color/silver" />
+
 
             </RelativeLayout>
 
@@ -324,13 +318,6 @@
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/et_shot_rows"
-                    android:text="ft"
-                    android:textColor="@color/silver" />
 
             </RelativeLayout>
 
@@ -360,13 +347,6 @@
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/et_holePerRow"
-                    android:text="ft"
-                    android:textColor="@color/silver" />
 
             </RelativeLayout>
 
@@ -389,16 +369,17 @@
                     android:layout_width="220dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
-                    android:hint="0.0"
+                    android:hint="270 "
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/shot_diameter_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_shot_diameter"
-                    android:text="ft"
+                    android:text="mm"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -425,11 +406,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/shot_explosive_density_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_shot_density"
-                    android:text="ft"
+                    android:text="g/cc"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -457,11 +439,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/shot_burden_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_shot_burden"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -489,11 +472,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/shot_spacing_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_shot_spacing"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -521,11 +505,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/shot_bench_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_shot_bench_height"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -556,11 +541,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/shot_subdrill_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_shot_subdrill"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -570,7 +556,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Stem Lenght"
+                android:text="Stem Length"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -588,11 +574,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/shot_stem_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_shot_stemming"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -626,43 +613,49 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/shot_rock_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_rock_density"
-                    android:text="ft"
+                    android:text="g/cc"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
 
 
-            <TextView
+            <RelativeLayout
+                android:id="@+id/hole8ms_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Holes per 8ms"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp" />
+                android:visibility="gone">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/hole8ms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Holes per 8ms"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/et_shot_hole_ms"
                     android:layout_width="220dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/hole8ms"
                     android:hint="0.0"
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/shot_ms_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_shot_hole_ms"
-                    android:text="ft"
+                    android:text="count"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -671,7 +664,8 @@
             <RelativeLayout
                 android:id="@+id/layout_distance"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_dis"
@@ -693,11 +687,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/shot_distance_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_shot_distance"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -707,7 +702,8 @@
             <RelativeLayout
                 android:id="@+id/layout_scaling_factor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/factor"
@@ -725,17 +721,10 @@
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
                     android:layout_below="@+id/factor"
-                    android:hint="0.0"
+                    android:text="160"
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/et_shot_scalling"
-                    android:text="ft"
-                    android:textColor="@color/silver" />
 
             </RelativeLayout>
 
@@ -743,7 +732,8 @@
             <RelativeLayout
                 android:id="@+id/layout_attenuation"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
 
                 <TextView
@@ -761,18 +751,10 @@
                     android:layout_height="45dp"
                     android:layout_below="@+id/tv_att"
                     android:layout_marginLeft="20dp"
-
                     android:text="-1.6"
                     android:imeOptions="actionDone"
                     android:inputType="numberSigned|numberDecimal" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/et_shot_attenuation"
-                    android:text="ft"
-                    android:textColor="@color/silver" />
+x`
 
             </RelativeLayout>
         </LinearLayout>
@@ -804,7 +786,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:fontFamily="@font/bold"
                     android:text="Total No of Holes : "
                     android:textColor="@color/white"
@@ -817,7 +799,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:text="0.00"
+                    android:text="0"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -832,9 +814,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:fontFamily="@font/bold"
-                    android:text="Hole Lenghtv : "
+                    android:text="Hole Length  : "
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -845,7 +827,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:text="0.00"
+                    android:text="0.0 m"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -860,9 +842,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:fontFamily="@font/bold"
-                    android:text="Total Drill Lenght : "
+                    android:text="Total Drill Length : "
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -873,7 +855,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:text="0.00"
+                    android:text="0. m"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -889,7 +871,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:fontFamily="@font/bold"
                     android:text="Volume per Hole:"
                     android:textColor="@color/white"
@@ -902,7 +884,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:text="0.00"
+                    android:text="0 m3"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -917,7 +899,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:fontFamily="@font/bold"
                     android:text="Total Volume :"
                     android:textColor="@color/white"
@@ -930,7 +912,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:text="0.00"
+                    android:text="0 m3"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -946,7 +928,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:fontFamily="@font/bold"
                     android:text="Explosive Per Hole :"
                     android:textColor="@color/white"
@@ -958,7 +940,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
-                    android:text="0.00"
+                    android:text="0 kg"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -974,7 +956,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:fontFamily="@font/bold"
                     android:text="Total Explosive :"
                     android:textColor="@color/white"
@@ -986,7 +968,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
-                    android:text="0.00"
+                    android:text="0 kg"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -1002,7 +984,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:fontFamily="@font/bold"
                     android:text="Powder Factor  :"
                     android:textColor="@color/white"
@@ -1014,7 +996,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
-                    android:text="0.00"
+                    android:text="0.00 kg/m3"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -1030,7 +1012,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:fontFamily="@font/bold"
                     android:text="SDOB :"
                     android:textColor="@color/white"
@@ -1042,7 +1024,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
-                    android:text="0.00"
+                    android:text="0.00 m∛kg"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -1052,6 +1034,7 @@
               android:id="@+id/layout_for_vibration"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:visibility="gone"
               android:orientation="vertical">
               <LinearLayout
                   android:layout_width="match_parent"
@@ -1063,7 +1046,7 @@
                       android:layout_width="0dp"
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="20dp"
-                      android:layout_weight="2"
+                      android:layout_weight="1.5"
                       android:fontFamily="@font/bold"
                       android:text="MIC :"
                       android:textColor="@color/white"
@@ -1075,7 +1058,7 @@
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="20dp"
                       android:layout_weight="1"
-                      android:text="0.00"
+                      android:text="0 kg"
                       android:textColor="@color/white"
                       android:textSize="18sp" />
 
@@ -1091,7 +1074,7 @@
                       android:layout_width="0dp"
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="20dp"
-                      android:layout_weight="2"
+                      android:layout_weight="1.5"
                       android:fontFamily="@font/bold"
                       android:text="Scaled Distance :"
                       android:textColor="@color/white"
@@ -1103,7 +1086,7 @@
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="20dp"
                       android:layout_weight="1"
-                      android:text="0.00"
+                      android:text="0.0 m/√kg"
                       android:textColor="@color/white"
                       android:textSize="18sp" />
 
@@ -1119,7 +1102,7 @@
                       android:layout_width="0dp"
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="20dp"
-                      android:layout_weight="2"
+                      android:layout_weight="1.5"
                       android:fontFamily="@font/bold"
                       android:text="Est PPV :"
                       android:textColor="@color/white"
@@ -1131,7 +1114,7 @@
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="20dp"
                       android:layout_weight="1"
-                      android:text="0.00"
+                      android:text="0.0 mm/s"
                       android:textColor="@color/white"
                       android:textSize="18sp" />
 

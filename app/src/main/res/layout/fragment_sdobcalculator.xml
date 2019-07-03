@@ -36,7 +36,7 @@
             android:layout_toRightOf="@+id/iv_call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Scal Depth of Burial"
+            android:text="Scaled  Depth of Burial"
             android:textSize="20sp"
             android:layout_gravity="center"
             android:gravity="center"
@@ -212,7 +212,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/colorAccent"
-                android:text="Hole Lenght"
+                android:text="Hole Length "
                 android:textSize="18sp" />
 
             <RelativeLayout
@@ -245,7 +245,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/colorAccent"
-                android:text="Stem Lenght"
+                android:text="Stem Length "
                 android:textSize="18sp" />
 
             <RelativeLayout
@@ -305,10 +305,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Scal Depth of Burial"
+                    android:text="SDOB"
                     android:fontFamily="@font/bold"
                     android:textColor="@color/white"
-                    android:layout_weight="1.8"
+                    android:layout_weight="1"
                     android:textSize="18sp" />
 
                 <TextView
@@ -316,8 +316,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="0.00"
-                    android:layout_weight="1"
+                    android:text="0.00 m/∛kg"
+                    android:layout_weight="1.2"
+                    android:layout_marginRight="5dp"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 

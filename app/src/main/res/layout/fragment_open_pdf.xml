@@ -13,6 +13,7 @@
         android:layout_alignParentEnd="true"
         android:text="Rotate"
         android:textSize="16sp"
+        android:fontFamily="@font/thin"
         android:layout_marginRight="20dp"
         android:textStyle="bold" />
 
@@ -25,10 +26,21 @@
         android:layout_marginRight="20dp"
         android:src="@drawable/rotation"/>
 
-    <com.github.barteksc.pdfviewer.PDFView
-        android:id="@+id/pdfview"
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/iv_rotate"
-        android:layout_height="match_parent"/>
+        android:padding="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <com.github.barteksc.pdfviewer.PDFView
+            android:id="@+id/pdfview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </RelativeLayout>
+
+
 
 </RelativeLayout>

@@ -36,7 +36,7 @@
         android:layout_toRightOf="@+id/iv_call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="By Shot"
+        android:text="Powder Factor"
         android:textSize="20sp"
         android:layout_gravity="center"
         android:gravity="center"
@@ -213,11 +213,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/pf_diameter_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_diameter"
-                    android:text="ft"
+                    android:text="mm"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -244,11 +245,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/pf_explosive_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_density"
-                    android:text="ft"
+                    android:text="g/cc"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -276,11 +278,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/pf_burden_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_burden"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -308,11 +311,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/pf_spacing_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_spacing"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -322,7 +326,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Hole Lenght"
+                android:text="Hole Length "
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -340,11 +344,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/pf_holelength_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_hole_lenght"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -354,7 +359,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="Stemming Lenght"
+                android:text="Stemming Length "
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -372,11 +377,12 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/pf_stem_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_stemming_lenght"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -408,12 +414,13 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/pf_rock_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_below="@+id/tv_rockdensity"
                     android:layout_toRightOf="@id/et_rock_density"
-                    android:text="ft"
+                    android:text="g/cc"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -431,7 +438,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Air Deck Lenght"
+                    android:text="Air Deck Length "
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp" />
 
@@ -447,12 +454,13 @@
                     android:inputType="numberSigned|numberDecimal" />
 
                 <TextView
+                    android:id="@+id/pf_airdeck_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_below="@+id/tv_airdeck"
                     android:layout_toRightOf="@id/et_airdeck_lenght"
-                    android:text="ft"
+                    android:text="m"
                     android:textColor="@color/silver" />
 
             </RelativeLayout>
@@ -490,7 +498,7 @@
                     android:text="Powder Factor"
                     android:fontFamily="@font/bold"
                     android:textColor="@color/white"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:textSize="18sp" />
 
                 <TextView
@@ -499,7 +507,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:textColor="@color/white"
-                    android:text="0.00"
+                    android:text="0.00 kg/m3"
                     android:layout_weight="1"
                     android:textSize="18sp" />
 

@@ -82,7 +82,7 @@ public class OpenPdfFragment extends Fragment {
     private void showPDF(String pdf) {
         pdfView.fromAsset(pdf)
                 .enableSwipe(true)
-                .swipeHorizontal(false)
+                .swipeHorizontal(true)
                 .enableDoubletap(true)
                 .enableSwipe(true)
                 .defaultPage(0)
@@ -143,6 +143,8 @@ public class OpenPdfFragment extends Fragment {
                 .spacing(0)
                 .load();
 
-        pdfView.zoomTo(1);
+        pdfView.zoomTo(0);
+
+        pdfView.fitToWidth(1);
     }
 }

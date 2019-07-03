@@ -35,7 +35,7 @@
             android:layout_toRightOf="@+id/iv_call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Scale Distance"
+            android:text="Scaled  Distance"
             android:textSize="20sp"
             android:layout_gravity="center"
             android:gravity="center"
@@ -237,7 +237,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="0.00"
+                    android:text="0.0 m/√kg"
                     android:textColor="@color/white"
                     android:layout_weight="1"
                     android:textSize="18sp" />

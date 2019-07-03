@@ -277,7 +277,7 @@ public class SDOBCalculatorFragment extends Fragment {
 
         SDOB = d / Math.pow(Wc,0.3333);
 
-        tvResult.setText(String.format("%.1f", SDOB));
+        tvResult.setText(String.format("%.2f", SDOB) + " m/∛kg");
     }
 
 
@@ -292,6 +292,7 @@ public class SDOBCalculatorFragment extends Fragment {
 
         SDOB = d / Math.pow(Wc,0.3333);
 
-        tvResult.setText(String.format("%.2f", SDOB));
+
+        tvResult.setText(String.format("%.1f", SDOB) + " ft/∛lb");
     }
 }

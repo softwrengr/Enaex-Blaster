@@ -191,7 +191,7 @@ public class ScaledDistanceFragment extends Fragment {
             SD = (distance / Math.sqrt(mic));
         }
 
-        tvResult.setText(String.format("%.2f", SD));
+        tvResult.setText(String.format("%.1f", SD)+" m/√kg");
 
     }
 
@@ -203,7 +203,7 @@ public class ScaledDistanceFragment extends Fragment {
             SD = (distance / Math.sqrt(mic));
         }
 
-        tvResult.setText(String.format("%.2f", SD));
+        tvResult.setText(String.format("%.1f", SD)+" ft/√lb");
 
 
     }

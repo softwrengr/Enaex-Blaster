@@ -322,11 +322,11 @@ public class VolumeCalculatorFragment extends Fragment {
 
         if(checkWeight){ //if weight is selected
             double volume = ((burden * spacing * averageDepth) /27) * rockDensity * 0.841 * noOfHOles;
-            tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
+            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) +" tons");
         }
         else {  //if volume if selected
             double volume = ((burden * spacing * averageDepth) /27) * noOfHOles;
-            tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
+            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " yd3");
         }
 
 
@@ -335,11 +335,11 @@ public class VolumeCalculatorFragment extends Fragment {
     private void metricCalculation() {
         if(checkWeight){
             double volume = (burden * spacing * averageDepth) * rockDensity * noOfHOles;
-            tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
+            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " tonnes");
         }
         else {
             double volume = (burden * spacing * averageDepth) * noOfHOles;
-            tvVolume.setText(String.format("%.2f", Double.valueOf(volume)));
+            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " m3");
         }
     }
 
