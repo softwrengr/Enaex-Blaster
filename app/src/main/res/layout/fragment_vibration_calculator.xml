@@ -282,7 +282,7 @@
                     android:fontFamily="@font/bold"
                     android:textColor="@color/white"
                     android:layout_weight="1"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_result"
@@ -292,7 +292,7 @@
                     android:textColor="@color/white"
                     android:text="0.00  mm/s"
                     android:layout_weight="1"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 

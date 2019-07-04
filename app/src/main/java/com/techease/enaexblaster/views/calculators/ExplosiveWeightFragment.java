@@ -23,6 +23,10 @@ import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -62,7 +66,7 @@ public class ExplosiveWeightFragment extends Fragment {
     @BindView(R.id.tv_stem_unit)
     TextView tvStemUnit;
 
-    double diameter = 0, density = 0, holeLenght = 0, stemLenght =0;
+    double diameter = 270, density = 0, holeLenght = 0, stemLenght =0;
     private boolean check = true;
     private boolean checkCalculator = true;
 
@@ -122,6 +126,8 @@ public class ExplosiveWeightFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = true;
+                etDiameter.setText("270");
+                diameter = 270;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
                 metricCalculator();
@@ -136,6 +142,8 @@ public class ExplosiveWeightFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = false;
+                etDiameter.setText("10.625");
+                diameter = 10.625;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
                 imperialCalculator();
@@ -291,7 +299,7 @@ public class ExplosiveWeightFragment extends Fragment {
 
         toalExplosive = (value1 * value2) * value3;
 
-        tvResult.setText(String.format("%.1f", toalExplosive));
+        tvResult.setText(String.format("%.1f", toalExplosive) + " kg");
     }
 
 
@@ -304,7 +312,7 @@ public class ExplosiveWeightFragment extends Fragment {
 
         toalExplosive = (value1 * value2) * value3;
 
-        tvResult.setText(String.format("%.1f", toalExplosive));
+        tvResult.setText(String.format("%.1f", toalExplosive) + " lbs");
     }
 
     private void metricUnits(){

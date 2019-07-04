@@ -1,11 +1,17 @@
 package com.techease.enaexblaster.views.calculators;
 
+import android.annotation.TargetApi;
+import android.icu.util.Measure;
+import android.icu.util.MeasureUnit;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.Html;
+import android.text.Spanned;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -163,6 +169,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     private boolean checkSubDrillStandOFF = true;
     private boolean checkHoleRowCount = true;
 
+    @TargetApi(Build.VERSION_CODES.N)
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -187,6 +194,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             imperialUnits();
         }
         intiViews();
+
         return view;
     }
 
@@ -890,8 +898,8 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         tvTotalHoles.setText(String.format("%.0f", NoOfHole));
         tvShotLenght.setText(String.format("%.1f", holeLength) + " m");
         tvShotDrillLenght.setText(String.format("%.0f", totalDrill)+ " m");
-        tvVolumePerHole.setText(String.format("%.0f", volumePerHole)+ " m3");
-        tvVolume.setText(String.format("%.0f", totalVolume)+ " m3");
+        tvVolumePerHole.setText(String.format("%.0f", volumePerHole)+ " m³");
+        tvVolume.setText(String.format("%.0f", totalVolume)+ " m³");
         tvExplosivePerHole.setText(String.format("%.0f", explosivePerHole)+ " kg");
         tvTotalExplosive.setText(String.format("%.0f", totalExplosive)+ " kg");
         tvSDOB.setText(String.format("%.2f", sdob)+ " m∛kg");
@@ -949,12 +957,12 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         tvTotalHoles.setText(String.format("%.0f", NoOfHole));
         tvShotLenght.setText(String.format("%.2f", holeLength)+ " ft");
         tvShotDrillLenght.setText(String.format("%.0f", totalDrill)+ " ft");
-        tvVolumePerHole.setText(String.format("%.0f", volumePerHole) + " yd3");
-        tvVolume.setText(String.format("%.0f", totalVolume)+ " yd3");
+        tvVolumePerHole.setText(String.format("%.0f", volumePerHole) + " yd³");
+        tvVolume.setText(String.format("%.0f", totalVolume)+ " yd³");
         tvExplosivePerHole.setText(String.format("%.0f", explosivePerHole) + " lb");
         tvTotalExplosive.setText(String.format("%.0f", totalExplosive) + " lb");
         tvSDOB.setText(String.format("%.2f", sdob)+" ft∛lb");
-        tvPF.setText(String.format("%.2f", powderFactor)+ " lb/yd3");
+        tvPF.setText(String.format("%.2f", powderFactor)+ " lb/yd³");
         tvSD.setText(String.format("%.1f", SD)+" ft/√lb");
         tvMic.setText(String.format("%.2f", MIC) + "kg");
         tvPPV.setText(String.format("%.2f", PPV)+ " in/s");

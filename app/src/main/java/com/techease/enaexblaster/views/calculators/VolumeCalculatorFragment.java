@@ -335,7 +335,7 @@ public class VolumeCalculatorFragment extends Fragment {
         }
         else {  //if volume if selected
             double volume = ((burden * spacing * averageDepth) /27) * noOfHOles;
-            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " yd3");
+            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " yd³");
         }
 
 
@@ -348,7 +348,7 @@ public class VolumeCalculatorFragment extends Fragment {
         }
         else {
             double volume = (burden * spacing * averageDepth) * noOfHOles;
-            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " m3");
+            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " m³");
         }
     }
 

@@ -570,9 +570,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         PPV =  scallingFactor * (Math.pow(SD, attenuation));
 
         if(checkVolume){
-            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " yd3");
+            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " yd³");
             tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole))+ " lb");
-            tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume))+ " lb/yd3");
+            tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume))+ " lb/yd³");
             tvSDOB.setText(String.format("%.1f", Double.valueOf(sdob))+ " ft∛lb");
             tvSD.setText(String.format("%.1f", Double.valueOf(SD))+ " ft√lb");
             tvPPV.setText(String.format("%.2f", Double.valueOf(PPV))+ " in/s");
@@ -606,9 +606,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         PPV =  scallingFactor * (Math.pow(SD, attenuation));
 
         if(checkVolume){
-            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " m3");
+            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " m³");
             tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole))+ " kg");
-            tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume)) + " kg/m3");
+            tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume)) + " kg/m³");
             tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)) + " m∛kg");
             tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " m/√kg");
             tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)) + " mm/s");

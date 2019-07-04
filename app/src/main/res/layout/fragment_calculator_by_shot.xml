@@ -782,7 +782,7 @@ x`
                     android:fontFamily="@font/bold"
                     android:text="Total No of Holes : "
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_total_holes"
@@ -792,7 +792,7 @@ x`
                     android:layout_weight="1"
                     android:textColor="@color/white"
                     android:text="0"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -810,7 +810,7 @@ x`
                     android:fontFamily="@font/bold"
                     android:text="Hole Length  : "
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_shot_lenght"
@@ -820,7 +820,7 @@ x`
                     android:layout_weight="1"
                     android:textColor="@color/white"
                     android:text="0.0 m"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -838,7 +838,7 @@ x`
                     android:fontFamily="@font/bold"
                     android:text="Total Drill Length : "
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_shot_drill_lenght"
@@ -848,7 +848,7 @@ x`
                     android:layout_weight="1"
                     android:textColor="@color/white"
                     android:text="0. m"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -867,7 +867,7 @@ x`
                     android:fontFamily="@font/bold"
                     android:text="Volume per Hole:"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_shot_volume_per_hole"
@@ -876,8 +876,8 @@ x`
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:text="0 m3"
-                    android:textSize="18sp" />
+                    android:text="0 m³"
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -895,7 +895,7 @@ x`
                     android:fontFamily="@font/bold"
                     android:text="Total Volume :"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_shot_volume"
@@ -904,8 +904,8 @@ x`
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:text="0 m3"
-                    android:textSize="18sp" />
+                    android:text="0 m³"
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -924,7 +924,7 @@ x`
                     android:fontFamily="@font/bold"
                     android:text="Explosive Per Hole :"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_explosive_per_hole"
@@ -934,7 +934,7 @@ x`
                     android:layout_weight="1"
                     android:text="0 kg"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -952,7 +952,7 @@ x`
                     android:fontFamily="@font/bold"
                     android:text="Total Explosive :"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_total_explosive"
@@ -962,7 +962,7 @@ x`
                     android:layout_weight="1"
                     android:text="0 kg"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -980,7 +980,7 @@ x`
                     android:fontFamily="@font/bold"
                     android:text="Powder Factor  :"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_shot_pf"
@@ -988,9 +988,9 @@ x`
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
-                    android:text="0.00 kg/m3"
+                    android:text="0.00 kg/m³"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -1008,7 +1008,7 @@ x`
                     android:fontFamily="@font/bold"
                     android:text="SDOB :"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_shot_sdob"
@@ -1018,7 +1018,7 @@ x`
                     android:layout_weight="1"
                     android:text="0.00 m∛kg"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -1042,7 +1042,7 @@ x`
                       android:fontFamily="@font/bold"
                       android:text="MIC :"
                       android:textColor="@color/white"
-                      android:textSize="18sp" />
+                      android:textSize="17sp" />
 
                   <TextView
                       android:id="@+id/tv_shot_mic"
@@ -1052,7 +1052,7 @@ x`
                       android:layout_weight="1"
                       android:text="0 kg"
                       android:textColor="@color/white"
-                      android:textSize="18sp" />
+                      android:textSize="17sp" />
 
               </LinearLayout>
 
@@ -1070,7 +1070,7 @@ x`
                       android:fontFamily="@font/bold"
                       android:text="Scaled Distance :"
                       android:textColor="@color/white"
-                      android:textSize="18sp" />
+                      android:textSize="17sp" />
 
                   <TextView
                       android:id="@+id/tv_shot_sd"
@@ -1080,7 +1080,7 @@ x`
                       android:layout_weight="1"
                       android:text="0.0 m/√kg"
                       android:textColor="@color/white"
-                      android:textSize="18sp" />
+                      android:textSize="17sp" />
 
               </LinearLayout>
 
@@ -1098,7 +1098,7 @@ x`
                       android:fontFamily="@font/bold"
                       android:text="Est PPV :"
                       android:textColor="@color/white"
-                      android:textSize="18sp" />
+                      android:textSize="17sp" />
 
                   <TextView
                       android:id="@+id/tv_shot_ppv"
@@ -1108,7 +1108,7 @@ x`
                       android:layout_weight="1"
                       android:text="0.0 mm/s"
                       android:textColor="@color/white"
-                      android:textSize="18sp" />
+                      android:textSize="17sp" />
 
               </LinearLayout>
           </LinearLayout>

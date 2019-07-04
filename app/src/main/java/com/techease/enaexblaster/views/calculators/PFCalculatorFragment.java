@@ -493,7 +493,7 @@ public class PFCalculatorFragment extends Fragment {
 
         if(checkVolumeWeight){   //if volume is selected
             powderFactor = value1 * value2 / value3 ;
-            tvResult.setText(String.format("%.2f",powderFactor) + " kg/m3");
+            tvResult.setText(String.format("%.2f",powderFactor) + " kg/m³");
         }
 
         if(!checkVolumeWeight){    //if weight is selected
@@ -504,7 +504,7 @@ public class PFCalculatorFragment extends Fragment {
         if(checkVolumeWeight && checkAirDeck){   //if volume is selected and airdeck is selected
             value2 = holeLenght - stemmingLenght - airDeck;
             powderFactor = (value1 * value2) / value3;
-            tvResult.setText(String.format("%.2f",powderFactor)+ " kg/m3");
+            tvResult.setText(String.format("%.2f",powderFactor)+ " kg/m³");
         }
 
         if(!checkVolumeWeight && checkAirDeck){   //if weight is selected and airdeck is  selected
@@ -523,7 +523,7 @@ public class PFCalculatorFragment extends Fragment {
 
         if(checkVolumeWeight){   //if volume is selected
             powderFactor = (value1 * value2) / value3 ;
-            tvResult.setText(String.format("%.2f",powderFactor) + " lb/yd3");
+            tvResult.setText(String.format("%.2f",powderFactor) + " lb/yd³");
         }
 
         if(!checkVolumeWeight){    //if weight is selected
@@ -534,7 +534,7 @@ public class PFCalculatorFragment extends Fragment {
         if(checkVolumeWeight && checkAirDeck){   //if volume is selected and airdeck is selected
             value2 = holeLenght - stemmingLenght - airDeck;
             powderFactor = (value1 * value2) / value3;
-            tvResult.setText(String.format("%.2f",powderFactor) + "  lb/yd3");
+            tvResult.setText(String.format("%.2f",powderFactor) + "  lb/yd³");
         }
 
         if(!checkVolumeWeight && checkAirDeck){   //if weight is selected and airdeck is selected

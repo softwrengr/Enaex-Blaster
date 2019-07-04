@@ -306,7 +306,7 @@
                     android:fontFamily="@font/bold"
                     android:textColor="@color/white"
                     android:layout_weight="1"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_result"
@@ -317,7 +317,7 @@
                     android:layout_weight="1.2"
                     android:layout_marginRight="5dp"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 

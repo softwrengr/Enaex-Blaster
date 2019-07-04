@@ -560,14 +560,14 @@
                     android:fontFamily="@font/bold"
                     android:text="Volume "
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_volume_result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="0 m3"
+                    android:text="0 m³"
                     android:textColor="@color/white"
                     android:textSize="17sp" />
 
@@ -587,7 +587,7 @@
                     android:fontFamily="@font/bold"
                     android:text="Explosive Per Hole :"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_lbs_hole"
@@ -613,14 +613,14 @@
                     android:fontFamily="@font/bold"
                     android:text="Powder Factor :"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_pf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="0.00 kg/m3"
+                    android:text="0.00 kg/m³"
                     android:textColor="@color/white"
                     android:textSize="17sp" />
 
@@ -639,7 +639,7 @@
                     android:fontFamily="@font/bold"
                     android:text="SDOB "
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_sdob"
@@ -668,7 +668,7 @@
                     android:fontFamily="@font/bold"
                     android:text="SD :"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_sd"
@@ -696,7 +696,7 @@
                     android:fontFamily="@font/bold"
                     android:text="Est PPV :"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tv_ppv"
