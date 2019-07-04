@@ -41,6 +41,16 @@ public class GuideLineFragment extends Fragment {
     RelativeLayout layoutRock;
     @BindView(R.id.sdob_layout)
     RelativeLayout layoutSdob;
+
+    @BindView(R.id.iv_bench)
+    ImageView ivBench;
+    @BindView(R.id.iv_loading)
+    ImageView ivLoading;
+    @BindView(R.id.iv_rock)
+    ImageView ivRock;
+    @BindView(R.id.iv_sdob)
+    ImageView ivSDOB;
+
     private boolean check = false;
     Bundle bundle;
     @Override
@@ -67,6 +77,7 @@ public class GuideLineFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 bundle.putString("check_pdf","bench_definition.pdf");
+                bundle.putBoolean("screen",true);
                 GeneralUtils.connectFragmentWithBack(getActivity(),new OpenPdfFragment()).setArguments(bundle);
             }
         });
@@ -75,6 +86,7 @@ public class GuideLineFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 bundle.putString("check_pdf","loading_imperial.pdf");
+                bundle.putBoolean("screen",true);
                 GeneralUtils.connectFragmentWithBack(getActivity(),new OpenPdfFragment()).setArguments(bundle);
             }
         });
@@ -83,6 +95,7 @@ public class GuideLineFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 bundle.putString("check_pdf","loading_metric.pdf");
+                bundle.putBoolean("screen",true);
                 GeneralUtils.connectFragmentWithBack(getActivity(),new OpenPdfFragment()).setArguments(bundle);
             }
         });
@@ -91,6 +104,7 @@ public class GuideLineFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 bundle.putString("check_pdf","rock_property.pdf");
+                bundle.putBoolean("screen",true);
                 GeneralUtils.connectFragmentWithBack(getActivity(),new OpenPdfFragment()).setArguments(bundle);
             }
         });
@@ -99,6 +113,7 @@ public class GuideLineFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 bundle.putString("check_pdf","sdob.pdf");
+                bundle.putBoolean("screen",true);
                 GeneralUtils.connectFragmentWithBack(getActivity(),new OpenPdfFragment()).setArguments(bundle);
             }
         });
@@ -113,10 +128,12 @@ public class GuideLineFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(check){
+                    ivBench.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                     tvDefinition.setVisibility(View.GONE);
                     check = false;
                 }
                 else {
+                    ivBench.setImageDrawable(getResources().getDrawable(R.drawable.up));
                     tvDefinition.setVisibility(View.VISIBLE);
                     check = true;
                 }
@@ -128,11 +145,13 @@ public class GuideLineFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(check){
+                    ivLoading.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                     tvLoadingImperial.setVisibility(View.GONE);
                     tvLoadingMetric.setVisibility(View.GONE);
                     check = false;
                 }
                 else {
+                    ivLoading.setImageDrawable(getResources().getDrawable(R.drawable.up));
                     tvLoadingImperial.setVisibility(View.VISIBLE);
                     tvLoadingMetric.setVisibility(View.VISIBLE);
                     check = true;
@@ -144,10 +163,12 @@ public class GuideLineFragment extends Fragment {
             public void onClick(View v) {
 
                 if(check){
+                    ivRock.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                     tvRock.setVisibility(View.GONE);
                     check = false;
                 }
                 else {
+                    ivRock.setImageDrawable(getResources().getDrawable(R.drawable.up));
                     tvRock.setVisibility(View.VISIBLE);
                     check = true;
                 }
@@ -158,10 +179,12 @@ public class GuideLineFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(check){
+                    ivSDOB.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                     tvSdob.setVisibility(View.GONE);
                     check = false;
                 }
                 else {
+                    ivSDOB.setImageDrawable(getResources().getDrawable(R.drawable.up));
                     tvSdob.setVisibility(View.VISIBLE);
                     check = true;
                 }

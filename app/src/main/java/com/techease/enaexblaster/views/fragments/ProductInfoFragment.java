@@ -24,6 +24,8 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
     View view;
     @BindView(R.id.iv_back)
     ImageView ivBack;
+    @BindView(R.id.scrollview)
+    ScrollView scrollView;
     Bundle bundle;
 
     @BindView(R.id.layout_tds_booster)
@@ -39,6 +41,41 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
 
     @BindView(R.id.layout_bulk_products)
     RelativeLayout layoutBulkProducts;
+    @BindView(R.id.bulk_layout)
+    RelativeLayout layoutBulk;
+    @BindView(R.id.tv_an_prill_tds)
+    TextView tvAnPrillTDS;
+    @BindView(R.id.tv_an_prill_sds)
+    TextView tvAnPrillSDS;
+    @BindView(R.id.tv_anfomax_tds)
+    TextView tvAnfomaxTDS;
+    @BindView(R.id.tv_anfomax_sds)
+    TextView tvAnfomaxSDS;
+    @BindView(R.id.tv_ae_59_tds)
+    TextView tvAeTDS;
+    @BindView(R.id.tv_ae_59_sds)
+    TextView tvAeSDS;
+    @BindView(R.id.tv_emultex_tds)
+    TextView tvEmultexTDS;
+    @BindView(R.id.tv_emultex_sds)
+    TextView tvEmultexSDS;
+    @BindView(R.id.tv_dl_seriec_tds)
+    TextView tvDlSeriesTDS;
+    @BindView(R.id.tv_dl_seriec_sds)
+    TextView tvDlSeriesSDS;
+    @BindView(R.id.tv_emultex_dl_tds)
+    TextView tvEmultexDlTDS;
+    @BindView(R.id.tv_emultex_dl_sds)
+    TextView tvEmultexDlSDS;
+    @BindView(R.id.tv_blendex_tds)
+    TextView tvBlendexTDS;
+    @BindView(R.id.tv_blendex_sds)
+    TextView tvBlendexSDS;
+    @BindView(R.id.tv_pirex_tds)
+    TextView tvPirexTDS;
+    @BindView(R.id.tv_pirex_ms_sds)
+    TextView tvPirexMsSDS;
+
 
     @BindView(R.id.layout_detonation_cord)
     RelativeLayout layoutDetonationCord;
@@ -76,6 +113,19 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
     @BindView(R.id.tv_daveynel_nonelectronic_sds)
     TextView tvDaveynelNonElectronics;
 
+    @BindView(R.id.iv_booster)
+    ImageView ivBooster;
+    @BindView(R.id.iv_bulk)
+    ImageView ivBulk;
+    @BindView(R.id.iv_cord)
+    ImageView ivCord;
+    @BindView(R.id.iv_electronic)
+    ImageView ivElectronics;
+    @BindView(R.id.iv_non_electronic)
+    ImageView ivNonElectronics;
+    @BindView(R.id.iv_thermo)
+    ImageView ivThermo;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -103,6 +153,23 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
         tvTDSBritex.setOnClickListener(this);
         tvSSBritex.setOnClickListener(this);
 
+        tvAnPrillTDS.setOnClickListener(this);
+        tvAnPrillSDS.setOnClickListener(this);
+        tvAnfomaxTDS.setOnClickListener(this);
+        tvAnfomaxSDS.setOnClickListener(this);
+        tvAeTDS.setOnClickListener(this);
+        tvAeSDS.setOnClickListener(this);
+        tvEmultexTDS.setOnClickListener(this);
+        tvEmultexSDS.setOnClickListener(this);
+        tvDlSeriesTDS.setOnClickListener(this);
+        tvDlSeriesSDS.setOnClickListener(this);
+        tvEmultexDlTDS.setOnClickListener(this);
+        tvEmultexDlSDS.setOnClickListener(this);
+        tvBlendexTDS.setOnClickListener(this);
+        tvBlendexSDS.setOnClickListener(this);
+        tvPirexTDS.setOnClickListener(this);
+        tvPirexMsSDS.setOnClickListener(this);
+
         tvTDSBritacord.setOnClickListener(this);
         tvSDSritacord.setOnClickListener(this);
 
@@ -125,12 +192,14 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
             @Override
             public void onClick(View v) {
                 if (check) {
+                    ivBooster.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                     tvTDSBooster.setVisibility(View.GONE);
                     tvSDSBritex.setVisibility(View.GONE);
                     tvTDSBritex.setVisibility(View.GONE);
                     tvSSBritex.setVisibility(View.GONE);
                     check = false;
                 } else {
+                    ivBooster.setImageDrawable(getResources().getDrawable(R.drawable.up));
                     tvTDSBooster.setVisibility(View.VISIBLE);
                     tvSDSBritex.setVisibility(View.VISIBLE);
                     tvTDSBritex.setVisibility(View.VISIBLE);
@@ -145,8 +214,12 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
             public void onClick(View v) {
                 if (check) {
                     check = false;
+                    ivBulk.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    layoutBulk.setVisibility(View.GONE);
                 } else {
                     check = true;
+                    ivBulk.setImageDrawable(getResources().getDrawable(R.drawable.up));
+                    layoutBulk.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -155,10 +228,12 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
             @Override
             public void onClick(View v) {
                 if (check) {
+                    ivCord.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                     tvTDSBritacord.setVisibility(View.GONE);
                     tvSDSritacord.setVisibility(View.GONE);
                     check = false;
                 } else {
+                    ivCord.setImageDrawable(getResources().getDrawable(R.drawable.up));
                     tvTDSBritacord.setVisibility(View.VISIBLE);
                     tvSDSritacord.setVisibility(View.VISIBLE);
                     check = true;
@@ -170,12 +245,14 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
             @Override
             public void onClick(View v) {
                 if (check) {
+                    ivElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                     tvDaveytronicOP.setVisibility(View.GONE);
                     tvDaveytronicSDS.setVisibility(View.GONE);
                     tvDaveytronicUG.setVisibility(View.GONE);
                     tvDaveytronicSP.setVisibility(View.GONE);
                     check = false;
                 } else {
+                    ivElectronics.setImageDrawable(getResources().getDrawable(R.drawable.up));
                     tvDaveytronicOP.setVisibility(View.VISIBLE);
                     tvDaveytronicSDS.setVisibility(View.VISIBLE);
                     tvDaveytronicUG.setVisibility(View.VISIBLE);
@@ -189,12 +266,14 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
             @Override
             public void onClick(View v) {
                 if (check) {
+                    ivNonElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                     tvDaveynelTDS.setVisibility(View.GONE);
                     tvDaveynelSurfaceTDS.setVisibility(View.GONE);
                     tvDaveynelDualTDS.setVisibility(View.GONE);
                     tvDaveynelNonElectronics.setVisibility(View.GONE);
                     check = false;
                 } else {
+                    ivNonElectronics.setImageDrawable(getResources().getDrawable(R.drawable.up));
                     tvDaveynelTDS.setVisibility(View.VISIBLE);
                     tvDaveynelSurfaceTDS.setVisibility(View.VISIBLE);
                     tvDaveynelDualTDS.setVisibility(View.VISIBLE);
@@ -208,10 +287,12 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
             @Override
             public void onClick(View v) {
                 if (check) {
+                    ivThermo.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                     tvThermoSDS.setVisibility(View.GONE);
                     tvThermoTDS.setVisibility(View.GONE);
                     check = false;
                 } else {
+                    ivThermo.setImageDrawable(getResources().getDrawable(R.drawable.up));
                     tvThermoSDS.setVisibility(View.VISIBLE);
                     tvThermoTDS.setVisibility(View.VISIBLE);
                     check = true;
@@ -292,6 +373,72 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
                 break;
             case R.id.tv_daveynel_nonelectronic_sds:
                 bundle.putString("check_pdf", "sds_daveytronics_detonators.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+
+            //bulk products
+            case R.id.tv_an_prill_tds:
+                bundle.putString("check_pdf", "tds_an_prill.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_an_prill_sds:
+                bundle.putString("check_pdf", "sds_an_prill.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_anfomax_tds:
+                bundle.putString("check_pdf", "tds_anfomax.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_anfomax_sds:
+                bundle.putString("check_pdf", "sds_anfomax.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_ae_59_tds:
+                bundle.putString("check_pdf", "tds_ae_59.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_ae_59_sds:
+                bundle.putString("check_pdf", "sds_ae_59.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_emultex_tds:
+                bundle.putString("check_pdf", "tds_emultex_ms.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_emultex_sds:
+                bundle.putString("check_pdf", "sds_emultex_ms.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_dl_seriec_tds:
+                bundle.putString("check_pdf", "tds_dl_series.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_dl_seriec_sds:
+                bundle.putString("check_pdf", "sds_dl_series.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_emultex_dl_tds:
+                bundle.putString("check_pdf", "tds_emultex_ms_dl.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_emultex_dl_sds:
+                bundle.putString("check_pdf", "sds_emultex_ms_dl.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_blendex_tds:
+                bundle.putString("check_pdf", "tds_blendex.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_blendex_sds:
+                bundle.putString("check_pdf", "tds_blendex_ms.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_pirex_tds:
+                bundle.putString("check_pdf", "tds_pirex.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_pirex_ms_sds:
+                bundle.putString("check_pdf", "tds_pirex_ms.pdf");
                 GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
                 break;
         }

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.link.LinkHandler;
@@ -17,12 +18,15 @@ import com.github.barteksc.pdfviewer.model.LinkTapEvent;
 import com.github.barteksc.pdfviewer.scroll.ScrollHandle;
 import com.github.barteksc.pdfviewer.util.FitPolicy;
 import com.techease.enaexblaster.R;
+import com.techease.enaexblaster.utilities.GeneralUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class OpenPdfFragment extends Fragment {
     View view;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
     @BindView(R.id.pdfview)
     PDFView pdfView;
     @BindView(R.id.iv_rotate)
@@ -31,6 +35,7 @@ public class OpenPdfFragment extends Fragment {
     Bundle bundle;
 
     private float checkRotation = 1;
+    private boolean strScreen=false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,6 +51,7 @@ public class OpenPdfFragment extends Fragment {
         bundle = this.getArguments();
         if (bundle != null) {
             String strPdf = bundle.getString("check_pdf");
+            strScreen = bundle.getBoolean("screen");
             showPDF(strPdf);
         }
 
@@ -77,12 +83,25 @@ public class OpenPdfFragment extends Fragment {
             }
         });
 
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(strScreen){
+                    GeneralUtils.connectFragment(getActivity(),new GuideLineFragment());
+                }
+                else {
+                    GeneralUtils.connectFragment(getActivity(),new ProductInfoFragment());
+                }
+
+            }
+        });
+
     }
 
     private void showPDF(String pdf) {
         pdfView.fromAsset(pdf)
                 .enableSwipe(true)
-                .swipeHorizontal(true)
+                .swipeHorizontal(false)
                 .enableDoubletap(true)
                 .enableSwipe(true)
                 .defaultPage(0)

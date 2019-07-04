@@ -74,12 +74,27 @@ public class VolumeCalculatorFragment extends Fragment {
     private boolean check = true;
     private boolean checkCalculator = true,checkWeight = false;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_volume_calculator, container, false);
         ButterKnife.bind(this,view);
+
+        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+
+
+        if(checkCalculator){
+            btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+            btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+            metricUnits();
+        }
+        else {
+            btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+            btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+            imperialUnits();
+        }
         initViews();
         return view;
     }
@@ -137,14 +152,11 @@ public class VolumeCalculatorFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                tvBurdenUnit.setText("m");
-                tvSpacingUnit.setText("m");
-                tvDepthUnit.setText("m");
-                tvDensityUnit.setText("g/cc");
                 checkCalculator = true;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
                 metricCalculation();
+                metricUnits();
             }
         });
 
@@ -153,14 +165,11 @@ public class VolumeCalculatorFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                tvBurdenUnit.setText("ft");
-                tvSpacingUnit.setText("ft");
-                tvDepthUnit.setText("ft");
-                tvDensityUnit.setText("g/cc");
                 checkCalculator = false;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
                 imperialCalculation();
+                imperialUnits();
             }
         });
 
@@ -343,4 +352,17 @@ public class VolumeCalculatorFragment extends Fragment {
         }
     }
 
+    private void metricUnits(){
+        tvBurdenUnit.setText("m");
+        tvSpacingUnit.setText("m");
+        tvDepthUnit.setText("m");
+        tvDensityUnit.setText("g/cc");
+    }
+
+    private void imperialUnits(){
+        tvBurdenUnit.setText("ft");
+        tvSpacingUnit.setText("ft");
+        tvDepthUnit.setText("ft");
+        tvDensityUnit.setText("g/cc");
+    }
 }

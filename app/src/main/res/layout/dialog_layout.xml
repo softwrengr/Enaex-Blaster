@@ -8,10 +8,10 @@
 
 
     <TextView
-        android:id="@+id/tv_one"
+        android:id="@+id/tv_metric"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="textview"
+        android:text="Metric"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:layout_marginTop="20dp"
@@ -19,37 +19,16 @@
         android:layout_marginLeft="20dp"/>
 
     <TextView
-        android:id="@+id/tv_two"
+        android:id="@+id/tv_imperail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="textview"
+        android:text="Imperial"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:layout_marginTop="20dp"
         android:textStyle="bold"
         android:layout_marginLeft="20dp"/>
 
-    <TextView
-        android:id="@+id/tv_three"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="textview"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"/>
-
-    <TextView
-        android:id="@+id/tv_four"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="textview"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"/>
 
     <TextView
         android:id="@+id/tv_cancel"

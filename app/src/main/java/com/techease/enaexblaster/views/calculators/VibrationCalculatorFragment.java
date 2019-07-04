@@ -60,12 +60,29 @@ public class VibrationCalculatorFragment extends Fragment {
     private boolean check = true;
     private boolean checkCalculator = true;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_vibration_calculator, container, false);
         ButterKnife.bind(this,view);
+
+        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+
+
+        if(checkCalculator){
+            btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+            btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+            tvDistanceUnit.setText("m");
+            tvMicUnit.setText("kg");
+        }
+        else {
+            btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+            btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+            tvDistanceUnit.setText("ft");
+            tvMicUnit.setText("lb");
+        }
         initViews();
         return view;
     }

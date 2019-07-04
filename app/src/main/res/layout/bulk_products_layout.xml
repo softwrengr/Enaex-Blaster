@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_an_prill_tds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AN Prill - TDS"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_an_prill_sds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_tds_booster"
+        android:text="AN Prill - SDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_anfomax_tds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_sds_britex"
+        android:text="ANFOMAX - TDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_anfomax_sds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_tds_britex"
+        android:text="ANFOMAX - SDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_ae_59_tds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AE 59 - TDS"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_ae_59_sds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_tds_booster"
+        android:text="AE 59 - SDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_emultex_tds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_sds_britex"
+        android:text="EMULTEX MS - TDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_emultex_sds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_tds_britex"
+        android:text="EMULTEX MS - SDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_dl_seriec_tds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_sds_britex"
+        android:text="DL Series - TDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_dl_seriec_sds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_tds_britex"
+        android:text="DL Series - SDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_emultex_dl_tds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_sds_britex"
+        android:text="EMULTEX MS DL - TDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_emultex_dl_sds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_tds_britex"
+        android:text="EMULTEX MS DL - SDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_blendex_tds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_sds_britex"
+        android:text="Blendex - TDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_blendex_sds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_tds_britex"
+        android:text="Blendex MS - SDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_pirex_tds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_sds_britex"
+        android:text="Pirex - TDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_pirex_ms_sds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_tds_britex"
+        android:text="Pirex MS - TDS"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

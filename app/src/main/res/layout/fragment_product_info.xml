@@ -72,13 +72,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Boosters"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:layout_marginLeft="20dp"
                         android:gravity="center"
                         android:layout_marginTop="10dp"/>
 
                     <ImageView
-                        android:id="@+id/iv"
+                        android:id="@+id/iv_booster"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginRight="10dp"
@@ -92,7 +92,7 @@
                         android:id="@+id/tv_tds_booster"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/iv"
+                        android:layout_below="@id/iv_booster"
                         android:text="APD-P Series Boosters - TDS"
                         android:background="@drawable/textview_back"
                         android:padding="5dp"
@@ -171,13 +171,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Bulk Products"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:layout_marginLeft="20dp"
                         android:gravity="center"
                         android:layout_marginTop="10dp"/>
 
                     <ImageView
-                        android:id="@+id/sds"
+                        android:id="@+id/iv_bulk"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginRight="10dp"
@@ -185,17 +185,18 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="12dp"/>
 
-                    <TextView
-                        android:id="@+id/tv_ds_booster"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/sds"
-                        android:text="APD-P Series Boosters - TDS"
-                        android:layout_marginLeft="20dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
 
+                   <RelativeLayout
+                       android:id="@+id/bulk_layout"
+                       android:layout_below="@id/iv_bulk"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:visibility="gone">
+
+                       <include
+                           layout="@layout/bulk_products_layout"/>
+
+                   </RelativeLayout>
 
                 </RelativeLayout>
 
@@ -219,13 +220,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Detonation Cord"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:layout_marginLeft="20dp"
                         android:gravity="center"
                         android:layout_marginTop="10dp"/>
 
                     <ImageView
-                        android:id="@+id/cord"
+                        android:id="@+id/iv_cord"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginRight="10dp"
@@ -237,7 +238,7 @@
                         android:id="@+id/tv_tds_britacord"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/cord"
+                        android:layout_below="@id/iv_cord"
                         android:text="Britacord - TDS"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="30dp"
@@ -284,7 +285,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Electronic Detonators"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:layout_marginLeft="20dp"
                         android:gravity="center"
                         android:layout_marginTop="10dp"/>
@@ -376,7 +377,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Non Electronic Detonators"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:layout_marginLeft="20dp"
                         android:gravity="center"
                         android:layout_marginTop="10dp"/>
@@ -470,7 +471,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Thermo Tube"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:layout_marginLeft="20dp"
                         android:gravity="center"
                         android:layout_marginTop="10dp"/>

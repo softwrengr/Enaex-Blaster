@@ -102,7 +102,6 @@
                             android:id="@+id/btn_metric"
                             android:layout_width="0dp"
                             android:layout_height="35dp"
-                            android:layout_below="@id/iv"
                             android:layout_marginLeft="20dp"
                             android:layout_weight="1"
                             android:background="@color/silver"
@@ -113,7 +112,6 @@
                             android:id="@+id/btn_imperail"
                             android:layout_width="0dp"
                             android:layout_height="35dp"
-                            android:layout_below="@id/iv"
                             android:layout_marginRight="20dp"
                             android:layout_weight="1"
                             android:background="@color/grey"
@@ -133,7 +131,6 @@
                             android:id="@+id/btn_weight"
                             android:layout_width="0dp"
                             android:layout_height="35dp"
-                            android:layout_below="@id/iv"
                             android:layout_marginLeft="20dp"
                             android:layout_weight="1"
                             android:background="@color/grey"
@@ -144,7 +141,6 @@
                             android:id="@+id/btn_volume"
                             android:layout_width="0dp"
                             android:layout_height="35dp"
-                            android:layout_below="@id/iv"
                             android:layout_marginRight="20dp"
                             android:layout_weight="1"
                             android:background="@color/silver"
@@ -173,7 +169,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginRight="20dp"
-                            android:checked="true" />
+                            android:checked="false" />
 
                     </RelativeLayout>
 
@@ -437,7 +433,8 @@
             <RelativeLayout
                 android:id="@+id/layout_distance"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
 
                 <TextView
@@ -474,7 +471,8 @@
             <RelativeLayout
                 android:id="@+id/layout_scal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/scaling"
@@ -502,7 +500,8 @@
             <RelativeLayout
                 android:id="@+id/layout_atten"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/attenuation"
@@ -659,7 +658,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="150dp"
@@ -686,7 +686,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="150dp"

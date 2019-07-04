@@ -27,7 +27,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class CalculatorByHoleFragment extends Fragment {
+public class CalculatorByHoleFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
     View view;
     @BindView(R.id.et_diameter)
     EditText etDiameter;
@@ -125,12 +125,33 @@ public class CalculatorByHoleFragment extends Fragment {
     private boolean checkCalculator = true;
     private boolean checkVolume = true;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_calculator_by_hole, container, false);
         ButterKnife.bind(this, view);
+
+        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+
+        if(checkCalculator){
+            tvLBS.setText("Kgs per Hole");
+            etDiameter.setText("270");
+            diameter = 270;
+            btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+            btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+            metrciUnits();
+        }
+        else {
+            tvLBS.setText("Lbs per Hole");
+            etDiameter.setText("10.625");
+            diameter = 10.625;
+            btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+            btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+            imperialUnits();
+        }
+
         initViews();
 
         layoutOption.setOnClickListener(new View.OnClickListener() {
@@ -159,15 +180,7 @@ public class CalculatorByHoleFragment extends Fragment {
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
                 metricCalculation();
-
-                tvDiameterUnit.setText("mm");
-                tvExplosiveDensityUnit.setText("g/cc");
-                tvBurdenrUnit.setText("m");
-                tvSpacingUnit.setText("m");
-                tvHoleLengthUnit.setText("m");
-                tvStemLengthrUnit.setText("m");
-                tvRockDensityUnit.setText("g/cc");
-                tvDistanceUnit.setText("m");
+                metrciUnits();
             }
         });
 
@@ -183,15 +196,9 @@ public class CalculatorByHoleFragment extends Fragment {
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
                 calculation();
+                imperialUnits();
 
-                tvDiameterUnit.setText("in");
-                tvExplosiveDensityUnit.setText("g/cc");
-                tvBurdenrUnit.setText("ft");
-                tvSpacingUnit.setText("ft");
-                tvHoleLengthUnit.setText("ft");
-                tvStemLengthrUnit.setText("ft");
-                tvRockDensityUnit.setText("g/cc");
-                tvDistanceUnit.setText("ft");
+
             }
         });
 
@@ -225,25 +232,7 @@ public class CalculatorByHoleFragment extends Fragment {
             }
         });
 
-        switchHole.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    layoutDistance.setVisibility(View.VISIBLE);
-                    layoutScaling.setVisibility(View.VISIBLE);
-                    layoutAttenuation.setVisibility(View.VISIBLE);
-                    layoutPPV.setVisibility(View.VISIBLE);
-                    layoutSD.setVisibility(View.VISIBLE);
-                } else {
-                    layoutDistance.setVisibility(View.GONE);
-                    layoutScaling.setVisibility(View.GONE);
-                    layoutAttenuation.setVisibility(View.GONE);
-                    layoutPPV.setVisibility(View.GONE);
-                    layoutSD.setVisibility(View.GONE);
-                }
-            }
-        });
-
+        switchHole.setOnCheckedChangeListener(this);
 
         return view;
     }
@@ -634,4 +623,42 @@ public class CalculatorByHoleFragment extends Fragment {
         }
     }
 
+    private void  metrciUnits(){
+        tvDiameterUnit.setText("mm");
+        tvExplosiveDensityUnit.setText("g/cc");
+        tvBurdenrUnit.setText("m");
+        tvSpacingUnit.setText("m");
+        tvHoleLengthUnit.setText("m");
+        tvStemLengthrUnit.setText("m");
+        tvRockDensityUnit.setText("g/cc");
+        tvDistanceUnit.setText("m");
+    }
+
+    private void imperialUnits(){
+        tvDiameterUnit.setText("in");
+        tvExplosiveDensityUnit.setText("g/cc");
+        tvBurdenrUnit.setText("ft");
+        tvSpacingUnit.setText("ft");
+        tvHoleLengthUnit.setText("ft");
+        tvStemLengthrUnit.setText("ft");
+        tvRockDensityUnit.setText("g/cc");
+        tvDistanceUnit.setText("ft");
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+            layoutDistance.setVisibility(View.VISIBLE);
+            layoutScaling.setVisibility(View.VISIBLE);
+            layoutAttenuation.setVisibility(View.VISIBLE);
+            layoutPPV.setVisibility(View.VISIBLE);
+            layoutSD.setVisibility(View.VISIBLE);
+        } else {
+            layoutDistance.setVisibility(View.GONE);
+            layoutScaling.setVisibility(View.GONE);
+            layoutAttenuation.setVisibility(View.GONE);
+            layoutPPV.setVisibility(View.GONE);
+            layoutSD.setVisibility(View.GONE);
+        }
+    }
 }

@@ -95,18 +95,39 @@ public class PFCalculatorFragment extends Fragment {
 
     private boolean check = true, checkVolumeWeight = true,checkAirDeck=true;
     private boolean checkCalculator = true;
-    private double density = 0.00, diameter = 0, burden = 0, spacing = 0, stemmingLenght = 0,
+    private double density = 0.00, diameter = 270, burden = 0, spacing = 0, stemmingLenght = 0,
             holeLenght = 0, rockDensity = 0.00, airDeck = 0;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_pf, container, false);
         ButterKnife.bind(this, view);
+
+        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+
+        if(checkCalculator){
+            etDiameter.setText("270");
+            diameter = 270;
+            btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+            btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+            metricUnits();
+        }
+        else {
+            etDiameter.setText("10.625");
+            diameter = 10.625;
+            btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+            btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+            imperialUnits();
+        }
+
         initViews();
         return view;
     }
+
+
 
     private void initViews() {
         layoutOption.setOnClickListener(new View.OnClickListener() {
@@ -129,18 +150,13 @@ public class PFCalculatorFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = true;
+                etDiameter.setText("270");
+                diameter = 270;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
                 metricCalculator();
 
-                tvDiameterUnit.setText("mm");
-                tvExplosiveDensityUnit.setText("g/cc");
-                tvBurdenrUnit.setText("m");
-                tvSpacingUnit.setText("m");
-                tvHoleLengthUnit.setText("m");
-                tvStemLengthrUnit.setText("m");
-                tvRockDensityUnit.setText("g/cc");
-                tvAirDeckUnit.setText("m");
+
             }
         });
 
@@ -150,18 +166,13 @@ public class PFCalculatorFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = false;
+                etDiameter.setText("10.625");
+                diameter = 10.625;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
                 imperialCalculator();
 
-                tvDiameterUnit.setText("in");
-                tvExplosiveDensityUnit.setText("g/cc");
-                tvBurdenrUnit.setText("ft");
-                tvSpacingUnit.setText("ft");
-                tvHoleLengthUnit.setText("ft");
-                tvStemLengthrUnit.setText("ft");
-                tvRockDensityUnit.setText("g/cc");
-                tvAirDeckUnit.setText("ft");
+
             }
         });
 
@@ -531,5 +542,26 @@ public class PFCalculatorFragment extends Fragment {
             powderFactor = (value1 * value2) / (value3 * rockDensity * 0.841);
             tvResult.setText(String.format("%.2f",powderFactor)+ " lb/ton");
         }
+    }
+    private void imperialUnits() {
+        tvDiameterUnit.setText("in");
+        tvExplosiveDensityUnit.setText("g/cc");
+        tvBurdenrUnit.setText("ft");
+        tvSpacingUnit.setText("ft");
+        tvHoleLengthUnit.setText("ft");
+        tvStemLengthrUnit.setText("ft");
+        tvRockDensityUnit.setText("g/cc");
+        tvAirDeckUnit.setText("ft");
+    }
+
+    private void metricUnits() {
+        tvDiameterUnit.setText("mm");
+        tvExplosiveDensityUnit.setText("g/cc");
+        tvBurdenrUnit.setText("m");
+        tvSpacingUnit.setText("m");
+        tvHoleLengthUnit.setText("m");
+        tvStemLengthrUnit.setText("m");
+        tvRockDensityUnit.setText("g/cc");
+        tvAirDeckUnit.setText("m");
     }
 }

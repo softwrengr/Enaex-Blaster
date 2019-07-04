@@ -82,7 +82,7 @@
                         android:layout_marginTop="10dp"/>
 
                     <ImageView
-                        android:id="@+id/iv"
+                        android:id="@+id/iv_bench"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginRight="10dp"
@@ -94,7 +94,7 @@
                         android:id="@+id/tv_definition"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/iv"
+                        android:layout_below="@id/iv_bench"
                         android:text="Bench Definition"
                         android:layout_marginLeft="20dp"
                         android:visibility="gone"
@@ -107,41 +107,6 @@
 
             </android.support.v7.widget.CardView>
 
-            <!--<android.support.v7.widget.CardView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:layout_marginLeft="25dp"-->
-                <!--android:layout_marginRight="25dp"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--app:cardCornerRadius="20dp">-->
-
-                <!--<RelativeLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent">-->
-
-
-                    <!--<TextView-->
-                        <!--android:layout_toRightOf="@+id/iv_mail"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:text="@string/blast"-->
-                        <!--android:textSize="20sp"-->
-                        <!--android:layout_marginLeft="20dp"-->
-                        <!--android:gravity="center"-->
-                        <!--android:layout_centerVertical="true"/>-->
-
-                    <!--<ImageView-->
-                        <!--android:layout_width="25dp"-->
-                        <!--android:layout_height="25dp"-->
-                        <!--android:layout_marginRight="10dp"-->
-                        <!--android:src="@drawable/down_arrow"-->
-                        <!--android:layout_alignParentEnd="true"-->
-                        <!--android:layout_centerVertical="true"/>-->
-
-
-                <!--</RelativeLayout>-->
-
-            <!--</android.support.v7.widget.CardView>-->
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -169,6 +134,7 @@
                         android:layout_marginTop="10dp"/>
 
                     <ImageView
+                        android:id="@+id/iv_loading"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginRight="10dp"
@@ -229,6 +195,7 @@
                         android:layout_marginTop="10dp"/>
 
                     <ImageView
+                        android:id="@+id/iv_rock"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginRight="10dp"
@@ -275,6 +242,7 @@
                         android:layout_marginTop="10dp"/>
 
                     <ImageView
+                        android:id="@+id/iv_sdob"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginRight="10dp"

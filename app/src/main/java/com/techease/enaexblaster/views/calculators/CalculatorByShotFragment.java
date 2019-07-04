@@ -163,12 +163,29 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     private boolean checkSubDrillStandOFF = true;
     private boolean checkHoleRowCount = true;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_calculator_by_shot, container, false);
         ButterKnife.bind(this, view);
+        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+
+        if(checkCalculator){
+            etDiameter.setText("270");
+            diameter = 270;
+            btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+            btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+            metricUnits();
+        }
+        else {
+            etDiameter.setText("10.625");
+            diameter = 10.625;
+            btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+            btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+            imperialUnits();
+        }
         intiViews();
         return view;
     }
@@ -208,14 +225,8 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
                 metricCalculator();
+                metricUnits();
 
-                tvDiameterUnit.setText("mm");
-                tvExplosiveDensityUnit.setText("g/cc");
-                tvBurdenrUnit.setText("m");
-                tvSpacingUnit.setText("m");
-                tvStemLengthrUnit.setText("m");
-                tvRockDensityUnit.setText("g/cc");
-                tvDistanceUnit.setText("m");
             }
         });
 
@@ -230,14 +241,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
                 imperialCalculator();
-
-                tvDiameterUnit.setText("in");
-                tvExplosiveDensityUnit.setText("g/cc");
-                tvBurdenrUnit.setText("ft");
-                tvSpacingUnit.setText("ft");
-                tvStemLengthrUnit.setText("ft");
-                tvRockDensityUnit.setText("g/cc");
-                tvDistanceUnit.setText("ft");
+                imperialUnits();
             }
         });
 
@@ -971,6 +975,26 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             layoutAttenuation.setVisibility(View.GONE);
             layoutVibrationOnOff.setVisibility(View.GONE);
         }
+    }
+
+    private void metricUnits(){
+        tvDiameterUnit.setText("mm");
+        tvExplosiveDensityUnit.setText("g/cc");
+        tvBurdenrUnit.setText("m");
+        tvSpacingUnit.setText("m");
+        tvStemLengthrUnit.setText("m");
+        tvRockDensityUnit.setText("g/cc");
+        tvDistanceUnit.setText("m");
+    }
+
+    private void imperialUnits(){
+        tvDiameterUnit.setText("in");
+        tvExplosiveDensityUnit.setText("g/cc");
+        tvBurdenrUnit.setText("ft");
+        tvSpacingUnit.setText("ft");
+        tvStemLengthrUnit.setText("ft");
+        tvRockDensityUnit.setText("g/cc");
+        tvDistanceUnit.setText("ft");
     }
 
 

@@ -61,18 +61,39 @@ public class SDOBCalculatorFragment extends Fragment {
     @BindView(R.id.tv_stem_unit)
     TextView tvStemUnit;
 
-    double diameter = 0, density = 0, holeLenght = 0, stemLenght =0;
+    double diameter = 270, density = 0, holeLenght = 0, stemLenght =0;
     private boolean check = true;
     private boolean checkCalculator = true;
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view =  inflater.inflate(R.layout.fragment_sdobcalculator, container, false);
         ButterKnife.bind(this,view);
+
+        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+
+
+        if(checkCalculator){
+            etDiameter.setText("270");
+            diameter = 270;
+            btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+            btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+            metricUnits();
+        }
+        else {
+            etDiameter.setText("10.625");
+            diameter = 10.625;
+            btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+            btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+            imperialUnits();
+        }
+
         initViews();
         return view;
     }
+
 
     private void  initViews(){
         ivBack.setOnClickListener(new View.OnClickListener() {
@@ -102,15 +123,12 @@ public class SDOBCalculatorFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = true;
+                etDiameter.setText("270");
+                diameter = 270;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
                 metricCalculator();
-
-                tvDiameterUnit.setText("mm");
-                tvExplosiveUnit.setText("g/cc");
-                tvLenghtUnit.setText("m");
-                tvStemUnit.setText("m");
-
+                metricUnits();
             }
         });
 
@@ -120,14 +138,12 @@ public class SDOBCalculatorFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = false;
+                etDiameter.setText("10.625");
+                diameter = 10.625;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
                 imperialCalculator();
-
-                tvDiameterUnit.setText("in");
-                tvExplosiveUnit.setText("g/cc");
-                tvLenghtUnit.setText("ft");
-                tvStemUnit.setText("ft");
+                imperialUnits();
             }
         });
 
@@ -295,4 +311,19 @@ public class SDOBCalculatorFragment extends Fragment {
 
         tvResult.setText(String.format("%.1f", SDOB) + " ft/∛lb");
     }
+
+    private void imperialUnits() {
+        tvDiameterUnit.setText("in");
+        tvExplosiveUnit.setText("g/cc");
+        tvLenghtUnit.setText("ft");
+        tvStemUnit.setText("ft");
+    }
+
+    private void metricUnits() {
+        tvDiameterUnit.setText("mm");
+        tvExplosiveUnit.setText("g/cc");
+        tvLenghtUnit.setText("m");
+        tvStemUnit.setText("m");
+    }
+
 }

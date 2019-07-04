@@ -36,10 +36,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     TextView tvRegions;
     @BindView(R.id.tv_units)
     TextView tvUnits;
-    String strLanguage,strRegion,strUnit,strData;
+    String strMeaurmentUnit;
     Dialog dialog;
 
-    TextView tvOne, tvTwo, tvThree, tvFour, tvCancel;
+    TextView tvMetric, tvImperial, tvCancel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +48,13 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         view = inflater.inflate(R.layout.fragment_setting, container, false);
         ButterKnife.bind(this, view);
         initViews();
+
+        if(GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true)){
+            tvUnits.setText("Metric");
+        }
+        else {
+            tvUnits.setText("Imperial");
+        }
         return view;
     }
 
@@ -55,21 +62,20 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         layoutLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog("English", "Francais", "Espanol", "", "language");
+
             }
         });
 
         layoutRegion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog("North America", "South America", "Asia Pacific", "EMEA", "region");
             }
         });
 
         layoutUnits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog("Metric", "Imperial", "", "", "unit");
+                showDialog("Metric", "Imperial");
             }
         });
 
@@ -81,24 +87,20 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         });
     }
 
-    private void showDialog(String strOne, String strTwo, String strThree, String strFour, final String check) {
+    private void showDialog(String strOne, String strTwo) {
         dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.dialog_layout);
-        tvOne = dialog.findViewById(R.id.tv_one);
-        tvTwo = dialog.findViewById(R.id.tv_two);
-        tvThree = dialog.findViewById(R.id.tv_three);
-        tvFour = dialog.findViewById(R.id.tv_four);
+        tvMetric = dialog.findViewById(R.id.tv_metric);
+        tvImperial = dialog.findViewById(R.id.tv_imperail);
         tvCancel = dialog.findViewById(R.id.tv_cancel);
 
-        tvOne.setText(strOne);
-        tvTwo.setText(strTwo);
-        tvThree.setText(strThree);
-        tvFour.setText(strFour);
+        tvMetric.setText(strOne);
+        tvImperial.setText(strTwo);
 
-        tvOne.setOnClickListener(this);
-        tvTwo.setOnClickListener(this);
-        tvThree.setOnClickListener(this);
-        tvFour.setOnClickListener(this);
+
+        tvMetric.setOnClickListener(this);
+        tvImperial.setOnClickListener(this);
+
 
         tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,20 +115,16 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
       switch (v.getId()){
-          case R.id.tv_one:
-              strData = tvOne.getText().toString();
+          case R.id.tv_metric:
+              GeneralUtils.putBooleanValueInEditor(getActivity(),"check_unit",true);
+              strMeaurmentUnit = tvMetric.getText().toString();
+              tvUnits.setText(strMeaurmentUnit);
               dialog.dismiss();
               break;
-          case R.id.tv_two:
-              strData = tvOne.getText().toString();
-              dialog.dismiss();
-              break;
-          case R.id.tv_three:
-              strData = tvOne.getText().toString();
-              dialog.dismiss();
-              break;
-          case R.id.tv_four:
-              strData = tvOne.getText().toString();
+          case R.id.tv_imperail:
+              GeneralUtils.putBooleanValueInEditor(getActivity(),"check_unit",false);
+              strMeaurmentUnit = tvImperial.getText().toString();
+              tvUnits.setText(strMeaurmentUnit);
               dialog.dismiss();
               break;
       }
