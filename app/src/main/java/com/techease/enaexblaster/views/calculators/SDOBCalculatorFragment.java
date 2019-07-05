@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.utilities.GeneralUtils;
@@ -60,29 +61,31 @@ public class SDOBCalculatorFragment extends Fragment {
     TextView tvLenghtUnit;
     @BindView(R.id.tv_stem_unit)
     TextView tvStemUnit;
+    @BindView(R.id.iv_graphics)
+    ImageView ivGraphics;
 
-    double diameter = 270, density = 0, holeLenght = 0, stemLenght =0;
+    double diameter = 270, density = 0, holeLenght = 0, stemLenght = 0, metricResult, imperailResult;
     private boolean check = true;
     private boolean checkCalculator = true;
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view =  inflater.inflate(R.layout.fragment_sdobcalculator, container, false);
-        ButterKnife.bind(this,view);
+        view = inflater.inflate(R.layout.fragment_sdobcalculator, container, false);
+        ButterKnife.bind(this, view);
 
-        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", true);
 
 
-        if(checkCalculator){
+        if (checkCalculator) {
             etDiameter.setText("270");
             diameter = 270;
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
             metricUnits();
-        }
-        else {
+        } else {
             etDiameter.setText("10.625");
             diameter = 10.625;
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
@@ -95,11 +98,11 @@ public class SDOBCalculatorFragment extends Fragment {
     }
 
 
-    private void  initViews(){
+    private void initViews() {
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragment(getActivity(),new CalculatorsHomeFragment());
+                GeneralUtils.connectFragment(getActivity(), new CalculatorsHomeFragment());
             }
         });
 
@@ -285,31 +288,34 @@ public class SDOBCalculatorFragment extends Fragment {
     }
 
     private void metricCalculator() {
-        double d,C,Wc,SDOB;
+        double d, C, Wc, SDOB;
 
-        d = stemLenght + (5 * (diameter/1000));
-        C = (density /1000) * (Math.PI * Math.pow((diameter / 2), 2));
-        Wc = C  * (10 *  (diameter/1000));
+        d = stemLenght + (5 * (diameter / 1000));
+        C = (density / 1000) * (Math.PI * Math.pow((diameter / 2), 2));
+        Wc = C * (10 * (diameter / 1000));
 
-        SDOB = d / Math.pow(Wc,0.3333);
+        SDOB = d / Math.pow(Wc, 0.3333);
+        metricResult = SDOB;
 
         tvResult.setText(String.format("%.2f", SDOB) + " m/∛kg");
+        checkGraphics();
     }
 
 
     private void imperialCalculator() {
-        double d,C,Wc,SDOB;
+        double d, C, Wc, SDOB;
 
-        d = stemLenght + (5 * diameter/12);
+        d = stemLenght + (5 * diameter / 12);
 
         C = (density * 62.4) * (Math.PI * Math.pow((diameter / 24), 2));
 
-        Wc = C  * (10 *  diameter/12);
+        Wc = C * (10 * diameter / 12);
 
-        SDOB = d / Math.pow(Wc,0.3333);
-
+        SDOB = d / Math.pow(Wc, 0.3333);
+        imperailResult = SDOB;
 
         tvResult.setText(String.format("%.1f", SDOB) + " ft/∛lb");
+        checkGraphics();
     }
 
     private void imperialUnits() {
@@ -324,6 +330,51 @@ public class SDOBCalculatorFragment extends Fragment {
         tvExplosiveUnit.setText("g/cc");
         tvLenghtUnit.setText("m");
         tvStemUnit.setText("m");
+    }
+
+    private void checkGraphics() {
+
+        if(checkCalculator){    //checking graphics for metric calculator
+            if (metricResult >= 0 && metricResult <= 0.6) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
+            } else if (metricResult >= 0.6 && metricResult <= 0.9) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
+            }
+            else if (metricResult >= 0.91 && metricResult <= 1.42) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
+            }
+            else if (metricResult >= 1.43 && metricResult <= 1.82) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
+            }
+            else if (metricResult >= 1.83 && metricResult <= 2.40) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
+            }
+            else if (metricResult >= 2.41) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
+            }
+        }
+        else {     //checking graphics for imperial calculator
+            if (imperailResult >= 0 && imperailResult <= 1.5) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
+            } else if (imperailResult >= 1.6 && imperailResult <= 2.2) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
+            }
+            else if (imperailResult >= 2.3 && imperailResult <= 3.5) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
+            }
+            else if (imperailResult >= 3.6 && imperailResult <= 4.5) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
+            }
+            else if (imperailResult >= 4.6 && imperailResult <= 6.0) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
+            }
+            else if (imperailResult >= 6.1) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
+            }
+        }
+
+
+
     }
 
 }
