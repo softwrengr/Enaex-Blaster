@@ -319,7 +319,7 @@
                 android:layout_gravity="center"
                 android:text="Result"
                 android:fontFamily="@font/bold"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/white"
                 android:textSize="22sp" />
 
             <LinearLayout

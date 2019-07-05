@@ -98,6 +98,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
     @BindView(R.id.iv_arrow)
     ImageView ivArrow;
 
+    @BindView(R.id.iv_graphics)
+    ImageView ivGraphics;
+
     @BindView(R.id.hole_diameter_unit)
     TextView tvDiameterUnit;
     @BindView(R.id.hole_exp_density_unit)
@@ -120,6 +123,8 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
 
     private double density = 0, diameter = 270, burden = 0, spacing = 0, holeLenght = 0, rockDensity = 0, stemming = 0,
             distance = 0, scallingFactor = 160, attenuation = -1.6;
+
+    private double metricResult,imperailResult;
 
     private boolean check = true;
     private boolean checkCalculator = true;
@@ -569,6 +574,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         SD = distance / Math.sqrt(explosivePerHole);
         PPV =  scallingFactor * (Math.pow(SD, attenuation));
 
+        imperailResult = sdob;
+        checkGraphics();
+
         if(checkVolume){
             tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " yd³");
             tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole))+ " lb");
@@ -604,6 +612,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         sdob = d / Math.pow(Wc,0.3333);
         SD = distance / Math.sqrt(explosivePerHole);
         PPV =  scallingFactor * (Math.pow(SD, attenuation));
+
+        metricResult = sdob;
+        checkGraphics();
 
         if(checkVolume){
             tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " m³");
@@ -659,6 +670,48 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
             layoutAttenuation.setVisibility(View.GONE);
             layoutPPV.setVisibility(View.GONE);
             layoutSD.setVisibility(View.GONE);
+        }
+    }
+
+    private void checkGraphics() {
+
+        if(checkCalculator){    //checking graphics for metric calculator
+            if (metricResult >= 0 && metricResult <= 0.6) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
+            } else if (metricResult >= 0.6 && metricResult <= 0.9) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
+            }
+            else if (metricResult >= 0.91 && metricResult <= 1.42) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
+            }
+            else if (metricResult >= 1.43 && metricResult <= 1.82) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
+            }
+            else if (metricResult >= 1.83 && metricResult <= 2.40) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
+            }
+            else if (metricResult >= 2.41) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
+            }
+        }
+        else {     //checking graphics for imperial calculator
+            if (imperailResult >= 0 && imperailResult <= 1.5) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
+            } else if (imperailResult >= 1.6 && imperailResult <= 2.2) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
+            }
+            else if (imperailResult >= 2.3 && imperailResult <= 3.5) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
+            }
+            else if (imperailResult >= 3.6 && imperailResult <= 4.5) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
+            }
+            else if (imperailResult >= 4.6 && imperailResult <= 6.0) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
+            }
+            else if (imperailResult >= 6.1) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
+            }
         }
     }
 }

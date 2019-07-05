@@ -100,6 +100,9 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     @BindView(R.id.calculator_shot_layout)
     LinearLayout layoutMetricImperial;
 
+    @BindView(R.id.iv_graphics)
+    ImageView ivGraphics;
+
     @BindView(R.id.btn_shot_metric)
     Button btnMetric;
     @BindView(R.id.btn_shot_imperail)
@@ -163,6 +166,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     private double explosiveDensity = 0, diameter = 270, burden = 0, spacing = 0, benchHeight = 0, subDrill = 0, stemming = 0, noOfRows = 0, holePerRows = 0,
             holePerMs = 0, distance = 0, scallingFactor = 160, attenuation = -1.6, numberOfHole = 0, rockDensity = 0;
 
+    private double metricResult,imperailResult;
     private boolean check = true;
     private boolean checkCalculator = true;
     private boolean checkVolume = true;
@@ -894,6 +898,9 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
 
         PPV = scallingFactor * (Math.pow(SD, attenuation));
 
+        metricResult = sdob;
+        checkGraphics();
+
 
         tvTotalHoles.setText(String.format("%.0f", NoOfHole));
         tvShotLenght.setText(String.format("%.1f", holeLength) + " m");
@@ -953,6 +960,9 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         SD = distance / Math.sqrt(MIC);
         PPV = scallingFactor * (Math.pow(SD, attenuation));
 
+        imperailResult = sdob;
+        checkGraphics();
+
 
         tvTotalHoles.setText(String.format("%.0f", NoOfHole));
         tvShotLenght.setText(String.format("%.2f", holeLength)+ " ft");
@@ -1006,5 +1016,48 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     }
 
 
-    //\u221a
+    private void checkGraphics() {
+
+        if(checkCalculator){    //checking graphics for metric calculator
+            if (metricResult >= 0 && metricResult <= 0.6) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
+            } else if (metricResult >= 0.6 && metricResult <= 0.9) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
+            }
+            else if (metricResult >= 0.91 && metricResult <= 1.42) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
+            }
+            else if (metricResult >= 1.43 && metricResult <= 1.82) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
+            }
+            else if (metricResult >= 1.83 && metricResult <= 2.40) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
+            }
+            else if (metricResult >= 2.41) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
+            }
+        }
+        else {     //checking graphics for imperial calculator
+            if (imperailResult >= 0 && imperailResult <= 1.5) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
+            } else if (imperailResult >= 1.6 && imperailResult <= 2.2) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
+            }
+            else if (imperailResult >= 2.3 && imperailResult <= 3.5) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
+            }
+            else if (imperailResult >= 3.6 && imperailResult <= 4.5) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
+            }
+            else if (imperailResult >= 4.6 && imperailResult <= 6.0) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
+            }
+            else if (imperailResult >= 6.1) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
+            }
+        }
+
+
+
+    }
 }

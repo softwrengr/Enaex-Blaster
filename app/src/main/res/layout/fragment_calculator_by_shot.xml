@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".views.calculators.CalculatorByShotFragment">
 
 
@@ -247,6 +248,14 @@
 
         </android.support.v7.widget.CardView>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -751,6 +760,7 @@ x`
             </RelativeLayout>
         </LinearLayout>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -765,7 +775,7 @@ x`
                 android:layout_gravity="center"
                 android:fontFamily="@font/bold"
                 android:text="Result"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/white"
                 android:textSize="22sp" />
 
             <LinearLayout
@@ -1111,10 +1121,25 @@ x`
                       android:textSize="17sp" />
 
               </LinearLayout>
+
           </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_graphics"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:src="@drawable/graphic1"
+                android:scaleType="fitXY"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-</ScrollView>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

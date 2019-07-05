@@ -372,9 +372,6 @@ public class SDOBCalculatorFragment extends Fragment {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
             }
         }
-
-
-
     }
 
 }
