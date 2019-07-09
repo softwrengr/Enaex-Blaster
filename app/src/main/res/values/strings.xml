@@ -2,7 +2,7 @@
     <string name="app_name">Enaex Blaster</string>
 
     <string name="name">Enaex</string>
-    <string name="leader">Leader in comprehensive\n  blasting services</string>
+    <string name="leader">Providing world class blasting solutions</string>
     <string name="calculator">Calculators</string>
     <string name="guide">Guidelines</string>
     <string name="product">Product Info</string>
@@ -14,9 +14,9 @@
     <string name="volume">Volume</string>
     <string name="explosive">Explosive Weight</string>
     <string name="powder">Powder Factor</string>
-    <string name="scaled">Scaled Depth fo Burial</string>
+    <string name="scaled">Scaled Depth of Burial</string>
     <string name="mail">Send us an email!</string>
-    <string name="visit">Visit out website!</string>
+    <string name="visit">Visit our website!</string>
     <string name="bench">Bench Definition</string>
     <string name="blast">Blast Design</string>
     <string name="loading">Loading Charts</string>
@@ -30,6 +30,8 @@
 
     <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries but also the leap into electronic typesetting, remaining essentially unchanged</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_us">Enaex is a world leader in blasting services with our experts and technology located
+    in North and South America,Australia,Asia and Africa</string>
+    <string name="privacy_policy">The Application does not collect and send any user information to
+    Enaex.Information is only sent to intended recipients for the operating purposes of the application.</string>
 </resources>

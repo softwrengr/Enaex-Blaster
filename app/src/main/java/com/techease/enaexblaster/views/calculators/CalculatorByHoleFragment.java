@@ -23,6 +23,8 @@ import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
+import java.text.DecimalFormat;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -119,12 +121,10 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
     TextView tvDistanceUnit;
 
 
-
-
-    private double density = 0, diameter = 270, burden = 0, spacing = 0, holeLenght = 0, rockDensity = 0, stemming = 0,
+    private double density = 0, diameter = 0, burden = 0, spacing = 0, holeLenght = 0, rockDensity = 0, stemming = 0,
             distance = 0, scallingFactor = 160, attenuation = -1.6;
 
-    private double metricResult,imperailResult;
+    private double metricResult, imperailResult;
 
     private boolean check = true;
     private boolean checkCalculator = true;
@@ -138,20 +138,15 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         view = inflater.inflate(R.layout.fragment_calculator_by_hole, container, false);
         ButterKnife.bind(this, view);
 
-        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", true);
 
-        if(checkCalculator){
+        if (checkCalculator) {
             tvLBS.setText("Kgs per Hole");
-            etDiameter.setText("270");
-            diameter = 270;
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
             metrciUnits();
-        }
-        else {
+        } else {
             tvLBS.setText("Lbs per Hole");
-            etDiameter.setText("10.625");
-            diameter = 10.625;
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
             imperialUnits();
@@ -179,13 +174,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkCalculator = true;
-                tvLBS.setText("Kgs per Hole");
-                etDiameter.setText("270");
-                diameter = 270;
-                btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
-                btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
-                metricCalculation();
-                metrciUnits();
+                switchToMetric(); //all values converting to metric calculator
             }
         });
 
@@ -195,13 +184,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkCalculator = false;
-                tvLBS.setText("Lbs per Hole");
-                etDiameter.setText("10.625");
-                diameter = 10.625;
-                btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
-                btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
-                calculation();
-                imperialUnits();
+                switchToImperial();  //all values converting to imperial calculator
 
 
             }
@@ -558,7 +541,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
     }
 
     private void calculation() {
-        double volume,weight,explosivePerHole,PFVolume,PFWeight,sdob,SD,PPV,d,Wc,chargeUnit;
+        double volume, weight, explosivePerHole, PFVolume, PFWeight, sdob, SD, PPV, d, Wc, chargeUnit;
 
         volume = (burden * spacing * holeLenght) / 27;
         weight = ((burden * spacing * holeLenght) / 27) * rockDensity * 0.841;
@@ -567,37 +550,36 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         PFVolume = explosivePerHole / volume;
         PFWeight = explosivePerHole / weight;
 
-        d = stemming + (5 * (diameter/12));
+        d = stemming + (5 * (diameter / 12));
         chargeUnit = (density * 62.4) * (Math.PI * Math.pow((diameter / 24), 2));
-        Wc =  chargeUnit * (10 *  (diameter/12));
-        sdob = d / Math.pow(Wc,0.3333);
+        Wc = chargeUnit * (10 * (diameter / 12));
+        sdob = d / Math.pow(Wc, 0.3333);
         SD = distance / Math.sqrt(explosivePerHole);
-        PPV =  scallingFactor * (Math.pow(SD, attenuation));
+        PPV = scallingFactor * (Math.pow(SD, attenuation));
 
         imperailResult = sdob;
         checkGraphics();
 
-        if(checkVolume){
+        if (checkVolume) {
             tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " yd³");
-            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole))+ " lb");
-            tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume))+ " lb/yd³");
-            tvSDOB.setText(String.format("%.1f", Double.valueOf(sdob))+ " ft∛lb");
-            tvSD.setText(String.format("%.1f", Double.valueOf(SD))+ " ft√lb");
-            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV))+ " in/s");
-        }
-        else {
-            tvVolume.setText(String.format("%.0f", Double.valueOf(weight))+ " ton");
-            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole))+ " lb");
-            tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight))+ " lb/ton");
-            tvSDOB.setText(String.format("%.1f", Double.valueOf(sdob))+ " ft∛lb");
-            tvSD.setText(String.format("%.1f", Double.valueOf(SD))+ " ft√lb");
-            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV))+ " in/s");
+            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole)) + " lb");
+            tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume)) + " lb/yd³");
+            tvSDOB.setText(String.format("%.1f", Double.valueOf(sdob)) + " ft∛lb");
+            tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " ft√lb");
+            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)) + " in/s");
+        } else {
+            tvVolume.setText(String.format("%.0f", Double.valueOf(weight)) + " ton");
+            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole)) + " lb");
+            tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight)) + " lb/ton");
+            tvSDOB.setText(String.format("%.1f", Double.valueOf(sdob)) + " ft∛lb");
+            tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " ft√lb");
+            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)) + " in/s");
         }
 
     }
 
     private void metricCalculation() {
-        double volume,weight,explosivePerHole,PFVolume,PFWeight,sdob,SD,PPV,d,Wc,chargeUnit;
+        double volume, weight, explosivePerHole, PFVolume, PFWeight, sdob, SD, PPV, d, Wc, chargeUnit;
 
         volume = (burden * spacing * holeLenght);
         weight = (burden * spacing * holeLenght) * rockDensity;
@@ -606,35 +588,34 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         PFVolume = explosivePerHole / volume;
         PFWeight = explosivePerHole / weight;
 
-        d = stemming + (5 * (diameter/1000));
-        chargeUnit = (density /1000) * (Math.PI * Math.pow((diameter / 2), 2));
-        Wc =  chargeUnit * (10 *  (diameter/1000));
-        sdob = d / Math.pow(Wc,0.3333);
+        d = stemming + (5 * (diameter / 1000));
+        chargeUnit = (density / 1000) * (Math.PI * Math.pow((diameter / 2), 2));
+        Wc = chargeUnit * (10 * (diameter / 1000));
+        sdob = d / Math.pow(Wc, 0.3333);
         SD = distance / Math.sqrt(explosivePerHole);
-        PPV =  scallingFactor * (Math.pow(SD, attenuation));
+        PPV = scallingFactor * (Math.pow(SD, attenuation));
 
         metricResult = sdob;
         checkGraphics();
 
-        if(checkVolume){
+        if (checkVolume) {
             tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " m³");
-            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole))+ " kg");
+            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole)) + " kg");
             tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume)) + " kg/m³");
             tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)) + " m∛kg");
             tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " m/√kg");
             tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)) + " mm/s");
-        }
-        else {
-            tvVolume.setText(String.format("%.0f", Double.valueOf(weight))+ " tonne");
-            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole))+ " kg");
-            tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight))+ " kg/tonne");
-            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob))+ " m∛kg");
-            tvSD.setText(String.format("%.1f", Double.valueOf(SD))+ " m/√kg");
-            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV))+ " mm/s");
+        } else {
+            tvVolume.setText(String.format("%.0f", Double.valueOf(weight)) + " tonne");
+            tvLBSHole.setText(String.format("%.0f", Double.valueOf(explosivePerHole)) + " kg");
+            tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight)) + " kg/tonne");
+            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)) + " m∛kg");
+            tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " m/√kg");
+            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)) + " mm/s");
         }
     }
 
-    private void  metrciUnits(){
+    private void metrciUnits() {
         tvDiameterUnit.setText("mm");
         tvExplosiveDensityUnit.setText("g/cc");
         tvBurdenrUnit.setText("m");
@@ -645,7 +626,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         tvDistanceUnit.setText("m");
     }
 
-    private void imperialUnits(){
+    private void imperialUnits() {
         tvDiameterUnit.setText("in");
         tvExplosiveDensityUnit.setText("g/cc");
         tvBurdenrUnit.setText("ft");
@@ -675,43 +656,92 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
 
     private void checkGraphics() {
 
-        if(checkCalculator){    //checking graphics for metric calculator
+        if (checkCalculator) {    //checking graphics for metric calculator
             if (metricResult >= 0 && metricResult <= 0.6) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
             } else if (metricResult >= 0.6 && metricResult <= 0.9) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
-            }
-            else if (metricResult >= 0.91 && metricResult <= 1.42) {
+            } else if (metricResult >= 0.91 && metricResult <= 1.42) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
-            }
-            else if (metricResult >= 1.43 && metricResult <= 1.82) {
+            } else if (metricResult >= 1.43 && metricResult <= 1.82) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
-            }
-            else if (metricResult >= 1.83 && metricResult <= 2.40) {
+            } else if (metricResult >= 1.83 && metricResult <= 2.40) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
-            }
-            else if (metricResult >= 2.41) {
+            } else if (metricResult >= 2.41) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
             }
-        }
-        else {     //checking graphics for imperial calculator
+        } else {     //checking graphics for imperial calculator
             if (imperailResult >= 0 && imperailResult <= 1.5) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
             } else if (imperailResult >= 1.6 && imperailResult <= 2.2) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
-            }
-            else if (imperailResult >= 2.3 && imperailResult <= 3.5) {
+            } else if (imperailResult >= 2.3 && imperailResult <= 3.5) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
-            }
-            else if (imperailResult >= 3.6 && imperailResult <= 4.5) {
+            } else if (imperailResult >= 3.6 && imperailResult <= 4.5) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
-            }
-            else if (imperailResult >= 4.6 && imperailResult <= 6.0) {
+            } else if (imperailResult >= 4.6 && imperailResult <= 6.0) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
-            }
-            else if (imperailResult >= 6.1) {
+            } else if (imperailResult >= 6.1) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
             }
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToMetric() {
+        tvLBS.setText("Kgs per Hole");
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+
+        burden = burden / 3.281;
+        spacing = spacing / 3.281;
+        holeLenght = holeLenght / 3.281;
+        stemming = stemming / 3.281;
+        distance =distance / 3.281;
+
+        scallingFactor = 1140;
+
+        etBurden.setText(String.format("%.1f", Double.valueOf(burden)));
+        etSpacing.setText(String.format("%.1f", Double.valueOf(spacing)));
+        etHoleLenght.setText(String.format("%.1f", Double.valueOf(holeLenght)));
+        etStemming.setText(String.format("%.1f", Double.valueOf(stemming)));
+        etDistance.setText(String.format("%.1f", Double.valueOf(distance)));
+        etScallingFactor.setText(String.format("%.0f", Double.valueOf(scallingFactor)));
+
+        metricCalculation();
+        metrciUnits();
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToImperial() {
+        tvLBS.setText("Lbs per Hole");
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+        DecimalFormat decimalFormat = new DecimalFormat("#.0");
+
+        burden = burden * 3.281;
+        spacing = spacing * 3.281;
+        holeLenght = holeLenght * 3.281;
+        stemming = stemming * 3.281;
+        distance =distance * 3.281;
+
+        scallingFactor = 160;
+
+        decimalFormat.format(burden);
+        decimalFormat.format(spacing);
+        decimalFormat.format(holeLenght);
+        decimalFormat.format(stemming);
+        decimalFormat.format(distance);
+
+        etBurden.setText(String.format("%.0f", Double.valueOf(burden)));
+        etSpacing.setText(String.format("%.0f", Double.valueOf(spacing)));
+        etHoleLenght.setText(String.format("%.0f", Double.valueOf(holeLenght)));
+        etStemming.setText(String.format("%.0f", Double.valueOf(stemming)));
+        etDistance.setText(String.format("%.1f", Double.valueOf(distance)));
+        etScallingFactor.setText(String.format("%.0f", Double.valueOf(scallingFactor)));
+
+        calculation();
+        imperialUnits();
     }
 }

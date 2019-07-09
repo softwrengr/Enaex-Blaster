@@ -26,11 +26,11 @@
 
             <ImageView
                 android:id="@+id/name"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/background" />
+                android:src="@mipmap/background" />
         </RelativeLayout>
 
         <TextView
@@ -211,7 +211,7 @@
                     android:layout_width="220dp"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
-                    android:text="270"
+                    android:hint="0"
                     android:imeOptions="actionNext"
                     android:inputType="numberSigned|numberDecimal" />
 
@@ -715,17 +715,23 @@
 
             </LinearLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="10dp"
+            android:background="@color/white">
             <ImageView
                 android:id="@+id/iv_graphics"
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="match_parent"
                 android:src="@drawable/graphic1"
-                android:scaleType="fitXY"
+                android:scaleType="fitCenter"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_gravity="center"/>
+        </RelativeLayout>
         </LinearLayout>
 
 

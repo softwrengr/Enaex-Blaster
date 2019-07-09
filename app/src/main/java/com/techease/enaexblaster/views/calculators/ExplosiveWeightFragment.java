@@ -66,7 +66,7 @@ public class ExplosiveWeightFragment extends Fragment {
     @BindView(R.id.tv_stem_unit)
     TextView tvStemUnit;
 
-    double diameter = 270, density = 0, holeLenght = 0, stemLenght =0;
+    double diameter = 0, density = 0, holeLenght = 0, stemLenght =0;
     private boolean check = true;
     private boolean checkCalculator = true;
 
@@ -81,15 +81,11 @@ public class ExplosiveWeightFragment extends Fragment {
         checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
 
         if(checkCalculator){
-            etDiameter.setText("270");
-            diameter = 270;
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
             metricUnits();
         }
         else {
-            etDiameter.setText("10.625");
-            diameter = 10.625;
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
             imperialUnits();
@@ -126,8 +122,6 @@ public class ExplosiveWeightFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = true;
-                etDiameter.setText("270");
-                diameter = 270;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
                 metricCalculator();
@@ -142,8 +136,6 @@ public class ExplosiveWeightFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = false;
-                etDiameter.setText("10.625");
-                diameter = 10.625;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
                 imperialCalculator();

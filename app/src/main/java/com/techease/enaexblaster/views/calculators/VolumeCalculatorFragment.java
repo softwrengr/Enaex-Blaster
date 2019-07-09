@@ -70,7 +70,7 @@ public class VolumeCalculatorFragment extends Fragment {
     @BindView(R.id.tv_density_unit)
     TextView tvDensityUnit;
 
-    private double burden = 0, spacing = 0, averageDepth = 0,rockDensity=0,noOfHOles=0;
+    private double burden = 0, spacing = 0, averageDepth = 0,rockDensity=0,noOfHOles=1;
     private boolean check = true;
     private boolean checkCalculator = true,checkWeight = false;
 
@@ -308,7 +308,7 @@ public class VolumeCalculatorFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 if (s.toString().equals("")) {
-                    noOfHOles = 0;
+                    noOfHOles = 1;
                 } else {
                     try {
                         noOfHOles = Double.parseDouble(s.toString().replace(',', '.'));
@@ -342,11 +342,11 @@ public class VolumeCalculatorFragment extends Fragment {
     }
 
     private void metricCalculation() {
-        if(checkWeight){
+        if(checkWeight){ //if weight is selected
             double volume = (burden * spacing * averageDepth) * rockDensity * noOfHOles;
             tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " tonnes");
         }
-        else {
+        else { //if volume if selected
             double volume = (burden * spacing * averageDepth) * noOfHOles;
             tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " m³");
         }

@@ -24,9 +24,9 @@
 
             <ImageView
                 android:id="@+id/name"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:src="@drawable/background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/background"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"/>
         </RelativeLayout>
@@ -268,39 +268,6 @@
                     android:layout_toRightOf="@id/et_stem_lenght"/>
 
             </RelativeLayout>
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="20dp"-->
-                <!--android:textColor="@color/colorAccent"-->
-                <!--android:text="Total No of Holes"-->
-                <!--android:textSize="18sp" />-->
-
-            <!--<RelativeLayout-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content">-->
-
-                <!--<EditText-->
-                    <!--android:id="@+id/et_total_holes"-->
-                    <!--android:layout_width="220dp"-->
-                    <!--android:layout_height="45dp"-->
-                    <!--android:layout_marginLeft="20dp"-->
-                    <!--android:inputType="numberSigned|numberDecimal"-->
-                    <!--android:imeOptions="actionNext"-->
-                    <!--android:hint="0.0" />-->
-
-
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text=""-->
-                    <!--android:textColor="@color/colorAccent"-->
-                    <!--android:layout_centerVertical="true"-->
-                    <!--android:layout_toRightOf="@id/et_total_holes"/>-->
-
-            <!--</RelativeLayout>-->
-
 
         </LinearLayout>
 

@@ -155,6 +155,10 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     TextView tvStemLengthrUnit;
     @BindView(R.id.shot_rock_unit)
     TextView tvRockDensityUnit;
+    @BindView(R.id.shot_subdrill_unit)
+    TextView tvShotDrillUnit;
+    @BindView(R.id.shot_bench_unit)
+    TextView tvShotBenchUnit;
     @BindView(R.id.shot_distance_unit)
     TextView tvDistanceUnit;
     @BindView(R.id.shot_ms_unit)
@@ -163,7 +167,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     @BindView(R.id.iv_back)
     ImageView ivBack;
 
-    private double explosiveDensity = 0, diameter = 270, burden = 0, spacing = 0, benchHeight = 0, subDrill = 0, stemming = 0, noOfRows = 0, holePerRows = 0,
+    private double explosiveDensity = 0, diameter = 0, burden = 0, spacing = 0, benchHeight = 0, subDrill = 0, stemming = 0, noOfRows = 0, holePerRows = 0,
             holePerMs = 0, distance = 0, scallingFactor = 160, attenuation = -1.6, numberOfHole = 0, rockDensity = 0;
 
     private double metricResult,imperailResult;
@@ -184,15 +188,11 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
 
         if(checkCalculator){
-            etDiameter.setText("270");
-            diameter = 270;
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
             metricUnits();
         }
         else {
-            etDiameter.setText("10.625");
-            diameter = 10.625;
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
             imperialUnits();
@@ -232,8 +232,6 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkCalculator = true;
-                etDiameter.setText("270");
-                diameter = 270;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
                 metricCalculator();
@@ -248,8 +246,6 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkCalculator = false;
-                etDiameter.setText("10.625");
-                diameter = 10.625;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
                 imperialCalculator();
@@ -910,7 +906,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         tvExplosivePerHole.setText(String.format("%.0f", explosivePerHole)+ " kg");
         tvTotalExplosive.setText(String.format("%.0f", totalExplosive)+ " kg");
         tvSDOB.setText(String.format("%.2f", sdob)+ " m∛kg");
-        tvPF.setText(String.format("%.2f", powderFactor)+ "");
+        tvPF.setText(String.format("%.2f", powderFactor)+ "kg/m³");
         tvSD.setText(String.format("%.1f", SD)+ " m/√kg");
         tvMic.setText(String.format("%.0f", MIC)+ " kg");
         tvPPV.setText(String.format("%.1f", PPV)+ " mm/s");
@@ -946,9 +942,9 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             totalVolume = volumePerHole * NoOfHole;
             powderFactor = totalExplosive / totalVolume;
         } else {
-            weightPerHole = ((burden * spacing * benchHeight) / 27) * rockDensity * 0.841;
-            totalWeight = weightPerHole * NoOfHole;
-            powderFactor = totalExplosive / totalWeight;
+            volumePerHole = ((burden * spacing * benchHeight) / 27) * rockDensity * 0.841;
+            totalVolume = volumePerHole * NoOfHole;
+            powderFactor = totalExplosive / totalVolume;
         }
 
         d = stemming + (5 * (diameter / 12));
@@ -965,13 +961,13 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
 
 
         tvTotalHoles.setText(String.format("%.0f", NoOfHole));
-        tvShotLenght.setText(String.format("%.2f", holeLength)+ " ft");
+        tvShotLenght.setText(String.format("%.1f", holeLength)+ " ft");
         tvShotDrillLenght.setText(String.format("%.0f", totalDrill)+ " ft");
         tvVolumePerHole.setText(String.format("%.0f", volumePerHole) + " yd³");
         tvVolume.setText(String.format("%.0f", totalVolume)+ " yd³");
         tvExplosivePerHole.setText(String.format("%.0f", explosivePerHole) + " lb");
         tvTotalExplosive.setText(String.format("%.0f", totalExplosive) + " lb");
-        tvSDOB.setText(String.format("%.2f", sdob)+" ft∛lb");
+        tvSDOB.setText(String.format("%.2f", sdob)+" ft/∛lb");
         tvPF.setText(String.format("%.2f", powderFactor)+ " lb/yd³");
         tvSD.setText(String.format("%.1f", SD)+" ft/√lb");
         tvMic.setText(String.format("%.2f", MIC) + "kg");
@@ -1000,7 +996,10 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         tvExplosiveDensityUnit.setText("g/cc");
         tvBurdenrUnit.setText("m");
         tvSpacingUnit.setText("m");
+        tvBurdenrUnit.setText("m");
         tvStemLengthrUnit.setText("m");
+        tvShotBenchUnit.setText("m");
+        tvShotDrillUnit.setText("m");
         tvRockDensityUnit.setText("g/cc");
         tvDistanceUnit.setText("m");
     }
@@ -1010,7 +1009,10 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         tvExplosiveDensityUnit.setText("g/cc");
         tvBurdenrUnit.setText("ft");
         tvSpacingUnit.setText("ft");
+        tvBurdenrUnit.setText("ft");
         tvStemLengthrUnit.setText("ft");
+        tvShotDrillUnit.setText("ft");
+        tvShotBenchUnit.setText("ft");
         tvRockDensityUnit.setText("g/cc");
         tvDistanceUnit.setText("ft");
     }
