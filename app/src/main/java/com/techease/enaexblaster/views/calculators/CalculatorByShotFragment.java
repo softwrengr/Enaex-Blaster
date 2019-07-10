@@ -29,6 +29,8 @@ import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
+import java.text.DecimalFormat;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -170,12 +172,12 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     private double explosiveDensity = 0, diameter = 0, burden = 0, spacing = 0, benchHeight = 0, subDrill = 0, stemming = 0, noOfRows = 0, holePerRows = 0,
             holePerMs = 0, distance = 0, scallingFactor = 160, attenuation = -1.6, numberOfHole = 0, rockDensity = 0;
 
-    private double metricResult,imperailResult;
     private boolean check = true;
     private boolean checkCalculator = true;
     private boolean checkVolume = true;
     private boolean checkSubDrillStandOFF = true;
     private boolean checkHoleRowCount = true;
+    DecimalFormat formatter;
 
     @TargetApi(Build.VERSION_CODES.N)
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -185,14 +187,14 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_calculator_by_shot, container, false);
         ButterKnife.bind(this, view);
-        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+        formatter = new DecimalFormat("#,###,###");
+        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", true);
 
-        if(checkCalculator){
+        if (checkCalculator) {
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
             metricUnits();
-        }
-        else {
+        } else {
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
             imperialUnits();
@@ -232,11 +234,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkCalculator = true;
-                btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
-                btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
-                metricCalculator();
-                metricUnits();
-
+                switchToMetric();
             }
         });
 
@@ -246,10 +244,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkCalculator = false;
-                btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
-                btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
-                imperialCalculator();
-                imperialUnits();
+                switchToImperial();
             }
         });
 
@@ -261,8 +256,11 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
                 layoutRock.setVisibility(View.GONE);
                 btnWeight.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnVolume.setBackgroundColor(getActivity().getColor(R.color.silver));
-                metricCalculator();
-                imperialCalculator();
+                if (checkCalculator) {
+                    metricCalculator();
+                } else {
+                    imperialCalculator();
+                }
 
             }
         });
@@ -275,8 +273,11 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
                 layoutRock.setVisibility(View.VISIBLE);
                 btnWeight.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
-                metricCalculator();
-                imperialCalculator();
+                if (checkCalculator) {
+                    metricCalculator();
+                } else {
+                    imperialCalculator();
+                }
 
             }
         });
@@ -841,7 +842,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     }
 
     private void metricCalculator() {
-        double NoOfHole, holeLength, totalDrill, volumePerHole = 0, weightPerHole, totalWeight=0, totalVolume = 0,
+        double NoOfHole, holeLength, totalDrill, volumePerHole = 0, weightPerHole, totalWeight = 0, totalVolume = 0,
                 explosivePerHole, totalExplosive, powderFactor, d, chargeUnit, Wc, sdob, SD, MIC, PPV;
 
         if (checkHoleRowCount) {
@@ -851,11 +852,10 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         }
 
 
-        if(checkSubDrillStandOFF){  //subdrill selected
+        if (checkSubDrillStandOFF) {  //subdrill selected
             holeLength = benchHeight + subDrill;
 
-        }
-        else {   //standoff selected
+        } else {   //standoff selected
             holeLength = benchHeight - subDrill;
         }
 
@@ -867,18 +867,17 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             totalVolume = volumePerHole * NoOfHole;
 
         } else {
-            weightPerHole = (burden * spacing * benchHeight) * rockDensity;
-            totalWeight = weightPerHole * NoOfHole;
+            volumePerHole = (burden * spacing * benchHeight) * rockDensity;
+            totalVolume = volumePerHole * NoOfHole;
         }
 
         explosivePerHole = (explosiveDensity / 1000) * (Math.PI * (Math.pow((diameter / 2), 2))) * (holeLength - stemming);
         totalExplosive = explosivePerHole * NoOfHole;
 
 
-        if(checkVolume){
+        if (checkVolume) {
             powderFactor = totalExplosive / totalVolume;
-        }
-        else {
+        } else {
             powderFactor = totalExplosive / totalWeight;
         }
 
@@ -894,22 +893,21 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
 
         PPV = scallingFactor * (Math.pow(SD, attenuation));
 
-        metricResult = sdob;
-        checkGraphics();
+        checkGraphics(sdob);
 
 
-        tvTotalHoles.setText(String.format("%.0f", NoOfHole));
+        tvTotalHoles.setText(formatter.format(NoOfHole));
         tvShotLenght.setText(String.format("%.1f", holeLength) + " m");
-        tvShotDrillLenght.setText(String.format("%.0f", totalDrill)+ " m");
-        tvVolumePerHole.setText(String.format("%.0f", volumePerHole)+ " m³");
-        tvVolume.setText(String.format("%.0f", totalVolume)+ " m³");
-        tvExplosivePerHole.setText(String.format("%.0f", explosivePerHole)+ " kg");
-        tvTotalExplosive.setText(String.format("%.0f", totalExplosive)+ " kg");
-        tvSDOB.setText(String.format("%.2f", sdob)+ " m∛kg");
-        tvPF.setText(String.format("%.2f", powderFactor)+ "kg/m³");
-        tvSD.setText(String.format("%.1f", SD)+ " m/√kg");
-        tvMic.setText(String.format("%.0f", MIC)+ " kg");
-        tvPPV.setText(String.format("%.1f", PPV)+ " mm/s");
+        tvShotDrillLenght.setText(formatter.format(totalDrill) + " m");
+        tvVolumePerHole.setText(formatter.format(volumePerHole) + " m³");
+        tvVolume.setText(formatter.format(totalVolume) + " m³");
+        tvExplosivePerHole.setText(formatter.format(explosivePerHole) + " kg");
+        tvTotalExplosive.setText(formatter.format(totalExplosive) + " kg");
+        tvSDOB.setText(String.format("%.2f", sdob) + " m∛kg");
+        tvPF.setText(String.format("%.2f", powderFactor) + " kg/m³");
+        tvSD.setText(String.format("%.1f", SD) + " m/√kg");
+        tvMic.setText(String.format("%.0f", MIC) + " kg");
+        tvPPV.setText(String.format("%.1f", PPV) + " mm/s");
 
 
     }
@@ -924,10 +922,9 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             NoOfHole = holePerRows * noOfRows;
         }
 
-        if(checkSubDrillStandOFF){  //subdrill selected
+        if (checkSubDrillStandOFF) {  //subdrill selected
             holeLength = benchHeight + subDrill;
-        }
-        else {   //standoff selected
+        } else {   //standoff selected
             holeLength = benchHeight - subDrill;
         }
 
@@ -956,22 +953,21 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         SD = distance / Math.sqrt(MIC);
         PPV = scallingFactor * (Math.pow(SD, attenuation));
 
-        imperailResult = sdob;
-        checkGraphics();
+        checkGraphics(sdob);
 
 
-        tvTotalHoles.setText(String.format("%.0f", NoOfHole));
-        tvShotLenght.setText(String.format("%.1f", holeLength)+ " ft");
-        tvShotDrillLenght.setText(String.format("%.0f", totalDrill)+ " ft");
-        tvVolumePerHole.setText(String.format("%.0f", volumePerHole) + " yd³");
-        tvVolume.setText(String.format("%.0f", totalVolume)+ " yd³");
-        tvExplosivePerHole.setText(String.format("%.0f", explosivePerHole) + " lb");
-        tvTotalExplosive.setText(String.format("%.0f", totalExplosive) + " lb");
-        tvSDOB.setText(String.format("%.2f", sdob)+" ft/∛lb");
-        tvPF.setText(String.format("%.2f", powderFactor)+ " lb/yd³");
-        tvSD.setText(String.format("%.1f", SD)+" ft/√lb");
+        tvTotalHoles.setText(formatter.format(NoOfHole));
+        tvShotLenght.setText(String.format("%.1f", holeLength) + " ft");
+        tvShotDrillLenght.setText(formatter.format(totalDrill) + " ft");
+        tvVolumePerHole.setText(formatter.format(volumePerHole) + " yd³");
+        tvVolume.setText(formatter.format(totalVolume) + " yd³");
+        tvExplosivePerHole.setText(formatter.format(explosivePerHole) + " lb");
+        tvTotalExplosive.setText(formatter.format(totalExplosive) + " lb");
+        tvSDOB.setText(String.format("%.2f", sdob) + " ft/∛lb");
+        tvPF.setText(String.format("%.2f", powderFactor) + " lb/yd³");
+        tvSD.setText(String.format("%.1f", SD) + " ft/√lb");
         tvMic.setText(String.format("%.2f", MIC) + "kg");
-        tvPPV.setText(String.format("%.2f", PPV)+ " in/s");
+        tvPPV.setText(String.format("%.2f", PPV) + " in/s");
     }
 
     @Override
@@ -991,7 +987,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         }
     }
 
-    private void metricUnits(){
+    private void metricUnits() {
         tvDiameterUnit.setText("mm");
         tvExplosiveDensityUnit.setText("g/cc");
         tvBurdenrUnit.setText("m");
@@ -1004,7 +1000,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         tvDistanceUnit.setText("m");
     }
 
-    private void imperialUnits(){
+    private void imperialUnits() {
         tvDiameterUnit.setText("in");
         tvExplosiveDensityUnit.setText("g/cc");
         tvBurdenrUnit.setText("ft");
@@ -1018,48 +1014,95 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     }
 
 
-    private void checkGraphics() {
+    private void checkGraphics(double result) {
 
-        if(checkCalculator){    //checking graphics for metric calculator
-            if (metricResult >= 0 && metricResult <= 0.6) {
+        if (checkCalculator) {    //checking graphics for metric calculator
+            if (result >= 0 && result <= 0.6) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
-            } else if (metricResult >= 0.6 && metricResult <= 0.9) {
+            } else if (result >= 0.61 && result <= 0.9) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
-            }
-            else if (metricResult >= 0.91 && metricResult <= 1.42) {
+            } else if (result >= 0.91 && result <= 1.42) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
-            }
-            else if (metricResult >= 1.43 && metricResult <= 1.82) {
+            } else if (result >= 1.43 && result <= 1.82) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
-            }
-            else if (metricResult >= 1.83 && metricResult <= 2.40) {
+            } else if (result >= 1.83 && result <= 2.40) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
+            } else if (result >= 2.41) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
             }
-            else if (metricResult >= 2.41) {
+        } else {     //checking graphics for imperial calculator
+
+            if (result >= 0 && result <= 1.5) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
+            } else if (result >= 1.51 && result <= 2.2) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
+            } else if (result >= 2.21 && result <= 3.5) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
+            } else if (result >= 3.51 && result <= 4.5) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
+            } else if (result >= 4.51 && result <= 6.0) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
+            } else if (result >= 6.01) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
             }
         }
-        else {     //checking graphics for imperial calculator
-            if (imperailResult >= 0 && imperailResult <= 1.5) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
-            } else if (imperailResult >= 1.6 && imperailResult <= 2.2) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
-            }
-            else if (imperailResult >= 2.3 && imperailResult <= 3.5) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
-            }
-            else if (imperailResult >= 3.6 && imperailResult <= 4.5) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
-            }
-            else if (imperailResult >= 4.6 && imperailResult <= 6.0) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
-            }
-            else if (imperailResult >= 6.1) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
-            }
-        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToMetric() {
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
 
 
+        burden = burden / 3.281;
+        spacing = spacing / 3.281;
+        benchHeight = benchHeight / 3.281;
+        stemming = stemming / 3.281;
+        distance = distance / 3.281;
+        subDrill = subDrill / 3.281;
+        stemming = stemming / 3.281;
 
+        scallingFactor = 1140;
+
+        etBurden.setText(String.format("%.1f", Double.valueOf(burden)));
+        etSpacing.setText(String.format("%.1f", Double.valueOf(spacing)));
+        etBenchHeight.setText(String.format("%.1f", Double.valueOf(benchHeight)));
+        etSubDrill.setText(String.format("%.1f", Double.valueOf(subDrill)));
+        etStemming.setText(String.format("%.1f", Double.valueOf(stemming)));
+        etDistance.setText(String.format("%.1f", Double.valueOf(distance)));
+        etScallingFactor.setText(String.format("%.0f", Double.valueOf(scallingFactor)));
+
+        metricCalculator();
+        metricUnits();
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToImperial() {
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+
+
+        burden = burden * 3.281;
+        spacing = spacing * 3.281;
+        benchHeight = benchHeight * 3.281;
+        stemming = stemming * 3.281;
+        distance = distance * 3.281;
+        subDrill = subDrill * 3.281;
+        stemming = stemming * 3.281;
+
+        scallingFactor = 160;
+
+
+        etBurden.setText(String.format("%.0f", Double.valueOf(burden)));
+        etSpacing.setText(String.format("%.0f", Double.valueOf(spacing)));
+        etBenchHeight.setText(String.format("%.0f", Double.valueOf(benchHeight)));
+        etSubDrill.setText(String.format("%.0f", Double.valueOf(subDrill)));
+        etStemming.setText(String.format("%.0f", Double.valueOf(stemming)));
+        etDistance.setText(String.format("%.0f", Double.valueOf(distance)));
+        etScallingFactor.setText(String.format("%.0f", Double.valueOf(scallingFactor)));
+
+        imperialCalculator();
+        imperialUnits();
     }
 }

@@ -22,6 +22,8 @@ import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
+import java.text.DecimalFormat;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -55,36 +57,41 @@ public class ScaledDistanceFragment extends Fragment {
     private double distance = 0, mic = 0;
     private boolean check = true;
     private boolean checkCalculator = true;
+    DecimalFormat formatter;
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_scaled_distance, container, false);
-        ButterKnife.bind(this,view);
-        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+        ButterKnife.bind(this, view);
+        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", true);
+        formatter = new DecimalFormat("#,###,###.#");
 
-        if(checkCalculator){
+        if (checkCalculator) {
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
             tvDistanceUnit.setText("m");
             tvMicUnit.setText("kg");
-        }
-        else {
+            tvResult.setText(String.format("%.1f", 0.0) + " m/√kg");
+        } else {
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
             tvDistanceUnit.setText("ft");
             tvMicUnit.setText("lb");
+            tvResult.setText(String.format("%.1f", 0.0) + " ft/√lb");
         }
         initViews();
-        return  view;
+        return view;
     }
 
-    private void  initViews(){
+    private void initViews() {
+
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragment(getActivity(),new CalculatorsHomeFragment());
+                GeneralUtils.connectFragment(getActivity(), new CalculatorsHomeFragment());
             }
         });
 
@@ -206,7 +213,8 @@ public class ScaledDistanceFragment extends Fragment {
             SD = (distance / Math.sqrt(mic));
         }
 
-        tvResult.setText(String.format("%.1f", SD)+" m/√kg");
+        String yourFormattedResult = formatter.format(SD);
+        tvResult.setText(yourFormattedResult + " m/√kg");
 
     }
 
@@ -218,8 +226,6 @@ public class ScaledDistanceFragment extends Fragment {
             SD = (distance / Math.sqrt(mic));
         }
 
-        tvResult.setText(String.format("%.1f", SD)+" ft/√lb");
-
-
+        tvResult.setText(String.format("%.1f", SD) + " ft/√lb");
     }
 }

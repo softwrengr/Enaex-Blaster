@@ -222,7 +222,8 @@
                     android:layout_marginLeft="20dp"
                     android:inputType="numberSigned|numberDecimal"
                     android:imeOptions="actionNext"
-                    android:hint="0.0" />
+                    android:hint="0.0"
+                    android:text="1140"/>
 
 
 
@@ -248,7 +249,8 @@
                     android:layout_marginLeft="20dp"
                     android:inputType="numberSigned|numberDecimal"
                     android:imeOptions="actionNext"
-                    android:hint="0.0" />
+                    android:hint="0.0"
+                    android:text="-1.6"/>
 
 
             </RelativeLayout>

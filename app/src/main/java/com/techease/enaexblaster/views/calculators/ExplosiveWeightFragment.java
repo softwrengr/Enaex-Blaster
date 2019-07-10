@@ -69,6 +69,7 @@ public class ExplosiveWeightFragment extends Fragment {
     double diameter = 0, density = 0, holeLenght = 0, stemLenght =0;
     private boolean check = true;
     private boolean checkCalculator = true;
+    DecimalFormat formatter;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -77,6 +78,7 @@ public class ExplosiveWeightFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_explosive_weight, container, false);
         ButterKnife.bind(this,view);
+        formatter = new DecimalFormat("#,###,###.#");
 
         checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
 
@@ -291,7 +293,9 @@ public class ExplosiveWeightFragment extends Fragment {
 
         toalExplosive = (value1 * value2) * value3;
 
-        tvResult.setText(String.format("%.1f", toalExplosive) + " kg");
+        String yourFormattedResult = formatter.format(toalExplosive);
+
+        tvResult.setText(yourFormattedResult + " kg");
     }
 
 
@@ -304,7 +308,8 @@ public class ExplosiveWeightFragment extends Fragment {
 
         toalExplosive = (value1 * value2) * value3;
 
-        tvResult.setText(String.format("%.1f", toalExplosive) + " lbs");
+        String yourFormattedResult = formatter.format(toalExplosive);
+        tvResult.setText(yourFormattedResult + " lbs");
     }
 
     private void metricUnits(){

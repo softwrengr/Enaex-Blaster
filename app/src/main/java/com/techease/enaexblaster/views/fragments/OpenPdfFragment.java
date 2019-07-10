@@ -35,6 +35,7 @@ public class OpenPdfFragment extends Fragment {
     Bundle bundle;
 
     private float checkRotation = 1;
+    private int page=0;
     private boolean strScreen=false;
 
     @Override
@@ -52,6 +53,7 @@ public class OpenPdfFragment extends Fragment {
         if (bundle != null) {
             String strPdf = bundle.getString("check_pdf");
             strScreen = bundle.getBoolean("screen");
+            page = bundle.getInt("checkPage");
             showPDF(strPdf);
         }
 
@@ -101,10 +103,10 @@ public class OpenPdfFragment extends Fragment {
     private void showPDF(String pdf) {
         pdfView.fromAsset(pdf)
                 .enableSwipe(true)
-                .swipeHorizontal(false)
+                .swipeHorizontal(true)
                 .enableDoubletap(true)
                 .enableSwipe(true)
-                .defaultPage(0)
+                .defaultPage(page)
                 .pageFitPolicy(FitPolicy.BOTH)
                 .enableAnnotationRendering(true)
                 .password(null)
@@ -162,7 +164,7 @@ public class OpenPdfFragment extends Fragment {
                 .spacing(0)
                 .load();
 
-        pdfView.zoomTo(0);
+        pdfView.zoomTo(1);
 
         pdfView.fitToWidth(1);
     }

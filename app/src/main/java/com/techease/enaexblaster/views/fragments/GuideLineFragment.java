@@ -114,6 +114,7 @@ public class GuideLineFragment extends Fragment {
             public void onClick(View v) {
                 bundle.putString("check_pdf","sdob.pdf");
                 bundle.putBoolean("screen",true);
+                bundle.putInt("checkPage",2);
                 GeneralUtils.connectFragmentWithBack(getActivity(),new OpenPdfFragment()).setArguments(bundle);
             }
         });

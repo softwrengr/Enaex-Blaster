@@ -159,7 +159,7 @@
                         android:layout_marginLeft="25dp"
                         android:fontFamily="@font/medium"
                         android:gravity="center"
-                        android:text="By Air Deck"
+                        android:text="Air Deck"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 

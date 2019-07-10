@@ -64,7 +64,7 @@ public class SDOBCalculatorFragment extends Fragment {
     @BindView(R.id.iv_graphics)
     ImageView ivGraphics;
 
-    double diameter = 270, density = 0, holeLenght = 0, stemLenght = 0, metricResult, imperailResult;
+    double diameter = 0, density = 0, holeLenght = 0, stemLenght = 0, metricResult, imperailResult;
     private boolean check = true;
     private boolean checkCalculator = true;
 
@@ -80,14 +80,10 @@ public class SDOBCalculatorFragment extends Fragment {
 
 
         if (checkCalculator) {
-            etDiameter.setText("270");
-            diameter = 270;
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
             metricUnits();
         } else {
-            etDiameter.setText("10.625");
-            diameter = 10.625;
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
             imperialUnits();
@@ -126,8 +122,6 @@ public class SDOBCalculatorFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = true;
-                etDiameter.setText("270");
-                diameter = 270;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
                 metricCalculator();
@@ -141,8 +135,6 @@ public class SDOBCalculatorFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = false;
-                etDiameter.setText("10.625");
-                diameter = 10.625;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
                 imperialCalculator();
@@ -295,10 +287,9 @@ public class SDOBCalculatorFragment extends Fragment {
         Wc = C * (10 * (diameter / 1000));
 
         SDOB = d / Math.pow(Wc, 0.3333);
-        metricResult = SDOB;
 
         tvResult.setText(String.format("%.2f", SDOB) + " m/∛kg");
-        checkGraphics();
+        checkGraphics(SDOB);
     }
 
 
@@ -312,10 +303,9 @@ public class SDOBCalculatorFragment extends Fragment {
         Wc = C * (10 * diameter / 12);
 
         SDOB = d / Math.pow(Wc, 0.3333);
-        imperailResult = SDOB;
 
         tvResult.setText(String.format("%.1f", SDOB) + " ft/∛lb");
-        checkGraphics();
+        checkGraphics(SDOB);
     }
 
     private void imperialUnits() {
@@ -332,43 +322,37 @@ public class SDOBCalculatorFragment extends Fragment {
         tvStemUnit.setText("m");
     }
 
-    private void checkGraphics() {
 
-        if(checkCalculator){    //checking graphics for metric calculator
-            if (metricResult >= 0 && metricResult <= 0.6) {
+
+    private void checkGraphics(double result) {
+
+        if (checkCalculator) {    //checking graphics for metric calculator
+            if (result >= 0 && result <= 0.6) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
-            } else if (metricResult >= 0.6 && metricResult <= 0.9) {
+            } else if (result >= 0.61 && result <= 0.9) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
-            }
-            else if (metricResult >= 0.91 && metricResult <= 1.42) {
+            } else if (result >= 0.91 && result <= 1.42) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
-            }
-            else if (metricResult >= 1.43 && metricResult <= 1.82) {
+            } else if (result >= 1.43 && result <= 1.82) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
-            }
-            else if (metricResult >= 1.83 && metricResult <= 2.40) {
+            } else if (result >= 1.83 && result <= 2.40) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
-            }
-            else if (metricResult >= 2.41) {
+            } else if (result >= 2.41) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
             }
-        }
-        else {     //checking graphics for imperial calculator
-            if (imperailResult >= 0 && imperailResult <= 1.5) {
+        } else {     //checking graphics for imperial calculator
+
+            if (result >= 0 && result <= 1.5) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
-            } else if (imperailResult >= 1.6 && imperailResult <= 2.2) {
+            } else if (result >= 1.51 && result <= 2.2) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
-            }
-            else if (imperailResult >= 2.3 && imperailResult <= 3.5) {
+            } else if (result >= 2.21 && result <= 3.5) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
-            }
-            else if (imperailResult >= 3.6 && imperailResult <= 4.5) {
+            } else if (result >= 3.51 && result <= 4.5) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
-            }
-            else if (imperailResult >= 4.6 && imperailResult <= 6.0) {
+            } else if (result >= 4.51 && result <= 6.0) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
-            }
-            else if (imperailResult >= 6.1) {
+            } else if (result >= 6.01) {
                 ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
             }
         }

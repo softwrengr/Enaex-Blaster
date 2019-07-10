@@ -56,7 +56,7 @@ public class VibrationCalculatorFragment extends Fragment {
     @BindView(R.id.iv_back)
     ImageView ivBack;
 
-    private double distance = 0, mic = 0,scallingFactor=0,attenuationFactor=0;
+    private double distance = 0, mic = 0,scallingFactor=0,attenuationFactor=-1.6;
     private boolean check = true;
     private boolean checkCalculator = true;
 
@@ -74,12 +74,16 @@ public class VibrationCalculatorFragment extends Fragment {
         if(checkCalculator){
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+            scallingFactor = 1140;
+            etScallingFactor.setText("1140");
             tvDistanceUnit.setText("m");
             tvMicUnit.setText("kg");
         }
         else {
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+            scallingFactor = 160;
+            etScallingFactor.setText("160");
             tvDistanceUnit.setText("ft");
             tvMicUnit.setText("lb");
         }
@@ -118,7 +122,11 @@ public class VibrationCalculatorFragment extends Fragment {
                 checkCalculator = true;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+
+                scallingFactor = 1140;
+                etScallingFactor.setText("1140");
                 metricCalculation();
+
 
                 tvDistanceUnit.setText("m");
                 tvMicUnit.setText("kg");
@@ -134,6 +142,9 @@ public class VibrationCalculatorFragment extends Fragment {
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
                 imperialCalculation();
+
+                scallingFactor = 160;
+                etScallingFactor.setText("160");
 
                 tvDistanceUnit.setText("ft");
                 tvMicUnit.setText("lb");
@@ -260,10 +271,6 @@ public class VibrationCalculatorFragment extends Fragment {
                 }
             }
         });
-
-
-
-
     }
 
     private void imperialCalculation() {
@@ -279,8 +286,6 @@ public class VibrationCalculatorFragment extends Fragment {
 
         tvResult.setText(String.format("%.2f", PPV) + "  in/s");
 
-
-
     }
 
     private void metricCalculation() {
@@ -294,7 +299,7 @@ public class VibrationCalculatorFragment extends Fragment {
 
         PPV = scallingFactor * (Math.pow(SD, attenuationFactor));
 
-        tvResult.setText(String.format("%.2f", PPV) + "  mm/s");
+        tvResult.setText(String.format("%.1f", PPV) + "  mm/s");
 
     }
 }

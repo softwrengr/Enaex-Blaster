@@ -22,6 +22,8 @@ import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
+import java.text.DecimalFormat;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -73,6 +75,7 @@ public class VolumeCalculatorFragment extends Fragment {
     private double burden = 0, spacing = 0, averageDepth = 0,rockDensity=0,noOfHOles=1;
     private boolean check = true;
     private boolean checkCalculator = true,checkWeight = false;
+    DecimalFormat formatter;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -81,6 +84,7 @@ public class VolumeCalculatorFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_volume_calculator, container, false);
         ButterKnife.bind(this,view);
+        formatter = new DecimalFormat("#,###,###");
 
         checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
 
@@ -115,8 +119,11 @@ public class VolumeCalculatorFragment extends Fragment {
                 layoutRockDensity.setVisibility(View.GONE);
                 btnVolume.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnWeight.setBackgroundColor(getActivity().getColor(R.color.grey));
-                metricCalculation();
-                imperialCalculation();
+                if (checkCalculator) {
+                    metricCalculation();
+                } else {
+                    imperialCalculation();
+                }
             }
         });
 
@@ -128,8 +135,11 @@ public class VolumeCalculatorFragment extends Fragment {
                 layoutRockDensity.setVisibility(View.VISIBLE);
                 btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnWeight.setBackgroundColor(getActivity().getColor(R.color.silver));
-                metricCalculation();
-                imperialCalculation();
+                if (checkCalculator) {
+                    metricCalculation();
+                } else {
+                    imperialCalculation();
+                }
             }
         });
 
@@ -331,11 +341,13 @@ public class VolumeCalculatorFragment extends Fragment {
 
         if(checkWeight){ //if weight is selected
             double volume = ((burden * spacing * averageDepth) /27) * rockDensity * 0.841 * noOfHOles;
-            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) +" tons");
+            String yourFormattedResult = formatter.format(volume);
+            tvVolume.setText(yourFormattedResult +" tons");
         }
         else {  //if volume if selected
             double volume = ((burden * spacing * averageDepth) /27) * noOfHOles;
-            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " yd³");
+            String yourFormattedResult = formatter.format(volume);
+            tvVolume.setText(yourFormattedResult + " yd³");
         }
 
 
@@ -344,11 +356,13 @@ public class VolumeCalculatorFragment extends Fragment {
     private void metricCalculation() {
         if(checkWeight){ //if weight is selected
             double volume = (burden * spacing * averageDepth) * rockDensity * noOfHOles;
-            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " tonnes");
+            String yourFormattedResult = formatter.format(volume);
+            tvVolume.setText(yourFormattedResult + " tonnes");
         }
         else { //if volume if selected
             double volume = (burden * spacing * averageDepth) * noOfHOles;
-            tvVolume.setText(String.format("%.0f", Double.valueOf(volume)) + " m³");
+            String yourFormattedResult = formatter.format(volume);
+            tvVolume.setText(yourFormattedResult + " m³");
         }
     }
 

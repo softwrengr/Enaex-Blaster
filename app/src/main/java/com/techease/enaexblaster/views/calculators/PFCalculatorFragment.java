@@ -29,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class PFCalculatorFragment extends Fragment {
+public class PFCalculatorFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
     View view;
     @BindView(R.id.iv_arrow)
     ImageView ivArrow;
@@ -95,8 +95,8 @@ public class PFCalculatorFragment extends Fragment {
 
     private boolean check = true, checkVolumeWeight = true,checkAirDeck=true;
     private boolean checkCalculator = true;
-    private double density = 0.00, diameter = 270, burden = 0, spacing = 0, stemmingLenght = 0,
-            holeLenght = 0, rockDensity = 0.00, airDeck = 0;
+    private double density = 0.00, diameter = 0, burden = 0, spacing = 0, stemmingLenght = 0,
+            holeLenght = 0, rockDensity = 0.00, airDeck = 0,airDeckOld=0;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -109,15 +109,11 @@ public class PFCalculatorFragment extends Fragment {
         checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
 
         if(checkCalculator){
-            etDiameter.setText("270");
-            diameter = 270;
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
             metricUnits();
         }
         else {
-            etDiameter.setText("10.625");
-            diameter = 10.625;
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
             imperialUnits();
@@ -150,13 +146,7 @@ public class PFCalculatorFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = true;
-                etDiameter.setText("270");
-                diameter = 270;
-                btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
-                btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
-                metricCalculator();
-
-
+                switchToMetric(); //all values converting to metric calculator
             }
         });
 
@@ -166,13 +156,7 @@ public class PFCalculatorFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 checkCalculator = false;
-                etDiameter.setText("10.625");
-                diameter = 10.625;
-                btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
-                btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
-                imperialCalculator();
-
-
+                switchToImperial();  //all values converting to imperial calculator
             }
         });
 
@@ -185,8 +169,11 @@ public class PFCalculatorFragment extends Fragment {
                 btnVolume.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnWeight.setBackgroundColor(getActivity().getColor(R.color.grey));
 
-                imperialCalculator();
-                metricCalculator();
+                if (checkCalculator) {
+                    metricCalculator();
+                } else {
+                    imperialCalculator();
+                }
             }
         });
 
@@ -199,23 +186,15 @@ public class PFCalculatorFragment extends Fragment {
                 btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnWeight.setBackgroundColor(getActivity().getColor(R.color.silver));
 
-                imperialCalculator();
-                metricCalculator();
-            }
-        });
-
-        switchAirDeck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    checkAirDeck = true;
-                    layoutAirDeck.setVisibility(View.VISIBLE);
+                if (checkCalculator) {
+                    metricCalculator();
                 } else {
-                    checkAirDeck = false;
-                    layoutAirDeck.setVisibility(View.GONE);
+                    imperialCalculator();
                 }
             }
         });
+
+        switchAirDeck.setOnCheckedChangeListener(this);
 
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -405,7 +384,7 @@ public class PFCalculatorFragment extends Fragment {
                         if (checkCalculator) {
                             metricCalculator();
                         } else {
-
+                            imperialCalculator();
                         }
                     } catch (NumberFormatException e) {
                         //Error
@@ -466,6 +445,8 @@ public class PFCalculatorFragment extends Fragment {
                 } else {
                     try {
                         airDeck = Double.parseDouble(s.toString().replace(',', '.'));
+                        airDeckOld = Double.parseDouble(s.toString().replace(',', '.'));
+
                         if (checkCalculator) {
                           metricCalculator();
                         } else {
@@ -482,6 +463,98 @@ public class PFCalculatorFragment extends Fragment {
 
     }
 
+    private void imperialUnits() {
+        tvDiameterUnit.setText("in");
+        tvExplosiveDensityUnit.setText("g/cc");
+        tvBurdenrUnit.setText("ft");
+        tvSpacingUnit.setText("ft");
+        tvHoleLengthUnit.setText("ft");
+        tvStemLengthrUnit.setText("ft");
+        tvRockDensityUnit.setText("g/cc");
+        tvAirDeckUnit.setText("ft");
+    }
+
+    private void metricUnits() {
+        tvDiameterUnit.setText("mm");
+        tvExplosiveDensityUnit.setText("g/cc");
+        tvBurdenrUnit.setText("m");
+        tvSpacingUnit.setText("m");
+        tvHoleLengthUnit.setText("m");
+        tvStemLengthrUnit.setText("m");
+        tvRockDensityUnit.setText("g/cc");
+        tvAirDeckUnit.setText("m");
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToMetric() {
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+
+
+        burden = burden / 3.281;
+        spacing = spacing / 3.281;
+        holeLenght = holeLenght / 3.281;
+        stemmingLenght = stemmingLenght / 3.281;
+        airDeck = airDeck / 3.281;
+
+
+        etBurden.setText(String.format("%.1f", Double.valueOf(burden)));
+        etSpacing.setText(String.format("%.1f", Double.valueOf(spacing)));
+        etHoleLenght.setText(String.format("%.1f", Double.valueOf(holeLenght)));
+        etStemmingLenght.setText(String.format("%.1f", Double.valueOf(stemmingLenght)));
+        etAirDeck.setText(String.format("%.0f", Double.valueOf(airDeck)));
+
+        metricCalculator();
+        metricUnits();
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToImperial() {
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+
+
+        burden = burden * 3.281;
+        spacing = spacing * 3.281;
+        holeLenght = holeLenght * 3.281;
+        stemmingLenght = stemmingLenght * 3.281;
+        airDeck = airDeck * 3.281;
+
+
+        etBurden.setText(String.format("%.0f", Double.valueOf(burden)));
+        etSpacing.setText(String.format("%.0f", Double.valueOf(spacing)));
+        etHoleLenght.setText(String.format("%.0f", Double.valueOf(holeLenght)));
+        etStemmingLenght.setText(String.format("%.0f", Double.valueOf(stemmingLenght)));
+        etAirDeck.setText(String.format("%.0f", Double.valueOf(airDeck)));
+
+        imperialCalculator();
+        imperialUnits();
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+            checkAirDeck = true;
+            layoutAirDeck.setVisibility(View.VISIBLE);
+            airDeck = airDeckOld;
+            if (checkCalculator) {
+                metricCalculator();
+            } else {
+                imperialCalculator();
+            }
+        } else {
+            checkAirDeck = false;
+            layoutAirDeck.setVisibility(View.GONE);
+            airDeck = 0;
+            if (checkCalculator) {
+                metricCalculator();
+            } else {
+                imperialCalculator();
+            }
+        }
+    }
+
     private void metricCalculator(){
         double value1,value2,value3,powderFactor;
 
@@ -489,6 +562,7 @@ public class PFCalculatorFragment extends Fragment {
         value1 = ((density/1000)*(Math.PI*Math.pow(diameter/2,2)));
         value2 = holeLenght - stemmingLenght;
         value3 = burden * spacing * holeLenght;
+
 
 
         if(checkVolumeWeight){   //if volume is selected
@@ -521,6 +595,7 @@ public class PFCalculatorFragment extends Fragment {
         value2 = holeLenght - stemmingLenght;
         value3 = (burden * spacing * holeLenght) / 27;
 
+
         if(checkVolumeWeight){   //if volume is selected
             powderFactor = (value1 * value2) / value3 ;
             tvResult.setText(String.format("%.2f",powderFactor) + " lb/yd³");
@@ -542,26 +617,5 @@ public class PFCalculatorFragment extends Fragment {
             powderFactor = (value1 * value2) / (value3 * rockDensity * 0.841);
             tvResult.setText(String.format("%.2f",powderFactor)+ " lb/ton");
         }
-    }
-    private void imperialUnits() {
-        tvDiameterUnit.setText("in");
-        tvExplosiveDensityUnit.setText("g/cc");
-        tvBurdenrUnit.setText("ft");
-        tvSpacingUnit.setText("ft");
-        tvHoleLengthUnit.setText("ft");
-        tvStemLengthrUnit.setText("ft");
-        tvRockDensityUnit.setText("g/cc");
-        tvAirDeckUnit.setText("ft");
-    }
-
-    private void metricUnits() {
-        tvDiameterUnit.setText("mm");
-        tvExplosiveDensityUnit.setText("g/cc");
-        tvBurdenrUnit.setText("m");
-        tvSpacingUnit.setText("m");
-        tvHoleLengthUnit.setText("m");
-        tvStemLengthrUnit.setText("m");
-        tvRockDensityUnit.setText("g/cc");
-        tvAirDeckUnit.setText("m");
     }
 }
