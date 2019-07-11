@@ -1,7 +1,6 @@
 package com.techease.enaexblaster.views.calculators;
 
-import android.content.Context;
-import android.net.Uri;
+import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -9,16 +8,21 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.techease.enaexblaster.R;
+import com.techease.enaexblaster.helpers.SavingLoadingData;
+import com.techease.enaexblaster.saveLoadData.LoadDataFragment;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
@@ -28,7 +32,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class ScaledDistanceFragment extends Fragment {
+public class ScaledDistanceFragment extends Fragment implements View.OnClickListener {
     View view;
     @BindView(R.id.iv_arrow)
     ImageView ivArrow;
@@ -53,11 +57,13 @@ public class ScaledDistanceFragment extends Fragment {
     TextView tvResult;
     @BindView(R.id.iv_back)
     ImageView ivBack;
+    @BindView(R.id.iv_menu)
+    ImageView ivMenu;
 
     private double distance = 0, mic = 0;
     private boolean check = true;
     private boolean checkCalculator = true;
-    DecimalFormat formatter;
+    DecimalFormat formatter, dfnd;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -68,6 +74,7 @@ public class ScaledDistanceFragment extends Fragment {
         ButterKnife.bind(this, view);
         checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", true);
         formatter = new DecimalFormat("#,###,###.#");
+        dfnd = new DecimalFormat("#,###,###");
 
         if (checkCalculator) {
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
@@ -83,6 +90,7 @@ public class ScaledDistanceFragment extends Fragment {
             tvResult.setText(String.format("%.1f", 0.0) + " ft/√lb");
         }
         initViews();
+        showSaveData();
         return view;
     }
 
@@ -150,7 +158,6 @@ public class ScaledDistanceFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -158,8 +165,12 @@ public class ScaledDistanceFragment extends Fragment {
                 if (s.toString().equals("")) {
                     distance = 0;
                 } else {
+                    etDistance.removeTextChangedListener(this);
+
                     try {
-                        distance = Double.parseDouble(s.toString().replace(',', '.'));
+                        distance = Double.parseDouble(s.toString());
+//                        etDistance.setText(dfnd.format(distance));
+//                        etDistance.setSelection(etDistance.getText().length());
                         if (checkCalculator) {
                             metricCalculation();
                         } else {
@@ -168,6 +179,8 @@ public class ScaledDistanceFragment extends Fragment {
                     } catch (NumberFormatException e) {
                         //Error
                     }
+
+                    etDistance.addTextChangedListener(this);
                 }
             }
         });
@@ -202,6 +215,8 @@ public class ScaledDistanceFragment extends Fragment {
             }
         });
 
+        ivMenu.setOnClickListener(this);
+
 
     }
 
@@ -228,4 +243,56 @@ public class ScaledDistanceFragment extends Fragment {
 
         tvResult.setText(String.format("%.1f", SD) + " ft/√lb");
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_menu:
+                showMenu();
+                break;
+        }
+    }
+
+    private void showMenu() {
+        PopupMenu popup = new PopupMenu(getActivity(), ivMenu);
+        popup.getMenuInflater().inflate(R.menu.menu,
+                popup.getMenu());
+        popup.show();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.save:
+                        SavingLoadingData.showScaledDistanceDialog(getActivity(),distance,mic);
+                        break;
+                    case R.id.load:
+                        Bundle bundle = new Bundle();
+                        bundle.putString("checkingScreen","scaledDistance");
+                        GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
+                        break;
+                    case R.id.email:
+
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
+
+
+    private void showSaveData(){
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            String strDistance = bundle.getString("distance");
+            String strMic = bundle.getString("mic");
+            etDistance.setText(strDistance);
+            etMIC.setText(strMic);
+            distance = Double.parseDouble(strDistance);
+            mic = Double.parseDouble(strMic);
+        }
+    }
+
 }

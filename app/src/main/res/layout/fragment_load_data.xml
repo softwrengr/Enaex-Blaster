@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".saveLoadData.LoadDataFragment">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+      <ImageView
+          android:id="@+id/iv_back"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/arrow_left"
+          android:layout_marginTop="22dp"
+          android:layout_marginLeft="20dp"/>
+
+      <ImageView
+          android:id="@+id/name"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@mipmap/background"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="20dp"/>
+   </RelativeLayout>
+
+   <TextView
+       android:layout_toRightOf="@+id/iv_call"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Scaled  Distance"
+       android:textSize="20sp"
+       android:layout_gravity="center"
+       android:gravity="center"
+       android:textStyle="bold"
+       android:layout_marginLeft="5dp"
+       android:fontFamily="@font/bold" />
+
+   <android.support.v7.widget.RecyclerView
+       android:id="@+id/rv_list"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="20dp"
+       android:layout_marginRight="20dp"
+       android:layout_marginTop="10dp">
+
+   </android.support.v7.widget.RecyclerView>
+</LinearLayout>

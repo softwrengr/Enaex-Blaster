@@ -9,16 +9,20 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.techease.enaexblaster.R;
+import com.techease.enaexblaster.helpers.SavingLoadingData;
+import com.techease.enaexblaster.saveLoadData.LoadDataFragment;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
@@ -26,7 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class VibrationCalculatorFragment extends Fragment {
+public class VibrationCalculatorFragment extends Fragment implements View.OnClickListener {
     View view;
     @BindView(R.id.iv_arrow)
     ImageView ivArrow;
@@ -55,6 +59,8 @@ public class VibrationCalculatorFragment extends Fragment {
     TextView tvResult;
     @BindView(R.id.iv_back)
     ImageView ivBack;
+    @BindView(R.id.iv_menu)
+    ImageView ivMenu;
 
     private double distance = 0, mic = 0,scallingFactor=0,attenuationFactor=-1.6;
     private boolean check = true;
@@ -88,10 +94,13 @@ public class VibrationCalculatorFragment extends Fragment {
             tvMicUnit.setText("lb");
         }
         initViews();
+        showSaveData();
         return view;
     }
 
     private void  initViews(){
+
+        ivMenu.setOnClickListener(this);
 
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -302,4 +311,62 @@ public class VibrationCalculatorFragment extends Fragment {
         tvResult.setText(String.format("%.1f", PPV) + "  mm/s");
 
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_menu:
+                showMenu();
+                break;
+        }
+    }
+    private void showMenu() {
+        PopupMenu popup = new PopupMenu(getActivity(), ivMenu);
+        popup.getMenuInflater().inflate(R.menu.menu,
+                popup.getMenu());
+        popup.show();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.save:
+                        SavingLoadingData.showVibrationDialog(getActivity(),distance,mic,scallingFactor,attenuationFactor);
+                        break;
+                    case R.id.load:
+                        Bundle bundle = new Bundle();
+                        bundle.putString("checkingScreen","vibration");
+                        GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
+                        break;
+                    case R.id.email:
+
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
+
+
+    private void showSaveData(){
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            String strDistance = bundle.getString("distance");
+            String strMic = bundle.getString("mic");
+            String strScalingFactor = bundle.getString("scaling");
+            String strAttenuation = bundle.getString("attenuation");
+
+            etDistance.setText(strDistance);
+            etMIC.setText(strMic);
+            etScallingFactor.setText(strScalingFactor);
+            etAttenuationFactor.setText(strAttenuation);
+
+            distance = Double.parseDouble(strDistance);
+            mic = Double.parseDouble(strMic);
+            scallingFactor = Double.parseDouble(strDistance);
+            attenuationFactor = Double.parseDouble(strMic);
+        }
+}
 }

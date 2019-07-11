@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -14,11 +15,14 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import com.techease.enaexblaster.R;
+import com.techease.enaexblaster.helpers.SavingLoadingData;
+import com.techease.enaexblaster.saveLoadData.LoadDataFragment;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
@@ -28,7 +32,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class VolumeCalculatorFragment extends Fragment {
+public class VolumeCalculatorFragment extends Fragment implements View.OnClickListener {
     View view;
     @BindView(R.id.iv_arrow)
     ImageView ivArrow;
@@ -71,6 +75,8 @@ public class VolumeCalculatorFragment extends Fragment {
     TextView tvDepthUnit;
     @BindView(R.id.tv_density_unit)
     TextView tvDensityUnit;
+    @BindView(R.id.iv_menu)
+    ImageView ivMenu;
 
     private double burden = 0, spacing = 0, averageDepth = 0,rockDensity=0,noOfHOles=1;
     private boolean check = true;
@@ -100,10 +106,12 @@ public class VolumeCalculatorFragment extends Fragment {
             imperialUnits();
         }
         initViews();
+        showSaveData();
         return view;
     }
 
     private void initViews() {
+        ivMenu.setOnClickListener(this);
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -378,5 +386,67 @@ public class VolumeCalculatorFragment extends Fragment {
         tvSpacingUnit.setText("ft");
         tvDepthUnit.setText("ft");
         tvDensityUnit.setText("g/cc");
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_menu:
+                showMenu();
+                break;
+        }
+    }
+    private void showMenu() {
+        PopupMenu popup = new PopupMenu(getActivity(), ivMenu);
+        popup.getMenuInflater().inflate(R.menu.menu,
+                popup.getMenu());
+        popup.show();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.save:
+                        SavingLoadingData.showVolumeDialog(getActivity(),burden,spacing,averageDepth,noOfHOles,rockDensity);
+                        break;
+                    case R.id.load:
+                        Bundle bundle = new Bundle();
+                        bundle.putString("checkingScreen","volume");
+                        GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
+                        break;
+                    case R.id.email:
+
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
+
+
+    private void showSaveData() {
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            String strBurden = bundle.getString("burden");
+            String strSpacing = bundle.getString("spacing");
+            String strAverageDepth = bundle.getString("average_depth");
+            String strHoles = bundle.getString("holes");
+            String strRockDensity = bundle.getString("rockDensity");
+
+            etBurden.setText(strBurden);
+            etSpacing.setText(strSpacing);
+            etAverageDepth.setText(strAverageDepth);
+            etNoHoles.setText(strHoles);
+            etRockDensity.setText(strRockDensity);
+
+            burden = Double.parseDouble(strBurden);
+            spacing = Double.parseDouble(strSpacing);
+            averageDepth = Double.parseDouble(strAverageDepth);
+            noOfHOles = Double.parseDouble(strHoles);
+            rockDensity = Double.parseDouble(strRockDensity);
+
+        }
     }
 }

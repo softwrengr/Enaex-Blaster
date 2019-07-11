@@ -27,6 +27,9 @@
     <string name="disclaimer">Disclaimer</string>
     <string name="length">Length </string>
     <string name="version">Verison 1.0.0.0.0</string>
+    <string name="save">Save</string>
+    <string name="load">Load</string>
+    <string name="email">Email</string>
 
     <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries but also the leap into electronic typesetting, remaining essentially unchanged</string>
 
@@ -34,4 +37,7 @@
     in North and South America,Australia,Asia and Africa</string>
     <string name="privacy_policy">The Application does not collect and send any user information to
     Enaex.Information is only sent to intended recipients for the operating purposes of the application.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

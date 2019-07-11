@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,12 +17,15 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.techease.enaexblaster.R;
+import com.techease.enaexblaster.helpers.SavingLoadingData;
+import com.techease.enaexblaster.saveLoadData.LoadDataFragment;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
@@ -29,7 +33,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class PFCalculatorFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
+public class PFCalculatorFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
     View view;
     @BindView(R.id.iv_arrow)
     ImageView ivArrow;
@@ -89,6 +93,8 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
     TextView tvHoleLengthUnit;
     @BindView(R.id.pf_airdeck_unit)
     TextView tvAirDeckUnit;
+    @BindView(R.id.iv_menu)
+    ImageView ivMenu;
     
     @BindView(R.id.tv_result)
     TextView tvResult;
@@ -120,12 +126,14 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
         }
 
         initViews();
+        showSaveData();
         return view;
     }
 
 
 
     private void initViews() {
+        ivMenu.setOnClickListener(this);
         layoutOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -616,6 +624,77 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
             value2 = holeLenght - stemmingLenght - airDeck;
             powderFactor = (value1 * value2) / (value3 * rockDensity * 0.841);
             tvResult.setText(String.format("%.2f",powderFactor)+ " lb/ton");
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_menu:
+                showMenu();
+                break;
+        }
+    }
+    private void showMenu() {
+        PopupMenu popup = new PopupMenu(getActivity(), ivMenu);
+        popup.getMenuInflater().inflate(R.menu.menu,
+                popup.getMenu());
+        popup.show();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.save:
+                        SavingLoadingData.showPowderFactorDialog(getActivity(),diameter,density,burden,spacing,
+                                holeLenght,stemmingLenght,rockDensity,airDeck);
+                        break;
+                    case R.id.load:
+                        Bundle bundle = new Bundle();
+                        bundle.putString("checkingScreen","pf");
+                        GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
+                        break;
+                    case R.id.email:
+
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
+
+
+    private void showSaveData(){
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            String strDiameter = bundle.getString("diameter");
+            String strDensity = bundle.getString("density");
+            String strBurden = bundle.getString("burden");
+            String strSpacing = bundle.getString("spacing");
+            String strHoleLength = bundle.getString("holeLength");
+            String strStemLength = bundle.getString("stemLength");
+            String strRockDensity = bundle.getString("rockDensity");
+            String strAirDeck = bundle.getString("airDeck");
+
+            etDiameter.setText(strDiameter);
+            etDensity.setText(strDensity);
+            etBurden.setText(strBurden);
+            etSpacing.setText(strSpacing);
+            etHoleLenght.setText(strHoleLength);
+            etStemmingLenght.setText(strStemLength);
+            etRockDensity.setText(strRockDensity);
+            etAirDeck.setText(strAirDeck);
+
+            diameter = Double.parseDouble(strDiameter);
+            density = Double.parseDouble(strDensity);
+            burden = Double.parseDouble(strBurden);
+            spacing = Double.parseDouble(strSpacing);
+            holeLenght = Double.parseDouble(strHoleLength);
+            stemmingLenght = Double.parseDouble(strStemLength);
+            rockDensity = Double.parseDouble(strRockDensity);
+            airDeck = Double.parseDouble(strRockDensity);
         }
     }
 }

@@ -9,17 +9,21 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.techease.enaexblaster.R;
+import com.techease.enaexblaster.helpers.SavingLoadingData;
+import com.techease.enaexblaster.saveLoadData.LoadDataFragment;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
@@ -31,7 +35,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class ExplosiveWeightFragment extends Fragment {
+public class ExplosiveWeightFragment extends Fragment implements View.OnClickListener {
     View view;
     @BindView(R.id.iv_arrow)
     ImageView ivArrow;
@@ -65,6 +69,8 @@ public class ExplosiveWeightFragment extends Fragment {
     TextView tvLenghtUnit;
     @BindView(R.id.tv_stem_unit)
     TextView tvStemUnit;
+    @BindView(R.id.iv_menu)
+    ImageView ivMenu;
 
     double diameter = 0, density = 0, holeLenght = 0, stemLenght =0;
     private boolean check = true;
@@ -97,6 +103,8 @@ public class ExplosiveWeightFragment extends Fragment {
     }
 
     private void intiViews() {
+        ivMenu.setOnClickListener(this);
+
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -324,5 +332,64 @@ public class ExplosiveWeightFragment extends Fragment {
         tvExplosiveUnit.setText("g/cc");
         tvLenghtUnit.setText("ft");
         tvStemUnit.setText("ft");
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_menu:
+                showMenu();
+                break;
+        }
+    }
+    private void showMenu() {
+        PopupMenu popup = new PopupMenu(getActivity(), ivMenu);
+        popup.getMenuInflater().inflate(R.menu.menu,
+                popup.getMenu());
+        popup.show();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.save:
+                        SavingLoadingData.showExplosiveWeightDialog(getActivity(),diameter,density,holeLenght,stemLenght);
+                        break;
+                    case R.id.load:
+                        Bundle bundle = new Bundle();
+                        bundle.putString("checkingScreen","explosive_weight");
+                        GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
+                        break;
+                    case R.id.email:
+
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
+
+
+    private void showSaveData() {
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            String strDiameter = bundle.getString("diameter");
+            String strDensity = bundle.getString("density");
+            String strHoleLength = bundle.getString("holeLength");
+            String strStemLength = bundle.getString("stemLength");
+
+            etDiameter.setText(strDiameter);
+            etDensity.setText(strDensity);
+            etHoleLenght.setText(strHoleLength);
+            etStemLenght.setText(strStemLength);
+
+            diameter = Double.parseDouble(strDiameter);
+            density = Double.parseDouble(strDensity);
+            holeLenght = Double.parseDouble(strHoleLength);
+            stemLenght = Double.parseDouble(strStemLength);
+
+        }
     }
 }

@@ -13,6 +13,7 @@ import android.text.Spanned;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,12 +21,15 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.techease.enaexblaster.R;
+import com.techease.enaexblaster.helpers.SavingLoadingData;
+import com.techease.enaexblaster.saveLoadData.LoadDataFragment;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
@@ -35,7 +39,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class CalculatorByShotFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
+public class CalculatorByShotFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
     View view;
 
     @BindView(R.id.iv_arrow)
@@ -168,6 +172,8 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
 
     @BindView(R.id.iv_back)
     ImageView ivBack;
+    @BindView(R.id.iv_menu)
+    ImageView ivMenu;
 
     private double explosiveDensity = 0, diameter = 0, burden = 0, spacing = 0, benchHeight = 0, subDrill = 0, stemming = 0, noOfRows = 0, holePerRows = 0,
             holePerMs = 0, distance = 0, scallingFactor = 160, attenuation = -1.6, numberOfHole = 0, rockDensity = 0;
@@ -200,11 +206,13 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             imperialUnits();
         }
         intiViews();
+        showSaveData();
 
         return view;
     }
 
     private void intiViews() {
+        ivMenu.setOnClickListener(this);
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1104,5 +1112,94 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
 
         imperialCalculator();
         imperialUnits();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_menu:
+                showMenu();
+                break;
+        }
+    }
+    private void showMenu() {
+        PopupMenu popup = new PopupMenu(getActivity(), ivMenu);
+        popup.getMenuInflater().inflate(R.menu.menu,
+                popup.getMenu());
+        popup.show();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.save:
+                        SavingLoadingData.showShotDialog(getActivity(),numberOfHole,holePerRows,diameter,explosiveDensity,burden,
+                                spacing,benchHeight,subDrill,stemming,rockDensity,holePerMs,distance,scallingFactor,attenuation);
+                        break;
+                    case R.id.load:
+                        Bundle bundle = new Bundle();
+                        bundle.putString("checkingScreen","shot");
+                        GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
+                        break;
+                    case R.id.email:
+
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
+    private void showSaveData(){
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+
+            String noRows = bundle.getString("rows");
+            String holes = bundle.getString("holes");
+            String strDiameter = bundle.getString("diameter");
+            String strDensity = bundle.getString("density");
+            String strBurden = bundle.getString("burden");
+            String strSpacing = bundle.getString("spacing");
+            String strBenchHeight = bundle.getString("benchHeight");
+            String strSubDrill = bundle.getString("subDrill");
+            String strStemLength = bundle.getString("stemLength");
+            String strRockDensity = bundle.getString("rockDensity");
+            String strHoleMS = bundle.getString("hole_ms");
+            String strDistance = bundle.getString("distance");
+            String strScaling = bundle.getString("scaling");
+            String strAttenuation = bundle.getString("attenuation");
+
+
+            etShotHoles.setText(noRows);
+            etHolePerRow.setText(holes);
+            etDiameter.setText(strDiameter);
+            etDensity.setText(strDensity);
+            etBurden.setText(strBurden);
+            etSpacing.setText(strSpacing);
+            etBenchHeight.setText(strBenchHeight);
+            etSubDrill.setText(strSubDrill);
+            etStemming.setText(strStemLength);
+            etRockDensity.setText(strRockDensity);
+            etShotHoleMs.setText(strHoleMS);
+            etDistance.setText(strDistance);
+            etScallingFactor.setText(strScaling);
+            etAttenuationFactor.setText(strAttenuation);
+
+            numberOfHole = Double.parseDouble(noRows);
+            holePerRows = Double.parseDouble(holes);
+            diameter = Double.parseDouble(strDiameter);
+            explosiveDensity = Double.parseDouble(strDensity);
+            burden = Double.parseDouble(strBurden);
+            spacing = Double.parseDouble(strSpacing);
+            benchHeight = Double.parseDouble(strBenchHeight);
+            subDrill = Double.parseDouble(strSubDrill);
+            stemming = Double.parseDouble(strStemLength);
+            rockDensity = Double.parseDouble(strRockDensity);
+            holePerMs = Double.parseDouble(strHoleMS);
+            distance = Double.parseDouble(strDistance);
+            scallingFactor = Double.parseDouble(strScaling);
+            attenuation = Double.parseDouble(strAttenuation);
+        }
     }
 }

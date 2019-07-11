@@ -29,6 +29,15 @@
                 android:src="@mipmap/background"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"/>
+
+            <ImageView
+                android:id="@+id/iv_menu"
+                android:layout_width="25dp"
+                android:layout_height="22dp"
+                android:src="@drawable/menu"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="25dp" />
         </RelativeLayout>
 
         <TextView

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -14,12 +15,15 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.techease.enaexblaster.R;
+import com.techease.enaexblaster.helpers.SavingLoadingData;
+import com.techease.enaexblaster.saveLoadData.LoadDataFragment;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
@@ -29,7 +33,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class CalculatorByHoleFragment extends Fragment implements CompoundButton.OnCheckedChangeListener {
+public class CalculatorByHoleFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
     View view;
     @BindView(R.id.et_diameter)
     EditText etDiameter;
@@ -119,6 +123,8 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
     TextView tvRockDensityUnit;
     @BindView(R.id.hole_distance_unit)
     TextView tvDistanceUnit;
+    @BindView(R.id.iv_menu)
+    ImageView ivMenu;
 
 
     private double density = 0, diameter = 0, burden = 0, spacing = 0, holeLenght = 0, rockDensity = 0, stemming = 0,
@@ -153,6 +159,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         }
 
         initViews();
+        showSaveData();
 
         layoutOption.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -230,6 +237,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
     }
 
     private void initViews() {
+        ivMenu.setOnClickListener(this);
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -743,4 +751,82 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         calculation();
         imperialUnits();
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_menu:
+                showMenu();
+                break;
+        }
+    }
+    private void showMenu() {
+        PopupMenu popup = new PopupMenu(getActivity(), ivMenu);
+        popup.getMenuInflater().inflate(R.menu.menu,
+                popup.getMenu());
+        popup.show();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.save:
+                        SavingLoadingData.showHoleDialog(getActivity(),diameter,density,burden,
+                                spacing,holeLenght,stemming,rockDensity,distance,scallingFactor,attenuation);
+                        break;
+                    case R.id.load:
+                        Bundle bundle = new Bundle();
+                        bundle.putString("checkingScreen","hole");
+                        GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
+                        break;
+                    case R.id.email:
+
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
+    private void showSaveData(){
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+
+            String strDiameter = bundle.getString("diameter");
+            String strDensity = bundle.getString("density");
+            String strBurden = bundle.getString("burden");
+            String strSpacing = bundle.getString("spacing");
+            String strHoleLength = bundle.getString("holeLength");
+            String strStemLength = bundle.getString("stemLength");
+            String strRockDensity = bundle.getString("rockDensity");
+            String strDistance = bundle.getString("distance");
+            String strScaling = bundle.getString("scaling");
+            String strAttenuation = bundle.getString("attenuation");
+
+
+            etDiameter.setText(strDiameter);
+            etDensity.setText(strDensity);
+            etBurden.setText(strBurden);
+            etSpacing.setText(strSpacing);
+            etHoleLenght.setText(strHoleLength);
+            etStemming.setText(strStemLength);
+            etRockDensity.setText(strRockDensity);
+            etDistance.setText(strDistance);
+            etScallingFactor.setText(strScaling);
+            etAttenuationFactor.setText(strAttenuation);
+
+            diameter = Double.parseDouble(strDiameter);
+            density = Double.parseDouble(strDensity);
+            burden = Double.parseDouble(strBurden);
+            spacing = Double.parseDouble(strSpacing);
+            holeLenght = Double.parseDouble(strHoleLength);
+            stemming = Double.parseDouble(strStemLength);
+            rockDensity = Double.parseDouble(strRockDensity);
+            distance = Double.parseDouble(strDistance);
+            scallingFactor = Double.parseDouble(strScaling);
+            attenuation = Double.parseDouble(strAttenuation);
+        }
+    }
+
 }
