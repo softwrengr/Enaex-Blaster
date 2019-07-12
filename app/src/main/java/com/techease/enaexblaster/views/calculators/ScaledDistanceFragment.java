@@ -24,6 +24,7 @@ import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.helpers.SavingLoadingData;
 import com.techease.enaexblaster.saveLoadData.LoadDataFragment;
 import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.utilities.NetworkUtilities;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
 import java.text.DecimalFormat;
@@ -271,7 +272,7 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-
+                        NetworkUtilities.sendMail(getActivity(),"www.enaex.com/scaled_distance");
                         break;
                     default:
                         break;

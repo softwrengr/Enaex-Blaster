@@ -25,6 +25,7 @@ import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.helpers.SavingLoadingData;
 import com.techease.enaexblaster.saveLoadData.LoadDataFragment;
 import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.utilities.NetworkUtilities;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
 import java.text.DecimalFormat;
@@ -779,7 +780,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-
+                        NetworkUtilities.sendMail(getActivity(),"www.enaex.com/hole");
                         break;
                     default:
                         break;

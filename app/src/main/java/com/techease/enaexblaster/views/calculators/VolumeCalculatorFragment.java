@@ -24,6 +24,7 @@ import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.helpers.SavingLoadingData;
 import com.techease.enaexblaster.saveLoadData.LoadDataFragment;
 import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.utilities.NetworkUtilities;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
 import java.text.DecimalFormat;
@@ -96,13 +97,13 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
 
 
         if(checkCalculator){
-            btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
-            btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+            btnImperial.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
+            btnMetric.setBackgroundColor(getActivity().getResources().getColor(R.color.silver));
             metricUnits();
         }
         else {
-            btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
-            btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+            btnImperial.setBackgroundColor(getActivity().getResources().getColor(R.color.silver));
+            btnMetric.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
             imperialUnits();
         }
         initViews();
@@ -414,7 +415,7 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-
+                        NetworkUtilities.sendMail(getActivity(),"www.enaex.com/volume");
                         break;
                     default:
                         break;

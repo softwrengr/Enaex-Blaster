@@ -24,6 +24,7 @@ import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.helpers.SavingLoadingData;
 import com.techease.enaexblaster.saveLoadData.LoadDataFragment;
 import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.utilities.NetworkUtilities;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
 import butterknife.BindView;
@@ -338,7 +339,7 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-
+                        NetworkUtilities.sendMail(getActivity(),"www.enaex.com/vibration");
                         break;
                     default:
                         break;

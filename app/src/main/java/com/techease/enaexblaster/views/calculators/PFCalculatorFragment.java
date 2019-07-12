@@ -27,6 +27,7 @@ import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.helpers.SavingLoadingData;
 import com.techease.enaexblaster.saveLoadData.LoadDataFragment;
 import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.utilities.NetworkUtilities;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
 import butterknife.BindView;
@@ -654,7 +655,7 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-
+                        NetworkUtilities.sendMail(getActivity(),"www.enaex.com/powder_factor");
                         break;
                     default:
                         break;
