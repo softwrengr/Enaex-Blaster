@@ -73,7 +73,7 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_scaled_distance, container, false);
         ButterKnife.bind(this, view);
-        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", true);
+        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", false);
         formatter = new DecimalFormat("#,###,###.#");
         dfnd = new DecimalFormat("#,###,###");
 
@@ -123,15 +123,11 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                tvDistanceUnit.setText("m");
-                tvMicUnit.setText("kg");
-
-
                 checkCalculator = true;
-                btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
-                btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+                switchToMetric();
 
-                metricCalculation();
+                btnMetric.setClickable(false);
+                btnImperial.setClickable(true);
             }
         });
 
@@ -140,13 +136,11 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                tvDistanceUnit.setText("ft");
-                tvMicUnit.setText("lb");
                 checkCalculator = false;
-                btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
-                btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+                switchToImperial();
 
-                imperialCalculation();
+                btnMetric.setClickable(true);
+                btnImperial.setClickable(false);
             }
         });
 
@@ -245,6 +239,40 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
         tvResult.setText(String.format("%.1f", SD) + " ft/√lb");
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToMetric() {
+        tvDistanceUnit.setText("m");
+        tvMicUnit.setText("kg");
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+
+        distance = distance / 3.28084;
+        mic = mic * 0.453592;
+
+        etDistance.setText(String.format("%.0f", Double.valueOf(distance)));
+        etMIC.setText(String.format("%.0f", Double.valueOf(mic)));
+
+        metricCalculation();
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToImperial() {
+        tvDistanceUnit.setText("ft");
+        tvMicUnit.setText("lb");
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+
+        distance = distance * 3.28084;
+        mic = mic / 0.453592;
+
+        etDistance.setText(String.format("%.0f", Double.valueOf(distance)));
+        etMIC.setText(String.format("%.0f", Double.valueOf(mic)));
+
+        imperialCalculation();
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -272,7 +300,7 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaex.com/scaled_distance");
+                        NetworkUtilities.sendMail(getActivity(),"www.enaexusa.com/scaled_distance");
                         break;
                     default:
                         break;

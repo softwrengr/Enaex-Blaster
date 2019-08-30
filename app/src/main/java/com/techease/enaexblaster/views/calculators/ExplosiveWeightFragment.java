@@ -87,7 +87,7 @@ public class ExplosiveWeightFragment extends Fragment implements View.OnClickLis
         ButterKnife.bind(this,view);
         formatter = new DecimalFormat("#,###,###.#");
 
-        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",false);
 
         if(checkCalculator){
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
@@ -100,6 +100,7 @@ public class ExplosiveWeightFragment extends Fragment implements View.OnClickLis
             imperialUnits();
         }
         intiViews();
+        showSaveData();
         return view;
     }
 
@@ -133,10 +134,10 @@ public class ExplosiveWeightFragment extends Fragment implements View.OnClickLis
             @Override
             public void onClick(View v) {
                 checkCalculator = true;
-                btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
-                btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
-                metricCalculator();
-                metricUnits();
+                switchToMetric();
+
+                btnMetric.setClickable(false);
+                btnImperial.setClickable(true);
 
             }
         });
@@ -147,10 +148,10 @@ public class ExplosiveWeightFragment extends Fragment implements View.OnClickLis
             @Override
             public void onClick(View v) {
                 checkCalculator = false;
-                btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
-                btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
-                imperialCalculator();
-                imperialUnits();
+                switchToImperial();
+
+                btnMetric.setClickable(true);
+                btnImperial.setClickable(false);
 
             }
         });
@@ -321,6 +322,44 @@ public class ExplosiveWeightFragment extends Fragment implements View.OnClickLis
         tvResult.setText(yourFormattedResult + " lbs");
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToMetric() {
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+
+
+        diameter = diameter * 25.4;
+        holeLenght = holeLenght / 3.28084;
+        stemLenght = stemLenght / 3.28084;
+
+        etDiameter.setText(String.format("%.0f", Double.valueOf(diameter)));
+        etHoleLenght.setText(String.format("%.1f", Double.valueOf(holeLenght)));
+        etStemLenght.setText(String.format("%.1f", Double.valueOf(stemLenght)));
+
+        metricCalculator();
+        metricUnits();
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToImperial() {
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+
+
+
+        diameter = diameter / 25.4;
+        holeLenght = holeLenght * 3.28084;
+        stemLenght = stemLenght * 3.28084;
+
+        etDiameter.setText(String.format("%.3f", Double.valueOf(diameter)));
+        etHoleLenght.setText(String.format("%.1f", Double.valueOf(holeLenght)));
+        etStemLenght.setText(String.format("%.1f", Double.valueOf(stemLenght)));
+
+        imperialCalculator();
+        imperialUnits();
+    }
+
     private void metricUnits(){
         tvDiameterUnit.setText("mm");
         tvExplosiveUnit.setText("g/cc");
@@ -361,7 +400,7 @@ public class ExplosiveWeightFragment extends Fragment implements View.OnClickLis
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaex.com/explosive_weight");
+                        NetworkUtilities.sendMail(getActivity(),"www.enaexusa.com/explosive_weight");
                         break;
                     default:
                         break;

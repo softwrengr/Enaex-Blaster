@@ -8,6 +8,7 @@
     tools:context=".views.fragments.CalculatorsHomeFragment">
 
 
+
     <ImageView
         android:id="@+id/iv_back"
         android:layout_width="wrap_content"
@@ -44,17 +45,17 @@
             app:cardCornerRadius="10dp">
 
             <FrameLayout
-                android:id="@+id/calculator_layout"
+                android:id="@+id/hole_calculator"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 >
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:scaleType="fitXY"
                     android:layout_gravity="center|top"
-                    android:src="@drawable/byhole" />
+                    android:src="@mipmap/byhole" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -78,34 +79,34 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             app:cardCornerRadius="10dp">
-        <FrameLayout
-            android:id="@+id/shot_calculator_layout"
-            android:layout_below="@id/leader"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="vertical"
-            android:background="@drawable/round_button">
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:scaleType="fitXY"
-                android:layout_gravity="center|top"
-                android:src="@drawable/byshot"  />
-
-            <TextView
+            <FrameLayout
+                android:id="@+id/shot_calculator_layout"
+                android:layout_below="@id/leader"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="bottom"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:background="@color/silver"
-                android:textColor="@color/white"
-                android:text="@string/shot"
-                />
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:background="@drawable/round_button">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center|top"
+                    android:src="@mipmap/byshot"  />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:background="@color/silver"
+                    android:textColor="@color/white"
+                    android:text="@string/shot"
+                    />
 
 
-        </FrameLayout>
+            </FrameLayout>
 
         </android.support.v7.widget.CardView>
     </LinearLayout>
@@ -126,33 +127,33 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp">
-        <FrameLayout
-            android:id="@+id/volume_calculator"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="vertical"
-            android:background="@drawable/round_button"
-            android:gravity="center"
-            >
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:scaleType="fitXY"
-                android:layout_gravity="center|top"
-                android:src="@drawable/volumeicon" />
-
-            <TextView
+            <FrameLayout
+                android:id="@+id/volume_calculator"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="bottom"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:background="@drawable/round_button"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:background="@color/silver"
-                android:textColor="@color/white"
-                android:text="@string/volume"
-                />
-        </FrameLayout>
+                >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center|top"
+                    android:src="@mipmap/volume" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:background="@color/silver"
+                    android:textColor="@color/white"
+                    android:text="@string/volume"
+                    />
+            </FrameLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -161,35 +162,35 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             app:cardCornerRadius="10dp">
-        <FrameLayout
-            android:id="@+id/explosive_layout"
-            android:layout_below="@id/leader"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="@drawable/round_button">
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:scaleType="fitXY"
-                android:layout_gravity="center|top"
-                android:src="@drawable/weighticon" />
-
-            <TextView
+            <FrameLayout
+                android:id="@+id/explosive_layout"
+                android:layout_below="@id/leader"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="bottom"
+                android:layout_height="100dp"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:background="@color/silver"
-                android:textColor="@color/white"
-                android:text="@string/explosive"
-                />
+                android:background="@drawable/round_button">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center|top"
+                    android:src="@mipmap/explosive_weight" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:background="@color/silver"
+                    android:textColor="@color/white"
+                    android:text="@string/explosive"
+                    />
 
 
-        </FrameLayout>
+            </FrameLayout>
 
         </android.support.v7.widget.CardView>
     </LinearLayout>
@@ -211,34 +212,34 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp">
-        <FrameLayout
-            android:id="@+id/pf_layout"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="vertical"
-            android:background="@drawable/round_button"
-            >
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:scaleType="fitXY"
-                android:layout_gravity="center|top"
-                android:src="@drawable/powderfactoricon" />
-
-            <TextView
+            <FrameLayout
+                android:id="@+id/pf_layout"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="bottom"
-                android:gravity="center"
-                android:background="@color/silver"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:text="@string/powder"
-                />
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:background="@drawable/round_button"
+                >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center|top"
+                    android:src="@mipmap/powder_factor" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:background="@color/silver"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:text="@string/powder"
+                    />
 
 
-        </FrameLayout>
+            </FrameLayout>
 
         </android.support.v7.widget.CardView>
 
@@ -248,35 +249,35 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             app:cardCornerRadius="10dp">
-        <FrameLayout
-            android:id="@+id/sdob_layout"
-            android:layout_below="@id/leader"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="@drawable/round_button">
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:scaleType="fitXY"
-                android:layout_gravity="center|top"
-                android:src="@drawable/sdobicon" />
-
-            <TextView
+            <FrameLayout
+                android:id="@+id/sdob_layout"
+                android:layout_below="@id/leader"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="bottom"
+                android:layout_height="100dp"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:background="@color/silver"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:text="@string/scaled"
-                />
+                android:background="@drawable/round_button">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center|top"
+                    android:src="@mipmap/scaled_depth" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:background="@color/silver"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:text="@string/scaled"
+                    />
 
 
-        </FrameLayout>
+            </FrameLayout>
 
         </android.support.v7.widget.CardView>
     </LinearLayout>
@@ -306,11 +307,11 @@
                 >
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:scaleType="fitXY"
                     android:layout_gravity="center|top"
-                    android:src="@drawable/vibrationicon" />
+                    android:src="@mipmap/vibration" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -343,11 +344,11 @@
                 android:background="@drawable/round_button">
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:scaleType="fitXY"
                     android:layout_gravity="center|top"
-                    android:src="@drawable/scaleddistanceicon" />
+                    android:src="@mipmap/scaled_distance" />
 
                 <TextView
                     android:layout_width="match_parent"

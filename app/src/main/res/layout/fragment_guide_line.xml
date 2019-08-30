@@ -1,277 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.fragments.GuideLineFragment">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-        <ImageView
-            android:id="@+id/iv_back"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_left"
-            android:layout_marginTop="22dp"
-            android:layout_marginLeft="20dp"/>
-
-        <ImageView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/background"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"/>
-
-        <ImageView
-            android:id="@+id/iv_contact"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/web"
-            android:layout_below="@id/name"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"/>
-
-        <TextView
-            android:id="@+id/leader"
-            android:layout_below="@+id/iv_contact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/guide"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_centerHorizontal="true" />
+            android:layout_height="wrap_content">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/leader"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                app:cardCornerRadius="20dp">
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/arrow_left" />
 
-                <RelativeLayout
-                    android:id="@+id/bench_def"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_toRightOf="@+id/iv_call"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/bench"
-                        android:textSize="20sp"
-                        android:layout_marginLeft="20dp"
-                        android:gravity="center"
-                        android:layout_marginTop="10dp"/>
-
-                    <ImageView
-                        android:id="@+id/iv_bench"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/up"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="12dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_definition"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/iv_bench"
-                        android:text="Bench Definition"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-
-                </RelativeLayout>
-
-
-            </android.support.v7.widget.CardView>
-
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                app:cardCornerRadius="20dp">
+                android:src="@mipmap/background" />
 
-                <RelativeLayout
-                    android:id="@+id/loading_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp">
+            <ImageView
+                android:id="@+id/iv_contact"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/web" />
 
-                    <TextView
-                        android:id="@+id/load"
-                        android:layout_toRightOf="@+id/iv_web"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/loading"
-                        android:textSize="20sp"
-                        android:layout_marginLeft="20dp"
-                        android:gravity="center"
-                        android:layout_marginTop="10dp"/>
-
-                    <ImageView
-                        android:id="@+id/iv_loading"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/down_arrow"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="12dp"/>
-
-
-                    <TextView
-                        android:id="@+id/tv_loading_imperial"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/load"
-                        android:text="Loading Chart Imperial"
-                        android:layout_marginLeft="20dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_loading_metric"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_loading_imperial"
-                        android:text="Loading Chart Metric"
-                        android:layout_marginLeft="20dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="20dp">
+                android:layout_below="@id/leader"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
 
-                <RelativeLayout
-                    android:id="@+id/rock_layout"
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="20dp">
 
-                    <TextView
-                        android:id="@+id/rock"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rock"
-                        android:textSize="20sp"
-                        android:layout_marginLeft="20dp"
-                        android:gravity="center"
-                        android:layout_marginTop="10dp"/>
+                    <LinearLayout
+                        android:id="@+id/bench_def"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="@string/bench"
+                            android:textSize="20sp" />
 
-                    <ImageView
-                        android:id="@+id/iv_rock"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/up"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="12dp"/>
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/tv_rock_definition"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/rock"
-                        android:text="Rock Properties"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
 
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
+                </android.support.v7.widget.CardView>
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="25dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="20dp">
+
+                    <LinearLayout
+                        android:id="@+id/loading_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="@string/loading"
+                            android:textSize="20sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_loading_imperial"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Loading Chart Imperial"
+                            android:textColor="@color/colorAccent" />
+
+                        <TextView
+                            android:id="@+id/tv_loading_metric"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_loading_imperial"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Loading Chart Metric"
+                            android:textColor="@color/colorAccent" />
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="25dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="20dp">
+
+                    <LinearLayout
+                        android:id="@+id/rock_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="@string/rock"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="5dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="20dp">
+
+                    <LinearLayout
+                        android:id="@+id/sdob_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="@string/sdob"
+                            android:textSize="20sp" />
+
+
+                        <TextView
+                            android:id="@+id/tv_sdob"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
+                            android:text="Scale Depth of Burial"
+                            android:textColor="@color/colorAccent" />
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/leader"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="20dp"
-                app:cardBackgroundColor="@color/white"
-                android:layout_marginBottom="5dp"
-                app:cardCornerRadius="20dp">
+                android:layout_below="@+id/iv_contact"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/guide"
+                android:textSize="20sp" />
 
-                <RelativeLayout
-                    android:id="@+id/sdob_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp">
+        </RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/sdob"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sdob"
-                        android:textSize="20sp"
-                        android:layout_marginLeft="20dp"
-                        android:gravity="center"
-                        android:layout_marginTop="10dp"/>
-
-                    <ImageView
-                        android:id="@+id/iv_sdob"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/up"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="12dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_sdob"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/sdob"
-                        android:text="Scale Depth of Burial"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-</ScrollView>
+    </ScrollView>
 </RelativeLayout>

@@ -2,26 +2,124 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config />
+      <config>
+        <device id="pixel_2" />
+        <device id="wear_round_chin_320_290" />
+      </config>
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="check" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44ac63d5-b03e-4b86-84e5-9481cf4b54ee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/apd_p_series_sds.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/sdob_imperial.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/sdob_metric.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/ExplosiveCrud.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/HoleCrud.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/PowderFactorCrud.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/ScaledDistanceCrud.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/SdobCrud.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/ShotCrud.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/VibrationCrud.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/VolumeCrud.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/app_logo.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/black_logo.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/imperial_graphic1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/imperial_graphic2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/imperial_graphic3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/imperial_graphic4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/imperial_graphic5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/imperial_graphic6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/metric_graphic1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/metric_graphic2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/metric_graphic3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/metric_graphic4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/metric_graphic5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/metric_graphic6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/remove.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/splash.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_calculators_home.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_home.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/booster_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/detonation_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/electronic_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/non_electronic_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/thermo_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/byhole.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/byshot.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/explosive_weight.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/powder_factor.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/scaled_depth.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/scaled_distance.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/vibration.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/volume.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/byhole.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/byshot.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/explosive_weight.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/powder_factor.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/scaled_depth.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/scaled_distance.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/vibration.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/volume.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/byhole.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/byshot.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/explosive_weight.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/powder_factor.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/scaled_depth.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/scaled_distance.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/vibration.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/volume.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/byhole.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/byshot.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/explosive_weight.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/powder_factor.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/scaled_depth.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/scaled_distance.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/vibration.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/volume.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/byshot.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/powder_factor.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/scaled_depth.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/scaled_distance.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/vibration.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/volume.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/utilities/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/utilities/NetworkUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/sdob.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ExplosiveWeightAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ExplosiveWeightAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/HoleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/HoleAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/PowderFactorAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/PowderFactorAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/SDOBAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/SDOBAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ScaledDistanceAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ScaledDistanceAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ShotAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ShotAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/VibrationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/VibrationAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/VolumeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/VolumeAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/helpers/SavingLoadingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/helpers/SavingLoadingData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/saveLoadData/LoadDataFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/saveLoadData/LoadDataFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/EnaexCrud.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/activities/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/activities/SplashActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/activities/SplashActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/CalculatorByHoleFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/CalculatorByHoleFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/CalculatorByShotFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/CalculatorByShotFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/ExplosiveWeightFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/ExplosiveWeightFragment.java" afterDir="false" />
@@ -30,7 +128,51 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/ScaledDistanceFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/ScaledDistanceFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/VibrationCalculatorFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/VibrationCalculatorFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/VolumeCalculatorFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/VolumeCalculatorFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/CalculatorsHomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/CalculatorsHomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/ContactUsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/ContactUsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/GuideLineFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/GuideLineFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/OpenPdfFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/OpenPdfFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/ProductInfoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/ProductInfoFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/SettingFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/SettingFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/byhole.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/byshot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/graphic1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/graphics2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/graphics3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/graphics4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/graphics5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/graphics6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/powderfactoricon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/scaleddistanceicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/sdobicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/splash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/vibrationicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/volumeicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/weighticon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bulk_products_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bulk_products_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_scaled_distance.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_scaled_distance.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_calculator_by_hole.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_calculator_by_hole.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_calculator_by_shot.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_calculator_by_shot.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_calculators_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_calculators_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_explosive_weight.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_explosive_weight.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_guide_line.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_guide_line.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_load_data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_load_data.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_pf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_pf.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_product_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_product_info.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scaled_distance.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_scaled_distance.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sdobcalculator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sdobcalculator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_vibration_calculator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_vibration_calculator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_volume_calculator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_volume_calculator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/background.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/background.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/background.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/background.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/background.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/background.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,6 +181,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="26EBB18415153131" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -47,20 +193,7 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/utilities/NetworkUtilities.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="65" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -73,25 +206,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>layoutRockDensity</find>
-      <find>checkWeight</find>
-      <find>checkAirDeck</find>
-      <find>etHolePerRow</find>
-      <find>numberOfRow</find>
-      <find>etRockDensity</find>
-      <find>layoutMetricImperial</find>
-      <find>btnHoles</find>
-      <find>density</find>
-      <find>switchVibration</find>
-      <find>ivArrow</find>
-      <find>layoutDistance</find>
-      <find>layoutHole8ms</find>
-      <find>layoutAttenuation</find>
-      <find>layoutScalingFactor</find>
-      <find>numberOfHole</find>
-      <find>etSubDrill</find>
-      <find>subDrill</find>
-      <find>checkSubDrillStandOFF</find>
       <find>layoutRock</find>
       <find>layoutBulkProducts</find>
       <find>tvUnits</find>
@@ -99,11 +213,34 @@
       <find>shot_bench_unit</find>
       <find>noOfHOles</find>
       <find>airDeck</find>
-      <find>checkVolumeWeight</find>
-      <find>checkCalculator</find>
       <find>etNoOfRows</find>
       <find>etShotHoles</find>
+      <find>etAttenuationFactor</find>
+      <find>check_unit</find>
+      <find>formatter</find>
+      <find>layoutBulk</find>
+      <find>layoutDetonationCord</find>
+      <find>check1</find>
+      <find>tv_sds_booster</find>
+      <find>tv_tds_booster</find>
+      <find>tvTDSBooster</find>
+      <find>ShotModel</find>
+      <find>3.2808</find>
+      <find>3.281</find>
+      <find>3.28084</find>
+      <find>calculation</find>
+      <find>page</find>
+      <find>checkCalculator</find>
+      <find>scaledDistanceCrud</find>
+      <find>tvVolumePerHole</find>
+      <find>totalWeight</find>
+      <find>checkVolume</find>
+      <find>checkVolumeWeight</find>
     </findStrings>
+    <replaceStrings>
+      <replace>3.28084</replace>
+      <replace>imperialCalculation</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -111,57 +248,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_guide_line.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/activities/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/booster_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/bulk_products_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/GuideLineFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/helpers/BossMoveDatabase.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/BossMoveDatabase.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/ScaledDistanceModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/CalculatorDataAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_load_data.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_calculators_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_volume_calculator.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_scaled_distance.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_vibration_calculator.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/VibrationModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/SdobModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_sdobcalculator.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ScaledDistanceAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/SDOBAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/VibrationAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/PowderFactorModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/PowderFactorAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_pf.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/ExplosiveWeightModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ExplosiveWeightAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_explosive_weight.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_volume_calculator.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/VolumeModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/VolumeAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_calculator_by_shot.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/ShotModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ShotAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_calculator_by_hole.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/helpers/SavingLoadingData.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/HoleModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/EnaexDatabase.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_explosive_weight.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/ScaledDistanceCrud.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/VibrationCrud.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/SdobCrud.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/PowderFactorCrud.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/ExplosiveCrud.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/VolumeCrud.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/EnaexCrud.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/saveLoadData/LoadDataFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/HoleAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/HoleCrud.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/helpers/SavingLoadingData.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/ShotCrud.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_scaled_distance.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/utilities/FileUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/HomeFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/utilities/StringEscapeUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/CalculatorByHoleFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/CalculatorByShotFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/HoleAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/SDOBAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ExplosiveWeightAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/PowderFactorAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ScaledDistanceAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ShotAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/VibrationAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/VolumeAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/activities/SplashActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/SettingFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/ExplosiveWeightFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/PFCalculatorFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/ScaledDistanceFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/CalculatorByHoleFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/VolumeCalculatorFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_calculator_by_shot.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/PFCalculatorFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_pf.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/SDOBCalculatorFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/VibrationCalculatorFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/VolumeCalculatorFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/utilities/NetworkUtilities.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/HomeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/CalculatorByShotFragment.java" />
       </list>
     </option>
   </component>
@@ -177,45 +314,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Enaex-Blaster" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="Enaex-Blaster" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="Enaex-Blaster" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Enaex-Blaster" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="techease" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Enaex-Blaster" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="techease" type="462c0819:PsiDirectoryNode" />
-              <item name="enaexblaster" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -253,17 +353,22 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="26EBB18415153131" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-08-30T09:33:14.291Z" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="device.picker.selection" value="26EBB18415153131" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+    <property name="sync.plugin.last.upgrade.timestamp" value="1566473808915" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -283,11 +388,11 @@
       <recent name="com.techease.enaexblaster.models" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster" />
       <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi" />
       <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -303,15 +408,6 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -394,6 +490,12 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -584,7 +686,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562849704940</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="email with deep link work done">
+      <created>1562931629079</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1562931629080</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -602,11 +711,11 @@
       <window_info anchor="bottom" id="Run" order="0" weight="0.3275862" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.5344828" />
       <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3291536" />
-      <window_info anchor="bottom" id="Terminal" order="4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5626959" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.3291536" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32911393" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.3197492" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.3181818" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.3275862" />
       <window_info anchor="bottom" id="Flutter Performance" order="10" side_tool="true" />
@@ -614,7 +723,7 @@
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Preview" order="4" weight="0.28094462" />
+      <window_info anchor="right" id="Preview" order="4" weight="0.34283388" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Flutter Inspector" order="6" />
       <window_info anchor="right" id="Flutter Outline" order="7" />
@@ -622,7 +731,7 @@
     </layout>
     <layout-to-restore>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26954398" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.21579805" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -633,22 +742,23 @@
       <window_info anchor="bottom" id="Run" order="0" weight="0.3275862" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.5344828" />
       <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3291536" />
-      <window_info anchor="bottom" id="Terminal" order="4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5626959" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.3291536" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32911393" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.3197492" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.3181818" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.3275862" />
       <window_info anchor="bottom" id="Flutter Performance" order="10" side_tool="true" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Preview" order="4" weight="0.28094462" />
+      <window_info anchor="right" id="Preview" order="4" weight="0.34283388" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Flutter Inspector" order="6" />
       <window_info anchor="right" id="Flutter Outline" order="7" />
+      <window_info anchor="right" id="Assistant" order="8" weight="0.32980457" />
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
@@ -672,596 +782,383 @@
     <MESSAGE value="some changes done" />
     <MESSAGE value="minor bug solved" />
     <MESSAGE value="loading and saving data work done" />
-    <option name="LAST_COMMIT_MESSAGE" value="loading and saving data work done" />
+    <MESSAGE value="email with deep link work done" />
+    <option name="LAST_COMMIT_MESSAGE" value="email with deep link work done" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/GuideLineFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/fragment_calculators_home.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="80" column="111" lean-forward="true" selection-start-line="80" selection-start-column="111" selection-end-line="80" selection-end-column="111" />
+        <state relative-caret-position="285">
+          <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/OpenPdfFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-209">
-          <caret line="57" column="9" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="57" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_load_data.xml">
       <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
-        </state>
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_layout.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="35" lean-forward="true" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/background.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/background.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_scaled_distance.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="37" column="52" lean-forward="true" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/logo.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ScaledDistanceAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="67" column="112" lean-forward="true" selection-start-line="67" selection-start-column="112" selection-end-line="67" selection-end-column="112" />
+        <state relative-caret-position="49">
+          <caret line="13" column="54" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/PowderFactorModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="30" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="30" />
-          <folding>
-            <element signature="e#206#207#0" expanded="true" />
-            <element signature="e#236#237#0" expanded="true" />
-            <element signature="e#282#283#0" expanded="true" />
-            <element signature="e#320#321#0" expanded="true" />
-            <element signature="e#354#355#0" expanded="true" />
-            <element signature="e#384#385#0" expanded="true" />
-            <element signature="e#430#431#0" expanded="true" />
-            <element signature="e#468#469#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
-            <element signature="e#530#531#0" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#610#611#0" expanded="true" />
-            <element signature="e#644#645#0" expanded="true" />
-            <element signature="e#674#675#0" expanded="true" />
-            <element signature="e#720#721#0" expanded="true" />
-            <element signature="e#758#759#0" expanded="true" />
-            <element signature="e#795#796#0" expanded="true" />
-            <element signature="e#828#829#0" expanded="true" />
-            <element signature="e#880#881#0" expanded="true" />
-            <element signature="e#924#925#0" expanded="true" />
-            <element signature="e#961#962#0" expanded="true" />
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1046#1047#0" expanded="true" />
-            <element signature="e#1090#1091#0" expanded="true" />
-            <element signature="e#1128#1129#0" expanded="true" />
-            <element signature="e#1162#1163#0" expanded="true" />
-            <element signature="e#1216#1217#0" expanded="true" />
-            <element signature="e#1262#1263#0" expanded="true" />
-            <element signature="e#1296#1297#0" expanded="true" />
-            <element signature="e#1326#1327#0" expanded="true" />
-            <element signature="e#1372#1373#0" expanded="true" />
-            <element signature="e#1410#1411#0" expanded="true" />
-            <element signature="e#1444#1445#0" expanded="true" />
-            <element signature="e#1474#1475#0" expanded="true" />
-            <element signature="e#1520#1521#0" expanded="true" />
-            <element signature="e#1558#1559#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/VibrationAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_vibration_calculator.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="40" column="50" lean-forward="true" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_pf.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/ScaledDistanceModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="32" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="32" />
-          <folding>
-            <element signature="e#145#146#0" expanded="true" />
-            <element signature="e#176#177#0" expanded="true" />
-            <element signature="e#224#225#0" expanded="true" />
-            <element signature="e#264#265#0" expanded="true" />
-            <element signature="e#294#295#0" expanded="true" />
-            <element signature="e#320#321#0" expanded="true" />
-            <element signature="e#358#359#0" expanded="true" />
-            <element signature="e#388#389#0" expanded="true" />
-            <element signature="e#423#424#0" expanded="true" />
-            <element signature="e#454#455#0" expanded="true" />
-            <element signature="e#502#503#0" expanded="true" />
-            <element signature="e#542#543#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/VibrationModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="3" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/ExplosiveWeightModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/SdobModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="22" />
-          <folding>
-            <element signature="e#209#210#0" expanded="true" />
-            <element signature="e#240#241#0" expanded="true" />
-            <element signature="e#288#289#0" expanded="true" />
-            <element signature="e#328#329#0" expanded="true" />
-            <element signature="e#362#363#0" expanded="true" />
-            <element signature="e#392#393#0" expanded="true" />
-            <element signature="e#438#439#0" expanded="true" />
-            <element signature="e#476#477#0" expanded="true" />
-            <element signature="e#513#514#0" expanded="true" />
-            <element signature="e#546#547#0" expanded="true" />
-            <element signature="e#598#599#0" expanded="true" />
-            <element signature="e#642#643#0" expanded="true" />
-            <element signature="e#679#680#0" expanded="true" />
-            <element signature="e#712#713#0" expanded="true" />
-            <element signature="e#764#765#0" expanded="true" />
-            <element signature="e#808#809#0" expanded="true" />
-            <element signature="e#843#844#0" expanded="true" />
-            <element signature="e#874#875#0" expanded="true" />
-            <element signature="e#922#923#0" expanded="true" />
-            <element signature="e#962#963#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sdobcalculator.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_explosive_weight.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/SDOBAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="70" column="44" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/VolumeModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="24" />
-          <folding>
-            <element signature="e#168#169#0" expanded="true" />
-            <element signature="e#197#198#0" expanded="true" />
-            <element signature="e#241#242#0" expanded="true" />
-            <element signature="e#277#278#0" expanded="true" />
-            <element signature="e#311#312#0" expanded="true" />
-            <element signature="e#341#342#0" expanded="true" />
-            <element signature="e#387#388#0" expanded="true" />
-            <element signature="e#425#426#0" expanded="true" />
-            <element signature="e#465#466#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#640#641#0" expanded="true" />
-            <element signature="e#667#668#0" expanded="true" />
-            <element signature="e#707#708#0" expanded="true" />
-            <element signature="e#739#740#0" expanded="true" />
-            <element signature="e#777#778#0" expanded="true" />
-            <element signature="e#811#812#0" expanded="true" />
-            <element signature="e#865#866#0" expanded="true" />
-            <element signature="e#911#912#0" expanded="true" />
-            <element signature="e#945#946#0" expanded="true" />
-            <element signature="e#975#976#0" expanded="true" />
-            <element signature="e#1021#1022#0" expanded="true" />
-            <element signature="e#1059#1060#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/VolumeAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="70" column="45" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="45" />
-        </state>
-      </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_volume_calculator.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="39" column="50" lean-forward="true" selection-start-line="32" selection-start-column="11" selection-end-line="39" selection-end-column="50" />
+        <state relative-caret-position="210">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="102" selection-end-column="21" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/ShotModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_scaled_distance.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        <state relative-caret-position="324">
+          <caret line="93" column="33" lean-forward="true" selection-start-line="68" selection-start-column="14" selection-end-line="93" selection-end-column="33" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sdobcalculator.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="95" column="33" lean-forward="true" selection-start-line="70" selection-start-column="16" selection-end-line="95" selection-end-column="33" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_vibration_calculator.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="93" column="33" lean-forward="true" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="33" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/VibrationCrud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="48" column="61" lean-forward="true" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
           <folding>
-            <element signature="e#390#391#0" expanded="true" />
-            <element signature="e#420#421#0" expanded="true" />
-            <element signature="e#466#467#0" expanded="true" />
-            <element signature="e#504#505#0" expanded="true" />
-            <element signature="e#236#237#0" expanded="true" />
-            <element signature="e#263#264#0" expanded="true" />
-            <element signature="e#303#304#0" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
-            <element signature="e#367#368#0" expanded="true" />
-            <element signature="e#395#396#0" expanded="true" />
-            <element signature="e#437#438#0" expanded="true" />
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#537#538#0" expanded="true" />
-            <element signature="e#585#586#0" expanded="true" />
-            <element signature="e#625#626#0" expanded="true" />
-            <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#735#736#0" expanded="true" />
-            <element signature="e#773#774#0" expanded="true" />
-            <element signature="e#806#807#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
-            <element signature="e#879#880#0" expanded="true" />
-            <element signature="e#915#916#0" expanded="true" />
-            <element signature="e#949#950#0" expanded="true" />
-            <element signature="e#979#980#0" expanded="true" />
-            <element signature="e#1025#1026#0" expanded="true" />
-            <element signature="e#1063#1064#0" expanded="true" />
-            <element signature="e#1100#1101#0" expanded="true" />
-            <element signature="e#1133#1134#0" expanded="true" />
-            <element signature="e#1185#1186#0" expanded="true" />
-            <element signature="e#1229#1230#0" expanded="true" />
-            <element signature="e#1264#1265#0" expanded="true" />
-            <element signature="e#1295#1296#0" expanded="true" />
-            <element signature="e#1343#1344#0" expanded="true" />
-            <element signature="e#1383#1384#0" expanded="true" />
-            <element signature="e#1420#1421#0" expanded="true" />
-            <element signature="e#1453#1454#0" expanded="true" />
-            <element signature="e#1505#1506#0" expanded="true" />
-            <element signature="e#1549#1550#0" expanded="true" />
-            <element signature="e#1587#1588#0" expanded="true" />
-            <element signature="e#1621#1622#0" expanded="true" />
-            <element signature="e#1675#1676#0" expanded="true" />
-            <element signature="e#1721#1722#0" expanded="true" />
-            <element signature="e#1754#1755#0" expanded="true" />
-            <element signature="e#1783#1784#0" expanded="true" />
-            <element signature="e#1827#1828#0" expanded="true" />
-            <element signature="e#1863#1864#0" expanded="true" />
-            <element signature="e#1898#1899#0" expanded="true" />
-            <element signature="e#1929#1930#0" expanded="true" />
-            <element signature="e#1977#1978#0" expanded="true" />
-            <element signature="e#2017#2018#0" expanded="true" />
-            <element signature="e#2051#2052#0" expanded="true" />
-            <element signature="e#2081#2082#0" expanded="true" />
-            <element signature="e#2127#2128#0" expanded="true" />
-            <element signature="e#2165#2166#0" expanded="true" />
-            <element signature="e#2203#2204#0" expanded="true" />
-            <element signature="e#2237#2238#0" expanded="true" />
-            <element signature="e#2291#2292#0" expanded="true" />
-            <element signature="e#2337#2338#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/PowderFactorAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/SdobCrud.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="73" column="63" lean-forward="true" selection-start-line="73" selection-start-column="63" selection-end-line="73" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ShotAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="79" column="71" lean-forward="true" selection-start-line="79" selection-start-column="71" selection-end-line="79" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_calculator_by_shot.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="41" column="50" lean-forward="true" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_calculator_by_hole.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/HoleModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="22" />
+        <state relative-caret-position="90">
+          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
           <folding>
-            <element signature="e#336#337#0" expanded="true" />
-            <element signature="e#367#368#0" expanded="true" />
-            <element signature="e#415#416#0" expanded="true" />
-            <element signature="e#455#456#0" expanded="true" />
-            <element signature="e#489#490#0" expanded="true" />
-            <element signature="e#519#520#0" expanded="true" />
-            <element signature="e#565#566#0" expanded="true" />
-            <element signature="e#603#604#0" expanded="true" />
-            <element signature="e#636#637#0" expanded="true" />
-            <element signature="e#665#666#0" expanded="true" />
-            <element signature="e#709#710#0" expanded="true" />
-            <element signature="e#745#746#0" expanded="true" />
-            <element signature="e#779#780#0" expanded="true" />
-            <element signature="e#809#810#0" expanded="true" />
-            <element signature="e#855#856#0" expanded="true" />
-            <element signature="e#893#894#0" expanded="true" />
-            <element signature="e#930#931#0" expanded="true" />
-            <element signature="e#963#964#0" expanded="true" />
-            <element signature="e#1015#1016#0" expanded="true" />
-            <element signature="e#1059#1060#0" expanded="true" />
-            <element signature="e#1096#1097#0" expanded="true" />
-            <element signature="e#1129#1130#0" expanded="true" />
-            <element signature="e#1181#1182#0" expanded="true" />
-            <element signature="e#1225#1226#0" expanded="true" />
-            <element signature="e#1263#1264#0" expanded="true" />
-            <element signature="e#1297#1298#0" expanded="true" />
-            <element signature="e#1351#1352#0" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#1432#1433#0" expanded="true" />
-            <element signature="e#1463#1464#0" expanded="true" />
-            <element signature="e#1511#1512#0" expanded="true" />
-            <element signature="e#1551#1552#0" expanded="true" />
-            <element signature="e#1585#1586#0" expanded="true" />
-            <element signature="e#1615#1616#0" expanded="true" />
-            <element signature="e#1661#1662#0" expanded="true" />
-            <element signature="e#1699#1700#0" expanded="true" />
-            <element signature="e#1737#1738#0" expanded="true" />
-            <element signature="e#1771#1772#0" expanded="true" />
-            <element signature="e#1825#1826#0" expanded="true" />
-            <element signature="e#1871#1872#0" expanded="true" />
-            <element signature="e#1905#1906#0" expanded="true" />
-            <element signature="e#1935#1936#0" expanded="true" />
-            <element signature="e#1981#1982#0" expanded="true" />
-            <element signature="e#2019#2020#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/ScaledDistanceCrud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="32" column="45" lean-forward="true" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/PowderFactorCrud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="76" column="5" lean-forward="true" selection-start-line="10" selection-end-line="76" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/ExplosiveCrud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="65" column="5" lean-forward="true" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/VolumeCrud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="70" column="5" lean-forward="true" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/helpers/SavingLoadingData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/EnaexDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="20" column="70" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/EnaexCrud.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/HoleAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="77" column="91" selection-start-line="77" selection-start-column="91" selection-end-line="77" selection-end-column="91" />
+        <state relative-caret-position="218">
+          <caret line="53" column="50" lean-forward="true" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/saveLoadData/LoadDataFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="336" column="13" selection-start-line="336" selection-start-column="13" selection-end-line="336" selection-end-column="13" />
+        <state relative-caret-position="501">
+          <caret line="431" column="38" selection-start-line="431" selection-start-column="30" selection-end-line="431" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/models/HoleModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/ShotCrud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="17" column="56" lean-forward="true" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/HoleCrud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="42" column="42" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/HoleAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ExplosiveWeightAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+        <state relative-caret-position="456">
+          <caret line="107" column="52" selection-start-line="107" selection-start-column="52" selection-end-line="107" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/PowderFactorAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="111" column="49" selection-start-line="111" selection-start-column="49" selection-end-line="111" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ScaledDistanceAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="104" column="51" selection-start-line="104" selection-start-column="51" selection-end-line="104" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/ShotAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="117" column="43" selection-start-line="117" selection-start-column="43" selection-end-line="117" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/VibrationAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="105" column="45" selection-start-line="105" selection-start-column="45" selection-end-line="105" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/sqliteDatabase/EnaexDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="36" column="49" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_scaled_distance.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="39" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
+        <state relative-caret-position="225">
+          <caret line="15" column="35" lean-forward="true" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/VolumeAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="43" column="45" lean-forward="true" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_dialog.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="35" column="72" selection-start-line="35" selection-start-column="72" selection-end-line="35" selection-end-column="72" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/activities/SplashActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="22" column="63" lean-forward="true" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
+          <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/utilities/NetworkUtils.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/SettingFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/activities/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" column="67" lean-forward="true" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/utilities/StringEscapeUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/CalculatorsHomeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="87" column="97" lean-forward="true" selection-start-line="87" selection-start-column="97" selection-end-line="87" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/HomeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="99" column="36" lean-forward="true" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/CalculatorByHoleFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="782" column="74" selection-start-line="782" selection-start-column="69" selection-end-line="782" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="33" column="43" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="43" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/CalculatorByShotFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="1144" column="74" selection-start-line="1144" selection-start-column="74" selection-end-line="1144" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/ExplosiveWeightFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="363" column="74" selection-start-line="363" selection-start-column="74" selection-end-line="363" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/PFCalculatorFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="657" column="74" selection-start-line="657" selection-start-column="74" selection-end-line="657" selection-end-column="74" />
+        <state relative-caret-position="228">
+          <caret line="51" column="89" selection-start-line="51" selection-start-column="89" selection-end-line="51" selection-end-column="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/ScaledDistanceFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="274" column="74" selection-start-line="274" selection-start-column="74" selection-end-line="274" selection-end-column="74" />
+        <state relative-caret-position="175">
+          <caret line="65" column="43" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#onClick#0;class#ScaledDistanceFragment#0" />
+            <element signature="method#showSaveData#0;class#ScaledDistanceFragment#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/SDOBCalculatorFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/adapters/SDOBAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="395" column="74" selection-start-line="395" selection-start-column="74" selection-end-line="395" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/VibrationCalculatorFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="341" column="74" selection-start-line="341" selection-start-column="74" selection-end-line="341" selection-end-column="74" />
+        <state relative-caret-position="456">
+          <caret line="106" column="40" selection-start-line="106" selection-start-column="40" selection-end-line="106" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/VolumeCalculatorFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="417" column="74" selection-start-line="417" selection-start-column="74" selection-end-line="417" selection-end-column="74" />
+        <state relative-caret-position="250">
+          <caret line="396" column="28" lean-forward="true" selection-start-line="396" selection-start-column="28" selection-end-line="396" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/utilities/NetworkUtilities.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_calculator_by_shot.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="65" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="457">
+          <caret line="662" column="36" lean-forward="true" selection-start-line="662" selection-start-column="36" selection-end-line="662" selection-end-column="36" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/ExplosiveWeightFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="85" column="52" selection-start-line="85" selection-start-column="52" selection-end-line="85" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_explosive_weight.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="93" column="33" lean-forward="true" selection-start-line="68" selection-start-column="14" selection-end-line="93" selection-end-column="33" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_pf.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="99" column="55" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="55" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/SDOBCalculatorFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="329" column="45" selection-start-line="329" selection-start-column="45" selection-end-line="329" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/VibrationCalculatorFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="343" column="28" lean-forward="true" selection-start-line="343" selection-start-column="28" selection-end-line="343" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/background.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/imperial_graphic1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_calculator_by_hole.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="740" column="48" lean-forward="true" selection-start-line="740" selection-start-column="48" selection-end-line="740" selection-end-column="48" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/activities/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="19" column="71" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/fragments/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="121" column="52" selection-start-line="121" selection-start-column="52" selection-end-line="121" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/CalculatorByHoleFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10636">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/CalculatorByShotFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="907" column="55" selection-start-line="907" selection-start-column="44" selection-end-line="907" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/enaexblaster/views/calculators/PFCalculatorFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="181" column="33" selection-start-line="181" selection-start-column="16" selection-end-line="181" selection-end-column="33" />
         </state>
       </provider>
     </entry>

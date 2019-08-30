@@ -63,7 +63,7 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
                sendMail();
                break;
            case R.id.layout_website:
-               Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.enaex.com/en/"));
+               Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.enaexusa.com/"));
                startActivity(browserIntent);
                break;
        }

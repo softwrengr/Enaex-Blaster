@@ -16,6 +16,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ((AppCompatActivity)MainActivity.this).getSupportActionBar().hide();
 
-        GeneralUtils.connectFragment(MainActivity.this,new HomeFragment());
+        if (savedInstanceState == null) {
+            GeneralUtils.connectFragment(MainActivity.this,new HomeFragment());
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
     }
 }

@@ -113,16 +113,16 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
         view = inflater.inflate(R.layout.fragment_pf, container, false);
         ButterKnife.bind(this, view);
 
-        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",false);
 
         if(checkCalculator){
-            btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
-            btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+            btnImperial.setBackgroundColor(getResources().getColor(R.color.grey));
+            btnMetric.setBackgroundColor(getResources().getColor(R.color.silver));
             metricUnits();
         }
         else {
-            btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
-            btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+            btnImperial.setBackgroundColor(getResources().getColor(R.color.silver));
+            btnMetric.setBackgroundColor(getResources().getColor(R.color.grey));
             imperialUnits();
         }
 
@@ -156,6 +156,9 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
             public void onClick(View v) {
                 checkCalculator = true;
                 switchToMetric(); //all values converting to metric calculator
+
+                btnMetric.setClickable(false);
+                btnImperial.setClickable(true);
             }
         });
 
@@ -166,6 +169,9 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
             public void onClick(View v) {
                 checkCalculator = false;
                 switchToImperial();  //all values converting to imperial calculator
+
+                btnMetric.setClickable(true);
+                btnImperial.setClickable(false);
             }
         });
 
@@ -499,14 +505,14 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
         btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
         btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
 
+        diameter = diameter * 25.4;
+        burden = burden / 3.28084;
+        spacing = spacing / 3.28084;
+        holeLenght = holeLenght / 3.28084;
+        stemmingLenght = stemmingLenght / 3.28084;
+        airDeck = airDeck / 3.28084;
 
-        burden = burden / 3.281;
-        spacing = spacing / 3.281;
-        holeLenght = holeLenght / 3.281;
-        stemmingLenght = stemmingLenght / 3.281;
-        airDeck = airDeck / 3.281;
-
-
+        etDiameter.setText(String.format("%.0f", Double.valueOf(diameter)));
         etBurden.setText(String.format("%.1f", Double.valueOf(burden)));
         etSpacing.setText(String.format("%.1f", Double.valueOf(spacing)));
         etHoleLenght.setText(String.format("%.1f", Double.valueOf(holeLenght)));
@@ -523,14 +529,14 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
         btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
         btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
 
+        diameter = diameter / 25.4;
+        burden = burden * 3.28084;
+        spacing = spacing * 3.28084;
+        holeLenght = holeLenght * 3.28084;
+        stemmingLenght = stemmingLenght * 3.28084;
+        airDeck = airDeck * 3.28084;
 
-        burden = burden * 3.281;
-        spacing = spacing * 3.281;
-        holeLenght = holeLenght * 3.281;
-        stemmingLenght = stemmingLenght * 3.281;
-        airDeck = airDeck * 3.281;
-
-
+        etDiameter.setText(String.format("%.3f", Double.valueOf(diameter)));
         etBurden.setText(String.format("%.0f", Double.valueOf(burden)));
         etSpacing.setText(String.format("%.0f", Double.valueOf(spacing)));
         etHoleLenght.setText(String.format("%.0f", Double.valueOf(holeLenght)));
@@ -655,7 +661,7 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaex.com/powder_factor");
+                        NetworkUtilities.sendMail(getActivity(),"www.enaexusa.com/powder_factor");
                         break;
                     default:
                         break;

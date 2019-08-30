@@ -14,8 +14,9 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="email" />
-                            <entry key="sourceFile" value="$USER_HOME$/Downloads/assets/SVG/email.svg" />
+                            <entry key="autoMirrored" value="true" />
+                            <entry key="outputName" value="black_logo" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/enaex changes/Logos/Enaex logo.svg" />
                           </map>
                         </option>
                       </PersistentState>

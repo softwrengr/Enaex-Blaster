@@ -30,6 +30,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/leader">
 
       <RelativeLayout
           android:layout_width="match_parent"
@@ -37,7 +41,7 @@
           android:layout_centerHorizontal="true"
           android:layout_marginStart="10dp"
           android:layout_marginEnd="10dp"
-          android:layout_centerVertical="true">
+          android:layout_marginTop="30dp">
           <LinearLayout
               android:id="@+id/one"
               android:layout_width="match_parent"
@@ -215,5 +219,7 @@
               </LinearLayout>
           </LinearLayout>
       </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

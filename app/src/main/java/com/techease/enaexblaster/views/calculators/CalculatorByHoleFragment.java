@@ -145,17 +145,19 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         ButterKnife.bind(this, view);
         formatter = new DecimalFormat("#,###,###");
 
-        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", true);
+        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", false);
 
         if (checkCalculator) {
             tvLBS.setText("Kgs per Hole");
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+            metricimperialCalculation();
             metrciUnits();
         } else {
             tvLBS.setText("Lbs per Hole");
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+            imperialCalculation();
             imperialUnits();
         }
 
@@ -183,6 +185,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
             public void onClick(View v) {
                 checkCalculator = true;
                 switchToMetric(); //all values converting to metric calculator
+
+                btnMetric.setClickable(false);
+                btnImperial.setClickable(true);
             }
         });
 
@@ -193,6 +198,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
             public void onClick(View v) {
                 checkCalculator = false;
                 switchToImperial();  //all values converting to imperial calculator
+
+                btnMetric.setClickable(true);
+                btnImperial.setClickable(false);
             }
         });
 
@@ -207,9 +215,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                 btnVolume.setBackgroundColor(getActivity().getColor(R.color.silver));
 
                 if (checkCalculator) {
-                    metricCalculation();
+                    metricimperialCalculation();
                 } else {
-                    calculation();
+                    imperialCalculation();
                 }
             }
         });
@@ -225,9 +233,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                 btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
 
                 if (checkCalculator) {
-                    metricCalculation();
+                    metricimperialCalculation();
                 } else {
-                    calculation();
+                    imperialCalculation();
                 }
             }
         });
@@ -265,9 +273,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                     try {
                         diameter = Double.parseDouble(s.toString().replace(',', '.'));
                         if (checkCalculator) {
-                            metricCalculation();
+                            metricimperialCalculation();
                         } else {
-                            calculation();
+                            imperialCalculation();
                         }
                     } catch (NumberFormatException e) {
                         //Error
@@ -298,9 +306,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                     try {
                         density = Double.parseDouble(s.toString().replace(',', '.'));
                         if (checkCalculator) {
-                            metricCalculation();
+                            metricimperialCalculation();
                         } else {
-                            calculation();
+                            imperialCalculation();
                         }
                     } catch (NumberFormatException e) {
                         //Error
@@ -328,9 +336,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                     try {
                         burden = Double.parseDouble(s.toString().replace(',', '.'));
                         if (checkCalculator) {
-                            metricCalculation();
+                            metricimperialCalculation();
                         } else {
-                            calculation();
+                            imperialCalculation();
                         }
                     } catch (NumberFormatException e) {
                         //Error
@@ -358,9 +366,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                     try {
                         spacing = Double.parseDouble(s.toString().replace(',', '.'));
                         if (checkCalculator) {
-                            metricCalculation();
+                            metricimperialCalculation();
                         } else {
-                            calculation();
+                            imperialCalculation();
                         }
                     } catch (NumberFormatException e) {
                         //Error
@@ -388,9 +396,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                     try {
                         holeLenght = Double.parseDouble(s.toString().replace(',', '.'));
                         if (checkCalculator) {
-                            metricCalculation();
+                            metricimperialCalculation();
                         } else {
-                            calculation();
+                            imperialCalculation();
                         }
                     } catch (NumberFormatException e) {
                         //Error
@@ -419,9 +427,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                     try {
                         rockDensity = Double.parseDouble(s.toString().replace(',', '.'));
                         if (checkCalculator) {
-                            metricCalculation();
+                            metricimperialCalculation();
                         } else {
-                            calculation();
+                            imperialCalculation();
                         }
                     } catch (NumberFormatException e) {
                         //Error
@@ -449,9 +457,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                     try {
                         stemming = Double.parseDouble(s.toString().replace(',', '.'));
                         if (checkCalculator) {
-                            metricCalculation();
+                            metricimperialCalculation();
                         } else {
-                            calculation();
+                            imperialCalculation();
                         }
                     } catch (NumberFormatException e) {
                         //Error
@@ -479,9 +487,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                     try {
                         distance = Double.parseDouble(s.toString().replace(',', '.'));
                         if (checkCalculator) {
-                            metricCalculation();
+                            metricimperialCalculation();
                         } else {
-                            calculation();
+                            imperialCalculation();
                         }
                     } catch (NumberFormatException e) {
                         //Error
@@ -509,9 +517,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                     try {
                         scallingFactor = Double.parseDouble(s.toString().replace(',', '.'));
                         if (checkCalculator) {
-                            metricCalculation();
+                            metricimperialCalculation();
                         } else {
-                            calculation();
+                            imperialCalculation();
                         }
                     } catch (NumberFormatException e) {
                         //Error
@@ -539,9 +547,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                     try {
                         attenuation = Double.parseDouble(s.toString().replace(',', '.'));
                         if (checkCalculator) {
-                            metricCalculation();
+                            metricimperialCalculation();
                         } else {
-                            calculation();
+                            imperialCalculation();
                         }
                     } catch (NumberFormatException e) {
                         //Error
@@ -553,7 +561,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
 
     }
 
-    private void calculation() {
+    private void imperialCalculation() {
         double volume, weight, explosivePerHole, PFVolume, PFWeight, sdob, SD, PPV, d, Wc, chargeUnit;
 
         volume = (burden * spacing * holeLenght) / 27;
@@ -579,19 +587,19 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
             tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume)) + " lb/yd³");
             tvSDOB.setText(String.format("%.1f", Double.valueOf(sdob)) + " ft∛lb");
             tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " ft√lb");
-            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)) + " in/s");
+            tvPPV.setText(String.format("%.1f", Double.valueOf(PPV)) + " in/s");
         } else {
             tvVolume.setText(formatter.format(weight) + " ton");
             tvLBSHole.setText(formatter.format(explosivePerHole) + " lb");
             tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight)) + " lb/ton");
             tvSDOB.setText(String.format("%.1f", Double.valueOf(sdob)) + " ft∛lb");
             tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " ft√lb");
-            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)) + " in/s");
+            tvPPV.setText(String.format("%.1f", Double.valueOf(PPV)) + " in/s");
         }
 
     }
 
-    private void metricCalculation() {
+    private void metricimperialCalculation() {
         double volume, weight, explosivePerHole, PFVolume, PFWeight, sdob, SD, PPV, d, Wc, chargeUnit;
 
         volume = (burden * spacing * holeLenght);
@@ -616,14 +624,14 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
             tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume)) + " kg/m³");
             tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)) + " m∛kg");
             tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " m/√kg");
-            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)) + " mm/s");
+            tvPPV.setText(String.format("%.1f", Double.valueOf(PPV)) + " mm/s");
         } else {
             tvVolume.setText(formatter.format(weight) + " tonne");
             tvLBSHole.setText(formatter.format(explosivePerHole) + " kg");
             tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight)) + " kg/tonne");
             tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)) + " m∛kg");
             tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " m/√kg");
-            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)) + " mm/s");
+            tvPPV.setText(String.format("%.1f", Double.valueOf(PPV)) + " mm/s");
         }
     }
 
@@ -669,34 +677,33 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
     private void checkGraphics(double result) {
 
         if (checkCalculator) {    //checking graphics for metric calculator
-            if (result >= 0 && result <= 0.6) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
-            } else if (result >= 0.61 && result <= 0.9) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
-            } else if (result >= 0.91 && result <= 1.42) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
-            } else if (result >= 1.43 && result <= 1.82) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
-            } else if (result >= 1.83 && result <= 2.40) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
+            if (result >= 0 && result <= 0.600) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic1));
+            } else if (result >= 0.609 && result <= 0.900) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic2));
+            } else if (result >= 0.909 && result <= 1.4249) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic3));
+            } else if (result >= 1.4250 && result <= 1.8249) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic4));
+            } else if (result >= 1.8250 && result <= 2.400) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic5));
             } else if (result >= 2.41) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic6));
             }
-
         } else {     //checking graphics for imperial calculator
 
-            if (result >= 0 && result <= 1.5) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
-            } else if (result >= 1.51 && result <= 2.2) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
-            } else if (result >= 2.21 && result <= 3.5) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
-            } else if (result >= 3.51 && result <= 4.5) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
-            } else if (result >= 4.51 && result <= 6.0) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
-            } else if (result >= 6.01) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
+            if (result >= 0 && result <= 1.549) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic1));
+            } else if (result >= 1.500 && result <= 2.249) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic2));
+            } else if (result >= 2.250 && result <= 3.549) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic3));
+            } else if (result >= 3.500 && result <= 4.549) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic4));
+            } else if (result >= 4.500 && result <= 6.049) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic5));
+            } else if (result >= 6.050) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic6));
             }
         }
     }
@@ -707,14 +714,16 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
         btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
 
-        burden = burden / 3.281;
-        spacing = spacing / 3.281;
-        holeLenght = holeLenght / 3.281;
-        stemming = stemming / 3.281;
-        distance = distance / 3.281;
+        diameter = diameter * 25.4000008128;
+        burden = burden / 3.280844;
+        spacing = spacing / 3.280844;
+        holeLenght = holeLenght / 3.280844;
+        stemming = stemming / 3.280844;
+        distance = distance / 3.280844;
 
         scallingFactor = 1140;
 
+        etDiameter.setText(String.format("%.0f", Double.valueOf(diameter)));
         etBurden.setText(String.format("%.1f", Double.valueOf(burden)));
         etSpacing.setText(String.format("%.1f", Double.valueOf(spacing)));
         etHoleLenght.setText(String.format("%.1f", Double.valueOf(holeLenght)));
@@ -722,7 +731,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         etDistance.setText(String.format("%.1f", Double.valueOf(distance)));
         etScallingFactor.setText(String.format("%.0f", Double.valueOf(scallingFactor)));
 
-        metricCalculation();
+        metricimperialCalculation();
         metrciUnits();
 
     }
@@ -733,15 +742,16 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
         btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
 
-        burden = burden * 3.281;
-        spacing = spacing * 3.281;
-        holeLenght = holeLenght * 3.281;
-        stemming = stemming * 3.281;
-        distance = distance * 3.281;
+        diameter = diameter / 25.4000008128;
+        burden = burden * 3.280844;
+        spacing = spacing * 3.280844;
+        holeLenght = holeLenght * 3.280844;
+        stemming = stemming * 3.280844;
+        distance = distance * 3.280844;
 
         scallingFactor = 160;
 
-
+        etDiameter.setText(String.format("%.3f", Double.valueOf(diameter)));
         etBurden.setText(String.format("%.0f", Double.valueOf(burden)));
         etSpacing.setText(String.format("%.0f", Double.valueOf(spacing)));
         etHoleLenght.setText(String.format("%.0f", Double.valueOf(holeLenght)));
@@ -749,7 +759,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         etDistance.setText(String.format("%.0f", Double.valueOf(distance)));
         etScallingFactor.setText(String.format("%.0f", Double.valueOf(scallingFactor)));
 
-        calculation();
+        imperialCalculation();
         imperialUnits();
     }
 
@@ -780,7 +790,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaex.com/hole");
+                        NetworkUtilities.sendMail(getActivity(),"www.enaexusa.com/hole");
                         break;
                     default:
                         break;

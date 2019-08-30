@@ -89,10 +89,12 @@ public class OpenPdfFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(strScreen){
-                    GeneralUtils.connectFragment(getActivity(),new GuideLineFragment());
+                    getActivity().onBackPressed();
+//                    GeneralUtils.connectFragment(getActivity(),new GuideLineFragment());
                 }
                 else {
-                    GeneralUtils.connectFragment(getActivity(),new ProductInfoFragment());
+                    getActivity().onBackPressed();
+                   // GeneralUtils.connectFragment(getActivity(),new ProductInfoFragment());
                 }
 
             }

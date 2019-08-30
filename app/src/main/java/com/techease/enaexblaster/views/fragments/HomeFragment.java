@@ -120,7 +120,6 @@ public class HomeFragment extends Fragment {
         if(uri != null){
             List<String> params = uri.getPathSegments();
             String id = params.get(params.size()-1);
-            Toast.makeText(getActivity(), id, Toast.LENGTH_SHORT).show();
             switch (id){
                 case "hole":
                     GeneralUtils.connectFragment(getActivity(),new CalculatorByHoleFragment());

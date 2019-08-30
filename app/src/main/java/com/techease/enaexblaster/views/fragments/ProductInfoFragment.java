@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -20,7 +21,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ProductInfoFragment extends Fragment implements View.OnClickListener {
-    private boolean check = false;
     View view;
     @BindView(R.id.iv_back)
     ImageView ivBack;
@@ -32,6 +32,8 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
     RelativeLayout layoutTDSBooster;
     @BindView(R.id.tv_tds_booster)
     TextView tvTDSBooster;
+    @BindView(R.id.tv_sds_booster)
+    TextView tvSDSBooster;
     @BindView(R.id.tv_sds_britex)
     TextView tvSDSBritex;
     @BindView(R.id.tv_tds_britex)
@@ -39,10 +41,6 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
     @BindView(R.id.tv_ss_britex)
     TextView tvSSBritex;
 
-    @BindView(R.id.layout_bulk_products)
-    RelativeLayout layoutBulkProducts;
-    @BindView(R.id.bulk_layout)
-    RelativeLayout layoutBulk;
     @BindView(R.id.tv_an_prill_tds)
     TextView tvAnPrillTDS;
     @BindView(R.id.tv_an_prill_sds)
@@ -76,9 +74,6 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
     @BindView(R.id.tv_pirex_ms_sds)
     TextView tvPirexMsSDS;
 
-
-    @BindView(R.id.layout_detonation_cord)
-    RelativeLayout layoutDetonationCord;
     @BindView(R.id.tv_tds_britacord)
     TextView tvTDSBritacord;
     @BindView(R.id.tv_sds_britacord)
@@ -126,6 +121,32 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
     @BindView(R.id.iv_thermo)
     ImageView ivThermo;
 
+    @BindView(R.id.booster_one)
+    LinearLayout layoutBoosterOne;
+    @BindView(R.id.booster_two)
+    LinearLayout layoutBoosterTwo;
+
+    @BindView(R.id.layout_bulk_products)
+    RelativeLayout layoutBulkProducts;
+    @BindView(R.id.bulk_layout)
+    LinearLayout layoutBulk;
+
+    @BindView(R.id.layout_detonation_cord)
+    RelativeLayout layoutDetonationCord;
+    @BindView(R.id.ditonation_layout)
+    LinearLayout layoutDitonation;
+
+    @BindView(R.id.electronic_layout)
+    LinearLayout layoutElectronic;
+
+    @BindView(R.id.non_electronic_layout)
+    LinearLayout layoutNonElectric;
+
+    @BindView(R.id.thermo_layout)
+    LinearLayout layoutThermoTube;
+
+    private boolean check1 = false,check2 =false,check3 = false,check4 =false,check5 = false,check6 = false;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -149,6 +170,7 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
         });
 
         tvTDSBooster.setOnClickListener(this);
+        tvSDSBooster.setOnClickListener(this);
         tvSDSBritex.setOnClickListener(this);
         tvTDSBritex.setOnClickListener(this);
         tvSSBritex.setOnClickListener(this);
@@ -191,20 +213,34 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
         layoutTDSBooster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (check) {
+                if (check1) {
                     ivBooster.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
-                    tvTDSBooster.setVisibility(View.GONE);
-                    tvSDSBritex.setVisibility(View.GONE);
-                    tvTDSBritex.setVisibility(View.GONE);
-                    tvSSBritex.setVisibility(View.GONE);
-                    check = false;
+                    layoutBoosterOne.setVisibility(View.GONE);
+                    layoutBoosterTwo.setVisibility(View.GONE);
+                    check1 = false;
                 } else {
                     ivBooster.setImageDrawable(getResources().getDrawable(R.drawable.up));
-                    tvTDSBooster.setVisibility(View.VISIBLE);
-                    tvSDSBritex.setVisibility(View.VISIBLE);
-                    tvTDSBritex.setVisibility(View.VISIBLE);
-                    tvSSBritex.setVisibility(View.VISIBLE);
-                    check = true;
+                    layoutBoosterOne.setVisibility(View.VISIBLE);
+                    layoutBoosterTwo.setVisibility(View.VISIBLE);
+
+                    layoutBulk.setVisibility(View.GONE);
+                    layoutDitonation.setVisibility(View.GONE);
+                    layoutElectronic.setVisibility(View.GONE);
+                    layoutNonElectric.setVisibility(View.GONE);
+                    layoutThermoTube.setVisibility(View.GONE);
+
+                    ivBulk.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivCord.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivNonElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivThermo.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+
+                    check1 = true;
+                    check2 = false;
+                    check3 = false;
+                    check4 = false;
+                    check5 = false;
+                    check6 = false;
                 }
             }
         });
@@ -212,91 +248,174 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
         layoutBulkProducts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (check) {
-                    check = false;
+                if (check2) {
+                    check2 = false;
                     ivBulk.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                     layoutBulk.setVisibility(View.GONE);
                 } else {
-                    check = true;
+                    check2 = true;
                     ivBulk.setImageDrawable(getResources().getDrawable(R.drawable.up));
                     layoutBulk.setVisibility(View.VISIBLE);
+
+                    layoutBoosterOne.setVisibility(View.GONE);
+                    layoutBoosterTwo.setVisibility(View.GONE);
+                    layoutDitonation.setVisibility(View.GONE);
+                    layoutElectronic.setVisibility(View.GONE);
+                    layoutNonElectric.setVisibility(View.GONE);
+                    layoutThermoTube.setVisibility(View.GONE);
+
+                    ivBooster.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivCord.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivNonElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivThermo.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+
                 }
+
+                check1 = false;
+                check3 = false;
+                check4 = false;
+                check5 = false;
+                check6 = false;
             }
         });
 
         layoutDetonationCord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (check) {
+                if (check3) {
                     ivCord.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
-                    tvTDSBritacord.setVisibility(View.GONE);
-                    tvSDSritacord.setVisibility(View.GONE);
-                    check = false;
+                    layoutDitonation.setVisibility(View.GONE);
+                    check3 = false;
                 } else {
                     ivCord.setImageDrawable(getResources().getDrawable(R.drawable.up));
-                    tvTDSBritacord.setVisibility(View.VISIBLE);
-                    tvSDSritacord.setVisibility(View.VISIBLE);
-                    check = true;
+                    layoutDitonation.setVisibility(View.VISIBLE);
+                    check3 = true;
+
+                    layoutBoosterOne.setVisibility(View.GONE);
+                    layoutBoosterTwo.setVisibility(View.GONE);
+                    layoutBulk.setVisibility(View.GONE);
+                    layoutElectronic.setVisibility(View.GONE);
+                    layoutNonElectric.setVisibility(View.GONE);
+                    layoutThermoTube.setVisibility(View.GONE);
+
+                    ivBooster.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivBulk.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivNonElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivThermo.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+
                 }
+
+                check1 = false;
+                check2 = false;
+                check4 = false;
+                check5 = false;
+                check6 = false;
             }
         });
 
         layoutElectronics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (check) {
+                if (check4) {
                     ivElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
-                    tvDaveytronicOP.setVisibility(View.GONE);
-                    tvDaveytronicSDS.setVisibility(View.GONE);
-                    tvDaveytronicUG.setVisibility(View.GONE);
-                    tvDaveytronicSP.setVisibility(View.GONE);
-                    check = false;
+                    layoutElectronic.setVisibility(View.GONE);
+                    check4 = false;
                 } else {
                     ivElectronics.setImageDrawable(getResources().getDrawable(R.drawable.up));
-                    tvDaveytronicOP.setVisibility(View.VISIBLE);
-                    tvDaveytronicSDS.setVisibility(View.VISIBLE);
-                    tvDaveytronicUG.setVisibility(View.VISIBLE);
-                    tvDaveytronicSP.setVisibility(View.VISIBLE);
-                    check = true;
+                    layoutElectronic.setVisibility(View.VISIBLE);
+                    check4 = true;
+
+
+                    layoutBoosterOne.setVisibility(View.GONE);
+                    layoutBoosterTwo.setVisibility(View.GONE);
+                    layoutBulk.setVisibility(View.GONE);
+                    layoutDitonation.setVisibility(View.GONE);
+                    layoutNonElectric.setVisibility(View.GONE);
+                    layoutThermoTube.setVisibility(View.GONE);
+
+                    ivBooster.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivBulk.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivCord.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivNonElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivThermo.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                 }
+
+                check1 = false;
+                check2 = false;
+                check3 = false;
+                check5 = false;
+                check6 = false;
             }
         });
 
         layoutNonElectronic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (check) {
+                if (check5) {
                     ivNonElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
-                    tvDaveynelTDS.setVisibility(View.GONE);
-                    tvDaveynelSurfaceTDS.setVisibility(View.GONE);
-                    tvDaveynelDualTDS.setVisibility(View.GONE);
-                    tvDaveynelNonElectronics.setVisibility(View.GONE);
-                    check = false;
+                    layoutNonElectric.setVisibility(View.GONE);
+                    check5 = false;
                 } else {
                     ivNonElectronics.setImageDrawable(getResources().getDrawable(R.drawable.up));
-                    tvDaveynelTDS.setVisibility(View.VISIBLE);
-                    tvDaveynelSurfaceTDS.setVisibility(View.VISIBLE);
-                    tvDaveynelDualTDS.setVisibility(View.VISIBLE);
-                    tvDaveynelNonElectronics.setVisibility(View.VISIBLE);
-                    check = true;
+                    layoutNonElectric.setVisibility(View.VISIBLE);
+                    check5 = true;
+
+                    layoutBoosterOne.setVisibility(View.GONE);
+                    layoutBoosterTwo.setVisibility(View.GONE);
+                    layoutBulk.setVisibility(View.GONE);
+                    layoutDitonation.setVisibility(View.GONE);
+                    layoutElectronic.setVisibility(View.GONE);
+                    layoutThermoTube.setVisibility(View.GONE);
+
+                    ivBooster.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivBulk.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivCord.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivThermo.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                 }
+
+                check1 = false;
+                check3 = false;
+                check4 = false;
+                check2 = false;
+                check6 = false;
             }
         });
 
         layoutThermo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (check) {
+                if (check6) {
                     ivThermo.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
-                    tvThermoSDS.setVisibility(View.GONE);
-                    tvThermoTDS.setVisibility(View.GONE);
-                    check = false;
+                    layoutThermoTube.setVisibility(View.GONE);
+                    check6 = false;
                 } else {
+                    layoutThermoTube.setVisibility(View.VISIBLE);
+                    check6 = true;
+
+
+                    layoutBoosterOne.setVisibility(View.GONE);
+                    layoutBoosterTwo.setVisibility(View.GONE);
+                    layoutBulk.setVisibility(View.GONE);
+                    layoutDitonation.setVisibility(View.GONE);
+                    layoutElectronic.setVisibility(View.GONE);
+                    layoutNonElectric.setVisibility(View.GONE);
+
                     ivThermo.setImageDrawable(getResources().getDrawable(R.drawable.up));
-                    tvThermoSDS.setVisibility(View.VISIBLE);
-                    tvThermoTDS.setVisibility(View.VISIBLE);
-                    check = true;
+                    ivBooster.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivBulk.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivCord.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    ivNonElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
                 }
+
+                check1 = false;
+                check3 = false;
+                check4 = false;
+                check5 = false;
+                check2 = false;
             }
         });
 
@@ -307,6 +426,10 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
         switch (v.getId()) {
             case R.id.tv_tds_booster:
                 bundle.putString("check_pdf", "apd_p_series_boosters.pdf");
+                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                break;
+            case R.id.tv_sds_booster:
+                bundle.putString("check_pdf","apd_p_series_sds.pdf");
                 GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
                 break;
             case R.id.tv_sds_britex:

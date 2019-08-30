@@ -27,6 +27,9 @@ import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.utilities.NetworkUtilities;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
+import java.text.DecimalFormat;
+import java.text.ParseException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -63,7 +66,7 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
     @BindView(R.id.iv_menu)
     ImageView ivMenu;
 
-    private double distance = 0, mic = 0,scallingFactor=0,attenuationFactor=-1.6;
+    private double distance = 0, mic = 0, scallingFactor = 0, attenuationFactor = -1.6;
     private boolean check = true;
     private boolean checkCalculator = true;
 
@@ -73,20 +76,19 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_vibration_calculator, container, false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
 
-        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", false);
 
 
-        if(checkCalculator){
+        if (checkCalculator) {
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
             scallingFactor = 1140;
             etScallingFactor.setText("1140");
             tvDistanceUnit.setText("m");
             tvMicUnit.setText("kg");
-        }
-        else {
+        } else {
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
             scallingFactor = 160;
@@ -99,14 +101,14 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
         return view;
     }
 
-    private void  initViews(){
+    private void initViews() {
 
         ivMenu.setOnClickListener(this);
 
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragment(getActivity(),new CalculatorsHomeFragment());
+                GeneralUtils.connectFragment(getActivity(), new CalculatorsHomeFragment());
             }
         });
 
@@ -132,14 +134,10 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
                 checkCalculator = true;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+                switchToMetric();
 
-                scallingFactor = 1140;
-                etScallingFactor.setText("1140");
-                metricCalculation();
-
-
-                tvDistanceUnit.setText("m");
-                tvMicUnit.setText("kg");
+                btnMetric.setClickable(false);
+                btnImperial.setClickable(true);
             }
         });
 
@@ -151,13 +149,11 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
                 checkCalculator = false;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
-                imperialCalculation();
+                switchToImperial();
 
-                scallingFactor = 160;
-                etScallingFactor.setText("160");
 
-                tvDistanceUnit.setText("ft");
-                tvMicUnit.setText("lb");
+                btnImperial.setClickable(false);
+                btnMetric.setClickable(true);
             }
         });
 
@@ -321,6 +317,7 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
                 break;
         }
     }
+
     private void showMenu() {
         PopupMenu popup = new PopupMenu(getActivity(), ivMenu);
         popup.getMenuInflater().inflate(R.menu.menu,
@@ -331,15 +328,15 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.save:
-                        SavingLoadingData.showVibrationDialog(getActivity(),distance,mic,scallingFactor,attenuationFactor);
+                        SavingLoadingData.showVibrationDialog(getActivity(), distance, mic, scallingFactor, attenuationFactor);
                         break;
                     case R.id.load:
                         Bundle bundle = new Bundle();
-                        bundle.putString("checkingScreen","vibration");
-                        GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
+                        bundle.putString("checkingScreen", "vibration");
+                        GeneralUtils.connectFragmentWithBack(getActivity(), new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaex.com/vibration");
+                        NetworkUtilities.sendMail(getActivity(), "www.enaexusa.com/vibration");
                         break;
                     default:
                         break;
@@ -350,8 +347,44 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToMetric() {
+        distance = distance / 3.28084;
+        mic = mic * 0.453592;
+        scallingFactor = 1140;
 
-    private void showSaveData(){
+        etDistance.setText(String.format("%.0f", Double.valueOf(distance)));
+        etMIC.setText(String.format("%.0f", Double.valueOf(mic)));
+        etScallingFactor.setText("1140");
+
+        tvDistanceUnit.setText("m");
+        tvMicUnit.setText("kg");
+
+
+        metricCalculation();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToImperial() {
+        distance = distance * 3.28084;
+        mic = mic / 0.453592;
+        scallingFactor = 160;
+
+
+        etDistance.setText(String.format("%.0f", Double.valueOf(distance)));
+        etMIC.setText(String.format("%.0f", Double.valueOf(mic)));
+        etScallingFactor.setText("160");
+
+        tvDistanceUnit.setText("ft");
+        tvMicUnit.setText("lb");
+
+        imperialCalculation();
+
+
+    }
+
+
+    private void showSaveData() {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             String strDistance = bundle.getString("distance");
@@ -366,8 +399,8 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
 
             distance = Double.parseDouble(strDistance);
             mic = Double.parseDouble(strMic);
-            scallingFactor = Double.parseDouble(strDistance);
-            attenuationFactor = Double.parseDouble(strMic);
+            scallingFactor = Double.parseDouble(strScalingFactor);
+            attenuationFactor = Double.parseDouble(strAttenuation);
         }
-}
+    }
 }

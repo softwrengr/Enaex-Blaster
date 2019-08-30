@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="20dp">
+
+        <RelativeLayout
+            android:id="@+id/layout_electronics"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Electronic Detonators"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:layout_marginTop="6dp"/>
+
+            <ImageView
+                android:id="@+id/iv_electronic"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/down_arrow"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="6dp"/>
+
+            <LinearLayout
+                android:id="@+id/electronic_layout"
+                android:layout_below="@id/iv_electronic"
+                android:layout_width="245dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Technical Data Sheets"/>
+
+                <TextView
+                    android:id="@+id/tv_daveytronic_sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_electronic"
+                    android:text="Daveytronci SP - TDS"
+                    android:layout_marginLeft="45dp"
+                    android:background="@drawable/textview_back"
+                    android:padding="5dp"
+                    android:textColor="@color/colorAccent"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_daveytronic_ug"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_daveytronic_sp"
+                    android:text="Daveytronci UG - TDS"
+                    android:layout_marginLeft="45dp"
+                    android:background="@drawable/textview_back"
+                    android:padding="5dp"
+                    android:textColor="@color/colorAccent"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_daveytronic_op"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_daveytronic_ug"
+                    android:text="Daveytronci OP - TDS"
+                    android:layout_marginLeft="45dp"
+                    android:background="@drawable/textview_back"
+                    android:padding="5dp"
+                    android:textColor="@color/colorAccent"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Safety Data Sheets"/>
+
+
+                <TextView
+                    android:id="@+id/tv_daveytronic_sds"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_daveytronic_op"
+                    android:text="Daveytronci Detonator - SDS"
+                    android:layout_marginLeft="45dp"
+                    android:background="@drawable/textview_back"
+                    android:padding="5dp"
+                    android:textColor="@color/colorAccent"
+                    android:layout_marginTop="10dp"/>
+
+            </LinearLayout>
+
+
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

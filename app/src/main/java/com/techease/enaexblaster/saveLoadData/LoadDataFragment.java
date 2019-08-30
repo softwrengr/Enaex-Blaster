@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.adapters.ExplosiveWeightAdapter;
@@ -26,7 +27,16 @@ import com.techease.enaexblaster.models.SdobModel;
 import com.techease.enaexblaster.models.ShotModel;
 import com.techease.enaexblaster.models.VibrationModel;
 import com.techease.enaexblaster.models.VolumeModel;
-import com.techease.enaexblaster.sqliteDatabase.EnaexCrud;
+import com.techease.enaexblaster.sqliteDatabase.ShotCrud;
+import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.views.calculators.CalculatorByHoleFragment;
+import com.techease.enaexblaster.views.calculators.CalculatorByShotFragment;
+import com.techease.enaexblaster.views.calculators.ExplosiveWeightFragment;
+import com.techease.enaexblaster.views.calculators.PFCalculatorFragment;
+import com.techease.enaexblaster.views.calculators.SDOBCalculatorFragment;
+import com.techease.enaexblaster.views.calculators.ScaledDistanceFragment;
+import com.techease.enaexblaster.views.calculators.VibrationCalculatorFragment;
+import com.techease.enaexblaster.views.calculators.VolumeCalculatorFragment;
 
 import java.util.ArrayList;
 
@@ -37,7 +47,9 @@ public class LoadDataFragment extends Fragment {
     View view;
     @BindView(R.id.rv_list)
     RecyclerView rvList;
-    EnaexCrud enaexCrud;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
+    ShotCrud enaexCrud;
     LinearLayoutManager layoutManager;
     Bundle bundle;
 
@@ -55,6 +67,8 @@ public class LoadDataFragment extends Fragment {
             laodConcernData(strCheckScreen);
 
         }
+
+
         return view;
     }
 
@@ -90,7 +104,7 @@ public class LoadDataFragment extends Fragment {
     public void showScaledDitanceList() {
         ArrayList<ScaledDistanceModel> scaledDistanceModelArrayList;
         ScaledDistanceAdapter todoListAdapter;
-        enaexCrud = new EnaexCrud(getActivity());
+        enaexCrud = new ShotCrud(getActivity());
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvList.setLayoutManager(layoutManager);
@@ -112,12 +126,19 @@ public class LoadDataFragment extends Fragment {
             rvList.setAdapter(todoListAdapter);
             todoListAdapter.notifyDataSetChanged();
         }
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new ScaledDistanceFragment());
+            }
+        });
     }
 
     public void showVibrationList() {
         ArrayList<VibrationModel> vibrationModelArrayList;
         VibrationAdapter todoListAdapter;
-        enaexCrud = new EnaexCrud(getActivity());
+        enaexCrud = new ShotCrud(getActivity());
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvList.setLayoutManager(layoutManager);
@@ -143,12 +164,19 @@ public class LoadDataFragment extends Fragment {
             rvList.setAdapter(todoListAdapter);
             todoListAdapter.notifyDataSetChanged();
         }
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new VibrationCalculatorFragment());
+            }
+        });
     }
 
     public void showSDOBList() {
         ArrayList<SdobModel> sdobModelArrayList;
         SDOBAdapter todoListAdapter;
-        enaexCrud = new EnaexCrud(getActivity());
+        enaexCrud = new ShotCrud(getActivity());
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvList.setLayoutManager(layoutManager);
@@ -174,13 +202,20 @@ public class LoadDataFragment extends Fragment {
             rvList.setAdapter(todoListAdapter);
             todoListAdapter.notifyDataSetChanged();
         }
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new SDOBCalculatorFragment());
+            }
+        });
     }
 
 
     public void showPowderFactorList() {
         ArrayList<PowderFactorModel> powderFactorModelArrayList;
         PowderFactorAdapter powderFactorAdapter;
-        enaexCrud = new EnaexCrud(getActivity());
+        enaexCrud = new ShotCrud(getActivity());
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvList.setLayoutManager(layoutManager);
@@ -214,12 +249,19 @@ public class LoadDataFragment extends Fragment {
             rvList.setAdapter(powderFactorAdapter);
             powderFactorAdapter.notifyDataSetChanged();
         }
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new PFCalculatorFragment());
+            }
+        });
     }
 
     public void showExplosiveWeightList() {
         ArrayList<ExplosiveWeightModel> explosiveWeightModelArrayList;
         ExplosiveWeightAdapter todoListAdapter;
-        enaexCrud = new EnaexCrud(getActivity());
+        enaexCrud = new ShotCrud(getActivity());
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvList.setLayoutManager(layoutManager);
@@ -245,12 +287,19 @@ public class LoadDataFragment extends Fragment {
             rvList.setAdapter(todoListAdapter);
             todoListAdapter.notifyDataSetChanged();
         }
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new ExplosiveWeightFragment());
+            }
+        });
     }
 
     public void showVolumeList() {
         ArrayList<VolumeModel> powderFactorModelArrayList;
         VolumeAdapter powderFactorAdapter;
-        enaexCrud = new EnaexCrud(getActivity());
+        enaexCrud = new ShotCrud(getActivity());
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvList.setLayoutManager(layoutManager);
@@ -278,12 +327,19 @@ public class LoadDataFragment extends Fragment {
             rvList.setAdapter(powderFactorAdapter);
             powderFactorAdapter.notifyDataSetChanged();
         }
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new VolumeCalculatorFragment());
+            }
+        });
     }
 
     public void showShotList() {
         ArrayList<ShotModel> powderFactorModelArrayList;
         ShotAdapter powderFactorAdapter;
-        enaexCrud = new EnaexCrud(getActivity());
+        enaexCrud = new ShotCrud(getActivity());
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvList.setLayoutManager(layoutManager);
@@ -309,6 +365,8 @@ public class LoadDataFragment extends Fragment {
 
             ShotModel model = new ShotModel();
 
+
+
             model.setRows(noRows);
             model.setHoles(noHoles);
             model.setDiameter(diameter);
@@ -330,12 +388,19 @@ public class LoadDataFragment extends Fragment {
             rvList.setAdapter(powderFactorAdapter);
             powderFactorAdapter.notifyDataSetChanged();
         }
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new CalculatorByShotFragment());
+            }
+        });
     }
 
     public void showHoleList() {
         ArrayList<HoleModel> powderFactorModelArrayList;
         HoleAdapter powderFactorAdapter;
-        enaexCrud = new EnaexCrud(getActivity());
+        enaexCrud = new ShotCrud(getActivity());
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvList.setLayoutManager(layoutManager);
@@ -374,6 +439,13 @@ public class LoadDataFragment extends Fragment {
             rvList.setAdapter(powderFactorAdapter);
             powderFactorAdapter.notifyDataSetChanged();
         }
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.connectFragmentWithBack(getActivity(),new CalculatorByHoleFragment());
+            }
+        });
     }
 
 }

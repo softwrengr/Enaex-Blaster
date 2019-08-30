@@ -27,5 +27,12 @@
                 android:maxLines="2"/>
 
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_delete"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:src="@drawable/remove"
+                android:layout_alignParentEnd="true"/>
+
         </RelativeLayout>
 </RelativeLayout>

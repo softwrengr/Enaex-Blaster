@@ -29,6 +29,21 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
 
+    <TextView
+        android:id="@+id/tv_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Record Already Exist Would you like to overwrite ?"
+        android:textSize="14sp"
+        android:layout_gravity="right"
+        android:textColor="#e60000"
+        android:visibility="gone"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"/>
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,6 +62,23 @@
             android:layout_gravity="right"
             android:layout_marginRight="15dp"
             android:textColor="#e60000"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:textSize="20sp"
+            android:padding="5dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:textColor="#e60000"
+            android:textStyle="bold"
+            android:visibility="gone"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"/>
 
@@ -57,6 +89,7 @@
             android:text="cancel"
             android:textSize="20sp"
             android:padding="5dp"
+            android:textStyle="bold"
             android:layout_gravity="right"
             android:layout_marginRight="20dp"
             android:textColor="#e60000"

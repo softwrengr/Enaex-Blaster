@@ -26,17 +26,17 @@
           android:layout_marginTop="20dp"/>
    </RelativeLayout>
 
-   <TextView
-       android:layout_toRightOf="@+id/iv_call"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Scaled  Distance"
-       android:textSize="20sp"
-       android:layout_gravity="center"
-       android:gravity="center"
-       android:textStyle="bold"
-       android:layout_marginLeft="5dp"
-       android:fontFamily="@font/bold" />
+   <!--<TextView-->
+       <!--android:layout_toRightOf="@+id/iv_call"-->
+       <!--android:layout_width="wrap_content"-->
+       <!--android:layout_height="wrap_content"-->
+       <!--android:text="Scaled  Distance"-->
+       <!--android:textSize="20sp"-->
+       <!--android:layout_gravity="center"-->
+       <!--android:gravity="center"-->
+       <!--android:textStyle="bold"-->
+       <!--android:layout_marginLeft="5dp"-->
+       <!--android:fontFamily="@font/bold" />-->
 
    <android.support.v7.widget.RecyclerView
        android:id="@+id/rv_list"

@@ -83,7 +83,7 @@ public class SDOBCalculatorFragment extends Fragment implements View.OnClickList
         view = inflater.inflate(R.layout.fragment_sdobcalculator, container, false);
         ButterKnife.bind(this, view);
 
-        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", true);
+        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", false);
 
 
         if (checkCalculator) {
@@ -131,10 +131,10 @@ public class SDOBCalculatorFragment extends Fragment implements View.OnClickList
             @Override
             public void onClick(View v) {
                 checkCalculator = true;
-                btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
-                btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
-                metricCalculator();
-                metricUnits();
+                switchToMetric();
+
+                btnMetric.setClickable(false);
+                btnImperial.setClickable(true);
             }
         });
 
@@ -144,10 +144,10 @@ public class SDOBCalculatorFragment extends Fragment implements View.OnClickList
             @Override
             public void onClick(View v) {
                 checkCalculator = false;
-                btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
-                btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
-                imperialCalculator();
-                imperialUnits();
+                switchToImperial();
+
+                btnMetric.setClickable(true);
+                btnImperial.setClickable(false);
             }
         });
 
@@ -317,6 +317,43 @@ public class SDOBCalculatorFragment extends Fragment implements View.OnClickList
         checkGraphics(SDOB);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToMetric() {
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+
+
+        diameter = diameter * 25.4000008128;
+        holeLenght = holeLenght / 3.280844;
+        stemLenght = stemLenght / 3.280844;
+
+        etDiameter.setText(String.format("%.0f", Double.valueOf(diameter)));
+        etHoleLenght.setText(String.format("%.0f", Double.valueOf(holeLenght)));
+        etStemLenght.setText(String.format("%.0f", Double.valueOf(stemLenght)));
+
+        metricCalculator();
+        metricUnits();
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToImperial() {
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+
+        diameter = diameter / 25.4000008128;
+        holeLenght = holeLenght * 3.280844;
+        stemLenght = stemLenght * 3.280844;
+
+        etDiameter.setText(String.format("%.3f", Double.valueOf(diameter)));
+        etHoleLenght.setText(String.format("%.0f", Double.valueOf(holeLenght)));
+        etStemLenght.setText(String.format("%.0f", Double.valueOf(stemLenght)));
+
+        imperialCalculator();
+        imperialUnits();
+
+    }
+
     private void imperialUnits() {
         tvDiameterUnit.setText("in");
         tvExplosiveUnit.setText("g/cc");
@@ -332,37 +369,36 @@ public class SDOBCalculatorFragment extends Fragment implements View.OnClickList
     }
 
 
-
     private void checkGraphics(double result) {
 
         if (checkCalculator) {    //checking graphics for metric calculator
-            if (result >= 0 && result <= 0.6) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
-            } else if (result >= 0.61 && result <= 0.9) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
-            } else if (result >= 0.91 && result <= 1.42) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
-            } else if (result >= 1.43 && result <= 1.82) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
-            } else if (result >= 1.83 && result <= 2.40) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
+            if (result >= 0 && result <= 0.600) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic1));
+            } else if (result >= 0.609 && result <= 0.900) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic2));
+            } else if (result >= 0.909 && result <= 1.4249) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic3));
+            } else if (result >= 1.4250 && result <= 1.8249) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic4));
+            } else if (result >= 1.8250 && result <= 2.400) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic5));
             } else if (result >= 2.41) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic6));
             }
         } else {     //checking graphics for imperial calculator
 
-            if (result >= 0 && result <= 1.5) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
-            } else if (result >= 1.51 && result <= 2.2) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
-            } else if (result >= 2.21 && result <= 3.5) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
-            } else if (result >= 3.51 && result <= 4.5) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
-            } else if (result >= 4.51 && result <= 6.0) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
-            } else if (result >= 6.01) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
+            if (result >= 0 && result <= 1.549) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic1));
+            } else if (result >= 1.500 && result <= 2.249) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic2));
+            } else if (result >= 2.250 && result <= 3.549) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic3));
+            } else if (result >= 3.500 && result <= 4.549) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic4));
+            } else if (result >= 4.500 && result <= 6.049) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic5));
+            } else if (result >= 6.050) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic6));
             }
         }
     }
@@ -375,6 +411,7 @@ public class SDOBCalculatorFragment extends Fragment implements View.OnClickList
                 break;
         }
     }
+
     private void showMenu() {
         PopupMenu popup = new PopupMenu(getActivity(), ivMenu);
         popup.getMenuInflater().inflate(R.menu.menu,
@@ -385,15 +422,15 @@ public class SDOBCalculatorFragment extends Fragment implements View.OnClickList
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.save:
-                        SavingLoadingData.showSdobDialog(getActivity(),diameter,density,holeLenght,stemLenght);
+                        SavingLoadingData.showSdobDialog(getActivity(), diameter, density, holeLenght, stemLenght);
                         break;
                     case R.id.load:
                         Bundle bundle = new Bundle();
-                        bundle.putString("checkingScreen","sdob");
-                        GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
+                        bundle.putString("checkingScreen", "sdob");
+                        GeneralUtils.connectFragmentWithBack(getActivity(), new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaex.com/sdob");
+                        NetworkUtilities.sendMail(getActivity(), "www.enaexusa.com/sdob");
                         break;
                     default:
                         break;
@@ -402,7 +439,6 @@ public class SDOBCalculatorFragment extends Fragment implements View.OnClickList
             }
         });
     }
-
 
 
     private void showSaveData() {

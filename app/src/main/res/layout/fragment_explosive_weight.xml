@@ -62,37 +62,42 @@
             app:cardCornerRadius="20dp">
 
             <RelativeLayout
-                android:id="@+id/layout_option"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/iv_call"
-                    android:fontFamily="@font/medium"
-                    android:gravity="center"
-                    android:text="Options"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                <RelativeLayout
+                    android:id="@+id/layout_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/iv_arrow"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/down_arrow" />
+                    <TextView
+                        android:layout_toRightOf="@+id/iv_call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Options"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/medium"
+                        android:layout_marginTop="10dp"/>
+
+                    <ImageView
+                        android:id="@+id/iv_arrow"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/down_arrow"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="12dp"/>
+                </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/layout_below_option"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/iv_arrow"
+                    android:layout_below="@id/layout_option"
                     android:layout_marginTop="10dp"
                     android:visibility="gone"
                     android:orientation="vertical">

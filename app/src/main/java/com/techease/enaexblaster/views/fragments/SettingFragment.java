@@ -49,7 +49,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         ButterKnife.bind(this, view);
         initViews();
 
-        if(GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true)){
+        if(GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",false)){
             tvUnits.setText("Metric");
         }
         else {

@@ -93,7 +93,7 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
         ButterKnife.bind(this,view);
         formatter = new DecimalFormat("#,###,###");
 
-        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",true);
+        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",false);
 
 
         if(checkCalculator){
@@ -140,6 +140,7 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
+
                 checkWeight = true;
                 layoutRockDensity.setVisibility(View.VISIBLE);
                 btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
@@ -174,8 +175,10 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
                 checkCalculator = true;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
-                metricCalculation();
-                metricUnits();
+                switchToMetric();
+
+                btnMetric.setClickable(false);
+                btnImperial.setClickable(true);
             }
         });
 
@@ -187,8 +190,10 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
                 checkCalculator = false;
                 btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
-                imperialCalculation();
-                imperialUnits();
+                switchToImperial();  //all values converting to imperial calculator
+
+                btnImperial.setClickable(false);
+                btnMetric.setClickable(true);
             }
         });
 
@@ -363,6 +368,7 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
     }
 
     private void metricCalculation() {
+
         if(checkWeight){ //if weight is selected
             double volume = (burden * spacing * averageDepth) * rockDensity * noOfHOles;
             String yourFormattedResult = formatter.format(volume);
@@ -373,6 +379,41 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
             String yourFormattedResult = formatter.format(volume);
             tvVolume.setText(yourFormattedResult + " m³");
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToMetric() {
+        burden = burden * 0.3048;
+        spacing = spacing * 0.3048;
+        averageDepth = averageDepth * 0.3048;
+
+        etBurden.setText(String.format("%.1f", Double.valueOf(burden)));
+        etSpacing.setText(String.format("%.1f", Double.valueOf(spacing)));
+        etAverageDepth.setText(String.format("%.1f", Double.valueOf(averageDepth)));
+        etNoHoles.setText(String.format("%.1f", Double.valueOf(noOfHOles)));
+        etRockDensity.setText(String.format("%.2f", Double.valueOf(rockDensity)));
+
+
+        metricCalculation();
+        metricUnits();
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void switchToImperial() {
+        burden = burden / 0.3048;
+        spacing = spacing / 0.3048;
+        averageDepth = averageDepth / 0.3048;
+
+        etBurden.setText(String.format("%.1f", Double.valueOf(burden)));
+        etSpacing.setText(String.format("%.1f", Double.valueOf(spacing)));
+        etAverageDepth.setText(String.format("%.1f", Double.valueOf(averageDepth)));
+        etNoHoles.setText(String.format("%.1f", Double.valueOf(noOfHOles)));
+        etRockDensity.setText(String.format("%.2f", Double.valueOf(rockDensity)));
+
+
+        imperialCalculation();
+        imperialUnits();
     }
 
     private void metricUnits(){
@@ -415,7 +456,7 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaex.com/volume");
+                        NetworkUtilities.sendMail(getActivity(),"www.enaexusa.com/volume");
                         break;
                     default:
                         break;

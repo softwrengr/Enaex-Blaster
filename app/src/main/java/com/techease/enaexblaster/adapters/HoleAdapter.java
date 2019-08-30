@@ -2,35 +2,39 @@ package com.techease.enaexblaster.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.models.HoleModel;
-import com.techease.enaexblaster.models.ShotModel;
-import com.techease.enaexblaster.sqliteDatabase.EnaexCrud;
+import com.techease.enaexblaster.sqliteDatabase.EnaexDatabase;
+import com.techease.enaexblaster.sqliteDatabase.ShotCrud;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.views.calculators.CalculatorByHoleFragment;
-import com.techease.enaexblaster.views.calculators.CalculatorByShotFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HoleAdapter extends RecyclerView.Adapter<HoleAdapter.MyViewHolder> {
-    EnaexCrud bossMoveCrud;
+    ShotCrud bossMoveCrud;
     List<HoleModel> likeWallPaperModelList;
     Context context;
-    ArrayList<String> alIndexPosition = new ArrayList<>();
+     SQLiteDatabase sqLiteDatabase;
 
     public HoleAdapter(Context context, List<HoleModel> likeWallPaperModelList) {
         this.context = context;
         this.likeWallPaperModelList = likeWallPaperModelList;
+        EnaexDatabase database = new EnaexDatabase(context);
+        sqLiteDatabase = database.getWritableDatabase();
 
     }
 
@@ -56,7 +60,7 @@ public class HoleAdapter extends RecyclerView.Adapter<HoleAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull final HoleAdapter.MyViewHolder viewHolder, final int position) {
         final HoleModel model = likeWallPaperModelList.get(position);
-        bossMoveCrud = new EnaexCrud(context);
+        bossMoveCrud = new ShotCrud(context);
 
         viewHolder.tvRowName.setText(model.getRowName());
 
@@ -72,10 +76,19 @@ public class HoleAdapter extends RecyclerView.Adapter<HoleAdapter.MyViewHolder> 
                 bundle.putString("holeLength",model.getHoleLength());
                 bundle.putString("stemLength",model.getStemLength());
                 bundle.putString("rockDensity",model.getRockDensity());
-                bundle.putString("distance",model.getRockDensity());
+                bundle.putString("distance",model.getDistance());
                 bundle.putString("scaling",model.getScaling());
                 bundle.putString("attenuation",model.getAttenuation());
                 GeneralUtils.connectFragmentWithBack(context,new CalculatorByHoleFragment()).setArguments(bundle);
+            }
+        });
+
+        viewHolder.ivDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                delete(model.getRowName());
+                likeWallPaperModelList.remove(position);
+                notifyItemRemoved(position);
             }
         });
 
@@ -90,11 +103,17 @@ public class HoleAdapter extends RecyclerView.Adapter<HoleAdapter.MyViewHolder> 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tvRowName;
         RelativeLayout rowLayout;
+        ImageView ivDelete;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tvRowName = itemView.findViewById(R.id.tv_row_name);
             rowLayout = itemView.findViewById(R.id.row_layout);
+            ivDelete = itemView.findViewById(R.id.iv_delete);
         }
+    }
+
+    public void delete(String row_name) {
+        this.sqLiteDatabase.delete("BY_HOLE", "ROW_NAME= '" + row_name + "'", null);
     }
 }
 

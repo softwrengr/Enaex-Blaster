@@ -11,6 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
+        android:configChanges="orientation|screenSize"
         android:theme="@style/AppTheme">
         <activity android:name=".views.activities.SplashActivity"
             android:noHistory="true">
@@ -31,7 +32,7 @@
 
                 <data
                     android:scheme="http"
-                    android:host="www.enaex.com" />
+                    android:host="www.enaexusa.com" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -40,7 +41,7 @@
 
                 <data
                     android:scheme="https"
-                    android:host="www.enaex.com" />
+                    android:host="www.enaexusa.com" />
             </intent-filter>
 
             <intent-filter>
@@ -50,7 +51,7 @@
 
                 <data
                     android:scheme="app"
-                    android:host="www.enaex.com" />
+                    android:host="www.enaexusa.com" />
             </intent-filter>
         </activity>
     </application>

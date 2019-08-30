@@ -27,7 +27,7 @@ public class CalculatorsHomeFragment extends Fragment {
     View view;
     @BindView(R.id.iv_back)
     ImageView ivBack;
-    @BindView(R.id.calculator_layout)
+    @BindView(R.id.hole_calculator)
     FrameLayout layoutByHole;
     @BindView(R.id.shot_calculator_layout)
     FrameLayout layoutByShot;
@@ -43,49 +43,51 @@ public class CalculatorsHomeFragment extends Fragment {
     FrameLayout scaledLayout;
     @BindView(R.id.pf_layout)
     FrameLayout pfLayout;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view  = inflater.inflate(R.layout.fragment_calculators_home, container, false);
-        ButterKnife.bind(this,view);
-         initViews();
+        view = inflater.inflate(R.layout.fragment_calculators_home, container, false);
+        ButterKnife.bind(this, view);
+        initViews();
+
         return view;
     }
 
-    private void initViews(){
+    private void initViews() {
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragment(getActivity(),new HomeFragment());
+                GeneralUtils.connectFragment(getActivity(), new HomeFragment());
             }
         });
 
         layoutByHole.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragmentWithBack(getActivity(),new CalculatorByHoleFragment());
+                GeneralUtils.connectFragmentWithBack(getActivity(), new CalculatorByHoleFragment());
             }
         });
 
         layoutByShot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragmentWithBack(getActivity(),new CalculatorByShotFragment());
+                GeneralUtils.connectFragmentWithBack(getActivity(), new CalculatorByShotFragment());
             }
         });
 
         layoutVolume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragmentWithBack(getActivity(),new VolumeCalculatorFragment());
+                GeneralUtils.connectFragmentWithBack(getActivity(), new VolumeCalculatorFragment());
             }
         });
 
         scaledLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragmentWithBack(getActivity(),new ScaledDistanceFragment());
+                GeneralUtils.connectFragmentWithBack(getActivity(), new ScaledDistanceFragment());
             }
         });
 
@@ -93,28 +95,28 @@ public class CalculatorsHomeFragment extends Fragment {
         pfLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragmentWithBack(getActivity(),new PFCalculatorFragment());
+                GeneralUtils.connectFragmentWithBack(getActivity(), new PFCalculatorFragment());
             }
         });
 
         sdobLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragmentWithBack(getActivity(),new SDOBCalculatorFragment());
+                GeneralUtils.connectFragmentWithBack(getActivity(), new SDOBCalculatorFragment());
             }
         });
 
         vibrationLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragmentWithBack(getActivity(),new VibrationCalculatorFragment());
+                GeneralUtils.connectFragmentWithBack(getActivity(), new VibrationCalculatorFragment());
             }
         });
 
         explosiveLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragmentWithBack(getActivity(),new ExplosiveWeightFragment());
+                GeneralUtils.connectFragmentWithBack(getActivity(), new ExplosiveWeightFragment());
             }
         });
     }

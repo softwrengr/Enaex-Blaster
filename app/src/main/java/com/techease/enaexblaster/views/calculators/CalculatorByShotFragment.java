@@ -99,6 +99,10 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     TextView tvSD;
     @BindView(R.id.tv_shot_ppv)
     TextView tvPPV;
+    @BindView(R.id.tv_volumePerHole)
+    TextView tvVolumeHole;
+    @BindView(R.id.tvTotalVolume)
+    TextView tvTotlaVolume;
 
     @BindView(R.id.volume)
     LinearLayout layoutVolume;
@@ -177,7 +181,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     ImageView ivMenu;
 
     private double explosiveDensity = 0, diameter = 0, burden = 0, spacing = 0, benchHeight = 0, subDrill = 0, stemming = 0, noOfRows = 0, holePerRows = 0,
-            holePerMs = 0, distance = 0, scallingFactor = 160, attenuation = -1.6, numberOfHole = 0, rockDensity = 0;
+            holePerMs = 1, distance = 0, scallingFactor = 160, attenuation = -1.6, numberOfHole = 0, rockDensity = 0;
 
     private boolean check = true;
     private boolean checkCalculator = true;
@@ -195,15 +199,17 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         view = inflater.inflate(R.layout.fragment_calculator_by_shot, container, false);
         ButterKnife.bind(this, view);
         formatter = new DecimalFormat("#,###,###");
-        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", true);
+        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", false);
 
         if (checkCalculator) {
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+            metricCalculator();
             metricUnits();
         } else {
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+            imperialCalculator();
             imperialUnits();
         }
         intiViews();
@@ -244,6 +250,9 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             public void onClick(View v) {
                 checkCalculator = true;
                 switchToMetric();
+
+                btnMetric.setClickable(false);
+                btnImperial.setClickable(true);
             }
         });
 
@@ -254,6 +263,9 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             public void onClick(View v) {
                 checkCalculator = false;
                 switchToImperial();
+
+                btnMetric.setClickable(true);
+                btnImperial.setClickable(false);
             }
         });
 
@@ -270,6 +282,9 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
                 } else {
                     imperialCalculator();
                 }
+
+                tvVolumeHole.setText("Volume per Hole ");
+                tvTotlaVolume.setText("Total Volume");
 
             }
         });
@@ -288,6 +303,9 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
                     imperialCalculator();
                 }
 
+                tvVolumeHole.setText("Weight per Hole");
+                tvTotlaVolume.setText("Total Weight");
+
             }
         });
 
@@ -296,7 +314,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkSubDrillStandOFF = false;
-                tvSubDrill.setText("StandOff");
+                tvSubDrill.setText("Standoff");
                 btnStandOff.setBackgroundColor(getActivity().getColor(R.color.silver));
                 btnSubDrill.setBackgroundColor(getActivity().getColor(R.color.grey));
                 imperialCalculator();
@@ -309,7 +327,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkSubDrillStandOFF = true;
-                tvSubDrill.setText("SubDrill");
+                tvSubDrill.setText("Subdrill");
                 btnStandOff.setBackgroundColor(getActivity().getColor(R.color.grey));
                 btnSubDrill.setBackgroundColor(getActivity().getColor(R.color.silver));
                 imperialCalculator();
@@ -851,7 +869,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     }
 
     private void metricCalculator() {
-        double NoOfHole, holeLength, totalDrill, volumePerHole = 0, weightPerHole, totalWeight = 0, totalVolume = 0,
+        double NoOfHole, holeLength, totalDrill, volumePerHole = 0, totalWeight = 0, totalVolume = 0,
                 explosivePerHole, totalExplosive, powderFactor, d, chargeUnit, Wc, sdob, SD, MIC, PPV;
 
         if (checkHoleRowCount) {
@@ -877,7 +895,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
 
         } else {
             volumePerHole = (burden * spacing * benchHeight) * rockDensity;
-            totalVolume = volumePerHole * NoOfHole;
+            totalWeight = volumePerHole * NoOfHole;
         }
 
         explosivePerHole = (explosiveDensity / 1000) * (Math.PI * (Math.pow((diameter / 2), 2))) * (holeLength - stemming);
@@ -889,6 +907,10 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         } else {
             powderFactor = totalExplosive / totalWeight;
         }
+
+        Log.d("check weight",String.valueOf(totalWeight));
+        Log.d("check exp",String.valueOf(totalExplosive));
+        Log.d("check pf",String.valueOf(powderFactor));
 
         d = stemming + (5 * (diameter / 1000));
         chargeUnit = (explosiveDensity / 1000) * (Math.PI * Math.pow((diameter / 2), 2));
@@ -915,14 +937,14 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         tvSDOB.setText(String.format("%.2f", sdob) + " m∛kg");
         tvPF.setText(String.format("%.2f", powderFactor) + " kg/m³");
         tvSD.setText(String.format("%.1f", SD) + " m/√kg");
-        tvMic.setText(String.format("%.0f", MIC) + " kg");
+        tvMic.setText(formatter.format(MIC) + " kg");
         tvPPV.setText(String.format("%.1f", PPV) + " mm/s");
 
 
     }
 
     private void imperialCalculator() {
-        double NoOfHole, holeLength, totalDrill, volumePerHole = 0, weightPerHole, totalWeight, totalVolume = 0,
+        double NoOfHole, holeLength, totalDrill, volumePerHole = 0, totalVolume = 0,
                 explosivePerHole, totalExplosive, powderFactor, d, chargeUnit, Wc, sdob, SD, MIC, PPV;
 
         if (checkHoleRowCount) {
@@ -965,17 +987,25 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         checkGraphics(sdob);
 
 
+        if(!checkVolume){
+            tvVolume.setText(formatter.format(totalVolume) + " tons");
+            tvVolumePerHole.setText(formatter.format(volumePerHole) + " tons");
+        }
+        else {
+            tvVolume.setText(formatter.format(totalVolume) + " yd³");
+            tvVolumePerHole.setText(formatter.format(volumePerHole) + " yd³");
+        }
+
+
         tvTotalHoles.setText(formatter.format(NoOfHole));
         tvShotLenght.setText(String.format("%.1f", holeLength) + " ft");
         tvShotDrillLenght.setText(formatter.format(totalDrill) + " ft");
-        tvVolumePerHole.setText(formatter.format(volumePerHole) + " yd³");
-        tvVolume.setText(formatter.format(totalVolume) + " yd³");
         tvExplosivePerHole.setText(formatter.format(explosivePerHole) + " lb");
         tvTotalExplosive.setText(formatter.format(totalExplosive) + " lb");
         tvSDOB.setText(String.format("%.2f", sdob) + " ft/∛lb");
         tvPF.setText(String.format("%.2f", powderFactor) + " lb/yd³");
         tvSD.setText(String.format("%.1f", SD) + " ft/√lb");
-        tvMic.setText(String.format("%.2f", MIC) + "kg");
+        tvMic.setText(formatter.format(MIC) + " kg");
         tvPPV.setText(String.format("%.2f", PPV) + " in/s");
     }
 
@@ -1026,33 +1056,33 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     private void checkGraphics(double result) {
 
         if (checkCalculator) {    //checking graphics for metric calculator
-            if (result >= 0 && result <= 0.6) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
-            } else if (result >= 0.61 && result <= 0.9) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
-            } else if (result >= 0.91 && result <= 1.42) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
-            } else if (result >= 1.43 && result <= 1.82) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
-            } else if (result >= 1.83 && result <= 2.40) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
+            if (result >= 0 && result <= 0.600) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic1));
+            } else if (result >= 0.609 && result <= 0.900) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic2));
+            } else if (result >= 0.909 && result <= 1.4249) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic3));
+            } else if (result >= 1.4250 && result <= 1.8249) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic4));
+            } else if (result >= 1.8250 && result <= 2.400) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic5));
             } else if (result >= 2.41) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.metric_graphic6));
             }
         } else {     //checking graphics for imperial calculator
 
-            if (result >= 0 && result <= 1.5) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphic1));
-            } else if (result >= 1.51 && result <= 2.2) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics2));
-            } else if (result >= 2.21 && result <= 3.5) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics3));
-            } else if (result >= 3.51 && result <= 4.5) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics4));
-            } else if (result >= 4.51 && result <= 6.0) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics5));
-            } else if (result >= 6.01) {
-                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.graphics6));
+            if (result >= 0 && result <= 1.549) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic1));
+            } else if (result >= 1.500 && result <= 2.249) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic2));
+            } else if (result >= 2.250 && result <= 3.549) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic3));
+            } else if (result >= 3.500 && result <= 4.549) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic4));
+            } else if (result >= 4.500 && result <= 6.049) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic5));
+            } else if (result >= 6.050) {
+                ivGraphics.setImageDrawable(getResources().getDrawable(R.drawable.imperial_graphic6));
             }
         }
     }
@@ -1062,17 +1092,18 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
         btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
 
-
-        burden = burden / 3.281;
-        spacing = spacing / 3.281;
-        benchHeight = benchHeight / 3.281;
-        stemming = stemming / 3.281;
-        distance = distance / 3.281;
-        subDrill = subDrill / 3.281;
-        stemming = stemming / 3.281;
+        diameter = diameter * 25.4000008128;
+        burden = burden / 3.28084;
+        spacing = spacing / 3.28084;
+        benchHeight = benchHeight / 3.28084;
+        stemming = stemming / 3.28084;
+        distance = distance / 3.28084;
+        subDrill = subDrill / 3.28084;
+        stemming = stemming / 3.28084;
 
         scallingFactor = 1140;
 
+        etDiameter.setText(String.format("%.0f", Double.valueOf(diameter)));
         etBurden.setText(String.format("%.1f", Double.valueOf(burden)));
         etSpacing.setText(String.format("%.1f", Double.valueOf(spacing)));
         etBenchHeight.setText(String.format("%.1f", Double.valueOf(benchHeight)));
@@ -1091,24 +1122,24 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
         btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
 
-
-        burden = burden * 3.281;
-        spacing = spacing * 3.281;
-        benchHeight = benchHeight * 3.281;
-        stemming = stemming * 3.281;
-        distance = distance * 3.281;
-        subDrill = subDrill * 3.281;
-        stemming = stemming * 3.281;
+        diameter = diameter / 25.4000008128;
+        burden = burden * 3.280844;
+        spacing = spacing * 3.280844;
+        benchHeight = benchHeight * 3.280844;
+        stemming = stemming * 3.28084;
+        distance = distance * 3.28084;
+        subDrill = subDrill * 3.28084;
+        stemming = stemming * 3.28084;
 
         scallingFactor = 160;
 
-
-        etBurden.setText(String.format("%.0f", Double.valueOf(burden)));
-        etSpacing.setText(String.format("%.0f", Double.valueOf(spacing)));
-        etBenchHeight.setText(String.format("%.0f", Double.valueOf(benchHeight)));
-        etSubDrill.setText(String.format("%.0f", Double.valueOf(subDrill)));
-        etStemming.setText(String.format("%.0f", Double.valueOf(stemming)));
-        etDistance.setText(String.format("%.0f", Double.valueOf(distance)));
+        etDiameter.setText(String.format("%.3f", Double.valueOf(diameter)));
+        etBurden.setText(String.format("%.1f", Double.valueOf(burden)));
+        etSpacing.setText(String.format("%.1f", Double.valueOf(spacing)));
+        etBenchHeight.setText(String.format("%.1f", Double.valueOf(benchHeight)));
+        etSubDrill.setText(String.format("%.1f", Double.valueOf(subDrill)));
+        etStemming.setText(String.format("%.1f", Double.valueOf(stemming)));
+        etDistance.setText(String.format("%.1f", Double.valueOf(distance)));
         etScallingFactor.setText(String.format("%.0f", Double.valueOf(scallingFactor)));
 
         imperialCalculator();
@@ -1142,7 +1173,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaex.com/shot");
+                        NetworkUtilities.sendMail(getActivity(),"www.enaexusa.com/shot");
                         break;
                     default:
                         break;
@@ -1170,7 +1201,6 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             String strDistance = bundle.getString("distance");
             String strScaling = bundle.getString("scaling");
             String strAttenuation = bundle.getString("attenuation");
-
 
             etShotHoles.setText(noRows);
             etHolePerRow.setText(holes);

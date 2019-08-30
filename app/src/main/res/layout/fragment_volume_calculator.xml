@@ -61,38 +61,44 @@
             app:cardCornerRadius="20dp">
 
             <RelativeLayout
-                android:id="@+id/layout_volume_option"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp">
 
-                <TextView
-                    android:layout_toRightOf="@+id/iv_call"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Options"
-                    android:textSize="18sp"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/medium"
-                    android:layout_marginTop="10dp"/>
+                <RelativeLayout
+                    android:id="@+id/layout_volume_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/iv_arrow"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/down_arrow"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="12dp"/>
+                    <TextView
+                        android:layout_toRightOf="@+id/iv_call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Options"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/medium"
+                        android:layout_marginTop="10dp"/>
+
+                    <ImageView
+                        android:id="@+id/iv_arrow"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/down_arrow"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="12dp"/>
+                </RelativeLayout>
+
 
                 <LinearLayout
                     android:id="@+id/volume_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_below="@id/iv_arrow"
+                    android:layout_below="@id/layout_volume_option"
                     android:visibility="gone"
                     >
 
@@ -380,7 +386,8 @@
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/white"
                 android:text="0.00 m³"
-                android:layout_weight=".5"
+                android:gravity="center"
+                android:layout_weight="1"
                 android:textSize="17sp" />
 
 

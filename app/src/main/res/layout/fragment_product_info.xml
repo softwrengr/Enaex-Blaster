@@ -1,52 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/scrollview"
     android:background="@color/gray"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.fragments.ProductInfoFragment">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/arrow_left"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="22dp"
-            android:layout_marginLeft="20dp"/>
+            android:src="@drawable/arrow_left" />
 
         <ImageView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/background"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/background" />
 
         <ImageView
             android:id="@+id/iv_contact"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/web"
             android:layout_below="@id/name"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"/>
-
-        <TextView
-            android:id="@+id/leader"
-            android:layout_below="@+id/iv_contact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/product"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_centerHorizontal="true" />
-
+            android:src="@drawable/web" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,472 +45,30 @@
             android:layout_marginTop="30dp"
             android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                app:cardCornerRadius="20dp">
+            <include layout="@layout/booster_layout" />
 
-                <RelativeLayout
-                    android:id="@+id/layout_tds_booster"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp">
+            <include layout="@layout/bulk_products_layout" />
 
-                    <TextView
-                        android:layout_toRightOf="@+id/iv_call"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Boosters"
-                        android:textSize="18sp"
-                        android:layout_marginLeft="20dp"
-                        android:gravity="center"
-                        android:layout_marginTop="10dp"/>
+            <include layout="@layout/detonation_layout" />
 
-                    <ImageView
-                        android:id="@+id/iv_booster"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/down_arrow"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="12dp"/>
+            <include layout="@layout/electronic_layout" />
 
+            <include layout="@layout/non_electronic_layout" />
 
-
-                    <TextView
-                        android:id="@+id/tv_tds_booster"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/iv_booster"
-                        android:text="APD-P Series Boosters - TDS"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-
-                    <TextView
-                        android:id="@+id/tv_sds_britex"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_tds_booster"
-                        android:text="Britex - SDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_tds_britex"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_sds_britex"
-                        android:text="Britex CL - TDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_ss_britex"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_tds_britex"
-                        android:text="Britex SS - TDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="20dp">
-
-                <RelativeLayout
-                    android:id="@+id/layout_bulk_products"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp">
-
-
-                    <TextView
-                        android:layout_toRightOf="@+id/iv_mail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bulk Products"
-                        android:textSize="18sp"
-                        android:layout_marginLeft="20dp"
-                        android:gravity="center"
-                        android:layout_marginTop="10dp"/>
-
-                    <ImageView
-                        android:id="@+id/iv_bulk"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/down_arrow"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="12dp"/>
-
-
-                   <RelativeLayout
-                       android:id="@+id/bulk_layout"
-                       android:layout_below="@id/iv_bulk"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:visibility="gone">
-
-                       <include
-                           layout="@layout/bulk_products_layout"/>
-
-                   </RelativeLayout>
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="20dp">
-
-                <RelativeLayout
-                    android:id="@+id/layout_detonation_cord"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Detonation Cord"
-                        android:textSize="18sp"
-                        android:layout_marginLeft="20dp"
-                        android:gravity="center"
-                        android:layout_marginTop="10dp"/>
-
-                    <ImageView
-                        android:id="@+id/iv_cord"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/down_arrow"
-                        android:layout_alignParentEnd="true"
-                       android:layout_marginTop="12dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_tds_britacord"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/iv_cord"
-                        android:text="Britacord - TDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:visibility="gone"
-                        android:padding="5dp"
-                        android:textColor="@color/colorAccent"
-                        android:background="@drawable/textview_back"
-                        android:layout_marginTop="20dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_sds_britacord"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_tds_britacord"
-                        android:text="Britacord - SDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="20dp">
-
-                <RelativeLayout
-                    android:id="@+id/layout_electronics"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Electronic Detonators"
-                        android:textSize="18sp"
-                        android:layout_marginLeft="20dp"
-                        android:gravity="center"
-                        android:layout_marginTop="10dp"/>
-
-                    <ImageView
-                        android:id="@+id/iv_electronic"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/down_arrow"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="10dp"/>
-                    <TextView
-                        android:id="@+id/tv_daveytronic_sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/iv_electronic"
-                        android:text="Daveytronci SP - TDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_daveytronic_ug"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_daveytronic_sp"
-                        android:text="Daveytronci UG - TDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_daveytronic_op"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_daveytronic_ug"
-                        android:text="Daveytronci OP - TDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_daveytronic_sds"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_daveytronic_op"
-                        android:text="Daveytronci Detonator - SDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="5dp"
-                app:cardCornerRadius="20dp">
-
-                <RelativeLayout
-                    android:id="@+id/layout_non_electronic"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_toRightOf="@+id/iv_web"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Non Electronic Detonators"
-                        android:textSize="18sp"
-                        android:layout_marginLeft="20dp"
-                        android:gravity="center"
-                        android:layout_marginTop="10dp"/>
-
-                    <ImageView
-                        android:id="@+id/iv_non_electronic"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/down_arrow"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="10dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_daveynel_tds"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/iv_non_electronic"
-                        android:text="Daveytronci SP - TDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_daveynel_surface_tds"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_daveynel_tds"
-                        android:text="Daveytronci UG - TDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_daveynel_dual_tds"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_daveynel_surface_tds"
-                        android:text="Daveytronci OP - TDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_daveynel_nonelectronic_sds"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_daveynel_dual_tds"
-                        android:text="Daveytronci Detonator - SDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="20dp"
-                android:layout_marginBottom="5dp">
-
-                <RelativeLayout
-                    android:id="@+id/layout_thermo"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_toRightOf="@+id/iv_web"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Thermo Tube"
-                        android:textSize="18sp"
-                        android:layout_marginLeft="20dp"
-                        android:gravity="center"
-                        android:layout_marginTop="10dp"/>
-
-                    <ImageView
-                        android:id="@+id/iv_thermo"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/down_arrow"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="10dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_thermo_tube_tds"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/iv_thermo"
-                        android:text="Thermo Tube - TDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:visibility="gone"
-                        android:padding="5dp"
-                        android:textColor="@color/colorAccent"
-                        android:background="@drawable/textview_back"
-                        android:layout_marginTop="20dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_thermo_tube_sds"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_thermo_tube_tds"
-                        android:text="Thermo Tube - SDS"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/textview_back"
-                        android:padding="5dp"
-                        android:visibility="gone"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginTop="20dp"/>
-
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
+            <include layout="@layout/thermo_layout" />
 
         </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/leader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_contact"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/product"
+            android:textSize="20sp" />
     </RelativeLayout>
 
 </ScrollView>

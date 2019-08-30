@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.techease.enaexblaster.R;
+import com.techease.enaexblaster.utilities.GeneralUtils;
 
 public class SplashActivity extends AppCompatActivity {
 

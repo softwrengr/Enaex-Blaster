@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="20dp">
+
+    <RelativeLayout
+        android:id="@+id/layout_bulk_products"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+
+    <TextView
+        android:layout_toRightOf="@+id/iv_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bulk Products"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_marginLeft="20dp"
+        android:gravity="center"
+        android:layout_marginTop="6dp"/>
+
+    <ImageView
+        android:id="@+id/iv_bulk"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/down_arrow"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="6dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/bulk_layout"
+        android:layout_below="@id/iv_bulk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+        <TextView
+        android:id="@+id/tv_ae_59_tds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AE 59 - TDS"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:layout_marginLeft="45dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/tv_an_prill_tds"
@@ -12,10 +68,114 @@
         android:text="AN Prill - TDS"
         android:background="@drawable/textview_back"
         android:padding="5dp"
+        android:layout_marginLeft="45dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_anfomax_tds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_sds_britex"
+        android:text="ANFOMAX - TDS"
+        android:layout_marginLeft="45dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_blendex_tds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_sds_britex"
+        android:text="Blendex - TDS"
+        android:layout_marginLeft="45dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_dl_seriec_tds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_sds_britex"
+        android:text="DL Series - TDS"
+        android:layout_marginLeft="45dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_emultex_tds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_sds_britex"
+        android:text="EMULTEX MS - TDS"
+        android:layout_marginLeft="45dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_emultex_dl_tds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_sds_britex"
+            android:text="EMULTEX MS DL - TDS"
+            android:layout_marginLeft="45dp"
+            android:background="@drawable/textview_back"
+            android:padding="5dp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_pirex_tds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_sds_britex"
+            android:text="Pirex - TDS"
+            android:layout_marginLeft="45dp"
+            android:background="@drawable/textview_back"
+            android:padding="5dp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_pirex_ms_sds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_tds_britex"
+            android:text="Pirex MS - TDS"
+            android:layout_marginLeft="45dp"
+            android:background="@drawable/textview_back"
+            android:padding="5dp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+        android:text="Safety Data Sheets"/>
+
+    <TextView
+        android:id="@+id/tv_ae_59_sds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_tds_booster"
+        android:text="AE 59 - SDS"
+        android:layout_marginLeft="45dp"
+        android:background="@drawable/textview_back"
+        android:padding="5dp"
         android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="10dp"/>
 
 
     <TextView
@@ -24,25 +184,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_tds_booster"
         android:text="AN Prill - SDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="45dp"
         android:background="@drawable/textview_back"
         android:padding="5dp"
         android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="10dp"/>
 
-    <TextView
-        android:id="@+id/tv_anfomax_tds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_sds_britex"
-        android:text="ANFOMAX - TDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/textview_back"
-        android:padding="5dp"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/tv_anfomax_sds"
@@ -50,77 +197,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_tds_britex"
         android:text="ANFOMAX - SDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="45dp"
         android:background="@drawable/textview_back"
         android:padding="5dp"
         android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
-
-    <TextView
-        android:id="@+id/tv_ae_59_tds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="AE 59 - TDS"
-        android:background="@drawable/textview_back"
-        android:padding="5dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="10dp"/>
 
 
-    <TextView
-        android:id="@+id/tv_ae_59_sds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_tds_booster"
-        android:text="AE 59 - SDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/textview_back"
-        android:padding="5dp"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
-
-    <TextView
-        android:id="@+id/tv_emultex_tds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_sds_britex"
-        android:text="EMULTEX MS - TDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/textview_back"
-        android:padding="5dp"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
-
-    <TextView
-        android:id="@+id/tv_emultex_sds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_tds_britex"
-        android:text="EMULTEX MS - SDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/textview_back"
-        android:padding="5dp"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
-
-    <TextView
-        android:id="@+id/tv_dl_seriec_tds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_sds_britex"
-        android:text="DL Series - TDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/textview_back"
-        android:padding="5dp"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/tv_dl_seriec_sds"
@@ -128,51 +211,38 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_tds_britex"
         android:text="DL Series - SDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="45dp"
         android:background="@drawable/textview_back"
         android:padding="5dp"
         android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="10dp"/>
 
-    <TextView
-        android:id="@+id/tv_emultex_dl_tds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_sds_britex"
-        android:text="EMULTEX MS DL - TDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/textview_back"
-        android:padding="5dp"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
 
-    <TextView
+        <TextView
+            android:id="@+id/tv_emultex_sds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_tds_britex"
+            android:text="EMULTEX MS - SDS"
+            android:layout_marginLeft="45dp"
+            android:background="@drawable/textview_back"
+            android:padding="5dp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="10dp"/>
+
+
+        <TextView
         android:id="@+id/tv_emultex_dl_sds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_tds_britex"
         android:text="EMULTEX MS DL - SDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="45dp"
         android:background="@drawable/textview_back"
         android:padding="5dp"
         android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="10dp"/>
 
-    <TextView
-        android:id="@+id/tv_blendex_tds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_sds_britex"
-        android:text="Blendex - TDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/textview_back"
-        android:padding="5dp"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/tv_blendex_sds"
@@ -180,37 +250,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_tds_britex"
         android:text="Blendex MS - SDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="45dp"
         android:background="@drawable/textview_back"
         android:padding="5dp"
+        android:visibility="gone"
         android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="10dp"/>
 
-    <TextView
-        android:id="@+id/tv_pirex_tds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_sds_britex"
-        android:text="Pirex - TDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/textview_back"
-        android:padding="5dp"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
 
-    <TextView
-        android:id="@+id/tv_pirex_ms_sds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_tds_britex"
-        android:text="Pirex MS - TDS"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/textview_back"
-        android:padding="5dp"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="20dp"/>
+    </LinearLayout>
+
+    </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
