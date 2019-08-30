@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.utilities.GeneralUtils;
@@ -15,6 +16,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ((AppCompatActivity)SplashActivity.this).getSupportActionBar().hide();
+
+        Log.d("check","");
 
 
         Handler handler = new Handler();
