@@ -1,5 +1,6 @@
 package com.techease.enaexblaster.views.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.views.activities.OpenPDFActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -71,7 +73,7 @@ public class GuideLineFragment extends Fragment {
             public void onClick(View v) {
                 bundle.putString("check_pdf", "bench_definition.pdf");
                 bundle.putBoolean("screen", true);
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
             }
         });
 
@@ -81,11 +83,11 @@ public class GuideLineFragment extends Fragment {
                 if (!checkCalculator) {
                     bundle.putString("check_pdf", "loading_imperial.pdf");
                     bundle.putBoolean("screen", true);
-                    GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                    startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 } else {
                     bundle.putString("check_pdf", "loading_metric.pdf");
                     bundle.putBoolean("screen", true);
-                    GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                    startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 }
             }
         });
@@ -96,7 +98,7 @@ public class GuideLineFragment extends Fragment {
             public void onClick(View v) {
                 bundle.putString("check_pdf", "rock_property.pdf");
                 bundle.putBoolean("screen", true);
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
             }
         });
 
@@ -108,12 +110,12 @@ public class GuideLineFragment extends Fragment {
                     bundle.putString("check_pdf", "sdob_imperial.pdf");
                     bundle.putBoolean("screen", true);
                     bundle.putInt("checkPage", 1);
-                    GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                    startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 } else {
                     bundle.putString("check_pdf", "sdob_metric.pdf");
                     bundle.putBoolean("screen", true);
                     bundle.putInt("checkPage", 1);
-                    GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                    startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 }
             }
         });

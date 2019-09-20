@@ -1,5 +1,6 @@
 package com.techease.enaexblaster.views.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 
 import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.views.activities.MainActivity;
 import com.techease.enaexblaster.views.calculators.CalculatorByHoleFragment;
 import com.techease.enaexblaster.views.calculators.CalculatorByShotFragment;
 import com.techease.enaexblaster.views.calculators.ExplosiveWeightFragment;
@@ -59,7 +61,8 @@ public class CalculatorsHomeFragment extends Fragment {
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragment(getActivity(), new HomeFragment());
+                //GeneralUtils.connectFragment(getActivity(), new HomeFragment());
+                startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
 

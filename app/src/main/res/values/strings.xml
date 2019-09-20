@@ -30,6 +30,7 @@
     <string name="save">Save</string>
     <string name="load">Load</string>
     <string name="email">Email</string>
+    <string name="disclaim">Disclaimer</string>
 
     <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries but also the leap into electronic typesetting, remaining essentially unchanged</string>
 
@@ -37,5 +38,22 @@
     in North and South America,Australia,Asia and Africa</string>
     <string name="privacy_policy">The Application does not collect and send any user information to
     Enaex.Information is only sent to intended recipients for the operating purposes of the application.</string>
+
+    <string name="disclaimer_text">
+        The information provided by this mobile application is for general informational purposes only.
+        All information on this application is provided in good faith, however Enaex makes no representation or warranty of any kind,
+        express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any
+        information or calculation made by this application.  Conditions cannot be anticipated and all due care should be taken
+        in the design and implementation of any and all blasts.\n\n
+        Under no circumstance shall we have any liability to you for any loss or damage of any kind incurred as a result of the use of
+        this application or reliance on any information provided by this application.
+        Your use of the application and your reliance on any information is solely at your own risk.\n\n
+        The application may contain (or you may be sent through our mobile application) links to other websites or
+        content belonging to or originating from third parties or links to websites and features in banners or
+        other advertising.  Such external links are not investigated, monitored, or checked for accuracy, adequacy,
+        validity, reliability, availability, or completeness by us.\n\n
+        The Scaled Depth of Burial Calculations are made based on the work performed by Chiapetta et al (1997)
+
+    </string>
 
 </resources>

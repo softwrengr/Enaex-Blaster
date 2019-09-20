@@ -11,6 +11,9 @@ public class HoleModel {
     String distance;
     String scaling;
     String attenuation;
+    String checkCalculator;
+    String checkVolume;
+    String checkVibration;
     String rowName;
 
     public String getDiameter() {
@@ -93,8 +96,32 @@ public class HoleModel {
         this.attenuation = attenuation;
     }
 
+    public String getCheckCalculator() {
+        return checkCalculator;
+    }
+
+    public void setCheckCalculator(String checkCalculator) {
+        this.checkCalculator = checkCalculator;
+    }
+
+    public String getCheckVolume() {
+        return checkVolume;
+    }
+
+    public void setCheckVolume(String checkVolume) {
+        this.checkVolume = checkVolume;
+    }
+
     public String getRowName() {
         return rowName;
+    }
+
+    public String getCheckVibration() {
+        return checkVibration;
+    }
+
+    public void setCheckVibration(String checkVibration) {
+        this.checkVibration = checkVibration;
     }
 
     public void setRowName(String rowName) {

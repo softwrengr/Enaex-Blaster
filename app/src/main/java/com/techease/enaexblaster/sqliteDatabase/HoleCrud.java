@@ -22,7 +22,8 @@ public class HoleCrud {
 
     //inserting by shot data
     public String insertByHoleData(String diameter,String density,String burden,String spacing,String holeLength,
-                                 String stemLenght,String rockDensity,String distance,String scaling,String attnuation,String row_name) {
+                                 String stemLenght,String rockDensity,String distance,String scaling,String attnuation,
+                                   String checkCal,String checkVol,String checkVibration,String row_name) {
 
         if (!checkData(row_name)) {
             ContentValues values = new ContentValues();
@@ -38,6 +39,9 @@ public class HoleCrud {
             values.put("DISTANCE",distance);
             values.put("SCALING",scaling);
             values.put("ATTENUATION",attnuation);
+            values.put("CALCULATOR",checkCal);
+            values.put("VOLUME",checkVol);
+            values.put("VIBRATION",checkVibration);
             values.put("ROW_NAME",row_name);
 
             sqLiteDatabase.insert("BY_HOLE", null, values);
@@ -53,7 +57,8 @@ public class HoleCrud {
 
     //inserting by shot data
     public void updateByHoleData(String diameter,String density,String burden,String spacing,String holeLength,
-                                   String stemLenght,String rockDensity,String distance,String scaling,String attnuation,String row_name) {
+                                   String stemLenght,String rockDensity,String distance,String scaling,String attnuation,
+                                 String checkCal,String checkVol,String checkVibration,String row_name) {
         ContentValues values = new ContentValues();
         values.put("DIAMETER",diameter);
         values.put("DENSITY",density);
@@ -67,6 +72,9 @@ public class HoleCrud {
         values.put("DISTANCE",distance);
         values.put("SCALING",scaling);
         values.put("ATTENUATION",attnuation);
+        values.put("CALCULATOR",checkCal);
+        values.put("VOLUME",checkVol);
+        values.put("VIBRATION",checkVibration);
         values.put("ROW_NAME",row_name);
         String whereClause = "ROW_NAME = '" + row_name + "'";
         sqLiteDatabase.update("BY_HOLE",values,  whereClause, null);

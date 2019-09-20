@@ -19,7 +19,7 @@ public class GeneralUtils {
 
 
     public static Fragment connectFragmentWithBack(Context context, Fragment fragment){
-        ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack("").commit();
+        ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack(null).commit();
         return fragment;
     }
 

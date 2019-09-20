@@ -82,6 +82,13 @@ public class ShotAdapter extends RecyclerView.Adapter<ShotAdapter.MyViewHolder> 
                 bundle.putString("distance",model.getDistance());
                 bundle.putString("scaling",model.getScaling());
                 bundle.putString("attenuation",model.getAttenuation());
+
+                bundle.putString("calculator",model.getCheckCalculator());
+                bundle.putString("volume",model.getCheckVolume());
+                bundle.putString("subdrill",model.getCheckSubdrill());
+                bundle.putString("check_holes",model.getCheckHole());
+                bundle.putString("vibration",model.getCheckVibration());
+
                 GeneralUtils.connectFragmentWithBack(context,new CalculatorByShotFragment()).setArguments(bundle);
             }
         });

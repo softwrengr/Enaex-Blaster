@@ -79,6 +79,9 @@ public class HoleAdapter extends RecyclerView.Adapter<HoleAdapter.MyViewHolder> 
                 bundle.putString("distance",model.getDistance());
                 bundle.putString("scaling",model.getScaling());
                 bundle.putString("attenuation",model.getAttenuation());
+                bundle.putString("checkCalculator",model.getCheckCalculator());
+                bundle.putString("checkVolume",model.getCheckVolume());
+                bundle.putString("vibration",model.getCheckVibration());
                 GeneralUtils.connectFragmentWithBack(context,new CalculatorByHoleFragment()).setArguments(bundle);
             }
         });

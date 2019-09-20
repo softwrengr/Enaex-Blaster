@@ -16,14 +16,7 @@ public class ShotModel {
     String scaling;
     String attenuation;
     String rowName;
-
-    public String getRowName() {
-        return rowName;
-    }
-
-    public void setRowName(String rowName) {
-        this.rowName = rowName;
-    }
+    String checkCalculator,checkVolume,checkSubdrill,checkHole,checkVibration;
 
     public String getRows() {
         return rows;
@@ -135,5 +128,53 @@ public class ShotModel {
 
     public void setAttenuation(String attenuation) {
         this.attenuation = attenuation;
+    }
+
+    public String getRowName() {
+        return rowName;
+    }
+
+    public void setRowName(String rowName) {
+        this.rowName = rowName;
+    }
+
+    public String getCheckCalculator() {
+        return checkCalculator;
+    }
+
+    public void setCheckCalculator(String checkCalculator) {
+        this.checkCalculator = checkCalculator;
+    }
+
+    public String getCheckVolume() {
+        return checkVolume;
+    }
+
+    public void setCheckVolume(String checkVolume) {
+        this.checkVolume = checkVolume;
+    }
+
+    public String getCheckSubdrill() {
+        return checkSubdrill;
+    }
+
+    public void setCheckSubdrill(String checkSubdrill) {
+        this.checkSubdrill = checkSubdrill;
+    }
+
+    public String getCheckHole() {
+        return checkHole;
+    }
+
+    public void setCheckHole(String checkHole) {
+        this.checkHole = checkHole;
+    }
+
+    public String getCheckVibration() {
+        return checkVibration;
+    }
+
+    public void setCheckVibration(String checkVibration) {
+        this.checkVibration = checkVibration;
     }
 }

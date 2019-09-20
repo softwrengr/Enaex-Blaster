@@ -1,5 +1,6 @@
 package com.techease.enaexblaster.views.fragments;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -94,6 +96,10 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        if(!GeneralUtils.getSharedPreferences(getActivity()).getBoolean("disclaimer",false)){
+            showDisclaimerDialog();
+        }
+
         return view;
     }
 
@@ -106,7 +112,7 @@ public class HomeFragment extends Fragment {
 
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                     getFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                    getActivity().finish();
+                    getActivity().finishAffinity();
                     return true;
                 }
                 return false;
@@ -147,6 +153,23 @@ public class HomeFragment extends Fragment {
                     break;
             }
         }
+    }
+
+    private void showDisclaimerDialog(){
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.disclaimer_dialog);
+        dialog.setCancelable(false);
+        Button btnOk = dialog.findViewById(R.id.btn_discliamer);
+
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GeneralUtils.putBooleanValueInEditor(getActivity(),"disclaimer",true);
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
 }

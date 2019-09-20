@@ -361,7 +361,14 @@ public class LoadDataFragment extends Fragment {
             String distance = cursor.getString(12).trim();
             String scaling = cursor.getString(13).trim();
             String attenuation = cursor.getString(14).trim();
-            String rowName = cursor.getString(15).trim();
+
+            String calculator = cursor.getString(15).trim();
+            String volume = cursor.getString(16).trim();
+            String standoff = cursor.getString(17).trim();
+            String checkHoles = cursor.getString(18).trim();
+            String checkVibration = cursor.getString(19).trim();
+
+            String rowName = cursor.getString(20).trim();
 
             ShotModel model = new ShotModel();
 
@@ -381,6 +388,13 @@ public class LoadDataFragment extends Fragment {
             model.setDistance(distance);
             model.setScaling(scaling);
             model.setAttenuation(attenuation);
+
+            model.setCheckCalculator(calculator);
+            model.setCheckVolume(volume);
+            model.setCheckSubdrill(standoff);
+            model.setCheckHole(checkHoles);
+            model.setCheckVibration(checkVibration);
+
             model.setRowName(rowName);
 
             powderFactorModelArrayList.add(model);
@@ -418,7 +432,10 @@ public class LoadDataFragment extends Fragment {
             String distance = cursor.getString(8).trim();
             String scaling = cursor.getString(9).trim();
             String attenuation = cursor.getString(10).trim();
-            String rowName = cursor.getString(11).trim();
+            String checkCalcultor = cursor.getString(11).trim();
+            String checkVolume = cursor.getString(12).trim();
+            String checkVibration = cursor.getString(13).trim();
+            String rowName = cursor.getString(14).trim();
 
             HoleModel model = new HoleModel();
 
@@ -432,6 +449,9 @@ public class LoadDataFragment extends Fragment {
             model.setDistance(distance);
             model.setScaling(scaling);
             model.setAttenuation(attenuation);
+            model.setCheckCalculator(checkCalcultor);
+            model.setCheckVolume(checkVolume);
+            model.setCheckVibration(checkVibration);
             model.setRowName(rowName);
 
             powderFactorModelArrayList.add(model);

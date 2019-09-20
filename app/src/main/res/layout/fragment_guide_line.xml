@@ -66,7 +66,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
-                            android:layout_marginTop="10dp"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
                             android:gravity="center"
                             android:text="@string/bench"
                             android:textSize="20sp" />
@@ -100,6 +101,7 @@
                             android:layout_marginTop="10dp"
                             android:gravity="center"
                             android:text="@string/loading"
+                            android:visibility="gone"
                             android:textSize="20sp" />
 
 
@@ -108,9 +110,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Loading Chart Imperial"
-                            android:textColor="@color/colorAccent" />
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:textSize="20sp"
+                            android:text="Loading Chart Imperial" />
 
                         <TextView
                             android:id="@+id/tv_loading_metric"
@@ -119,8 +122,9 @@
                             android:layout_below="@id/tv_loading_imperial"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
-                            android:text="Loading Chart Metric"
-                            android:textColor="@color/colorAccent" />
+                            android:textSize="20sp"
+                            android:visibility="gone"
+                            android:text="Loading Chart Metric" />
 
 
                     </LinearLayout>
@@ -147,7 +151,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
-                            android:layout_marginTop="10dp"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
                             android:gravity="center"
                             android:text="@string/rock"
                             android:textSize="20sp" />
@@ -178,6 +183,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
+                            android:visibility="gone"
                             android:text="@string/sdob"
                             android:textSize="20sp" />
 
@@ -187,9 +193,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
-                            android:layout_marginTop="20dp"
-                            android:text="Scale Depth of Burial"
-                            android:textColor="@color/colorAccent" />
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:textSize="20sp"
+                            android:text="Scale Depth of Burial" />
 
 
                     </LinearLayout>

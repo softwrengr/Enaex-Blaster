@@ -188,10 +188,10 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
     private boolean checkVolume = true;
     private boolean checkSubDrillStandOFF = true;
     private boolean checkHoleRowCount = true;
+    private boolean checkVibration = false;
     DecimalFormat formatter;
 
     @TargetApi(Build.VERSION_CODES.N)
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -201,22 +201,19 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         formatter = new DecimalFormat("#,###,###");
         checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", false);
 
-        if (checkCalculator) {
-            btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
-            btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
-            metricCalculator();
-            metricUnits();
-        } else {
-            btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
-            btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
-            imperialCalculator();
-            imperialUnits();
+        if (checkCalculator) { // metric caluculator
+            loadMetricCalculator();
+        } else {              //imperial calculator
+           loadImperailCalculator();
         }
+
         intiViews();
         showSaveData();
 
         return view;
     }
+
+
 
     private void intiViews() {
         ivMenu.setOnClickListener(this);
@@ -274,17 +271,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkVolume = true;
-                layoutRock.setVisibility(View.GONE);
-                btnWeight.setBackgroundColor(getActivity().getColor(R.color.grey));
-                btnVolume.setBackgroundColor(getActivity().getColor(R.color.silver));
-                if (checkCalculator) {
-                    metricCalculator();
-                } else {
-                    imperialCalculator();
-                }
-
-                tvVolumeHole.setText("Volume per Hole ");
-                tvTotlaVolume.setText("Total Volume");
+                calculateWithVolume();
 
             }
         });
@@ -294,17 +281,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkVolume = false;
-                layoutRock.setVisibility(View.VISIBLE);
-                btnWeight.setBackgroundColor(getActivity().getColor(R.color.silver));
-                btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
-                if (checkCalculator) {
-                    metricCalculator();
-                } else {
-                    imperialCalculator();
-                }
-
-                tvVolumeHole.setText("Weight per Hole");
-                tvTotlaVolume.setText("Total Weight");
+                calculateWithWeight();
 
             }
         });
@@ -314,11 +291,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkSubDrillStandOFF = false;
-                tvSubDrill.setText("Standoff");
-                btnStandOff.setBackgroundColor(getActivity().getColor(R.color.silver));
-                btnSubDrill.setBackgroundColor(getActivity().getColor(R.color.grey));
-                imperialCalculator();
-                metricCalculator();
+                selectStandOFF();
             }
         });
 
@@ -327,11 +300,8 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkSubDrillStandOFF = true;
-                tvSubDrill.setText("Subdrill");
-                btnStandOff.setBackgroundColor(getActivity().getColor(R.color.grey));
-                btnSubDrill.setBackgroundColor(getActivity().getColor(R.color.silver));
-                imperialCalculator();
-                metricCalculator();
+                selectSubDrill();
+
             }
         });
 
@@ -340,11 +310,8 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkHoleRowCount = true;   //count direct holes
-                layoutDirectHole.setVisibility(View.VISIBLE);
-                layoutRow.setVisibility(View.GONE);
-                layoutHole.setVisibility(View.GONE);
-                btnHoles.setBackgroundColor(getActivity().getColor(R.color.silver));
-                btnHoleRowCount.setBackgroundColor(getActivity().getColor(R.color.grey));
+                selectBtnHoles();
+
             }
         });
 
@@ -353,11 +320,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             @Override
             public void onClick(View v) {
                 checkHoleRowCount = false;    //count holes from no of hole and row
-                layoutDirectHole.setVisibility(View.GONE);
-                layoutRow.setVisibility(View.VISIBLE);
-                layoutHole.setVisibility(View.VISIBLE);
-                btnHoles.setBackgroundColor(getActivity().getColor(R.color.grey));
-                btnHoleRowCount.setBackgroundColor(getActivity().getColor(R.color.silver));
+                selectBtnHolesRow();
             }
         });
 
@@ -868,6 +831,89 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void loadMetricCalculator(){
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+        metricCalculator();
+        metricUnits();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void loadImperailCalculator(){
+        btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+        btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+        imperialCalculator();
+        imperialUnits();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void calculateWithVolume(){
+        layoutRock.setVisibility(View.GONE);
+        btnWeight.setBackgroundColor(getActivity().getColor(R.color.grey));
+        btnVolume.setBackgroundColor(getActivity().getColor(R.color.silver));
+        if (checkCalculator) {
+            metricCalculator();
+        } else {
+            imperialCalculator();
+        }
+
+        tvVolumeHole.setText("Volume per Hole ");
+        tvTotlaVolume.setText("Total Volume");
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void calculateWithWeight(){
+        layoutRock.setVisibility(View.VISIBLE);
+        btnWeight.setBackgroundColor(getActivity().getColor(R.color.silver));
+        btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
+        if (checkCalculator) {
+            metricCalculator();
+        } else {
+            imperialCalculator();
+        }
+
+        tvVolumeHole.setText("Weight per Hole");
+        tvTotlaVolume.setText("Total Weight");
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void selectStandOFF(){
+        tvSubDrill.setText("Standoff");
+        btnStandOff.setBackgroundColor(getActivity().getColor(R.color.silver));
+        btnSubDrill.setBackgroundColor(getActivity().getColor(R.color.grey));
+        imperialCalculator();
+        metricCalculator();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void selectSubDrill(){
+        tvSubDrill.setText("Subdrill");
+        btnStandOff.setBackgroundColor(getActivity().getColor(R.color.grey));
+        btnSubDrill.setBackgroundColor(getActivity().getColor(R.color.silver));
+        imperialCalculator();
+        metricCalculator();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void selectBtnHoles(){
+        layoutDirectHole.setVisibility(View.VISIBLE);
+        layoutRow.setVisibility(View.GONE);
+        layoutHole.setVisibility(View.GONE);
+        btnHoles.setBackgroundColor(getActivity().getColor(R.color.silver));
+        btnHoleRowCount.setBackgroundColor(getActivity().getColor(R.color.grey));
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void selectBtnHolesRow(){
+        layoutDirectHole.setVisibility(View.GONE);
+        layoutRow.setVisibility(View.VISIBLE);
+        layoutHole.setVisibility(View.VISIBLE);
+        btnHoles.setBackgroundColor(getActivity().getColor(R.color.grey));
+        btnHoleRowCount.setBackgroundColor(getActivity().getColor(R.color.silver));
+    }
+
     private void metricCalculator() {
         double NoOfHole, holeLength, totalDrill, volumePerHole = 0, totalWeight = 0, totalVolume = 0,
                 explosivePerHole, totalExplosive, powderFactor, d, chargeUnit, Wc, sdob, SD, MIC, PPV;
@@ -1011,6 +1057,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        checkVibration = isChecked;
         if (isChecked) {
             layoutHole8ms.setVisibility(View.VISIBLE);
             layoutDistance.setVisibility(View.VISIBLE);
@@ -1164,8 +1211,13 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.save:
-                        SavingLoadingData.showShotDialog(getActivity(),numberOfHole,holePerRows,diameter,explosiveDensity,burden,
-                                spacing,benchHeight,subDrill,stemming,rockDensity,holePerMs,distance,scallingFactor,attenuation);
+                        //saving data in sqlite database
+                        SavingLoadingData.showShotDialog(
+                                getActivity(),
+                                numberOfHole,holePerRows,diameter,explosiveDensity,burden,
+                                spacing,benchHeight,subDrill,stemming,rockDensity,holePerMs, distance,scallingFactor,
+                                attenuation,checkCalculator,checkVolume,checkSubDrillStandOFF,checkHoleRowCount,
+                                checkVibration);
                         break;
                     case R.id.load:
                         Bundle bundle = new Bundle();
@@ -1183,6 +1235,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void showSaveData(){
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -1201,6 +1254,12 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             String strDistance = bundle.getString("distance");
             String strScaling = bundle.getString("scaling");
             String strAttenuation = bundle.getString("attenuation");
+
+            boolean calculator = Boolean.valueOf(bundle.getString("calculator"));
+            boolean volume = Boolean.valueOf(bundle.getString("volume"));
+            boolean subdrill = Boolean.valueOf(bundle.getString("subdrill"));
+            boolean checkHoles = Boolean.valueOf(bundle.getString("check_holes"));
+            boolean checkVibration = Boolean.valueOf(bundle.getString("vibration"));
 
             etShotHoles.setText(noRows);
             etHolePerRow.setText(holes);
@@ -1231,6 +1290,83 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             distance = Double.parseDouble(strDistance);
             scallingFactor = Double.parseDouble(strScaling);
             attenuation = Double.parseDouble(strAttenuation);
+
+
+            if(checkHoles){
+                checkHoleRowCount = true;
+                layoutDirectHole.setVisibility(View.VISIBLE);
+                layoutRow.setVisibility(View.GONE);
+                layoutHole.setVisibility(View.GONE);
+                btnHoles.setBackgroundColor(getActivity().getColor(R.color.silver));
+                btnHoleRowCount.setBackgroundColor(getActivity().getColor(R.color.grey));
+            }
+            else {
+                checkHoleRowCount = false;
+                layoutDirectHole.setVisibility(View.GONE);
+                layoutRow.setVisibility(View.VISIBLE);
+                layoutHole.setVisibility(View.VISIBLE);
+                btnHoles.setBackgroundColor(getActivity().getColor(R.color.grey));
+                btnHoleRowCount.setBackgroundColor(getActivity().getColor(R.color.silver));
+            }
+
+            if(volume){
+                checkVolume = true;
+                layoutRock.setVisibility(View.GONE);
+                btnWeight.setBackgroundColor(getActivity().getColor(R.color.grey));
+                btnVolume.setBackgroundColor(getActivity().getColor(R.color.silver));
+                tvVolumeHole.setText("Volume per Hole ");
+                tvTotlaVolume.setText("Total Volume");
+            }
+            else {
+                checkVolume = false;
+                layoutRock.setVisibility(View.VISIBLE);
+                btnWeight.setBackgroundColor(getActivity().getColor(R.color.silver));
+                btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
+                tvVolumeHole.setText("Weight per Hole");
+                tvTotlaVolume.setText("Total Weight");
+            }
+
+            if(subdrill){
+                checkSubDrillStandOFF = true;
+                tvSubDrill.setText("Subdrill");
+                btnStandOff.setBackgroundColor(getActivity().getColor(R.color.grey));
+                btnSubDrill.setBackgroundColor(getActivity().getColor(R.color.silver));
+            }
+            else {
+                checkSubDrillStandOFF = false;
+                tvSubDrill.setText("Standoff");
+                btnStandOff.setBackgroundColor(getActivity().getColor(R.color.silver));
+                btnSubDrill.setBackgroundColor(getActivity().getColor(R.color.grey));
+            }
+
+            if(checkVibration){
+                switchVibration.setChecked(true);
+                layoutHole8ms.setVisibility(View.VISIBLE);
+                layoutDistance.setVisibility(View.VISIBLE);
+                layoutScalingFactor.setVisibility(View.VISIBLE);
+                layoutAttenuation.setVisibility(View.VISIBLE);
+                layoutVibrationOnOff.setVisibility(View.VISIBLE);
+            }
+            else {
+                switchVibration.setChecked(false);
+                layoutHole8ms.setVisibility(View.GONE);
+                layoutDistance.setVisibility(View.GONE);
+                layoutScalingFactor.setVisibility(View.GONE);
+                layoutAttenuation.setVisibility(View.GONE);
+                layoutVibrationOnOff.setVisibility(View.GONE);
+            }
+
+
+
+            if (calculator) {
+                checkCalculator = true;
+                loadMetricCalculator();
+            } else {
+                checkCalculator = false;
+                loadImperailCalculator();
+            }
+
+
         }
     }
 }

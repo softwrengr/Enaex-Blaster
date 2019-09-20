@@ -64,7 +64,7 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
     private double distance = 0, mic = 0;
     private boolean check = true;
     private boolean checkCalculator = true;
-    DecimalFormat formatter, dfnd;
+    DecimalFormat formatter, dfnd,nf;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -76,6 +76,7 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
         checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", false);
         formatter = new DecimalFormat("#,###,###.#");
         dfnd = new DecimalFormat("#,###,###");
+        nf = new DecimalFormat("#,###,###.##");
 
         if (checkCalculator) {
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
@@ -164,8 +165,6 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
 
                     try {
                         distance = Double.parseDouble(s.toString());
-//                        etDistance.setText(dfnd.format(distance));
-//                        etDistance.setSelection(etDistance.getText().length());
                         if (checkCalculator) {
                             metricCalculation();
                         } else {

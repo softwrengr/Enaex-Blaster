@@ -134,6 +134,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
     private boolean check = true;
     private boolean checkCalculator = true;
     private boolean checkVolume = true;
+    private boolean checkVibartion = false;
     DecimalFormat formatter;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -147,13 +148,13 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
 
         checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", false);
 
-        if (checkCalculator) {
+        if (checkCalculator) { //metric Calculator
             tvLBS.setText("Kgs per Hole");
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
             metricimperialCalculation();
             metrciUnits();
-        } else {
+        } else {             //imperial calculator
             tvLBS.setText("Lbs per Hole");
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
@@ -659,6 +660,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        checkVibartion = isChecked;
         if (isChecked) {
             layoutDistance.setVisibility(View.VISIBLE);
             layoutScaling.setVisibility(View.VISIBLE);
@@ -782,7 +784,8 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                 switch (item.getItemId()) {
                     case R.id.save:
                         SavingLoadingData.showHoleDialog(getActivity(),diameter,density,burden,
-                                spacing,holeLenght,stemming,rockDensity,distance,scallingFactor,attenuation);
+                                spacing,holeLenght,stemming,rockDensity,distance,scallingFactor,attenuation,
+                                checkCalculator,checkVolume,checkVibartion);
                         break;
                     case R.id.load:
                         Bundle bundle = new Bundle();
@@ -800,6 +803,7 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void showSaveData(){
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -814,6 +818,9 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
             String strDistance = bundle.getString("distance");
             String strScaling = bundle.getString("scaling");
             String strAttenuation = bundle.getString("attenuation");
+            boolean checkCal = Boolean.valueOf(bundle.getString("checkCalculator"));
+            boolean checkVol = Boolean.valueOf(bundle.getString("checkVolume"));
+            boolean checkVibraion = Boolean.valueOf(bundle.getString("vibration"));
 
 
             etDiameter.setText(strDiameter);
@@ -837,7 +844,71 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
             distance = Double.parseDouble(strDistance);
             scallingFactor = Double.parseDouble(strScaling);
             attenuation = Double.parseDouble(strAttenuation);
+
+            if (checkCal) { //metric Calculator
+                checkCalculator = true;
+                tvLBS.setText("Kgs per Hole");
+                btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+                btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+                metricimperialCalculation();
+                metrciUnits();
+            } else {
+                checkCalculator = false;//imperial calculator
+                tvLBS.setText("Lbs per Hole");
+                btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+                btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+                imperialCalculation();
+                imperialUnits();
+            }
+
+            if(checkVol){
+                checkVolume = true;
+                tvVolumeWeight.setText("Volume");
+                layoutRock.setVisibility(View.GONE);
+                btnWeight.setBackgroundColor(getActivity().getColor(R.color.grey));
+                btnVolume.setBackgroundColor(getActivity().getColor(R.color.silver));
+
+                if (checkCal) {
+                    metricimperialCalculation();
+                    metrciUnits();
+                } else {
+                    imperialCalculation();
+                    imperialUnits();
+                }
+            }
+            else {
+                checkVolume = false;
+                tvVolumeWeight.setText("Weight");
+                layoutRock.setVisibility(View.VISIBLE);
+                btnWeight.setBackgroundColor(getActivity().getColor(R.color.silver));
+                btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
+
+                if (checkCal) {
+                    metricimperialCalculation();
+                    metrciUnits();
+                } else {
+                    imperialCalculation();
+                    imperialUnits();
+                }
+            }
+
+            if (checkVibraion) {
+                switchHole.setChecked(true);
+                layoutDistance.setVisibility(View.VISIBLE);
+                layoutScaling.setVisibility(View.VISIBLE);
+                layoutAttenuation.setVisibility(View.VISIBLE);
+                layoutPPV.setVisibility(View.VISIBLE);
+                layoutSD.setVisibility(View.VISIBLE);
+            } else {
+                switchHole.setChecked(false);
+                layoutDistance.setVisibility(View.GONE);
+                layoutScaling.setVisibility(View.GONE);
+                layoutAttenuation.setVisibility(View.GONE);
+                layoutPPV.setVisibility(View.GONE);
+                layoutSD.setVisibility(View.GONE);
+            }
         }
+
     }
 
 }

@@ -32,7 +32,8 @@ public class SavingLoadingData {
     public static void showHoleDialog(final Context context, final double diameter, final double density,
                                       final double burden, final double spacing, final double hole_length,
                                       final double stemLenght, final double rockDensity,
-                                      final double distance, final double scaling, final double attnuation) {
+                                      final double distance, final double scaling, final double attnuation,
+                                      final boolean checkCalculator, final boolean checkVolume, final boolean checkVibration) {
 
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.custom_dialog);
@@ -62,6 +63,9 @@ public class SavingLoadingData {
                             String.valueOf(distance),
                             String.valueOf(scaling),
                             String.valueOf(attnuation),
+                            String.valueOf(checkCalculator),
+                            String.valueOf(checkVolume),
+                            String.valueOf(checkVibration),
                             strSaveAs);
 
                     if (strChecking.equals("Already Exist")) {
@@ -91,6 +95,9 @@ public class SavingLoadingData {
                         String.valueOf(distance),
                         String.valueOf(scaling),
                         String.valueOf(attnuation),
+                        String.valueOf(checkCalculator),
+                        String.valueOf(checkVolume),
+                        String.valueOf(checkVibration),
                         strSaveAs);
 
                 dialog.dismiss();
@@ -111,7 +118,8 @@ public class SavingLoadingData {
     public static void showShotDialog(final Context context, final double holes, final double rows, final double diameter, final double density,
                                       final double burden, final double spacing, final double bench_height,
                                       final double subDril, final double stemLenght, final double rockDensity, final double hole_ms,
-                                      final double distance, final double scaling, final double attnuation) {
+                                      final double distance, final double scaling, final double attnuation,
+                                      final boolean checkCalculator, final boolean checkVolume, final boolean checkSubDrillStandOFF, final boolean checkHoleRowCount, final boolean checkVibration) {
 
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.custom_dialog);
@@ -145,6 +153,13 @@ public class SavingLoadingData {
                             String.valueOf(distance),
                             String.valueOf(scaling),
                             String.valueOf(attnuation),
+
+                            String.valueOf(checkCalculator),
+                            String.valueOf(checkVolume),
+                            String.valueOf(checkSubDrillStandOFF),
+                            String.valueOf(checkHoleRowCount),
+                            String.valueOf(checkVibration),
+
                             strSaveAs);
 
                     if (strChecking.equals("Already Exist")) {

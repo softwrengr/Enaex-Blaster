@@ -1,8 +1,10 @@
 package com.techease.enaexblaster.views.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 
 import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.views.activities.OpenPDFActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -145,7 +148,7 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
     @BindView(R.id.thermo_layout)
     LinearLayout layoutThermoTube;
 
-    private boolean check1 = false,check2 =false,check3 = false,check4 =false,check5 = false,check6 = false;
+    private boolean check1 = false, check2 = false, check3 = false, check4 = false, check5 = false, check6 = false;
 
 
     @Override
@@ -154,10 +157,13 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_product_info, container, false);
         ButterKnife.bind(this, view);
-        initLayout();
+
         initViews();
+
+        initLayout();
         return view;
     }
+
 
     private void initViews() {
         bundle = new Bundle();
@@ -219,21 +225,7 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
                     layoutBoosterTwo.setVisibility(View.GONE);
                     check1 = false;
                 } else {
-                    ivBooster.setImageDrawable(getResources().getDrawable(R.drawable.up));
-                    layoutBoosterOne.setVisibility(View.VISIBLE);
-                    layoutBoosterTwo.setVisibility(View.VISIBLE);
-
-                    layoutBulk.setVisibility(View.GONE);
-                    layoutDitonation.setVisibility(View.GONE);
-                    layoutElectronic.setVisibility(View.GONE);
-                    layoutNonElectric.setVisibility(View.GONE);
-                    layoutThermoTube.setVisibility(View.GONE);
-
-                    ivBulk.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
-                    ivCord.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
-                    ivElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
-                    ivNonElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
-                    ivThermo.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+                    openBoosterDropDown();
 
                     check1 = true;
                     check2 = false;
@@ -426,144 +418,163 @@ public class ProductInfoFragment extends Fragment implements View.OnClickListene
         switch (v.getId()) {
             case R.id.tv_tds_booster:
                 bundle.putString("check_pdf", "apd_p_series_boosters.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_sds_booster:
-                bundle.putString("check_pdf","apd_p_series_sds.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                bundle.putString("check_pdf", "apd_p_series_sds.pdf");
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_sds_britex:
                 bundle.putString("check_pdf", "sds_britex.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_tds_britex:
                 bundle.putString("check_pdf", "tds_britex_cl.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_ss_britex:
                 bundle.putString("check_pdf", "tds_britex.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
 
             case R.id.tv_tds_britacord:
                 bundle.putString("check_pdf", "tds_britacord.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_sds_britacord:
                 bundle.putString("check_pdf", "sds_britacord.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
 
             case R.id.tv_thermo_tube_sds:
                 bundle.putString("check_pdf", "sds_thermo.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_thermo_tube_tds:
                 bundle.putString("check_pdf", "tds_thermo.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
 
             case R.id.tv_daveytronic_sp:
                 bundle.putString("check_pdf", "tds_daveytronic_sp.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_daveytronic_ug:
                 bundle.putString("check_pdf", "tds_daveytronic_ug.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
 
             case R.id.tv_daveytronic_op:
                 bundle.putString("check_pdf", "tds_daveytronic_op.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_daveytronic_sds:
-                bundle.putString("check_pdf", "apd_p_series_boosters.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                bundle.putString("check_pdf", "sds_daveytronics_detonators.pdf");
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
 
             case R.id.tv_daveynel_tds:
-                bundle.putString("check_pdf", "sds_daveytronics_detonators.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                bundle.putString("check_pdf", "tds_aveynel_downholes.pdf");
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_daveynel_surface_tds:
                 bundle.putString("check_pdf", "tds_daveynel_surface.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
 
             case R.id.tv_daveynel_dual_tds:
                 bundle.putString("check_pdf", "tds_daveyquick_dual.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_daveynel_nonelectronic_sds:
                 bundle.putString("check_pdf", "sds_daveytronics_detonators.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
 
             //bulk products
             case R.id.tv_an_prill_tds:
                 bundle.putString("check_pdf", "tds_an_prill.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_an_prill_sds:
                 bundle.putString("check_pdf", "sds_an_prill.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_anfomax_tds:
                 bundle.putString("check_pdf", "tds_anfomax.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_anfomax_sds:
                 bundle.putString("check_pdf", "sds_anfomax.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_ae_59_tds:
                 bundle.putString("check_pdf", "tds_ae_59.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_ae_59_sds:
                 bundle.putString("check_pdf", "sds_ae_59.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_emultex_tds:
                 bundle.putString("check_pdf", "tds_emultex_ms.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_emultex_sds:
                 bundle.putString("check_pdf", "sds_emultex_ms.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_dl_seriec_tds:
                 bundle.putString("check_pdf", "tds_dl_series.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_dl_seriec_sds:
                 bundle.putString("check_pdf", "sds_dl_series.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_emultex_dl_tds:
                 bundle.putString("check_pdf", "tds_emultex_ms_dl.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_emultex_dl_sds:
                 bundle.putString("check_pdf", "sds_emultex_ms_dl.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_blendex_tds:
                 bundle.putString("check_pdf", "tds_blendex.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_blendex_sds:
                 bundle.putString("check_pdf", "tds_blendex_ms.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_pirex_tds:
                 bundle.putString("check_pdf", "tds_pirex.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
             case R.id.tv_pirex_ms_sds:
                 bundle.putString("check_pdf", "tds_pirex_ms.pdf");
-                GeneralUtils.connectFragmentWithBack(getActivity(), new OpenPdfFragment()).setArguments(bundle);
+                startActivity(new Intent(getActivity(), OpenPDFActivity.class).putExtras(bundle));
                 break;
         }
     }
+
+    private void openBoosterDropDown(){
+        ivBooster.setImageDrawable(getResources().getDrawable(R.drawable.up));
+        layoutBoosterOne.setVisibility(View.VISIBLE);
+        layoutBoosterTwo.setVisibility(View.VISIBLE);
+
+        layoutBulk.setVisibility(View.GONE);
+        layoutDitonation.setVisibility(View.GONE);
+        layoutElectronic.setVisibility(View.GONE);
+        layoutNonElectric.setVisibility(View.GONE);
+        layoutThermoTube.setVisibility(View.GONE);
+
+        ivBulk.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+        ivCord.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+        ivElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+        ivNonElectronics.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+        ivThermo.setImageDrawable(getResources().getDrawable(R.drawable.down_arrow));
+    }
+
 }

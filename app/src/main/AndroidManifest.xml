@@ -2,18 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.techease.enaexblaster">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
+        android:configChanges="orientation|screenSize"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
-        android:configChanges="orientation|screenSize"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.activities.SplashActivity"
+        <activity
+            android:name=".views.activities.SplashActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,38 +23,42 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".views.activities.OpenPDFActivity"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".views.activities.MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="http"
-                    android:host="www.enaexusa.com" />
+                    android:host="www.enaexusa.com"
+                    android:scheme="http" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="https"
-                    android:host="www.enaexusa.com" />
+                    android:host="www.enaexusa.com"
+                    android:scheme="https" />
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="app"
-                    android:host="www.enaexusa.com" />
+                    android:host="www.enaexusa.com"
+                    android:scheme="app" />
             </intent-filter>
         </activity>
     </application>
+
 
 </manifest>

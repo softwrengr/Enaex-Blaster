@@ -62,8 +62,8 @@
                android:text="@string/about_us"
                android:textSize="16sp"
                android:gravity="center"
-               android:layout_marginLeft="20dp"
-               android:layout_marginRight="20dp"
+               android:layout_marginLeft="15dp"
+               android:layout_marginRight="15dp"
                android:layout_marginTop="10dp"
                android:textColor="@color/white"
                android:layout_centerHorizontal="true" />
@@ -85,8 +85,8 @@
                android:text="@string/privacy_policy"
                android:textSize="16sp"
                android:gravity="center"
-               android:layout_marginLeft="20dp"
-               android:layout_marginRight="20dp"
+               android:layout_marginLeft="15dp"
+               android:layout_marginRight="15dp"
                android:layout_marginTop="10dp"
                android:textColor="@color/white"
                android:layout_centerHorizontal="true" />
@@ -98,18 +98,17 @@
                android:textSize="18sp"
                android:gravity="center"
                android:textColor="@color/white"
+               android:textStyle="bold"
                android:layout_marginTop="20dp"
                android:layout_centerHorizontal="true" />
 
            <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="@string/lorem"
+               android:text="@string/disclaimer_text"
                android:textSize="16sp"
                android:gravity="center"
-               android:layout_marginLeft="20dp"
-               android:layout_marginRight="20dp"
-               android:layout_marginTop="10dp"
+               android:layout_margin="15dp"
                android:textColor="@color/white"
                android:layout_centerHorizontal="true" />
        </LinearLayout>
