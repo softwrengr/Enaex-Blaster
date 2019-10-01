@@ -456,7 +456,14 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaexusa.com/volume");
+                        NetworkUtilities.sendMail(getActivity(),
+                                "www.enaexusa.com/volume?burden="+burden
+                                        + "&spacing="+ spacing
+                                        + "&average_depth="+ averageDepth
+                                        + "&holes="+ noOfHOles
+                                        + "&rockDensity="+ rockDensity
+                                        + "&checkWeight="+ checkWeight
+                                        + "&unit="+ String.valueOf(checkCalculator));
                         break;
                     default:
                         break;
@@ -476,6 +483,8 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
             String strAverageDepth = bundle.getString("average_depth");
             String strHoles = bundle.getString("holes");
             String strRockDensity = bundle.getString("rockDensity");
+            checkCalculator = Boolean.parseBoolean(bundle.getString("unit"));
+            checkWeight = Boolean.parseBoolean(bundle.getString("checkWeight"));
 
             etBurden.setText(strBurden);
             etSpacing.setText(strSpacing);
@@ -488,6 +497,19 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
             averageDepth = Double.parseDouble(strAverageDepth);
             noOfHOles = Double.parseDouble(strHoles);
             rockDensity = Double.parseDouble(strRockDensity);
+
+            if(checkCalculator){
+                btnImperial.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
+                btnMetric.setBackgroundColor(getActivity().getResources().getColor(R.color.silver));
+                metricUnits();
+                metricCalculation();
+            }
+            else {
+                btnImperial.setBackgroundColor(getActivity().getResources().getColor(R.color.silver));
+                btnMetric.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
+                imperialUnits();
+                imperialCalculation();
+            }
 
         }
     }

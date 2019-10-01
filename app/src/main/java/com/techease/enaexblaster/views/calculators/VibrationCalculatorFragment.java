@@ -336,7 +336,12 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
                         GeneralUtils.connectFragmentWithBack(getActivity(), new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(), "www.enaexusa.com/vibration");
+                        NetworkUtilities.sendMail(getActivity(),
+                                "www.enaexusa.com/vibration?distance=" + distance
+                                        + "&mic="+ mic
+                                        + "&scaling="+ scallingFactor
+                                        + "&attenuation="+ attenuationFactor
+                                        + "&unit="+ String.valueOf(checkCalculator));
                         break;
                     default:
                         break;
@@ -384,6 +389,7 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void showSaveData() {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -391,6 +397,7 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
             String strMic = bundle.getString("mic");
             String strScalingFactor = bundle.getString("scaling");
             String strAttenuation = bundle.getString("attenuation");
+            checkCalculator = Boolean.parseBoolean(bundle.getString("unit"));
 
             etDistance.setText(strDistance);
             etMIC.setText(strMic);
@@ -401,6 +408,25 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
             mic = Double.parseDouble(strMic);
             scallingFactor = Double.parseDouble(strScalingFactor);
             attenuationFactor = Double.parseDouble(strAttenuation);
+
+            if(checkCalculator){
+                btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+                btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+                scallingFactor = 1140;
+                etScallingFactor.setText("1140");
+                tvDistanceUnit.setText("m");
+                tvMicUnit.setText("kg");
+                metricCalculation();
+            }
+            else {
+                btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+                btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+                scallingFactor = 160;
+                etScallingFactor.setText("160");
+                tvDistanceUnit.setText("ft");
+                tvMicUnit.setText("lb");
+                imperialCalculation();
+            }
         }
     }
 }

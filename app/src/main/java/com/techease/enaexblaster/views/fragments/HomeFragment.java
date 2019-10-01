@@ -122,10 +122,12 @@ public class HomeFragment extends Fragment {
     }
 
     private void checkDeepLink(){
+        Bundle bundle = new Bundle();
         Uri uri = getActivity().getIntent().getData();
         if(uri != null){
             List<String> params = uri.getPathSegments();
             String id = params.get(params.size()-1);
+
             switch (id){
                 case "hole":
                     GeneralUtils.connectFragment(getActivity(),new CalculatorByHoleFragment());
@@ -134,22 +136,57 @@ public class HomeFragment extends Fragment {
                     GeneralUtils.connectFragment(getActivity(),new CalculatorByShotFragment());
                     break;
                 case "powder_factor":
-                    GeneralUtils.connectFragment(getActivity(),new PFCalculatorFragment());
+                    bundle.putString("diameter",uri.getQueryParameter("diameter"));
+                    bundle.putString("density",uri.getQueryParameter("density"));
+                    bundle.putString("burden",uri.getQueryParameter("burden"));
+                    bundle.putString("spacing",uri.getQueryParameter("spacing"));
+                    bundle.putString("holeLength",uri.getQueryParameter("holeLength"));
+                    bundle.putString("stemLength",uri.getQueryParameter("stemLength"));
+                    bundle.putString("rockDensity",uri.getQueryParameter("rockDensity"));
+                    bundle.putString("airDeck",uri.getQueryParameter("airDeck"));
+                    bundle.putString("checkWeight",uri.getQueryParameter("checkWeight"));
+                    bundle.putString("unit",uri.getQueryParameter("unit"));
+                    GeneralUtils.connectFragment(getActivity(),new PFCalculatorFragment()).setArguments(bundle);
                     break;
                 case "sdob":
-                    GeneralUtils.connectFragment(getActivity(),new SDOBCalculatorFragment());
+                    bundle.putString("diameter",uri.getQueryParameter("diameter"));
+                    bundle.putString("density",uri.getQueryParameter("density"));
+                    bundle.putString("holeLength",uri.getQueryParameter("holeLength"));
+                    bundle.putString("stemLength",uri.getQueryParameter("stemLength"));
+                    bundle.putString("unit",uri.getQueryParameter("unit"));
+                    GeneralUtils.connectFragment(getActivity(),new SDOBCalculatorFragment()).setArguments(bundle);
                     break;
                 case "explosive_weight":
-                    GeneralUtils.connectFragment(getActivity(),new ExplosiveWeightFragment());
+                    bundle.putString("diameter",uri.getQueryParameter("diameter"));
+                    bundle.putString("density",uri.getQueryParameter("density"));
+                    bundle.putString("holeLength",uri.getQueryParameter("holeLength"));
+                    bundle.putString("stemLength",uri.getQueryParameter("stemLength"));
+                    bundle.putString("unit",uri.getQueryParameter("unit"));
+                    GeneralUtils.connectFragment(getActivity(),new ExplosiveWeightFragment()).setArguments(bundle);
                     break;
                 case "vibration":
-                    GeneralUtils.connectFragment(getActivity(),new VibrationCalculatorFragment());
+                    bundle.putString("distance",uri.getQueryParameter("distance"));
+                    bundle.putString("mic",uri.getQueryParameter("mic"));
+                    bundle.putString("scaling",uri.getQueryParameter("scaling"));
+                    bundle.putString("attenuation",uri.getQueryParameter("attenuation"));
+                    bundle.putString("unit",uri.getQueryParameter("unit"));
+                    GeneralUtils.connectFragment(getActivity(),new VibrationCalculatorFragment()).setArguments(bundle);
                     break;
                 case "volume":
-                    GeneralUtils.connectFragment(getActivity(),new VolumeCalculatorFragment());
+                    bundle.putString("burden",uri.getQueryParameter("burden"));
+                    bundle.putString("spacing",uri.getQueryParameter("spacing"));
+                    bundle.putString("average_depth",uri.getQueryParameter("average_depth"));
+                    bundle.putString("holes",uri.getQueryParameter("holes"));
+                    bundle.putString("rockDensity",uri.getQueryParameter("rockDensity"));
+                    bundle.putString("checkWeight",uri.getQueryParameter("checkWeight"));
+                    bundle.putString("unit",uri.getQueryParameter("unit"));
+                    GeneralUtils.connectFragment(getActivity(),new VolumeCalculatorFragment()).setArguments(bundle);
                     break;
                 case "scaled_distance":
-                    GeneralUtils.connectFragmentWithBack(getActivity(),new ScaledDistanceFragment());
+                    bundle.putString("distance",uri.getQueryParameter("distance"));
+                    bundle.putString("mic",uri.getQueryParameter("mic"));
+                    bundle.putString("unit",uri.getQueryParameter("unit"));
+                    GeneralUtils.connectFragmentWithBack(getActivity(),new ScaledDistanceFragment()).setArguments(bundle);
                     break;
             }
         }

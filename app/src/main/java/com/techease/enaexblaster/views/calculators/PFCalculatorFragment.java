@@ -661,7 +661,17 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaexusa.com/powder_factor");
+                        NetworkUtilities.sendMail(getActivity(),
+                                "www.enaexusa.com/powder_factor?diameter="+diameter
+                                        + "&density="+ density
+                                        + "&burden="+ burden
+                                        + "&spacing="+ spacing
+                                        + "&holeLength="+ holeLenght
+                                        + "&stemLength="+ stemmingLenght
+                                        + "&rockDensity="+ rockDensity
+                                        + "&airDeck="+ airDeck
+                                        + "&checkWeight="+ checkVolumeWeight
+                                        + "&unit="+ String.valueOf(checkCalculator));
                         break;
                     default:
                         break;
@@ -684,6 +694,8 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
             String strStemLength = bundle.getString("stemLength");
             String strRockDensity = bundle.getString("rockDensity");
             String strAirDeck = bundle.getString("airDeck");
+            checkCalculator = Boolean.parseBoolean(bundle.getString("unit"));
+            checkVolumeWeight = Boolean.parseBoolean(bundle.getString("checkWeight"));
 
             etDiameter.setText(strDiameter);
             etDensity.setText(strDensity);
@@ -702,6 +714,19 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
             stemmingLenght = Double.parseDouble(strStemLength);
             rockDensity = Double.parseDouble(strRockDensity);
             airDeck = Double.parseDouble(strRockDensity);
+
+            if(checkCalculator){
+                btnImperial.setBackgroundColor(getResources().getColor(R.color.grey));
+                btnMetric.setBackgroundColor(getResources().getColor(R.color.silver));
+                metricUnits();
+                metricCalculator();
+            }
+            else {
+                btnImperial.setBackgroundColor(getResources().getColor(R.color.silver));
+                btnMetric.setBackgroundColor(getResources().getColor(R.color.grey));
+                imperialUnits();
+                imperialCalculator();
+            }
         }
     }
 }

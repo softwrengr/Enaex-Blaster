@@ -1,10 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.barteksc:pdfium-android:1.9.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/43623913e71c8ace69e082cb38a88170/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/43623913e71c8ace69e082cb38a88170/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d258a96633cff418d4f2ff5b976b7338/pdfium-android-1.9.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d258a96633cff418d4f2ff5b976b7338/pdfium-android-1.9.0/res" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.barteksc/pdfium-android/1.9.0/a9e3efce867c5e49a12afa7f5ab4c24a94b1f2e1/pdfium-android-1.9.0-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.barteksc/pdfium-android/1.9.0/7b432c3c96496f23e21e21fd0799774d1a51c811/pdfium-android-1.9.0-sources.jar!/" />
     </SOURCES>

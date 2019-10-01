@@ -400,7 +400,12 @@ public class ExplosiveWeightFragment extends Fragment implements View.OnClickLis
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaexusa.com/explosive_weight");
+                        NetworkUtilities.sendMail(getActivity(),
+                                "www.enaexusa.com/explosive_weight?diameter="+diameter
+                                        + "&density="+ density
+                                        + "&holeLength="+ holeLenght
+                                        + "&stemLength="+ stemLenght
+                                        + "&unit="+ String.valueOf(checkCalculator));
                         break;
                     default:
                         break;
@@ -412,6 +417,7 @@ public class ExplosiveWeightFragment extends Fragment implements View.OnClickLis
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void showSaveData() {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -419,6 +425,7 @@ public class ExplosiveWeightFragment extends Fragment implements View.OnClickLis
             String strDensity = bundle.getString("density");
             String strHoleLength = bundle.getString("holeLength");
             String strStemLength = bundle.getString("stemLength");
+            checkCalculator = Boolean.parseBoolean(bundle.getString("unit"));
 
             etDiameter.setText(strDiameter);
             etDensity.setText(strDensity);
@@ -429,6 +436,19 @@ public class ExplosiveWeightFragment extends Fragment implements View.OnClickLis
             density = Double.parseDouble(strDensity);
             holeLenght = Double.parseDouble(strHoleLength);
             stemLenght = Double.parseDouble(strStemLength);
+
+            if(checkCalculator){
+                btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+                btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+                metricUnits();
+                metricCalculator();
+            }
+            else {
+                btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+                btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+                imperialUnits();
+                imperialCalculator();
+            }
 
         }
     }

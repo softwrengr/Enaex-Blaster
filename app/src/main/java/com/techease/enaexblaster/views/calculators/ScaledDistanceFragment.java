@@ -1,6 +1,5 @@
 package com.techease.enaexblaster.views.calculators;
 
-import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -22,12 +21,15 @@ import android.widget.Toast;
 
 import com.techease.enaexblaster.R;
 import com.techease.enaexblaster.helpers.SavingLoadingData;
+import com.techease.enaexblaster.networkingCalls.VibrationNetworking;
 import com.techease.enaexblaster.saveLoadData.LoadDataFragment;
 import com.techease.enaexblaster.utilities.GeneralUtils;
 import com.techease.enaexblaster.utilities.NetworkUtilities;
 import com.techease.enaexblaster.views.fragments.CalculatorsHomeFragment;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,7 +66,7 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
     private double distance = 0, mic = 0;
     private boolean check = true;
     private boolean checkCalculator = true;
-    DecimalFormat formatter, dfnd,nf;
+    DecimalFormat formatter, dfnd, nf;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -91,6 +93,7 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
             tvMicUnit.setText("lb");
             tvResult.setText(String.format("%.1f", 0.0) + " ft/√lb");
         }
+
         initViews();
         showSaveData();
         return view;
@@ -291,15 +294,20 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.save:
-                        SavingLoadingData.showScaledDistanceDialog(getActivity(),distance,mic);
+                        SavingLoadingData.showScaledDistanceDialog(getActivity(), distance, mic);
                         break;
                     case R.id.load:
                         Bundle bundle = new Bundle();
-                        bundle.putString("checkingScreen","scaledDistance");
-                        GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
+                        bundle.putString("checkingScreen", "scaledDistance");
+                        GeneralUtils.connectFragmentWithBack(getActivity(), new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaexusa.com/scaled_distance");
+                        Date today = new Date();
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                        String dateToStr = format.format(today);
+                        VibrationNetworking.insertVibrationData(getActivity(), dateToStr, "", String.valueOf(distance), String.valueOf(mic));
+                        NetworkUtilities.sendMail(getActivity(),
+                                "www.enaexusa.com/scaled_distance?distance=" + distance + "&mic=" + mic + "&unit=" + String.valueOf(checkCalculator));
                         break;
                     default:
                         break;
@@ -310,16 +318,34 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
     }
 
 
-
-    private void showSaveData(){
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void showSaveData() {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             String strDistance = bundle.getString("distance");
             String strMic = bundle.getString("mic");
+            checkCalculator = Boolean.parseBoolean(bundle.getString("unit"));
+
             etDistance.setText(strDistance);
             etMIC.setText(strMic);
             distance = Double.parseDouble(strDistance);
             mic = Double.parseDouble(strMic);
+
+            if (checkCalculator) {
+                btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
+                btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
+                tvDistanceUnit.setText("m");
+                tvMicUnit.setText("kg");
+                tvResult.setText(String.format("%.1f", 0.0) + " m/√kg");
+                metricCalculation();
+            } else {
+                btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
+                btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
+                tvDistanceUnit.setText("ft");
+                tvMicUnit.setText("lb");
+                tvResult.setText(String.format("%.1f", 0.0) + " ft/√lb");
+                imperialCalculation();
+            }
         }
     }
 

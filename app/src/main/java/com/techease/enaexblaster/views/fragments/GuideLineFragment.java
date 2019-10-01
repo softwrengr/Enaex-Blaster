@@ -48,12 +48,14 @@ public class GuideLineFragment extends Fragment {
         ButterKnife.bind(this, view);
         initViews();
 
-        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", true);
+        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", false);
         if(!checkCalculator){
             tvMetric.setVisibility(View.GONE);
+            tvImperail.setVisibility(View.VISIBLE);
         }
         else {
             tvImperail.setVisibility(View.GONE);
+            tvMetric.setVisibility(View.VISIBLE);
         }
         return view;
     }
