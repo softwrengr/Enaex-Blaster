@@ -210,7 +210,8 @@ public class SavingLoadingData {
 
 
     //saving the scaled distance data
-    public static void showScaledDistanceDialog(final Context context, final double distance, final double mic) {
+    public static void showScaledDistanceDialog(final Context context, final double distance,
+                                                final double mic, final boolean checkCalculator) {
 
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.custom_dialog);
@@ -229,7 +230,11 @@ public class SavingLoadingData {
                 if (strSaveAs.isEmpty() || strSaveAs == null || strSaveAs.equals("")) {
                     etSaveAs.setError("Please enter Name");
                 } else {
-                    strChecking = scaledDistanceCrud.insertScaledDitanceData(String.valueOf(distance), String.valueOf(mic), strSaveAs);
+                    strChecking = scaledDistanceCrud.insertScaledDitanceData(
+                            String.valueOf(distance),
+                            String.valueOf(mic),
+                            strSaveAs,
+                            String.valueOf(checkCalculator));
 
                     if (strChecking.equals("Already Exist")) {
                         tvMessage.setVisibility(View.VISIBLE);
@@ -247,7 +252,11 @@ public class SavingLoadingData {
             @Override
             public void onClick(View v) {
                 String strSaveAs = etSaveAs.getText().toString();
-                scaledDistanceCrud.updateScaledDitanceData(String.valueOf(distance), String.valueOf(mic), strSaveAs);
+                scaledDistanceCrud.updateScaledDitanceData(
+                        String.valueOf(distance),
+                        String.valueOf(mic),
+                        strSaveAs,
+                        String.valueOf(checkCalculator));
                 dialog.dismiss();
             }
         });
@@ -262,7 +271,9 @@ public class SavingLoadingData {
     }
 
     //saving the vibration data
-    public static void showVibrationDialog(final Context context, final double distance, final double mic, final double scalingFactor, final double attenuation) {
+    public static void showVibrationDialog(final Context context, final double distance,
+                                           final double mic, final double scalingFactor,
+                                           final double attenuation, final boolean checkCalculator) {
 
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.custom_dialog);
@@ -284,7 +295,9 @@ public class SavingLoadingData {
                             String.valueOf(distance),
                             String.valueOf(mic),
                             String.valueOf(scalingFactor),
-                            String.valueOf(attenuation), strSaveAs);
+                            String.valueOf(attenuation),
+                            strSaveAs,
+                            String.valueOf(checkCalculator));
 
                     if (strChecking.equals("Already Exist")) {
                         tvMessage.setVisibility(View.VISIBLE);
@@ -305,7 +318,9 @@ public class SavingLoadingData {
                         String.valueOf(distance),
                         String.valueOf(mic),
                         String.valueOf(scalingFactor),
-                        String.valueOf(attenuation), strSaveAs);
+                        String.valueOf(attenuation),
+                        strSaveAs,
+                        String.valueOf(checkCalculator));
                 dialog.dismiss();
             }
         });
@@ -320,7 +335,8 @@ public class SavingLoadingData {
     }
 
     //saving the vibration data
-    public static void showSdobDialog(final Context context, final double diameter, final double density, final double holeLength, final double stemLength) {
+    public static void showSdobDialog(final Context context, final double diameter, final double density, final double holeLength,
+                                      final double stemLength, final boolean checkCalculator) {
 
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.custom_dialog);
@@ -344,7 +360,8 @@ public class SavingLoadingData {
                             String.valueOf(density),
                             String.valueOf(holeLength),
                             String.valueOf(stemLength),
-                            strSaveAs);
+                            strSaveAs,
+                            String.valueOf(checkCalculator));
 
                     if (strChecking.equals("Already Exist")) {
                         tvMessage.setVisibility(View.VISIBLE);
@@ -366,7 +383,8 @@ public class SavingLoadingData {
                         String.valueOf(density),
                         String.valueOf(holeLength),
                         String.valueOf(stemLength),
-                        strSaveAs);
+                        strSaveAs,
+                        String.valueOf(checkCalculator));
                 dialog.dismiss();
             }
         });
@@ -381,7 +399,9 @@ public class SavingLoadingData {
     }
 
     //saving the vibration data
-    public static void showExplosiveWeightDialog(final Context context, final double diameter, final double density, final double holeLength, final double stemLength) {
+    public static void showExplosiveWeightDialog(final Context context, final double diameter,
+                                                 final double density, final double holeLength,
+                                                 final double stemLength,final boolean checkCal) {
 
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.custom_dialog);
@@ -405,7 +425,8 @@ public class SavingLoadingData {
                             String.valueOf(density),
                             String.valueOf(holeLength),
                             String.valueOf(stemLength),
-                            strSaveAs);
+                            strSaveAs,
+                            String.valueOf(checkCal));
 
                     if (strChecking.equals("Already Exist")) {
                         tvMessage.setVisibility(View.VISIBLE);
@@ -427,7 +448,8 @@ public class SavingLoadingData {
                         String.valueOf(density),
                         String.valueOf(holeLength),
                         String.valueOf(stemLength),
-                        strSaveAs);
+                        strSaveAs,
+                        String.valueOf(checkCal));
                 dialog.dismiss();
             }
         });
@@ -444,7 +466,8 @@ public class SavingLoadingData {
     //saving the powder factor data
     public static void showPowderFactorDialog(final Context context, final double diameter, final double density, final double burden,
                                               final double spacing, final double holeLength, final double stemLength,
-                                              final double rockDensity, final double airDeck) {
+                                              final double rockDensity, final double airDeck,
+                                              final boolean checkCalculator, final boolean checkVolumeWeight, final boolean checkAirDeck) {
 
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.custom_dialog);
@@ -472,7 +495,10 @@ public class SavingLoadingData {
                             String.valueOf(stemLength),
                             String.valueOf(rockDensity),
                             String.valueOf(airDeck),
-                            strSaveAs);
+                            strSaveAs,
+                            String.valueOf(checkCalculator),
+                            String.valueOf(checkVolumeWeight),
+                            String.valueOf(checkAirDeck));
 
                     if (strChecking.equals("Already Exist")) {
                         tvMessage.setVisibility(View.VISIBLE);
@@ -498,7 +524,10 @@ public class SavingLoadingData {
                         String.valueOf(stemLength),
                         String.valueOf(rockDensity),
                         String.valueOf(airDeck),
-                        strSaveAs);
+                        strSaveAs,
+                        String.valueOf(checkCalculator),
+                        String.valueOf(checkVolumeWeight),
+                        String.valueOf(checkAirDeck));
                 dialog.dismiss();
             }
         });
@@ -513,7 +542,10 @@ public class SavingLoadingData {
     }
 
     //saving the volume data
-    public static void showVolumeDialog(final Context context, final double burden, final double spacing, final double average_depth, final double noHole, final double rockDensity) {
+    public static void showVolumeDialog(final Context context, final double burden,
+                                        final double spacing, final double average_depth,
+                                        final double noHole, final double rockDensity,
+                                        final boolean checkCal, final boolean checkVolumeWeight) {
 
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.custom_dialog);
@@ -538,7 +570,10 @@ public class SavingLoadingData {
                             String.valueOf(average_depth),
                             String.valueOf(noHole),
                             String.valueOf(rockDensity),
-                            strSaveAs);
+                            strSaveAs,
+                            String.valueOf(checkCal),
+                            String.valueOf(checkVolumeWeight)
+                            );
 
                     if (strChecking.equals("Already Exist")) {
                         tvMessage.setVisibility(View.VISIBLE);
@@ -561,7 +596,9 @@ public class SavingLoadingData {
                         String.valueOf(average_depth),
                         String.valueOf(noHole),
                         String.valueOf(rockDensity),
-                        strSaveAs);
+                        strSaveAs,
+                        String.valueOf(checkCal),
+                        String.valueOf(checkVolumeWeight));
                 dialog.dismiss();
             }
         });

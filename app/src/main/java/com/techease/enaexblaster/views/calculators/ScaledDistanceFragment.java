@@ -294,7 +294,7 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.save:
-                        SavingLoadingData.showScaledDistanceDialog(getActivity(), distance, mic);
+                        SavingLoadingData.showScaledDistanceDialog(getActivity(), distance, mic,checkCalculator);
                         break;
                     case R.id.load:
                         Bundle bundle = new Bundle();

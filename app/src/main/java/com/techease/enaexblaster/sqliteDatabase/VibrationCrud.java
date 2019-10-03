@@ -19,7 +19,8 @@ public class VibrationCrud {
     }
 
     //inserting scaled distance data
-    public String  insertVibrationData(String distance,String mic,String scaling_factor,String attenuation,String row_name) {
+    public String  insertVibrationData(String distance,String mic,String scaling_factor,
+                                       String attenuation,String row_name,String checkCal) {
 
         if (!checkData(row_name)) {
             ContentValues values = new ContentValues();
@@ -28,6 +29,7 @@ public class VibrationCrud {
             values.put("SCALING_FACTOR",scaling_factor);
             values.put("ATTENUATION",attenuation);
             values.put("ROW_NAME",row_name);
+            values.put("CALCULATOR",checkCal);
             sqLiteDatabase.insert("VIBRATION", null, values);
             checkExistData = "Saved";
 
@@ -38,7 +40,8 @@ public class VibrationCrud {
     }
 
     //inserting scaled distance data
-    public  void  updateVibrationData(String distance,String mic,String scaling_factor,String attenuation,String row_name) {
+    public  void  updateVibrationData(String distance,String mic,String scaling_factor,
+                                      String attenuation,String row_name,String checkCal) {
 
         ContentValues values = new ContentValues();
         values.put("DISTANCE", distance);
@@ -46,6 +49,7 @@ public class VibrationCrud {
         values.put("SCALING_FACTOR",scaling_factor);
         values.put("ATTENUATION",attenuation);
         values.put("ROW_NAME",row_name);
+        values.put("CALCULATOR",checkCal);
         String whereClause = "ROW_NAME = '" + row_name + "'";
         sqLiteDatabase.update("VIBRATION",  values,whereClause,null);
     }

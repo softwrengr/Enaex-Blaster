@@ -71,6 +71,8 @@ public class VolumeAdapter extends RecyclerView.Adapter<VolumeAdapter.MyViewHold
                 bundle.putString("average_depth",model.getAverage_depth());
                 bundle.putString("holes",model.getHole());
                 bundle.putString("rockDensity",model.getRockDensity());
+                bundle.putString("unit",model.getCheckCalculator());
+                bundle.putString("checkWeight",model.getCheckVolume());
                 GeneralUtils.connectFragmentWithBack(context,new VolumeCalculatorFragment()).setArguments(bundle);
             }
         });

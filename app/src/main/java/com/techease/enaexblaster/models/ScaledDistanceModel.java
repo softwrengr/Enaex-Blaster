@@ -1,7 +1,7 @@
 package com.techease.enaexblaster.models;
 
 public class ScaledDistanceModel {
-    String distance,mic,row_name;
+    String distance,mic,row_name,checkCalculator;
 
     public String getDistance() {
         return distance;
@@ -25,5 +25,13 @@ public class ScaledDistanceModel {
 
     public void setRow_name(String row_name) {
         this.row_name = row_name;
+    }
+
+    public String getCheckCalculator() {
+        return checkCalculator;
+    }
+
+    public void setCheckCalculator(String checkCalculator) {
+        this.checkCalculator = checkCalculator;
     }
 }

@@ -3,6 +3,8 @@ package com.techease.enaexblaster.models;
 public class VolumeModel {
 
     String burden,spacing,average_depth,hole,rockDensity,rowName;
+    String checkCalculator;
+    String checkVolume;
 
     public String getBurden() {
         return burden;
@@ -50,5 +52,21 @@ public class VolumeModel {
 
     public void setRowName(String rowName) {
         this.rowName = rowName;
+    }
+
+    public String getCheckCalculator() {
+        return checkCalculator;
+    }
+
+    public void setCheckCalculator(String checkCalculator) {
+        this.checkCalculator = checkCalculator;
+    }
+
+    public String getCheckVolume() {
+        return checkVolume;
+    }
+
+    public void setCheckVolume(String checkVolume) {
+        this.checkVolume = checkVolume;
     }
 }

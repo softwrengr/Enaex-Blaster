@@ -72,6 +72,7 @@ public class VibrationAdapter extends RecyclerView.Adapter<VibrationAdapter.MyVi
                 bundle.putString("mic",model.getMic());
                 bundle.putString("scaling",model.getScallingFactor());
                 bundle.putString("attenuation",model.getAttenuation());
+                bundle.putString("unit",model.getCheckCalculator());
                 GeneralUtils.connectFragmentWithBack(context,new VibrationCalculatorFragment()).setArguments(bundle);
             }
         });

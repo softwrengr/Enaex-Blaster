@@ -392,7 +392,7 @@ public class ExplosiveWeightFragment extends Fragment implements View.OnClickLis
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.save:
-                        SavingLoadingData.showExplosiveWeightDialog(getActivity(),diameter,density,holeLenght,stemLenght);
+                        SavingLoadingData.showExplosiveWeightDialog(getActivity(),diameter,density,holeLenght,stemLenght,checkCalculator);
                         break;
                     case R.id.load:
                         Bundle bundle = new Bundle();

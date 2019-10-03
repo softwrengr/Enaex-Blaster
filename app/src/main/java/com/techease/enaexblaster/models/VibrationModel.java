@@ -6,6 +6,7 @@ public class VibrationModel {
     String scallingFactor;
     String attenuation;
     String row_name;
+    String checkCalculator;
 
     public String getRow_name() {
         return row_name;
@@ -47,5 +48,13 @@ public class VibrationModel {
 
     public void setAttenuation(String attenuation) {
         this.attenuation = attenuation;
+    }
+
+    public String getCheckCalculator() {
+        return checkCalculator;
+    }
+
+    public void setCheckCalculator(String checkCalculator) {
+        this.checkCalculator = checkCalculator;
     }
 }

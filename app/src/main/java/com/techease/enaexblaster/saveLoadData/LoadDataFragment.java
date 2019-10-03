@@ -115,11 +115,13 @@ public class LoadDataFragment extends Fragment {
             String time = cursor.getString(1).trim();
             String date = cursor.getString(2).trim();
             String note = cursor.getString(3).trim();
+            String checkCalculator = cursor.getString(4).trim();
 
             ScaledDistanceModel model = new ScaledDistanceModel();
             model.setDistance(time);
             model.setMic(date);
             model.setRow_name(note);
+            model.setCheckCalculator(checkCalculator);
 
             scaledDistanceModelArrayList.add(model);
             todoListAdapter = new ScaledDistanceAdapter(getActivity(), scaledDistanceModelArrayList);
@@ -151,6 +153,7 @@ public class LoadDataFragment extends Fragment {
             String scallingFactor = cursor.getString(3).trim();
             String attenuation = cursor.getString(4).trim();
             String rowName = cursor.getString(5).trim();
+            String checkCalculator = cursor.getString(6).trim();
 
             VibrationModel model = new VibrationModel();
             model.setDistance(distance);
@@ -158,6 +161,7 @@ public class LoadDataFragment extends Fragment {
             model.setScallingFactor(scallingFactor);
             model.setAttenuation(attenuation);
             model.setRow_name(rowName);
+            model.setCheckCalculator(checkCalculator);
 
             vibrationModelArrayList.add(model);
             todoListAdapter = new VibrationAdapter(getActivity(), vibrationModelArrayList);
@@ -189,6 +193,7 @@ public class LoadDataFragment extends Fragment {
             String holeLength = cursor.getString(3).trim();
             String stemLength = cursor.getString(4).trim();
             String rowName = cursor.getString(5).trim();
+            String checkCalcultor = cursor.getString(6).trim();
 
             SdobModel model = new SdobModel();
             model.setDiameter(diameter);
@@ -196,6 +201,7 @@ public class LoadDataFragment extends Fragment {
             model.setHoleLength(holeLength);
             model.setStemLength(stemLength);
             model.setRow_name(rowName);
+            model.setCheckCalculator(checkCalcultor);
 
             sdobModelArrayList.add(model);
             todoListAdapter = new SDOBAdapter(getActivity(), sdobModelArrayList);
@@ -233,6 +239,10 @@ public class LoadDataFragment extends Fragment {
             String strAirDeck = cursor.getString(8).trim();
             String rowName = cursor.getString(9).trim();
 
+            String checkCalculator = cursor.getString(10);
+            String checkVolumeWeight = cursor.getString(11);
+            String checkAirDeck = cursor.getString(12);
+
             PowderFactorModel model = new PowderFactorModel();
             model.setDiamter(diameter);
             model.setDensity(density);
@@ -243,6 +253,9 @@ public class LoadDataFragment extends Fragment {
             model.setRockDensity(rockDensity);
             model.setAirDeck(strAirDeck);
             model.setRowName(rowName);
+            model.setCheckCalculator(checkCalculator);
+            model.setCheckVolumeWeight(checkVolumeWeight);
+            model.setCheckAirDeck(checkAirDeck);
 
             powderFactorModelArrayList.add(model);
             powderFactorAdapter = new PowderFactorAdapter(getActivity(), powderFactorModelArrayList);
@@ -274,6 +287,7 @@ public class LoadDataFragment extends Fragment {
             String holeLength = cursor.getString(3).trim();
             String stemLength = cursor.getString(4).trim();
             String rowName = cursor.getString(5).trim();
+            String checkCalcultor = cursor.getString(6).trim();
 
             ExplosiveWeightModel model = new ExplosiveWeightModel();
             model.setDiameter(diameter);
@@ -281,6 +295,7 @@ public class LoadDataFragment extends Fragment {
             model.setHoleLength(holeLength);
             model.setStemLength(stemLength);
             model.setRow_name(rowName);
+            model.setCheckCalculator(checkCalcultor);
 
             explosiveWeightModelArrayList.add(model);
             todoListAdapter = new ExplosiveWeightAdapter(getActivity(), explosiveWeightModelArrayList);
@@ -313,6 +328,9 @@ public class LoadDataFragment extends Fragment {
             String noHole = cursor.getString(4).trim();
             String rockDensity = cursor.getString(5).trim();
             String rowName = cursor.getString(6).trim();
+            String checkCalcultor = cursor.getString(7).trim();
+            String checkVolume = cursor.getString(8).trim();
+
 
             VolumeModel model = new VolumeModel();
             model.setBurden(burden);
@@ -321,6 +339,8 @@ public class LoadDataFragment extends Fragment {
             model.setHole(noHole);
             model.setRockDensity(rockDensity);
             model.setRowName(rowName);
+            model.setCheckCalculator(checkCalcultor);
+            model.setCheckVolume(checkVolume);
 
             powderFactorModelArrayList.add(model);
             powderFactorAdapter = new VolumeAdapter(getActivity(), powderFactorModelArrayList);

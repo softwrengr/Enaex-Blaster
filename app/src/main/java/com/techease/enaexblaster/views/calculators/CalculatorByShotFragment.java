@@ -1225,7 +1225,26 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaexusa.com/shot");
+                        NetworkUtilities.sendMail(getActivity(),
+                                "www.enaexusa.com/shot?rows=" + numberOfHole
+                                        + "&holes="+ holePerRows
+                                        + "&diameter="+ diameter
+                                        + "&density="+ explosiveDensity
+                                        + "&burden="+ burden
+                                        + "&spacing="+ spacing
+                                        + "&benchHeight="+ benchHeight
+                                        + "&subDrill="+ subDrill
+                                        + "&stemLength="+ stemming
+                                        + "&rockDensity="+ rockDensity
+                                        + "&hole_ms="+ holePerMs
+                                        + "&distance="+ distance
+                                        + "&scaling="+ scallingFactor
+                                        + "&attenuation="+ attenuation
+                                        + "&calculator="+ checkCalculator
+                                        + "&volume="+ checkVolume
+                                        + "&subdrill="+ checkSubDrillStandOFF
+                                        + "&check_holes="+ checkHoleRowCount
+                                        + "&vibration="+ checkVibration);
                         break;
                     default:
                         break;
@@ -1261,8 +1280,9 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             boolean checkHoles = Boolean.valueOf(bundle.getString("check_holes"));
             boolean checkVibration = Boolean.valueOf(bundle.getString("vibration"));
 
-            etShotHoles.setText(noRows);
+            etNoOfRows.setText(noRows);
             etHolePerRow.setText(holes);
+            etShotHoles.setText(holes);
             etDiameter.setText(strDiameter);
             etDensity.setText(strDensity);
             etBurden.setText(strBurden);

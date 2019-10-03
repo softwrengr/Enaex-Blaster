@@ -328,7 +328,7 @@ public class VibrationCalculatorFragment extends Fragment implements View.OnClic
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.save:
-                        SavingLoadingData.showVibrationDialog(getActivity(), distance, mic, scallingFactor, attenuationFactor);
+                        SavingLoadingData.showVibrationDialog(getActivity(), distance, mic, scallingFactor, attenuationFactor,checkCalculator);
                         break;
                     case R.id.load:
                         Bundle bundle = new Bundle();

@@ -72,6 +72,7 @@ public class SDOBAdapter extends RecyclerView.Adapter<SDOBAdapter.MyViewHolder> 
                 bundle.putString("density",model.getDensity());
                 bundle.putString("holeLength",model.getHoleLength());
                 bundle.putString("stemLength",model.getStemLength());
+                bundle.putString("unit",model.getCheckCalculator());
                 GeneralUtils.connectFragmentWithBack(context,new SDOBCalculatorFragment()).setArguments(bundle);
             }
         });

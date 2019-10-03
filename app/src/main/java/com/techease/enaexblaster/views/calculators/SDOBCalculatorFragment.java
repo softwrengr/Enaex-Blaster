@@ -422,7 +422,7 @@ public class SDOBCalculatorFragment extends Fragment implements View.OnClickList
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.save:
-                        SavingLoadingData.showSdobDialog(getActivity(), diameter, density, holeLenght, stemLenght);
+                        SavingLoadingData.showSdobDialog(getActivity(), diameter, density, holeLenght, stemLenght,checkCalculator);
                         break;
                     case R.id.load:
                         Bundle bundle = new Bundle();

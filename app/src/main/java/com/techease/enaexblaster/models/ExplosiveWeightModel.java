@@ -6,6 +6,8 @@ public class ExplosiveWeightModel {
     String holeLength;
     String stemLength;
     String row_name;
+    String checkCalculator;
+
 
     public String getDiameter() {
         return diameter;
@@ -46,4 +48,13 @@ public class ExplosiveWeightModel {
     public void setRow_name(String row_name) {
         this.row_name = row_name;
     }
+
+    public String getCheckCalculator() {
+        return checkCalculator;
+    }
+
+    public void setCheckCalculator(String checkCalculator) {
+        this.checkCalculator = checkCalculator;
+    }
+
 }

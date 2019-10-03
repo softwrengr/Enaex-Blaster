@@ -21,7 +21,7 @@ public class VolumeCrud {
 
     //inserting volume data
     public String insertVolumeData(String burden,String spacing,String averageDepth,
-                                 String noHole,String rockDensity,String row_name) {
+                                 String noHole,String rockDensity,String row_name,String checkCal,String checkVol) {
 
         if (!checkData(row_name)) {
             ContentValues values = new ContentValues();
@@ -31,6 +31,8 @@ public class VolumeCrud {
             values.put("HOLES",noHole);
             values.put("ROCK_DENSITY",rockDensity);
             values.put("ROW_NAME",row_name);
+            values.put("CALCULATOR",checkCal);
+            values.put("VOLUME",checkVol);
             sqLiteDatabase.insert("VOlUME", null, values);
             checkExistData = "Saved";
 
@@ -46,7 +48,7 @@ public class VolumeCrud {
 
     //inserting volume data
     public void updateVolumeData(String burden,String spacing,String averageDepth,
-                                   String noHole,String rockDensity,String row_name) {
+                                 String noHole,String rockDensity,String row_name,String checkCal,String checkVol) {
         ContentValues values = new ContentValues();
         values.put("BURDEN", burden);
         values.put("SPACING",spacing);
@@ -54,6 +56,8 @@ public class VolumeCrud {
         values.put("HOLES",noHole);
         values.put("ROCK_DENSITY",rockDensity);
         values.put("ROW_NAME",row_name);
+        values.put("CALCULATOR",checkCal);
+        values.put("VOLUME",checkVol);
         String whereClause = "ROW_NAME = '" + row_name + "'";
         sqLiteDatabase.update("VOlUME",values,  whereClause, null);
 

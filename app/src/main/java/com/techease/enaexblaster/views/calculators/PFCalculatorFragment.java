@@ -653,7 +653,7 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
                 switch (item.getItemId()) {
                     case R.id.save:
                         SavingLoadingData.showPowderFactorDialog(getActivity(),diameter,density,burden,spacing,
-                                holeLenght,stemmingLenght,rockDensity,airDeck);
+                                holeLenght,stemmingLenght,rockDensity,airDeck,checkCalculator,checkVolumeWeight,checkAirDeck);
                         break;
                     case R.id.load:
                         Bundle bundle = new Bundle();
@@ -671,7 +671,9 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
                                         + "&rockDensity="+ rockDensity
                                         + "&airDeck="+ airDeck
                                         + "&checkWeight="+ checkVolumeWeight
-                                        + "&unit="+ String.valueOf(checkCalculator));
+                                        + "&unit="+ String.valueOf(checkCalculator)
+                                        + "&checkVolume="+ checkVolumeWeight
+                                        + "&check_airdeck="+ checkAirDeck);
                         break;
                     default:
                         break;
@@ -683,6 +685,7 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void showSaveData(){
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -695,7 +698,8 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
             String strRockDensity = bundle.getString("rockDensity");
             String strAirDeck = bundle.getString("airDeck");
             checkCalculator = Boolean.parseBoolean(bundle.getString("unit"));
-            checkVolumeWeight = Boolean.parseBoolean(bundle.getString("checkWeight"));
+            checkVolumeWeight = Boolean.parseBoolean(bundle.getString("checkVolume"));
+            checkAirDeck = Boolean.parseBoolean(bundle.getString("check_airdeck"));
 
             etDiameter.setText(strDiameter);
             etDensity.setText(strDensity);
@@ -715,17 +719,47 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
             rockDensity = Double.parseDouble(strRockDensity);
             airDeck = Double.parseDouble(strRockDensity);
 
+
             if(checkCalculator){
                 btnImperial.setBackgroundColor(getResources().getColor(R.color.grey));
                 btnMetric.setBackgroundColor(getResources().getColor(R.color.silver));
                 metricUnits();
-                metricCalculator();
             }
             else {
                 btnImperial.setBackgroundColor(getResources().getColor(R.color.silver));
                 btnMetric.setBackgroundColor(getResources().getColor(R.color.grey));
                 imperialUnits();
-                imperialCalculator();
+            }
+
+            if(checkVolumeWeight){
+                layoutDensity.setVisibility(View.GONE);
+                btnVolume.setBackgroundColor(getActivity().getColor(R.color.silver));
+                btnWeight.setBackgroundColor(getActivity().getColor(R.color.grey));
+            }
+            else {
+                layoutDensity.setVisibility(View.VISIBLE);
+                btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
+                btnWeight.setBackgroundColor(getActivity().getColor(R.color.silver));
+
+            }
+
+            if(checkAirDeck){
+                switchAirDeck.setChecked(true);
+                layoutAirDeck.setVisibility(View.VISIBLE);
+                if (checkCalculator) {
+                    metricCalculator();
+                } else {
+                    imperialCalculator();
+                }
+            }
+            else {
+                switchAirDeck.setChecked(false);
+                layoutAirDeck.setVisibility(View.GONE);
+                if (checkCalculator) {
+                    metricCalculator();
+                } else {
+                    imperialCalculator();
+                }
             }
         }
     }

@@ -21,7 +21,7 @@ public class ExplosiveCrud {
 
 
     public String insertExplosiveData(String diameter,String density,String holeLength,
-                                    String stemLength,String row_name) {
+                                    String stemLength,String row_name,String checkCal) {
         if (!checkData(row_name)) {
             ContentValues values = new ContentValues();
             values.put("DIAMETER", diameter);
@@ -29,6 +29,7 @@ public class ExplosiveCrud {
             values.put("HOLE_LENGHT",holeLength);
             values.put("STEM_LENGHT",stemLength);
             values.put("ROW_NAME",row_name);
+            values.put("CALCULATOR",checkCal);
             sqLiteDatabase.insert("EXPLOSIVE_WEIGHT", null, values);
             checkExistData = "Saved";
 
@@ -41,7 +42,7 @@ public class ExplosiveCrud {
 
 
     public void updateExplosiveData(String diameter,String density,String holeLength,
-                                      String stemLength,String row_name) {
+                                      String stemLength,String row_name,String checkCal) {
 
         ContentValues values = new ContentValues();
         values.put("DIAMETER", diameter);
@@ -49,6 +50,7 @@ public class ExplosiveCrud {
         values.put("HOLE_LENGHT", holeLength);
         values.put("STEM_LENGHT", stemLength);
         values.put("ROW_NAME", row_name);
+        values.put("CALCULATOR",checkCal);
         String whereClause = "ROW_NAME = '" + row_name + "'";
         sqLiteDatabase.update("EXPLOSIVE_WEIGHT",values,  whereClause, null);
 

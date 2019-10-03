@@ -3,6 +3,7 @@ package com.techease.enaexblaster.models;
 public class PowderFactorModel {
 
     String diamter,density,burden,spacing,holeLength,stemLength,rockDensity,airDeck,rowName;
+    String checkCalculator,checkVolumeWeight,checkAirDeck;
 
     public String getDiamter() {
         return diamter;
@@ -74,5 +75,29 @@ public class PowderFactorModel {
 
     public void setRowName(String rowName) {
         this.rowName = rowName;
+    }
+
+    public String getCheckCalculator() {
+        return checkCalculator;
+    }
+
+    public void setCheckCalculator(String checkCalculator) {
+        this.checkCalculator = checkCalculator;
+    }
+
+    public String getCheckVolumeWeight() {
+        return checkVolumeWeight;
+    }
+
+    public void setCheckVolumeWeight(String checkVolumeWeight) {
+        this.checkVolumeWeight = checkVolumeWeight;
+    }
+
+    public String getCheckAirDeck() {
+        return checkAirDeck;
+    }
+
+    public void setCheckAirDeck(String checkAirDeck) {
+        this.checkAirDeck = checkAirDeck;
     }
 }

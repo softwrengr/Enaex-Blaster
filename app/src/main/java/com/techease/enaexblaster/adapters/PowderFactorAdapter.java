@@ -76,6 +76,9 @@ public class PowderFactorAdapter extends RecyclerView.Adapter<PowderFactorAdapte
                 bundle.putString("stemLength",model.getStemLength());
                 bundle.putString("rockDensity",model.getRockDensity());
                 bundle.putString("airDeck",model.getAirDeck());
+                bundle.putString("unit",model.getCheckCalculator());
+                bundle.putString("checkVolume",model.getCheckVolumeWeight());
+                bundle.putString("check_airdeck",model.getCheckAirDeck());
                 GeneralUtils.connectFragmentWithBack(context,new PFCalculatorFragment()).setArguments(bundle);
             }
         });

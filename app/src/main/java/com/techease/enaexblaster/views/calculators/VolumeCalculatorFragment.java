@@ -11,13 +11,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.techease.enaexblaster.R;
@@ -79,9 +77,9 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
     @BindView(R.id.iv_menu)
     ImageView ivMenu;
 
-    private double burden = 0, spacing = 0, averageDepth = 0,rockDensity=0,noOfHOles=1;
+    private double burden = 0, spacing = 0, averageDepth = 0, rockDensity = 0, noOfHOles = 1;
     private boolean check = true;
-    private boolean checkCalculator = true,checkWeight = false;
+    private boolean checkCalculator = true, checkWeight = false;
     DecimalFormat formatter;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -90,18 +88,17 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_volume_calculator, container, false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         formatter = new DecimalFormat("#,###,###");
 
-        checkCalculator  = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit",false);
+        checkCalculator = GeneralUtils.getSharedPreferences(getActivity()).getBoolean("check_unit", false);
 
 
-        if(checkCalculator){
+        if (checkCalculator) {
             btnImperial.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
             btnMetric.setBackgroundColor(getActivity().getResources().getColor(R.color.silver));
             metricUnits();
-        }
-        else {
+        } else {
             btnImperial.setBackgroundColor(getActivity().getResources().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
             imperialUnits();
@@ -116,7 +113,7 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GeneralUtils.connectFragment(getActivity(),new CalculatorsHomeFragment());
+                GeneralUtils.connectFragment(getActivity(), new CalculatorsHomeFragment());
             }
         });
 
@@ -353,13 +350,12 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
 
     private void imperialCalculation() {
 
-        if(checkWeight){ //if weight is selected
-            double volume = ((burden * spacing * averageDepth) /27) * rockDensity * 0.841 * noOfHOles;
+        if (checkWeight) { //if weight is selected
+            double volume = ((burden * spacing * averageDepth) / 27) * rockDensity * 0.841 * noOfHOles;
             String yourFormattedResult = formatter.format(volume);
-            tvVolume.setText(yourFormattedResult +" tons");
-        }
-        else {  //if volume if selected
-            double volume = ((burden * spacing * averageDepth) /27) * noOfHOles;
+            tvVolume.setText(yourFormattedResult + " tons");
+        } else {  //if volume if selected
+            double volume = ((burden * spacing * averageDepth) / 27) * noOfHOles;
             String yourFormattedResult = formatter.format(volume);
             tvVolume.setText(yourFormattedResult + " yd³");
         }
@@ -369,12 +365,11 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
 
     private void metricCalculation() {
 
-        if(checkWeight){ //if weight is selected
+        if (checkWeight) { //if weight is selected
             double volume = (burden * spacing * averageDepth) * rockDensity * noOfHOles;
             String yourFormattedResult = formatter.format(volume);
             tvVolume.setText(yourFormattedResult + " tonnes");
-        }
-        else { //if volume if selected
+        } else { //if volume if selected
             double volume = (burden * spacing * averageDepth) * noOfHOles;
             String yourFormattedResult = formatter.format(volume);
             tvVolume.setText(yourFormattedResult + " m³");
@@ -416,14 +411,14 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
         imperialUnits();
     }
 
-    private void metricUnits(){
+    private void metricUnits() {
         tvBurdenUnit.setText("m");
         tvSpacingUnit.setText("m");
         tvDepthUnit.setText("m");
         tvDensityUnit.setText("g/cc");
     }
 
-    private void imperialUnits(){
+    private void imperialUnits() {
         tvBurdenUnit.setText("ft");
         tvSpacingUnit.setText("ft");
         tvDepthUnit.setText("ft");
@@ -438,6 +433,7 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
                 break;
         }
     }
+
     private void showMenu() {
         PopupMenu popup = new PopupMenu(getActivity(), ivMenu);
         popup.getMenuInflater().inflate(R.menu.menu,
@@ -448,22 +444,23 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.save:
-                        SavingLoadingData.showVolumeDialog(getActivity(),burden,spacing,averageDepth,noOfHOles,rockDensity);
+                        SavingLoadingData.showVolumeDialog(getActivity(), burden, spacing, averageDepth,
+                                noOfHOles, rockDensity, checkCalculator, checkWeight);
                         break;
                     case R.id.load:
                         Bundle bundle = new Bundle();
-                        bundle.putString("checkingScreen","volume");
-                        GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
+                        bundle.putString("checkingScreen", "volume");
+                        GeneralUtils.connectFragmentWithBack(getActivity(), new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
                         NetworkUtilities.sendMail(getActivity(),
-                                "www.enaexusa.com/volume?burden="+burden
-                                        + "&spacing="+ spacing
-                                        + "&average_depth="+ averageDepth
-                                        + "&holes="+ noOfHOles
-                                        + "&rockDensity="+ rockDensity
-                                        + "&checkWeight="+ checkWeight
-                                        + "&unit="+ String.valueOf(checkCalculator));
+                                "www.enaexusa.com/volume?burden=" + burden
+                                        + "&spacing=" + spacing
+                                        + "&average_depth=" + averageDepth
+                                        + "&holes=" + noOfHOles
+                                        + "&rockDensity=" + rockDensity
+                                        + "&checkWeight=" + checkWeight
+                                        + "&unit=" + String.valueOf(checkCalculator));
                         break;
                     default:
                         break;
@@ -474,7 +471,7 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
     }
 
 
-
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void showSaveData() {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -498,17 +495,37 @@ public class VolumeCalculatorFragment extends Fragment implements View.OnClickLi
             noOfHOles = Double.parseDouble(strHoles);
             rockDensity = Double.parseDouble(strRockDensity);
 
-            if(checkCalculator){
-                btnImperial.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
-                btnMetric.setBackgroundColor(getActivity().getResources().getColor(R.color.silver));
-                metricUnits();
-                metricCalculation();
-            }
-            else {
-                btnImperial.setBackgroundColor(getActivity().getResources().getColor(R.color.silver));
-                btnMetric.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
-                imperialUnits();
-                imperialCalculation();
+
+            if (checkWeight) {
+                layoutRockDensity.setVisibility(View.VISIBLE);
+                btnVolume.setBackgroundColor(getActivity().getColor(R.color.grey));
+                btnWeight.setBackgroundColor(getActivity().getColor(R.color.silver));
+                if (checkCalculator) {
+                    btnImperial.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
+                    btnMetric.setBackgroundColor(getActivity().getResources().getColor(R.color.silver));
+                    metricCalculation();
+                    metricUnits();
+                } else {
+                    btnImperial.setBackgroundColor(getActivity().getResources().getColor(R.color.silver));
+                    btnMetric.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
+                    imperialCalculation();
+                    imperialUnits();
+                }
+            } else {
+                layoutRockDensity.setVisibility(View.GONE);
+                btnVolume.setBackgroundColor(getActivity().getColor(R.color.silver));
+                btnWeight.setBackgroundColor(getActivity().getColor(R.color.grey));
+                if (checkCalculator) {
+                    btnImperial.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
+                    btnMetric.setBackgroundColor(getActivity().getResources().getColor(R.color.silver));
+                    metricCalculation();
+                    metricUnits();
+                } else {
+                    btnImperial.setBackgroundColor(getActivity().getResources().getColor(R.color.silver));
+                    btnMetric.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
+                    imperialCalculation();
+                    imperialUnits();
+                }
             }
 
         }

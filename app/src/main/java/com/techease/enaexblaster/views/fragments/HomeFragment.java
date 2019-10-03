@@ -130,10 +130,43 @@ public class HomeFragment extends Fragment {
 
             switch (id){
                 case "hole":
-                    GeneralUtils.connectFragment(getActivity(),new CalculatorByHoleFragment());
+                    bundle.putString("diameter",uri.getQueryParameter("diameter"));
+                    bundle.putString("density",uri.getQueryParameter("density"));
+                    bundle.putString("burden",uri.getQueryParameter("burden"));
+                    bundle.putString("spacing",uri.getQueryParameter("spacing"));
+                    bundle.putString("holeLength",uri.getQueryParameter("holeLength"));
+                    bundle.putString("stemLength",uri.getQueryParameter("stemLength"));
+                    bundle.putString("rockDensity",uri.getQueryParameter("rockDensity"));
+                    bundle.putString("distance",uri.getQueryParameter("distance"));
+                    bundle.putString("scaling",uri.getQueryParameter("scaling"));
+                    bundle.putString("attenuation",uri.getQueryParameter("attenuation"));
+                    bundle.putString("checkCalculator",uri.getQueryParameter("checkCalculator"));
+                    bundle.putString("checkVolume",uri.getQueryParameter("checkVolume"));
+                    bundle.putString("vibration",uri.getQueryParameter("vibration"));
+                    GeneralUtils.connectFragment(getActivity(),new CalculatorByHoleFragment()).setArguments(bundle);
                     break;
                 case "shot":
-                    GeneralUtils.connectFragment(getActivity(),new CalculatorByShotFragment());
+                    bundle.putString("rows",uri.getQueryParameter("rows"));
+                    bundle.putString("holes",uri.getQueryParameter("holes"));
+                    bundle.putString("diameter",uri.getQueryParameter("diameter"));
+                    bundle.putString("density",uri.getQueryParameter("density"));
+                    bundle.putString("burden",uri.getQueryParameter("burden"));
+                    bundle.putString("spacing",uri.getQueryParameter("spacing"));
+                    bundle.putString("benchHeight",uri.getQueryParameter("benchHeight"));
+                    bundle.putString("subDrill",uri.getQueryParameter("subDrill"));
+                    bundle.putString("stemLength",uri.getQueryParameter("stemLength"));
+                    bundle.putString("rockDensity",uri.getQueryParameter("rockDensity"));
+                    bundle.putString("hole_ms",uri.getQueryParameter("hole_ms"));
+                    bundle.putString("distance",uri.getQueryParameter("distance"));
+                    bundle.putString("scaling",uri.getQueryParameter("scaling"));
+                    bundle.putString("attenuation",uri.getQueryParameter("attenuation"));
+
+                    bundle.putString("calculator",uri.getQueryParameter("calculator"));
+                    bundle.putString("volume",uri.getQueryParameter("volume"));
+                    bundle.putString("subdrill",uri.getQueryParameter("subdrill"));
+                    bundle.putString("check_holes",uri.getQueryParameter("check_holes"));
+                    bundle.putString("vibration",uri.getQueryParameter("vibration"));
+                    GeneralUtils.connectFragment(getActivity(),new CalculatorByShotFragment()).setArguments(bundle);
                     break;
                 case "powder_factor":
                     bundle.putString("diameter",uri.getQueryParameter("diameter"));
@@ -146,6 +179,8 @@ public class HomeFragment extends Fragment {
                     bundle.putString("airDeck",uri.getQueryParameter("airDeck"));
                     bundle.putString("checkWeight",uri.getQueryParameter("checkWeight"));
                     bundle.putString("unit",uri.getQueryParameter("unit"));
+                    bundle.putString("checkVolume",uri.getQueryParameter("checkVolume"));
+                    bundle.putString("check_airdeck",uri.getQueryParameter("check_airdeck"));
                     GeneralUtils.connectFragment(getActivity(),new PFCalculatorFragment()).setArguments(bundle);
                     break;
                 case "sdob":

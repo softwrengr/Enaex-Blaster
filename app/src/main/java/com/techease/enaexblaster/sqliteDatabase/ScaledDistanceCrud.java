@@ -20,13 +20,15 @@ public class ScaledDistanceCrud {
 
 
     //inserting scaled distance data
-    public String insertScaledDitanceData(String distance,String mic,String row_name) {
+    public String insertScaledDitanceData(String distance,String mic,
+                                          String row_name,String checkCal) {
 
         if (!checkData(row_name)) {
             ContentValues values = new ContentValues();
             values.put("DISTANCE", distance);
             values.put("MIC",mic);
             values.put("ROW_NAME",row_name);
+            values.put("CALCULATOR",checkCal);
             sqLiteDatabase.insert("SCALED_DISTANCE", null, values);
             checkExistData = "Saved";
         } else {
@@ -37,12 +39,14 @@ public class ScaledDistanceCrud {
     }
 
     //inserting scaled distance data
-    public  void  updateScaledDitanceData(String distance,String mic,String row_name) {
+    public  void  updateScaledDitanceData(String distance,String mic,
+                                          String row_name,String checkCal) {
 
         ContentValues values = new ContentValues();
         values.put("DISTANCE", distance);
         values.put("MIC",mic);
         values.put("ROW_NAME",row_name);
+        values.put("CALCULATOR",checkCal);
         String whereClause = "ROW_NAME = '" + row_name + "'";
         sqLiteDatabase.update("SCALED_DISTANCE",  values,whereClause,null);
     }

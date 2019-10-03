@@ -70,6 +70,7 @@ public class ScaledDistanceAdapter extends RecyclerView.Adapter<ScaledDistanceAd
                 Bundle bundle = new Bundle();
                 bundle.putString("distance",model.getDistance());
                 bundle.putString("mic",model.getMic());
+                bundle.putString("unit",model.getCheckCalculator());
                 GeneralUtils.connectFragmentWithBack(context,new ScaledDistanceFragment()).setArguments(bundle);
             }
         });

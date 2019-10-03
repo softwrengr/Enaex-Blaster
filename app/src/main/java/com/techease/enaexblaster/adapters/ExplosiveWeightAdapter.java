@@ -18,6 +18,7 @@ import com.techease.enaexblaster.models.ExplosiveWeightModel;
 import com.techease.enaexblaster.sqliteDatabase.EnaexDatabase;
 import com.techease.enaexblaster.sqliteDatabase.ShotCrud;
 import com.techease.enaexblaster.utilities.GeneralUtils;
+import com.techease.enaexblaster.views.calculators.ExplosiveWeightFragment;
 import com.techease.enaexblaster.views.calculators.SDOBCalculatorFragment;
 
 import java.util.ArrayList;
@@ -71,7 +72,8 @@ public class ExplosiveWeightAdapter extends RecyclerView.Adapter<ExplosiveWeight
                 bundle.putString("density",model.getDensity());
                 bundle.putString("holeLength",model.getHoleLength());
                 bundle.putString("stemLength",model.getStemLength());
-                GeneralUtils.connectFragmentWithBack(context,new SDOBCalculatorFragment()).setArguments(bundle);
+                bundle.putString("unit",model.getCheckCalculator());
+                GeneralUtils.connectFragmentWithBack(context,new ExplosiveWeightFragment()).setArguments(bundle);
             }
         });
 

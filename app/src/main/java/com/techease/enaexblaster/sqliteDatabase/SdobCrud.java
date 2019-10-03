@@ -20,7 +20,8 @@ public class SdobCrud {
 
 
     //inserting sdob data
-    public String insertSDOBData(String diameter,String density,String holeLength,String stemLength,String row_name) {
+    public String insertSDOBData(String diameter,String density,String holeLength,
+                                 String stemLength,String row_name,String checkCal) {
 
         if (!checkData(row_name)) {
             ContentValues values = new ContentValues();
@@ -29,6 +30,7 @@ public class SdobCrud {
             values.put("HOLE_LENGHT",holeLength);
             values.put("STEM_LENGHT",stemLength);
             values.put("ROW_NAME",row_name);
+            values.put("CALCULATOR",checkCal);
             sqLiteDatabase.insert("SDOB", null, values);
             checkExistData = "Saved";
         } else {
@@ -39,7 +41,8 @@ public class SdobCrud {
     }
 
     //inserting scaled distance data
-    public  void  updateSDOBData(String diameter,String density,String holeLength,String stemLength,String row_name) {
+    public  void  updateSDOBData(String diameter,String density,String holeLength,
+                                 String stemLength,String row_name,String checkCal) {
 
         ContentValues values = new ContentValues();
         values.put("DIAMETER", diameter);
@@ -47,6 +50,7 @@ public class SdobCrud {
         values.put("HOLE_LENGHT",holeLength);
         values.put("STEM_LENGHT",stemLength);
         values.put("ROW_NAME",row_name);
+        values.put("CALCULATOR",checkCal);
         String whereClause = "ROW_NAME = '" + row_name + "'";
         sqLiteDatabase.update("SDOB",  values,whereClause,null);
     }

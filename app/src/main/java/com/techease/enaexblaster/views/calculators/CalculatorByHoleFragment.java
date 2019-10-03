@@ -793,7 +793,20 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
                         GeneralUtils.connectFragmentWithBack(getActivity(),new LoadDataFragment()).setArguments(bundle);
                         break;
                     case R.id.email:
-                        NetworkUtilities.sendMail(getActivity(),"www.enaexusa.com/hole");
+                        NetworkUtilities.sendMail(getActivity(),
+                                "www.enaexusa.com/hole?diameter=" + diameter
+                                        + "&density="+density
+                                        + "&burden="+ burden
+                                        + "&spacing="+ spacing
+                                        + "&holeLength="+ holeLenght
+                                        + "&stemLength="+ stemming
+                                        + "&rockDensity="+ rockDensity
+                                        + "&distance="+ distance
+                                        + "&scaling="+ scallingFactor
+                                        + "&attenuation="+ attenuation
+                                        + "&checkCalculator="+ checkCalculator
+                                        + "&checkVolume="+ checkVolume
+                                        + "&vibration="+ checkVibartion);
                         break;
                     default:
                         break;
@@ -807,7 +820,6 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
     private void showSaveData(){
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-
             String strDiameter = bundle.getString("diameter");
             String strDensity = bundle.getString("density");
             String strBurden = bundle.getString("burden");
