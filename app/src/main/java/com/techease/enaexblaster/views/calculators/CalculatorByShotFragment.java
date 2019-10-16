@@ -343,6 +343,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
                 } else {
                     try {
                         noOfRows = Double.parseDouble(s.toString().replace(',', '.'));
+                        numberOfHole = noOfRows;
                         if (checkCalculator) {
                             metricCalculator();
                         } else {
@@ -938,10 +939,12 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         if (checkVolume) {
             volumePerHole = burden * spacing * benchHeight;
             totalVolume = volumePerHole * NoOfHole;
+            tvVolume.setText(formatter.format(totalVolume) + " m³");
 
         } else {
             volumePerHole = (burden * spacing * benchHeight) * rockDensity;
             totalWeight = volumePerHole * NoOfHole;
+            tvVolume.setText(formatter.format(totalWeight) + " m³");
         }
 
         explosivePerHole = (explosiveDensity / 1000) * (Math.PI * (Math.pow((diameter / 2), 2))) * (holeLength - stemming);
@@ -953,10 +956,6 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         } else {
             powderFactor = totalExplosive / totalWeight;
         }
-
-        Log.d("check weight",String.valueOf(totalWeight));
-        Log.d("check exp",String.valueOf(totalExplosive));
-        Log.d("check pf",String.valueOf(powderFactor));
 
         d = stemming + (5 * (diameter / 1000));
         chargeUnit = (explosiveDensity / 1000) * (Math.PI * Math.pow((diameter / 2), 2));
@@ -977,10 +976,9 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         tvShotLenght.setText(String.format("%.1f", holeLength) + " m");
         tvShotDrillLenght.setText(formatter.format(totalDrill) + " m");
         tvVolumePerHole.setText(formatter.format(volumePerHole) + " m³");
-        tvVolume.setText(formatter.format(totalVolume) + " m³");
         tvExplosivePerHole.setText(formatter.format(explosivePerHole) + " kg");
         tvTotalExplosive.setText(formatter.format(totalExplosive) + " kg");
-        tvSDOB.setText(String.format("%.2f", sdob) + " m∛kg");
+        tvSDOB.setText(String.format("%.2f", sdob) + " m/∛kg");
         tvPF.setText(String.format("%.2f", powderFactor) + " kg/m³");
         tvSD.setText(String.format("%.1f", SD) + " m/√kg");
         tvMic.setText(formatter.format(MIC) + " kg");
@@ -1033,13 +1031,15 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         checkGraphics(sdob);
 
 
-        if(!checkVolume){
+        if(!checkVolume){   //weight selected
             tvVolume.setText(formatter.format(totalVolume) + " tons");
             tvVolumePerHole.setText(formatter.format(volumePerHole) + " tons");
+            tvPF.setText(String.format("%.2f", powderFactor) + " lb/ton");
         }
-        else {
+        else {   //volume selected
             tvVolume.setText(formatter.format(totalVolume) + " yd³");
             tvVolumePerHole.setText(formatter.format(volumePerHole) + " yd³");
+            tvPF.setText(String.format("%.2f", powderFactor) + " lb/yd³");
         }
 
 
@@ -1049,7 +1049,6 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         tvExplosivePerHole.setText(formatter.format(explosivePerHole) + " lb");
         tvTotalExplosive.setText(formatter.format(totalExplosive) + " lb");
         tvSDOB.setText(String.format("%.2f", sdob) + " ft/∛lb");
-        tvPF.setText(String.format("%.2f", powderFactor) + " lb/yd³");
         tvSD.setText(String.format("%.1f", SD) + " ft/√lb");
         tvMic.setText(formatter.format(MIC) + " kg");
         tvPPV.setText(String.format("%.2f", PPV) + " in/s");
@@ -1140,13 +1139,13 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
 
         diameter = diameter * 25.4000008128;
-        burden = burden / 3.28084;
-        spacing = spacing / 3.28084;
-        benchHeight = benchHeight / 3.28084;
-        stemming = stemming / 3.28084;
-        distance = distance / 3.28084;
-        subDrill = subDrill / 3.28084;
-        stemming = stemming / 3.28084;
+        burden = burden / 3.280844;
+        spacing = spacing / 3.280844;
+        benchHeight = benchHeight / 3.280844;
+        stemming = stemming / 3.280844;
+        distance = distance / 3.280844;
+        subDrill = subDrill / 3.280844;
+        stemming = stemming / 3.280844;
 
         scallingFactor = 1140;
 
@@ -1173,10 +1172,10 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         burden = burden * 3.280844;
         spacing = spacing * 3.280844;
         benchHeight = benchHeight * 3.280844;
-        stemming = stemming * 3.28084;
-        distance = distance * 3.28084;
-        subDrill = subDrill * 3.28084;
-        stemming = stemming * 3.28084;
+        stemming = stemming * 3.280844;
+        distance = distance * 3.280844;
+        subDrill = subDrill * 3.280844;
+        stemming = stemming * 3.280844;
 
         scallingFactor = 160;
 
@@ -1279,6 +1278,8 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             boolean subdrill = Boolean.valueOf(bundle.getString("subdrill"));
             boolean checkHoles = Boolean.valueOf(bundle.getString("check_holes"));
             boolean checkVibration = Boolean.valueOf(bundle.getString("vibration"));
+
+            Toast.makeText(getActivity(), noRows, Toast.LENGTH_SHORT).show();
 
             etNoOfRows.setText(noRows);
             etHolePerRow.setText(holes);

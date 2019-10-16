@@ -586,16 +586,16 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
             tvVolume.setText(formatter.format(volume) + " yd³");
             tvLBSHole.setText(formatter.format(explosivePerHole) + " lb");
             tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume)) + " lb/yd³");
-            tvSDOB.setText(String.format("%.1f", Double.valueOf(sdob)) + " ft∛lb");
-            tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " ft√lb");
+            tvSDOB.setText(String.format("%.1f", Double.valueOf(sdob)) + " ft/∛lb");
+            tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " ft/√lb");
             tvPPV.setText(String.format("%.1f", Double.valueOf(PPV)) + " in/s");
         } else {
             tvVolume.setText(formatter.format(weight) + " ton");
             tvLBSHole.setText(formatter.format(explosivePerHole) + " lb");
             tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight)) + " lb/ton");
-            tvSDOB.setText(String.format("%.1f", Double.valueOf(sdob)) + " ft∛lb");
-            tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " ft√lb");
-            tvPPV.setText(String.format("%.1f", Double.valueOf(PPV)) + " in/s");
+            tvSDOB.setText(String.format("%.1f", Double.valueOf(sdob)) + " ft/∛lb");
+            tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " ft/√lb");
+            tvPPV.setText(String.format("%.2f", Double.valueOf(PPV)) + " in/s");
         }
 
     }
@@ -623,14 +623,14 @@ public class CalculatorByHoleFragment extends Fragment implements CompoundButton
             tvVolume.setText(formatter.format(volume) + " m³");
             tvLBSHole.setText(formatter.format(explosivePerHole) + " kg");
             tvPF.setText(String.format("%.2f", Double.valueOf(PFVolume)) + " kg/m³");
-            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)) + " m∛kg");
+            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)) + " m/∛kg");
             tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " m/√kg");
             tvPPV.setText(String.format("%.1f", Double.valueOf(PPV)) + " mm/s");
         } else {
             tvVolume.setText(formatter.format(weight) + " tonne");
             tvLBSHole.setText(formatter.format(explosivePerHole) + " kg");
             tvPF.setText(String.format("%.2f", Double.valueOf(PFWeight)) + " kg/tonne");
-            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)) + " m∛kg");
+            tvSDOB.setText(String.format("%.2f", Double.valueOf(sdob)) + " m/∛kg");
             tvSD.setText(String.format("%.1f", Double.valueOf(SD)) + " m/√kg");
             tvPPV.setText(String.format("%.1f", Double.valueOf(PPV)) + " mm/s");
         }
