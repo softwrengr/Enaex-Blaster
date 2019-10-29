@@ -884,8 +884,11 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         tvSubDrill.setText("Standoff");
         btnStandOff.setBackgroundColor(getActivity().getColor(R.color.silver));
         btnSubDrill.setBackgroundColor(getActivity().getColor(R.color.grey));
-        imperialCalculator();
-        metricCalculator();
+        if (checkCalculator) { // metric caluculator
+            loadMetricCalculator();
+        } else {              //imperial calculator
+            loadImperailCalculator();
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -893,8 +896,11 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         tvSubDrill.setText("Subdrill");
         btnStandOff.setBackgroundColor(getActivity().getColor(R.color.grey));
         btnSubDrill.setBackgroundColor(getActivity().getColor(R.color.silver));
-        imperialCalculator();
-        metricCalculator();
+        if (checkCalculator) { // metric caluculator
+            loadMetricCalculator();
+        } else {              //imperial calculator
+            loadImperailCalculator();
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -1050,7 +1056,7 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         tvTotalExplosive.setText(formatter.format(totalExplosive) + " lb");
         tvSDOB.setText(String.format("%.2f", sdob) + " ft/∛lb");
         tvSD.setText(String.format("%.1f", SD) + " ft/√lb");
-        tvMic.setText(formatter.format(MIC) + " kg");
+        tvMic.setText(formatter.format(MIC) + " lb");
         tvPPV.setText(String.format("%.2f", PPV) + " in/s");
     }
 
@@ -1145,7 +1151,6 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         stemming = stemming / 3.280844;
         distance = distance / 3.280844;
         subDrill = subDrill / 3.280844;
-        stemming = stemming / 3.280844;
 
         scallingFactor = 1140;
 
@@ -1175,7 +1180,6 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
         stemming = stemming * 3.280844;
         distance = distance * 3.280844;
         subDrill = subDrill * 3.280844;
-        stemming = stemming * 3.280844;
 
         scallingFactor = 160;
 
@@ -1279,7 +1283,6 @@ public class CalculatorByShotFragment extends Fragment implements CompoundButton
             boolean checkHoles = Boolean.valueOf(bundle.getString("check_holes"));
             boolean checkVibration = Boolean.valueOf(bundle.getString("vibration"));
 
-            Toast.makeText(getActivity(), noRows, Toast.LENGTH_SHORT).show();
 
             etNoOfRows.setText(noRows);
             etHolePerRow.setText(holes);

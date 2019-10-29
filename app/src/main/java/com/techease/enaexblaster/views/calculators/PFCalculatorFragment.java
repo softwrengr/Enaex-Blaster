@@ -505,12 +505,12 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
         btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
         btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
 
-        diameter = diameter * 25.4;
-        burden = burden / 3.28084;
-        spacing = spacing / 3.28084;
-        holeLenght = holeLenght / 3.28084;
-        stemmingLenght = stemmingLenght / 3.28084;
-        airDeck = airDeck / 3.28084;
+        diameter = diameter * 25.4000008128;
+        burden = burden / 3.280844;
+        spacing = spacing / 3.280844;
+        holeLenght = holeLenght / 3.280844;
+        stemmingLenght = stemmingLenght / 3.280844;
+        airDeck = airDeck / 3.280844;
 
         etDiameter.setText(String.format("%.0f", Double.valueOf(diameter)));
         etBurden.setText(String.format("%.1f", Double.valueOf(burden)));
@@ -529,12 +529,12 @@ public class PFCalculatorFragment extends Fragment implements CompoundButton.OnC
         btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
         btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
 
-        diameter = diameter / 25.4;
-        burden = burden * 3.28084;
-        spacing = spacing * 3.28084;
-        holeLenght = holeLenght * 3.28084;
-        stemmingLenght = stemmingLenght * 3.28084;
-        airDeck = airDeck * 3.28084;
+        diameter = diameter / 25.4000008128;
+        burden = burden * 3.280844;
+        spacing = spacing * 3.280844;
+        holeLenght = holeLenght * 3.280844;
+        stemmingLenght = stemmingLenght * 3.280844;
+        airDeck = airDeck * 3.280844;
 
         etDiameter.setText(String.format("%.3f", Double.valueOf(diameter)));
         etBurden.setText(String.format("%.0f", Double.valueOf(burden)));

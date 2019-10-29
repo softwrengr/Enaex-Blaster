@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,8 +64,7 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
                sendMail();
                break;
            case R.id.layout_website:
-               Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.enaexusa.com/"));
-               startActivity(browserIntent);
+               loadWebsite();
                break;
        }
     }
@@ -86,5 +86,16 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
         Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:+18015623045"));
         startActivity(intent);
+    }
+
+    private void loadWebsite(){
+       try {
+           Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                   Uri.parse("https://www.enaexusa.com/"));
+           startActivity(browserIntent);
+       }
+       catch (Exception e){
+           Log.d("error",""+e.getMessage());
+       }
     }
 }

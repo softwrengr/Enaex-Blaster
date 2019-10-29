@@ -513,7 +513,7 @@
                     android:text="Powder Factor"
                     android:fontFamily="@font/bold"
                     android:textColor="@color/white"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textSize="17sp" />
 
                 <TextView

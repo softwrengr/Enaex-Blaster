@@ -249,11 +249,11 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
         btnImperial.setBackgroundColor(getActivity().getColor(R.color.grey));
         btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
 
-        distance = distance / 3.28084;
+        distance = distance / 3.280844;
         mic = mic * 0.453592;
 
-        etDistance.setText(String.format("%.0f", Double.valueOf(distance)));
-        etMIC.setText(String.format("%.0f", Double.valueOf(mic)));
+        etDistance.setText(String.format("%.0f", distance));
+        etMIC.setText(String.format("%.0f", mic));
 
         metricCalculation();
 
@@ -266,11 +266,11 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
         btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
         btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
 
-        distance = distance * 3.28084;
+        distance = distance * 3.280844;
         mic = mic / 0.453592;
 
-        etDistance.setText(String.format("%.0f", Double.valueOf(distance)));
-        etMIC.setText(String.format("%.0f", Double.valueOf(mic)));
+        etDistance.setText(String.format("%.0f", distance));
+        etMIC.setText(String.format("%.0f", mic));
 
         imperialCalculation();
     }
@@ -307,7 +307,9 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
                         String dateToStr = format.format(today);
                         VibrationNetworking.insertVibrationData(getActivity(), dateToStr, "", String.valueOf(distance), String.valueOf(mic));
                         NetworkUtilities.sendMail(getActivity(),
-                                "www.enaexusa.com/scaled_distance?distance=" + distance + "&mic=" + mic + "&unit=" + String.valueOf(checkCalculator));
+                                "www.enaexusa.com/scaled_distance?distance=" + distance +
+                                        "&mic=" + mic +
+                                        "&unit=" + String.valueOf(checkCalculator));
                         break;
                     default:
                         break;
