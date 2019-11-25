@@ -85,13 +85,15 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.silver));
             tvDistanceUnit.setText("m");
             tvMicUnit.setText("kg");
-            tvResult.setText(String.format("%.1f", 0.0) + " m/√kg");
+            //m/√kg
+            tvResult.setText(String.format("%.1f", 0.0));
         } else {
             btnImperial.setBackgroundColor(getActivity().getColor(R.color.silver));
             btnMetric.setBackgroundColor(getActivity().getColor(R.color.grey));
             tvDistanceUnit.setText("ft");
             tvMicUnit.setText("lb");
-            tvResult.setText(String.format("%.1f", 0.0) + " ft/√lb");
+            //ft/√lb
+            tvResult.setText(String.format("%.1f", 0.0));
         }
 
         initViews();
@@ -226,7 +228,8 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
         }
 
         String yourFormattedResult = formatter.format(SD);
-        tvResult.setText(yourFormattedResult + " m/√kg");
+        //m/√kg
+        tvResult.setText(yourFormattedResult);
 
     }
 
@@ -238,7 +241,8 @@ public class ScaledDistanceFragment extends Fragment implements View.OnClickList
             SD = (distance / Math.sqrt(mic));
         }
 
-        tvResult.setText(String.format("%.1f", SD) + " ft/√lb");
+        // ft/√lb
+        tvResult.setText(String.format("%.1f", SD));
     }
 
 

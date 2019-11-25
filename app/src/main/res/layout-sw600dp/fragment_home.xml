@@ -211,7 +211,7 @@
                   android:background="@drawable/round_button">
 
                   <ImageView
-                      android:layout_width="50dp"
+                      android:layout_width="65dp"
                       android:layout_height="50dp"
                       android:scaleType="fitXY"
                       android:src="@drawable/aboutus" />
