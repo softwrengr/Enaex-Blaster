@@ -73,8 +73,8 @@ public class ContactUsFragment extends Fragment implements View.OnClickListener 
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
         i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"contact-usa@enaex.com"});
-        i.putExtra(Intent.EXTRA_SUBJECT, "Enaex");
-        i.putExtra(Intent.EXTRA_TEXT   , "write you query");
+        i.putExtra(Intent.EXTRA_SUBJECT, "App Inquiry");
+        i.putExtra(Intent.EXTRA_TEXT   , "How can we help you?");
         try {
             startActivity(Intent.createChooser(i, "Send mail..."));
         } catch (android.content.ActivityNotFoundException ex) {
